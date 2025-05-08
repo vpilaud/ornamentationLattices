@@ -21,7 +21,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{Interval hypergraphic lattices}
+\title[Ornamentation lattices and intreeval hypergraphic lattices]{Ornamentation lattices and \\ intreeval hypergraphic lattices}
 
 \author{Vincent Pilaud}
 \address[V.~Pilaud]{Universitat de Barcelona \& Centre de Recerca Matemàtica, Barcelona}
@@ -145,6 +145,14 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\cY}{\cal{Y}}
 \newcommand{\cA}{\cal{A}}
 
+% Special graphs
+\newcommand{\Igraph}{\sf I} % I graph
+\newcommand{\Ngraph}{\sf N} % N graph
+\newcommand{\Xgraph}{\sf X} % X graph
+\newcommand{\Ygraph}{\sf Y} % Y graph
+\newcommand{\Dgraph}{\boldsymbol{\Diamond}} % D graph
+\newcommand{\Agraph}{\rotatebox[origin=c]{180}{\sf Y}} % A graph
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -240,27 +248,40 @@ For an interval hypergraph $\II$, the poset $P_\II$ is a lattice if and only if 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newpage
 \section{Ornamentation lattices}
 
-\begin{figure}[p]
-	\centerline{\includegraphics[scale=.8]{ornamentationsX}}
-	\caption{The ornamentation lattice~$\c{O}(\times)$ of the directed graph~$\times$.}
-	\label{fig:ornamentationsX}
+\begin{figure}
+	\centerline{\includegraphics[scale=.8]{ornamentationsN} \qquad \raisebox{.5cm}{\includegraphics[scale=.8]{ornamentationsI}}}
+	\caption{The ornamentation lattices~$\c{O}(\Ngraph)$ and~$\c{O}(\Igraph)$.}
+	\label{fig:ornamentationsNI}
 \end{figure}
 
-\begin{figure}[p]
-	\centerline{\includegraphics[scale=.8]{ornamentationsD}}
-	\caption{The ornamentation lattice~$\c{O}(\Diamond)$ of the directed graph~$\Diamond$.}
-	\label{fig:ornamentationsX}
+\begin{figure}
+	\centerline{\includegraphics[scale=.8]{ornamentationsY} \qquad \includegraphics[scale=.8]{ornamentationsA}}
+	\caption{The ornamentation lattices~$\c{O}(\Ygraph)$ and~$\c{O}(\Agraph)$.}
+	\label{fig:ornamentationsAY}
 \end{figure}
+
+Throughout this section, we fix a directed graph~$D$ on a vertex set~$V$.
+In all our pictures, $V = [n]$ and the edges are increasing (so we do not need to explicitly indicate the orientation).
+%We will mostly work with a directed acyclic graph, and we represent it with edges going up in all pictures.
+The following definition, first introduced for rooted trees in~\cite{} and extended to arbitrary directed graphs in~\cite{}, is illustrated in \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX,fig:ornamentationsD}
 
 \begin{definition}
-Let~$D$ be a directed graph on a vertex set~$V$.
 An \defn{ornament} at a vertex $v$ of~$D$ is a subset~$U \subseteq V$ such that there is a path from any $u \in U$ to~$v$ in the directed subgraph of~$D$ induced by~$U$.
 An \defn{ornamentation} of~$D$ is a map $O$ on $V$ which assigns an ornament~$O(v)$ at each vertex~$v \in V$ such that~$u \in O(v) \implies O(u) \subseteq O(v)$ for all~$u,v \in V$.
-We denote by~$\c{O}(v \in D)$ the set of ornaments at a vertex~$v$ of~$D$ and by~$\c{O}$ the set of ornamentations of~$D$.
-The \defn{componentwise inclusion} is the partial order on~$\c{O}(D)$ defined by~$O_1 \le O_2$ if~$O_1(v) \subseteq O_2(v)$ for all~$v \in V$.
+We denote by~$\c{O}(v \in D)$ the set of ornaments at a vertex~$v$ of~$D$ and by~$\c{O}(D)$ the set of ornamentations of~$D$.
 \end{definition}
+
+\begin{example}
+We can define ornamentations by
+\begin{itemize}
+\item sending each vertex~$v \in V$ to the singleton~$\{v\}$, 
+\item sending each vertex~$v \in V$ to the set~$U$ of vertices with a path to~$v$ in~$D$,
+\item for any ornament~$U \in \c{O}(v \in D)$, sending~$v$ to~$U$ and any other vertex~$u \in V \ssm \{v\}$ to the singleton~$\{u\}$.
+\end{itemize}
+\end{example}
 
 \begin{lemma}
 \label{lem:unionOrnaments}
@@ -279,43 +300,87 @@ Part~(ii) is a specialization of Part~(i) to~$u = v$ and~$u' = v$.
 \end{proof}
 
 \begin{theorem}
-The set of ornamentations of~$D$ ordered by componentwise inclusion is a lattice.
+The set~$\c{O}(D)$ of ornamentations of~$D$ is a lattice under componentwise inclusion, meaning~$O_1 \le O_2$ if~$O_1(v) \subseteq O_2(v)$ for all~$v \in V$.
 For any two ornamentations~$O_1$ and~$O_2$ of~$D$,
 \begin{itemize}
-\item the meet~$O_1 \meet O_2$ is the ornamentation of~$D$ where~$(O_1 \meet O_2)(v)$ is the inclusion maximal ornament at~$v$ contained in~$O_1(v) \cap O_2(v)$,
+\item $(O_1 \meet O_2)(v)$ is the inclusion maximal ornament at~$v$ contained in~$O_1(v) \cap O_2(v)$,
 %\item the join~$O_1 \join O_2$ is the ornamentation of~$D$ where~$(O_1 \join O_2)(v) = \set{u \in V}{u \, R \, v}$ where $R$ is the transitive closure of~$u \in O_1(v) \cup O_2(v)$.
-\item the join~$O_1 \join O_2$ is the ornamentation of~$D$ where~$(O_1 \join O_2)(v)$ is the inclusion minimal subset of~$V$ containing~$v$ and such that~$u \in O_\join(v)$ implies~$O_1(u) \cup O_2(u) \subseteq O_\meet(v)$.
+\item $(O_1 \join O_2)(v)$ is the inclusion minimal subset~$U$ of~$V$ containing~$v$ and such that~$u \in U$ implies~$O_1(u) \cup O_2(u) \subseteq U$.
 \end{itemize}
 \end{theorem}
 
 \begin{proof}
-Given two ornamentations~$O_1$ and~$O_2$ of~$D$, let~$O_\meet$ and $O_\join$ be the maps on~$V$ defined by 
-\begin{itemize}
-\item $O_\meet(v)$ is the inclusion maximal ornament at~$v$ contained in~$O_1(v) \cap O_2(v)$,
-%\item $O_\join(v) = \set{u \in V}{u \, R \, v}$ where $R$ is the transitive closure of~$u \in O_1(v) \cup O_2(v)$.
-\item $O_\join(v)$ is the inclusion minimal subset of~$V$ containing~$v$ and such that~$u \in O_\join(v)$ implies~$O_1(u) \cup O_2(u) \subseteq O_\meet(v)$.
-\end{itemize}
-Note that $O_\meet$ is well defined by \cref{lem:unionOrnaments}.
-
-We first prove that~$O_\meet$ and $O_\join$ are ornamentations of~$D$.
-
-By definition, $O_\meet(v)$ is an ornament at~$v$.
+%Given two ornamentations~$O_1$ and~$O_2$ of~$D$, let~$O_\meet$ and $O_\join$ be the maps on~$V$ defined by 
+%\begin{itemize}
+%\item $O_\meet(v)$ is the inclusion maximal ornament at~$v$ contained in~$O_1(v) \cap O_2(v)$,
+%%\item $O_\join(v) = \set{u \in V}{u \, R \, v}$ where $R$ is the transitive closure of~$u \in O_1(v) \cup O_2(v)$.
+%\item $O_\join(v)$ is the inclusion minimal subset~$U$ of~$V$ containing~$v$ and such that~$u \in U$ implies~$O_1(u) \cup O_2(u) \subseteq U$.
+%\end{itemize}
+%
+Given two ornamentations~$O_1$ and~$O_2$ of~$D$, consider the map~$O_\meet$ on~$V$ where $O_\meet(v)$ is the inclusion maximal ornament at~$v$ contained in~$O_1(v) \cap O_2(v)$.
+Note that $O_\meet(v)$ is well defined by \cref{lem:unionOrnaments}, and that~$O_\meet(v) \in \c{O}(v \in D)$ for any~$v \in V$ by definition.
 Consider now~$u,v \in V$ such that~$u \in O_\meet(v)$.
-Since~$O_\meet(u) \in \c{O}(u \in D)$ and~$O_\meet(v) \in \c{O}(v \in D)$ with~$u \in O_\meet(v)$, we obtain that~$O_\meet(u) \cup O_\meet(v) \in \c{O}(v \in D)$ by \cref{lem:unionOrnaments}.
+Since~$O_\meet(u) \in \c{O}(u \in D)$ and~$O_\meet(v) \in \c{O}(v \in D)$ with~${u \in O_\meet(v)}$, \cref{lem:unionOrnaments} gives~$O_\meet(u) \cup O_\meet(v) \in \c{O}(v \in D)$.
 As~$u \in O_\meet(v) \subseteq O_1(v) \cap O_2(v)$ and~$O_1$ and~$O_2$ are ornamentations of~$D$, we have~$O_1(u) \subseteq O_1(v)$ and~$O_2(u) \subseteq O_2(v)$, so that~$O_\meet(u) \subseteq O_1(u) \cap O_2(u) \subseteq O_1(v) \cap O_2(v)$, hence~$O_\meet(u) \cup O_\meet(v) \subseteq O_1(v) \cap O_2(v)$.
 By maximality of~$O_\meet(v)$, we conclude that $O_\meet(u) \cup O_\meet(v) \subseteq O_\meet(v)$, so that~$O_\meet(u) \subseteq O_\meet(v)$.
+We conclude that~$O_\meet$ is an ornamentation of~$D$.
+Moreover, $O_\meet$ is clearly the meet of~$O_1$ and~$O_2$ in componentwise inclusion.
 
-As~$O_1(v) \in \c{O}(v \in D)$ and~$O_2(v) \in \c{O}(v \in D)$, we have~$O_1(v) \cup O_2(v) \in \c{O}(v \in D)$ by \cref{lem:unionOrnaments}.
-
-\vincent{todo}
-
-We conclude that~$O_\meet = O_1 \meet O_2$ and~$O_\join = O_1 \join O_2$.
+Given two ornamentations~$O_1$ and~$O_2$ of~$D$, consider now the map~$O_\join$ on~$V$ where~$O_\join(v)$ is the inclusion minimal subset~$U$ of~$V$ containing~$v$ and such that~$u \in U$ implies~$O_1(u) \cup O_2(u) \subseteq U$.
+Note that~$O_\join(v)$ is well defined as it can be constructed by induction, starting from~$U = \{v\}$ and adding inductively~$O_1(u) \cup O_2(u)$ for all~$u \in U$ until it stabilizes.
+Since~$O_1(u) \cup O_2(u) \in \c{O}(u \in D)$ by \cref{lem:unionOrnaments}, this inductive construction maintains the invariant that there is a path from~$u$ to~$v$ in~$U$ for any~$u \in U$.
+Hence, we obtain that~$O_\join(v) \in \c{O}(v \in D)$ for any~$v \in V$.
+Consider now~$u,v \in V$ such that~$u \in O_\join(v)$.
+Since~$u \in O_\join(v)$ and~$w \in O_\join(v)$ implies~$O_1(w) \cup O_2(w) \subseteq O_\join(v)$, we obtain that~$O_\join(u) \subseteq O_\join(v)$ by minimality of~$O_\join(u)$.
+We conclude that~$O_\join$ is an ornamentation of~$D$.
+Moreover, $O_\join$ is clearly the join of~$O_1$ and~$O_2$ in componentwise inclusion.
 \end{proof}
 
+\begin{example}
+The ornamentation lattice of the graph with a single edge is an $2$-elements chain.
+The ornamentation lattice of a graph with no path of length $2$ is a boolean lattice (see \eg \cref{fig:ornamentationsNI}\,(left)).
+In general, the Cartesian product~$\c{O}(D) \times \c{O}(D')$ of the ornamentation lattices of two directed graphs~$D$ and~$D'$~is
+\begin{itemize}
+\item the ornamentation lattice~$\c{O}(D \sqcup D')$ of the disjoint union of~$D$ and~$D'$, and
+\item isomorphic to the ornamentation lattice~$\c{O}(D \sqcup D' / u \sim u')$ of the graph obtained from~${D \sqcup D'}$ by identifying a source (resp.~sink)~$u \in D$ with a source (resp.~sink)~$u' \in D'$.
+\end{itemize}
+\end{example}
+
+\begin{example}
+The ornamentation lattice of a $n$-elements path is isomorphic to the Tamari lattice on binary trees with $n$ nodes (see \eg \cref{fig:ornamentationsNI}\,(right)).
+The isomorphism is obtained trough tubings (or equivalently bracket vectors).
+\end{example}
+
 \begin{remark}
-Properties of this lattice.
+\label{rem:posetPropertiesOrnamentations}
+A few poset properties of the ornamentations lattice~$\c{O}(D)$:
+\begin{itemize}
+\item The minimal ornamentation sends each vertex~$v \in V$ to the singleton~$\{v\}$, and the maximal ornamentation sends each vertex~$v \in V$ to the set~$U$ of vertices with a path to~$v$ in~$D$.
+\item Two ornamentations~$O_1$ and~$O_2$ of~$D$ form a cover relation if and only if there is~$u, v \in V$ such that~$u \notin O_1(v)$ and~$O_2(v) = O_1(u) \cup O_1(v)$, while~$O_1(w) = O_2(w)$ for all~$w \in V \ssm \{v\}$.
+\item For any~$U \subseteq V$, the ornamentation lattice of the subgraph~$D_U$ of~$D$ induced by~$U$ is an interval of the ornamentation lattice of~$D$ (namely, the bottom interval below the ornamentation of~$D$ where~$O(u)$ is the set of vertices of~$U$ with a path to~$u$ in~$U$ for all~$u \in U$, while~$O(v)$ is the singleton~$\{v\}$ for all~$v \in V \ssm U$).
+\end{itemize}
 \end{remark}
 
+\begin{remark}
+A few lattice properties of the ornamentation lattice~$\c{O}(D)$:
+\begin{itemize}
+\item The join irreducible ornamentations of~$D$ are precisely the ornamentations~$\c{O}_\pi$ described in \cref{rem:posetPropertiesOrnamentations} for the directed paths~$\pi$ in~$D$ which admit no shortcut in~$D$. (The meet irreducible ornamentations are more complicated to describe.)
+\item $\c{O}(D)$ is distributive if and only if~$D$ contains no path of length~$2$ (in which case, $\c{O}(D)$ is actually a boolean lattice).
+\item $\c{O}(D)$ is semidistributive if and only if~$D$ is a directed tree.
+\end{itemize}
+\end{remark}
+
+\begin{figure}[p]
+	\centerline{\includegraphics[scale=.8]{ornamentationsX}}
+	\caption{The ornamentation lattice~$\c{O}(\Xgraph)$ of the directed graph~$\Xgraph$.}
+	\label{fig:ornamentationsX}
+\end{figure}
+
+\begin{figure}
+	\centerline{\includegraphics[scale=.8]{ornamentationsD}}
+	\caption{The ornamentation lattice~$\c{O}(\Dgraph)$ of the directed graph~$\Dgraph$.}
+	\label{fig:ornamentationsD}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
