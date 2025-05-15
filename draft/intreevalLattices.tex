@@ -86,14 +86,15 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\polar}{^\diamond} % polar
 \newcommand{\simplex}{\triangle} % simplex
 %\renewcommand{\implies}{\;\Rightarrow\;} % implies
+\newcommand{\surjection}{\longrightarrow\mathrel{\mkern-22mu}\rightarrow\,}     
+\newcommand{\bijection}{\longleftrightarrow}     
 
 % operators
 \DeclareMathOperator{\conv}{conv} % convex hull
 \DeclareMathOperator{\cone}{cone} % cone hull
 \DeclareMathOperator{\arr}{Arr} % arrangements
 \DeclareMathOperator{\Inv}{Inv} % inversion set
-\DeclareMathOperator{\Ninv}{Ninv} % non-inversion set
-\DeclareMathOperator{\DemazureProduct}{Dem} % non-inversion set
+\DeclareMathOperator{\tc}{tc} % transitive closure
 
 % others
 \newcommand{\fix}[1]{{\bf FIXME: }#1} % emphasis of a problem to FIX
@@ -121,7 +122,6 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\fS}{\mathfrak{S}} % symmetric group
 \newcommand{\fR}{\mathfrak{R}} % subset symmetric group
 
-
 % lattices
 \newcommand{\meet}{\wedge} % meet
 \newcommand{\join}{\vee} % join
@@ -135,15 +135,21 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\projDown}{\pi^\downarrow} % Down projection
 \newcommand{\projUp}{\pi^\uparrow} % Down projection
 
-% Orientation, Hypergraph and Intervals
-\newcommand{\Or}{\mathcal O}  % The map S_n --> acyclic orientation corresponding to vertices
+% Ornamentations, reorientations, orientations
+\DeclareMathOperator{\Orn}{\c{O}}  % ornamentations
+\DeclareMathOperator{\AOrn}{\c{AO}}  % acyclic ornamentations
+\DeclareMathOperator{\Reori}{\c{R}}  % reorientations
+\DeclareMathOperator{\AReori}{\c{AR}}  % acyclic reorientations
+\DeclareMathOperator{\Rcl}{\c{R}^{cl}}  % transitively closed reorientations
+\DeclareMathOperator{\Rco}{\c{R}^{co}}  % transitively coclosed reorientations
+\DeclareMathOperator{\rev}{rev} % reversed arrows
+\DeclareMathOperator{\Sour}{\mathcal{S}}  % sourcings
+\DeclareMathOperator{\ASour}{\mathcal{AS}}  % acyclic sourcings
+
+% Hypergraph and Intervals
 \newcommand{\HH}{\mathbb H}  % general hypergraph
 \newcommand{\II}{\mathbb I} % interval hypergraph
-\newcommand{\cJ}{\cal{J}} % basic irreducibles index set
-\newcommand{\cIJ}{\cal{IJ}} % basic irreducibles index set
-\newcommand{\cX}{\cal{X}}
-\newcommand{\cY}{\cal{Y}}
-\newcommand{\cA}{\cal{A}}
+\newcommand{\PP}{\mathbb P} % path hypergraph
 
 % Special graphs
 \newcommand{\Igraph}{\sf I} % I graph
@@ -175,74 +181,74 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \section{Introduction}
 \label{sec:introduction}
 
-\vincent{This is the introduction of the other paper. Needs to be updated...}
-Fix an integer~$n \ge 1$ and denote by~$(\b{e}_i)_{i \in [n]}$ the standard basis of~$\R^n$.
-The \defn{hypergraphic polytope} of a hypergraph~$\HH$ on~$[n]$ is the Minkowski sum
-\(
-\simplex_\HH \eqdef \sum_{H\in \HH} \simplex_H\,,
-\)
-where $\simplex_H$ is the simplex given by the convex hull of the points $\b{e}_h$ for~$h \in H$.
-The face lattice of~$\simplex_\HH$ was described combinatorially in terms of acyclic orientations of~$\HH$ in~\cite{BenedettiBergeronMachacek}.
-Note that the singletons of~$\HH$ are irrelevant for the combinatorics of~$\triangle_\HH$ as they just contribute to translations.
-It is convenient for us to assume that~$\{i\} \in \HH$ for all~$i \in [n]$.
-
-The \defn{hypergraphic poset}~$P_\HH$ is the transitive closure of the skeleton of~$\simplex_\HH$ oriented in the direction~$\b{\omega} \eqdef (n, n-1, \dots, 2, 1) - (1, 2, \dots, n-1, n) = (n-1, n-3, \dots, 3-n, 1-n)$.
-For instance, 
-\begin{itemize}
-\item if~$\HH = \binom{[n]}{2}$ is the complete graph (or any hypergraph containing it), then~$\simplex_\HH$ is the \defn{permutahedron} and $P_\HH$ is the \defn{weak order on permutations},
-\item if~$\HH = \set{[i,j]}{1 \le i \le j \le n}$ is the complete interval hypergraph, then~$\simplex_\HH$ is \mbox{J.-L.~Loday's} \defn{associahedron}~\cite{ShniderSternberg,Loday} and~$P_\HH$ is the \defn{Tamari lattice on binary trees}~\cite{Tamari}.
-\end{itemize}
-
-In view of these two examples, we would like to characterize the hypergraphs~$\HH$ for which $P_\HH$ is a lattice, a distributive lattice, a semidistributive lattice, a congruence-uniform lattice, a \mbox{(semi-)lattice} quotient of the weak order on permutations, etc.
-These questions were settled in~\cite{Pilaud-acyclicReorientationLattices} for graphical zonotopes (\ie when~$\HH \subseteq \binom{[n]}{2}$), and also partially studied in~\cite{BarnardMcConville} for graph associahedra~\cite{CarrDevadoss} (\ie when~$\HH$ is the set of all subsets of vertices that induce a connected subgraph of a fixed graph on~$[n]$).
-
-In this paper, we study the case of \defn{interval hypergraphs}~$\II$, \ie when all hyperedges of~$\II$ are intervals of~$[n]$.
-Note that the family of interval hypergraphic polytopes does not contain the permutahedron, but contains
-\begin{itemize}
-\item the classical associahedron of~\cite{ShniderSternberg,Loday} when~$\II$ contains all intervals of~$[n]$,
-\item the Pitman--Stanley polytope~\cite{PitmanStanley} when~$\II$ is the set of all singletons~$\{i\}$ and all initial intervals~$[i]$~for~${i \in [n]}$,
-\item the freehedron of~\cite{Saneblidze-freehedron} when~$\II$ is the set of all singletons~$\{i\}$, all initial intervals~$[i]$ for~${i \in [n]}$, and all final intervals~$[n] \ssm [i]$~for~${i \in [n-1]}$,
-\item the fertilitopes of~\cite{Defant-fertilitopes} when any two intervals of~$\II$ are either nested or disjoint.
-\end{itemize}
-In fact, it follows from~\cite{BazierMatteChapelierLaguetDouvilleMousavandThomasYildirim,PadrolPaluPilaudPlamondon} that the interval hypergraphic polytopes are precisely the weak Minkowski summands of the classical associahedron (recall that a polytope~$P \subset \R^n$ is a \defn{weak Minkowski summand} of a polytope~$Q \subset \R^n$ if there exists a real~$\lambda \ge 0$ and a polytope~$R \subset \R^d$ such that~$\lambda Q = P + R$).
-
-We obtain the following characterizations, where we assume that~$\{i\} \in \II$ for all~$i \in [n]$ as mentioned earlier.
-See \cref{sec:LatticeI,sec:distributive,sec:semidistributive,sec:quotient} and \cref{fig:notLattices,fig:Tamari,fig:distributiveLattices,fig:semidistributiveLattices,fig:notSemidistributiveLattices} for illustrations.
-
-\begin{theoremA}
-\label{thm:latticeI}
-For an interval hypergraph $\II$, the poset $P_\II$ is a lattice if and only if $\II$ is closed under intersection (\ie $I, J \in \II$ and~$I \cap J \ne \varnothing$ implies~$I \cap J \in \II$).
-\end{theoremA}
-
-%\begin{theoremA}
-%\label{thm:distributiveLatticeI}
-%For an interval hypergraph $\II$, the poset $P_\II$ is a distributive lattice if and only if for all~$I, J \in \II$ such that~$I \not\subseteq J$, $I \not\supseteq J$ and~$I \cap J \ne \varnothing$, the intersection~$I \cap J$ is in~$\II$ and is initial or final in any~$K \in \II$ with~$I \cap J \subseteq K$.
-%\end{theoremA}
+%\vincent{This is the introduction of the other paper. Needs to be updated...}
+%Fix an integer~$n \ge 1$ and denote by~$(\b{e}_i)_{i \in [n]}$ the standard basis of~$\R^n$.
+%The \defn{hypergraphic polytope} of a hypergraph~$\HH$ on~$[n]$ is the Minkowski sum
+%\(
+%\simplex_\HH \eqdef \sum_{H\in \HH} \simplex_H\,,
+%\)
+%where $\simplex_H$ is the simplex given by the convex hull of the points $\b{e}_h$ for~$h \in H$.
+%The face lattice of~$\simplex_\HH$ was described combinatorially in terms of acyclic orientations of~$\HH$ in~\cite{BenedettiBergeronMachacek}.
+%Note that the singletons of~$\HH$ are irrelevant for the combinatorics of~$\triangle_\HH$ as they just contribute to translations.
+%It is convenient for us to assume that~$\{i\} \in \HH$ for all~$i \in [n]$.
+%
+%The \defn{hypergraphic poset}~$P_\HH$ is the transitive closure of the skeleton of~$\simplex_\HH$ oriented in the direction~$\b{\omega} \eqdef (n, n-1, \dots, 2, 1) - (1, 2, \dots, n-1, n) = (n-1, n-3, \dots, 3-n, 1-n)$.
+%For instance, 
+%\begin{itemize}
+%\item if~$\HH = \binom{[n]}{2}$ is the complete graph (or any hypergraph containing it), then~$\simplex_\HH$ is the \defn{permutahedron} and $P_\HH$ is the \defn{weak order on permutations},
+%\item if~$\HH = \set{[i,j]}{1 \le i \le j \le n}$ is the complete interval hypergraph, then~$\simplex_\HH$ is \mbox{J.-L.~Loday's} \defn{associahedron}~\cite{ShniderSternberg,Loday} and~$P_\HH$ is the \defn{Tamari lattice on binary trees}~\cite{Tamari}.
+%\end{itemize}
+%
+%In view of these two examples, we would like to characterize the hypergraphs~$\HH$ for which $P_\HH$ is a lattice, a distributive lattice, a semidistributive lattice, a congruence-uniform lattice, a \mbox{(semi-)lattice} quotient of the weak order on permutations, etc.
+%These questions were settled in~\cite{Pilaud-acyclicReorientationLattices} for graphical zonotopes (\ie when~$\HH \subseteq \binom{[n]}{2}$), and also partially studied in~\cite{BarnardMcConville} for graph associahedra~\cite{CarrDevadoss} (\ie when~$\HH$ is the set of all subsets of vertices that induce a connected subgraph of a fixed graph on~$[n]$).
+%
+%In this paper, we study the case of \defn{interval hypergraphs}~$\II$, \ie when all hyperedges of~$\II$ are intervals of~$[n]$.
+%Note that the family of interval hypergraphic polytopes does not contain the permutahedron, but contains
+%\begin{itemize}
+%\item the classical associahedron of~\cite{ShniderSternberg,Loday} when~$\II$ contains all intervals of~$[n]$,
+%\item the Pitman--Stanley polytope~\cite{PitmanStanley} when~$\II$ is the set of all singletons~$\{i\}$ and all initial intervals~$[i]$~for~${i \in [n]}$,
+%\item the freehedron of~\cite{Saneblidze-freehedron} when~$\II$ is the set of all singletons~$\{i\}$, all initial intervals~$[i]$ for~${i \in [n]}$, and all final intervals~$[n] \ssm [i]$~for~${i \in [n-1]}$,
+%\item the fertilitopes of~\cite{Defant-fertilitopes} when any two intervals of~$\II$ are either nested or disjoint.
+%\end{itemize}
+%In fact, it follows from~\cite{BazierMatteChapelierLaguetDouvilleMousavandThomasYildirim,PadrolPaluPilaudPlamondon} that the interval hypergraphic polytopes are precisely the weak Minkowski summands of the classical associahedron (recall that a polytope~$P \subset \R^n$ is a \defn{weak Minkowski summand} of a polytope~$Q \subset \R^n$ if there exists a real~$\lambda \ge 0$ and a polytope~$R \subset \R^d$ such that~$\lambda Q = P + R$).
+%
+%We obtain the following characterizations, where we assume that~$\{i\} \in \II$ for all~$i \in [n]$ as mentioned earlier.
+%See \cref{sec:LatticeI,sec:distributive,sec:semidistributive,sec:quotient} and \cref{fig:notLattices,fig:Tamari,fig:distributiveLattices,fig:semidistributiveLattices,fig:notSemidistributiveLattices} for illustrations.
 %
 %\begin{theoremA}
-%\label{thm:semidistributiveLatticeI}
-%For an interval hypergraph $\II$, the poset $P_\II$ is a join semidistributive lattice if and only if~$\II$ is closed under intersection and for all~$[r,r'], [s,s'], [t,t'], [u,u'] \in \II$ such that ${r < s \le r' < s'}$, $r < t \le s' < t'$, $u < \min(s, t)$ and~$s' < u'$, there is~$[v,v'] \in \II$ such that~$v < s$ and~${s' < v' < t'}$.
-%A symmetric characterization holds for meet semidistributivity.
+%\label{thm:latticeI}
+%For an interval hypergraph $\II$, the poset $P_\II$ is a lattice if and only if $\II$ is closed under intersection (\ie $I, J \in \II$ and~$I \cap J \ne \varnothing$ implies~$I \cap J \in \II$).
 %\end{theoremA}
 %
-%\begin{theoremA}
-%\label{thm:quotientLatticeI}
-%For an interval hypergraph $\II$, the poset morphism from the weak order to the poset~$P_\II$ is a meet (resp.~join) semilattice morphism if and only if~$\II$ is closed under initial (resp.~final) subintervals (\ie~$[i,k] \in \II$ implies~$[i,j] \in \II$ (resp.~$[j,k] \in \II$) for any~$1 \le i < j < k \le n$).
-%\end{theoremA}
-%
-%For instance, among the four above-mentioned families of interval hypergraphic polytopes, we recover that  the Pitman-Stanley polytope and all fertilitopes yield distributive lattices, the associahedron yields a semidistributive (but not distributive) lattice which is a quotient of the weak order, while the freehedron is not even a lattice (this was actually the motivation for~\cite{PilaudPoliakova} to construct alternative realizations of the skeleton of the freehedron).
-%
-%Once \cref{thm:latticeI} is established, an important step for \cref{thm:distributiveLatticeI,thm:semidistributiveLatticeI} is to understand join irreducible elements of~$P_\II$.
-%\cref{subsec:joinIrreducibles} provides a combinatorial description of the join irreducible elements of the lattice~$P_\II$ for an arbitrary interval hypergraph~$\II$ closed under intersections.
-%To prepare this slightly technical description, we already describe some join irreducible elements of~$P_\II$ in \cref{subsec:someJoinIrreducibles}, which happen to be all join irreducible elements of~$P_\II$ under the condition of~\cref{thm:distributiveLatticeI}.
-%
-%The paper is organized as follows.
-%In \cref{sec:HP}, we recall basic properties of hypergraphic polytopes, we define hypergraphic posets, and we recall the natural poset morphism from the weak order on permutations to the hypergraphic poset~$P_\II$.
-%In \cref{sec:IHP}, we develop specific properties of interval hypergraphic polytopes, in particular a simple characterization of their vertices and a global description of the relations in their hypergraphic posets.
-%In \cref{sec:LatticeI}, we characterize the interval hypergraphs~$\II$ for which the interval hypergraphic poset~$P_\II$ is a lattice, proving \cref{thm:latticeI}.
-%In \cref{sec:distributive}, we describe a family of join irreducible elements of~$P_\II$ and we characterize the interval hypergraphs~$\II$ for which~$P_\II$ is a distributive lattice, proving \cref{thm:distributiveLatticeI}.
-%In \cref{sec:semidistributive}, we describe all join irreducible elements of~$P_\II$ and we characterize the interval hypergraphs~$\II$ for which~$P_\II$ is a join (or meet) semidistributive lattice, proving \cref{thm:semidistributiveLatticeI}.
-%In \cref{sec:quotient}, we characterize the interval hypergraphs~$\II$ for which the poset morphism from the weak order on permutations to~$P_\II$ is a join (or meet) semilattice morphism, proving \cref{thm:quotientLatticeI}.
+%%\begin{theoremA}
+%%\label{thm:distributiveLatticeI}
+%%For an interval hypergraph $\II$, the poset $P_\II$ is a distributive lattice if and only if for all~$I, J \in \II$ such that~$I \not\subseteq J$, $I \not\supseteq J$ and~$I \cap J \ne \varnothing$, the intersection~$I \cap J$ is in~$\II$ and is initial or final in any~$K \in \II$ with~$I \cap J \subseteq K$.
+%%\end{theoremA}
+%%
+%%\begin{theoremA}
+%%\label{thm:semidistributiveLatticeI}
+%%For an interval hypergraph $\II$, the poset $P_\II$ is a join semidistributive lattice if and only if~$\II$ is closed under intersection and for all~$[r,r'], [s,s'], [t,t'], [u,u'] \in \II$ such that ${r < s \le r' < s'}$, $r < t \le s' < t'$, $u < \min(s, t)$ and~$s' < u'$, there is~$[v,v'] \in \II$ such that~$v < s$ and~${s' < v' < t'}$.
+%%A symmetric characterization holds for meet semidistributivity.
+%%\end{theoremA}
+%%
+%%\begin{theoremA}
+%%\label{thm:quotientLatticeI}
+%%For an interval hypergraph $\II$, the poset morphism from the weak order to the poset~$P_\II$ is a meet (resp.~join) semilattice morphism if and only if~$\II$ is closed under initial (resp.~final) subintervals (\ie~$[i,k] \in \II$ implies~$[i,j] \in \II$ (resp.~$[j,k] \in \II$) for any~$1 \le i < j < k \le n$).
+%%\end{theoremA}
+%%
+%%For instance, among the four above-mentioned families of interval hypergraphic polytopes, we recover that  the Pitman-Stanley polytope and all fertilitopes yield distributive lattices, the associahedron yields a semidistributive (but not distributive) lattice which is a quotient of the weak order, while the freehedron is not even a lattice (this was actually the motivation for~\cite{PilaudPoliakova} to construct alternative realizations of the skeleton of the freehedron).
+%%
+%%Once \cref{thm:latticeI} is established, an important step for \cref{thm:distributiveLatticeI,thm:semidistributiveLatticeI} is to understand join irreducible elements of~$P_\II$.
+%%\cref{subsec:joinIrreducibles} provides a combinatorial description of the join irreducible elements of the lattice~$P_\II$ for an arbitrary interval hypergraph~$\II$ closed under intersections.
+%%To prepare this slightly technical description, we already describe some join irreducible elements of~$P_\II$ in \cref{subsec:someJoinIrreducibles}, which happen to be all join irreducible elements of~$P_\II$ under the condition of~\cref{thm:distributiveLatticeI}.
+%%
+%%The paper is organized as follows.
+%%In \cref{sec:HP}, we recall basic properties of hypergraphic polytopes, we define hypergraphic posets, and we recall the natural poset morphism from the weak order on permutations to the hypergraphic poset~$P_\II$.
+%%In \cref{sec:IHP}, we develop specific properties of interval hypergraphic polytopes, in particular a simple characterization of their vertices and a global description of the relations in their hypergraphic posets.
+%%In \cref{sec:LatticeI}, we characterize the interval hypergraphs~$\II$ for which the interval hypergraphic poset~$P_\II$ is a lattice, proving \cref{thm:latticeI}.
+%%In \cref{sec:distributive}, we describe a family of join irreducible elements of~$P_\II$ and we characterize the interval hypergraphs~$\II$ for which~$P_\II$ is a distributive lattice, proving \cref{thm:distributiveLatticeI}.
+%%In \cref{sec:semidistributive}, we describe all join irreducible elements of~$P_\II$ and we characterize the interval hypergraphs~$\II$ for which~$P_\II$ is a join (or meet) semidistributive lattice, proving \cref{thm:semidistributiveLatticeI}.
+%%In \cref{sec:quotient}, we characterize the interval hypergraphs~$\II$ for which the poset morphism from the weak order on permutations to~$P_\II$ is a join (or meet) semilattice morphism, proving \cref{thm:quotientLatticeI}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -253,13 +259,13 @@ For an interval hypergraph $\II$, the poset $P_\II$ is a lattice if and only if 
 
 \begin{figure}
 	\centerline{\includegraphics[scale=.8]{ornamentationsN} \qquad \raisebox{.5cm}{\includegraphics[scale=.8]{ornamentationsI}}}
-	\caption{The ornamentation lattices~$\c{O}(\Ngraph)$ and~$\c{O}(\Igraph)$.}
+	\caption{The ornamentation lattices~$\Orn(\Ngraph)$ and~$\Orn(\Igraph)$.}
 	\label{fig:ornamentationsNI}
 \end{figure}
 
 \begin{figure}
 	\centerline{\includegraphics[scale=.8]{ornamentationsY} \qquad \includegraphics[scale=.8]{ornamentationsA}}
-	\caption{The ornamentation lattices~$\c{O}(\Ygraph)$ and~$\c{O}(\Agraph)$.}
+	\caption{The ornamentation lattices~$\Orn(\Ygraph)$ and~$\Orn(\Agraph)$.}
 	\label{fig:ornamentationsAY}
 \end{figure}
 
@@ -271,7 +277,7 @@ The following definition, first introduced for rooted trees in~\cite{} and exten
 \begin{definition}
 An \defn{ornament} at a vertex $v$ of~$D$ is a subset~$U \subseteq V$ such that there is a path from any $u \in U$ to~$v$ in the directed subgraph of~$D$ induced by~$U$.
 An \defn{ornamentation} of~$D$ is a map $O$ on $V$ which assigns an ornament~$O(v)$ at each vertex~$v \in V$ such that~$u \in O(v) \implies O(u) \subseteq O(v)$ for all~$u,v \in V$.
-We denote by~$\c{O}(v \in D)$ the set of ornaments at a vertex~$v$ of~$D$ and by~$\c{O}(D)$ the set of ornamentations of~$D$.
+We denote by~$\Orn(v \in D)$ the set of ornaments at a vertex~$v$ of~$D$ and by~$\Orn(D)$ the set of ornamentations of~$D$.
 \end{definition}
 
 \begin{example}
@@ -279,16 +285,16 @@ We can define ornamentations by
 \begin{itemize}
 \item sending each vertex~$v \in V$ to the singleton~$\{v\}$, 
 \item sending each vertex~$v \in V$ to the set~$U$ of vertices with a path to~$v$ in~$D$,
-\item for any ornament~$U \in \c{O}(v \in D)$, sending~$v$ to~$U$ and any other vertex~$u \in V \ssm \{v\}$ to the singleton~$\{u\}$.
+\item for any ornament~$U \in \Orn(v \in D)$, sending~$v$ to~$U$ and any other vertex~$u \in V \ssm \{v\}$ to the singleton~$\{u\}$.
 \end{itemize}
 \end{example}
 
 \begin{lemma}
 \label{lem:unionOrnaments}
 \begin{enumerate}[(i)]
-\item If~$U \in \c{O}(u \in D)$ and~$U' \in \c{O}(u' \in D)$ with~$u \in U'$, then~${U \cup U' \in \c{O}(u' \in D)}$.
+\item If~$U \in \Orn(u \in D)$ and~$U' \in \Orn(u' \in D)$ with~$u \in U'$, then~${U \cup U' \in \Orn(u' \in D)}$.
 %\item If~$U$ is an ornament at a vertex~$u$ of~$D$ and~$U'$ is an ornament at a vertex~$u'$ of~$D$ and~$u \in U'$, then~$U \cup U'$ is an ornament of~$D$ at~$u'$.
-\item If~$U,U' \in \c{O}(v \in D)$, then~$U \cup U' \in \c{O}(v \in D)$, while $U \cap U'$ is not necessarily in~$\c{O}(v \in D)$.
+\item If~$U,U' \in \Orn(v \in D)$, then~$U \cup U' \in \Orn(v \in D)$, while $U \cap U'$ is not necessarily~in~${\Orn(v \in D)}$.
 %\item If~$U,U'$ are two ornaments at a vertex~$v$ of~$D$, then~$U \cup U'$ is also an ornament at~$v$, while $U \cap U'$ is not necessarily an ornament at~$v$.
 \end{enumerate}
 \end{lemma}
@@ -300,7 +306,7 @@ Part~(ii) is a specialization of Part~(i) to~$u = v$ and~$u' = v$.
 \end{proof}
 
 \begin{theorem}
-The set~$\c{O}(D)$ of ornamentations of~$D$ is a lattice under componentwise inclusion, meaning~$O_1 \le O_2$ if~$O_1(v) \subseteq O_2(v)$ for all~$v \in V$.
+The set~$\Orn(D)$ of ornamentations of~$D$ is a lattice under componentwise inclusion, meaning~$O_1 \le O_2$ if~$O_1(v) \subseteq O_2(v)$ for all~$v \in V$.
 For any two ornamentations~$O_1$ and~$O_2$ of~$D$,
 \begin{itemize}
 \item $(O_1 \meet O_2)(v)$ is the inclusion maximal ornament at~$v$ contained in~$O_1(v) \cap O_2(v)$,
@@ -318,9 +324,9 @@ For any two ornamentations~$O_1$ and~$O_2$ of~$D$,
 %\end{itemize}
 %
 Given two ornamentations~$O_1$ and~$O_2$ of~$D$, consider the map~$O_\meet$ on~$V$ where $O_\meet(v)$ is the inclusion maximal ornament at~$v$ contained in~$O_1(v) \cap O_2(v)$.
-Note that $O_\meet(v)$ is well defined by \cref{lem:unionOrnaments}, and that~$O_\meet(v) \in \c{O}(v \in D)$ for any~$v \in V$ by definition.
+Note that $O_\meet(v)$ is well defined by \cref{lem:unionOrnaments}, and that~$O_\meet(v) \in \Orn(v \in D)$ for any~$v \in V$ by definition.
 Consider now~$u,v \in V$ such that~$u \in O_\meet(v)$.
-Since~$O_\meet(u) \in \c{O}(u \in D)$ and~$O_\meet(v) \in \c{O}(v \in D)$ with~${u \in O_\meet(v)}$, \cref{lem:unionOrnaments} gives~$O_\meet(u) \cup O_\meet(v) \in \c{O}(v \in D)$.
+Since~$O_\meet(u) \in \Orn(u \in D)$ and~$O_\meet(v) \in \Orn(v \in D)$ with~${u \in O_\meet(v)}$, \cref{lem:unionOrnaments} gives~$O_\meet(u) \cup O_\meet(v) \in \Orn(v \in D)$.
 As~$u \in O_\meet(v) \subseteq O_1(v) \cap O_2(v)$ and~$O_1$ and~$O_2$ are ornamentations of~$D$, we have~$O_1(u) \subseteq O_1(v)$ and~$O_2(u) \subseteq O_2(v)$, so that~$O_\meet(u) \subseteq O_1(u) \cap O_2(u) \subseteq O_1(v) \cap O_2(v)$, hence~$O_\meet(u) \cup O_\meet(v) \subseteq O_1(v) \cap O_2(v)$.
 By maximality of~$O_\meet(v)$, we conclude that $O_\meet(u) \cup O_\meet(v) \subseteq O_\meet(v)$, so that~$O_\meet(u) \subseteq O_\meet(v)$.
 We conclude that~$O_\meet$ is an ornamentation of~$D$.
@@ -328,8 +334,8 @@ Moreover, $O_\meet$ is clearly the meet of~$O_1$ and~$O_2$ in componentwise incl
 
 Given two ornamentations~$O_1$ and~$O_2$ of~$D$, consider now the map~$O_\join$ on~$V$ where~$O_\join(v)$ is the inclusion minimal subset~$U$ of~$V$ containing~$v$ and such that~$u \in U$ implies~$O_1(u) \cup O_2(u) \subseteq U$.
 Note that~$O_\join(v)$ is well defined as it can be constructed by induction, starting from~$U = \{v\}$ and adding inductively~$O_1(u) \cup O_2(u)$ for all~$u \in U$ until it stabilizes.
-Since~$O_1(u) \cup O_2(u) \in \c{O}(u \in D)$ by \cref{lem:unionOrnaments}, this inductive construction maintains the invariant that there is a path from~$u$ to~$v$ in~$U$ for any~$u \in U$.
-Hence, we obtain that~$O_\join(v) \in \c{O}(v \in D)$ for any~$v \in V$.
+Since~$O_1(u) \cup O_2(u) \in \Orn(u \in D)$ by \cref{lem:unionOrnaments}, this inductive construction maintains the invariant that there is a path from~$u$ to~$v$ in~$U$ for any~$u \in U$.
+Hence, we obtain that~$O_\join(v) \in \Orn(v \in D)$ for any~$v \in V$.
 Consider now~$u,v \in V$ such that~$u \in O_\join(v)$.
 Since~$u \in O_\join(v)$ and~$w \in O_\join(v)$ implies~$O_1(w) \cup O_2(w) \subseteq O_\join(v)$, we obtain that~$O_\join(u) \subseteq O_\join(v)$ by minimality of~$O_\join(u)$.
 We conclude that~$O_\join$ is an ornamentation of~$D$.
@@ -339,10 +345,10 @@ Moreover, $O_\join$ is clearly the join of~$O_1$ and~$O_2$ in componentwise incl
 \begin{example}
 The ornamentation lattice of the graph with a single edge is an $2$-elements chain.
 The ornamentation lattice of a graph with no path of length $2$ is a boolean lattice (see \eg \cref{fig:ornamentationsNI}\,(left)).
-In general, the Cartesian product~$\c{O}(D) \times \c{O}(D')$ of the ornamentation lattices of two directed graphs~$D$ and~$D'$~is
+In general, the Cartesian product~$\Orn(D) \times \Orn(D')$ of the ornamentation lattices of two directed graphs~$D$ and~$D'$~is
 \begin{itemize}
-\item the ornamentation lattice~$\c{O}(D \sqcup D')$ of the disjoint union of~$D$ and~$D'$, and
-\item isomorphic to the ornamentation lattice~$\c{O}(D \sqcup D' / u \sim u')$ of the graph obtained from~${D \sqcup D'}$ by identifying a source (resp.~sink)~$u \in D$ with a source (resp.~sink)~$u' \in D'$.
+\item the ornamentation lattice~$\Orn(D \sqcup D')$ of the disjoint union of~$D$ and~$D'$, and
+\item isomorphic to the ornamentation lattice~$\Orn(D \sqcup D' / u \sim u')$ of the graph obtained from~${D \sqcup D'}$ by identifying a source (resp.~sink)~$u \in D$ with a source (resp.~sink)~$u' \in D'$.
 \end{itemize}
 \end{example}
 
@@ -353,7 +359,7 @@ The isomorphism is obtained trough tubings (or equivalently bracket vectors).
 
 \begin{remark}
 \label{rem:posetPropertiesOrnamentations}
-A few poset properties of the ornamentations lattice~$\c{O}(D)$:
+A few poset properties of the ornamentations lattice~$\Orn(D)$:
 \begin{itemize}
 \item The minimal ornamentation sends each vertex~$v \in V$ to the singleton~$\{v\}$, and the maximal ornamentation sends each vertex~$v \in V$ to the set~$U$ of vertices with a path to~$v$ in~$D$.
 \item Two ornamentations~$O_1$ and~$O_2$ of~$D$ form a cover relation if and only if there is~$u, v \in V$ such that~$u \notin O_1(v)$ and~$O_2(v) = O_1(u) \cup O_1(v)$, while~$O_1(w) = O_2(w)$ for all~$w \in V \ssm \{v\}$.
@@ -362,400 +368,393 @@ A few poset properties of the ornamentations lattice~$\c{O}(D)$:
 \end{remark}
 
 \begin{remark}
-A few lattice properties of the ornamentation lattice~$\c{O}(D)$:
+A few lattice properties of the ornamentation lattice~$\Orn(D)$:
 \begin{itemize}
-\item The join irreducible ornamentations of~$D$ are precisely the ornamentations~$\c{O}_\pi$ described in \cref{rem:posetPropertiesOrnamentations} for the directed paths~$\pi$ in~$D$ which admit no shortcut in~$D$. (The meet irreducible ornamentations are more complicated to describe.)
-\item $\c{O}(D)$ is distributive if and only if~$D$ contains no path of length~$2$ (in which case, $\c{O}(D)$ is actually a boolean lattice).
-\item $\c{O}(D)$ is semidistributive if and only if~$D$ is a directed tree.
+\item The join irreducible ornamentations of~$D$ are precisely the ornamentations~$\Orn_P$ described in \cref{rem:posetPropertiesOrnamentations} for the directed paths~$P$ in~$D$ which admit no shortcut in~$D$. (The meet irreducible ornamentations are more complicated to describe.)
+\item $\Orn(D)$ is distributive if and only if~$D$ contains no path of length~$2$ (in which case, $\Orn(D)$ is actually a boolean lattice).
+\item $\Orn(D)$ is semidistributive if and only if~$D$ is a directed tree.
 \end{itemize}
 \end{remark}
 
 \begin{figure}[p]
 	\centerline{\includegraphics[scale=.8]{ornamentationsX}}
-	\caption{The ornamentation lattice~$\c{O}(\Xgraph)$ of the directed graph~$\Xgraph$.}
+	\caption{The ornamentation lattice~$\Orn(\Xgraph)$ of the directed graph~$\Xgraph$.}
 	\label{fig:ornamentationsX}
 \end{figure}
 
 \begin{figure}
 	\centerline{\includegraphics[scale=.8]{ornamentationsD}}
-	\caption{The ornamentation lattice~$\c{O}(\Dgraph)$ of the directed graph~$\Dgraph$.}
+	\caption{The ornamentation lattice~$\Orn(\Dgraph)$ of the directed graph~$\Dgraph$.}
 	\label{fig:ornamentationsD}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Answering a question opened in~\cite{DelfantSack}, we will prove the following statement in the next section.
 
-\section{Intreeval lattices}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{}
-
-\end{document}
-
-\setcounter{theoremA}{0}
+\begin{theorem}
+The Hasse diagram the ornamentation lattice of a rooted tree is isomorphic to the skeleton of a polytope oriented in a linear direction. 
+\end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Hypergraphic posets}
-\label{sec:HP}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Hypergraphic polytopes}
-\label{subsec:D_H}
-
-A \defn{hypergraph} $\HH$ on $[n] \eqdef \{1, \dots, n\}$ is a collection of  subsets of~$[n]$.
-By convention, we always assume that~$\HH$ contains all singletons~$\{i\}$ for~$i\in [n]$.
-The \defn{hypergraphic polytope}~$\simplex_\HH$ is the Minkowski sum
-\[
-\simplex_\HH \eqdef \sum_{H\in \HH} \simplex_H\,,
-\]
-where $\simplex_H$ is the simplex given by the convex hull of the points $\b{e}_h \in \R^n$ for~$h \in H$.
-
-\begin{example}
-\label{exm:DH1}
-For the hypergraph $\HH=\{ 1, 2, 3, 4, 123, 134 \}$,
-we  have
-\[
-\begin{array}{ccc}
- \begin{tikzpicture}[scale=1,baseline=.5cm]
-	\node (1) at (0.6,1.0) {$\scriptstyle e_1$};
-	\node (2) at (-.2,-.2) {$\scriptstyle e_2$};
-	\node (3) at (1.3,-.2) {$\scriptstyle e_3$};
-	\draw [fill=blue!40] (0,0) -- (.6,.75) -- (1.2,0) --(0,0) ;   % e2--e1--e3--e2
-\end{tikzpicture} \quad &
- \begin{tikzpicture}[scale=1,baseline=.5cm]
-	\node (1) at (0.6,1.0) {$\scriptstyle e_1$};
-	\node at (1.3,-.2) {$\scriptstyle e_3$};
-	\node at (2.4,.5) {$\scriptstyle e_4$};
-	\draw [fill=green!20] (1.2,0) -- (2.2,.5 )--(.6,.75)--(1.2,0); %  e3--e4--e1--e3
-\end{tikzpicture} \quad &
-\begin{tikzpicture}[scale=1,baseline=.5cm]
-	\draw [color=gray!10,fill=blue!2] (1.6,1.25)--(1,.5)--(2.2,.5)-- (1.6,1.25); 
-	\draw [color=gray!10,fill=green!5]  (0,0)--(1,.5)--(-.6,.75)--(0,0);
-	\draw [dotted,color=green] (0,0)--(1,.5)--(-.6,.75);
-	\draw [dotted,color=blue] (1.6,1.25)--(1,.5)--(2.2,.5);
-	\draw (0,1.5)-- (1.6,1.25) -- (2.2,.5) -- (1.2,0) --(0,1.5) ; 
-	\draw (0,0)--(-.6,.75)--(0,1.5)-- (1.2,0) --(0,0); 
-\end{tikzpicture}\\
-\blue{\simplex_{123}}& \green{\simplex_{134}} & \simplex_\HH = \simplex_1 + \simplex_2 + \simplex_3 + \simplex_4 + \blue{\simplex_{123}} + \green{\simplex_{134}}\\
-\end{array}
-\]
-which is a 3-dimensional polytope sitting in $\R^4$.
-Note that as~$n \le 9$ in all our examples, we simplify notations and write~$123$ for the set~$\{1,2,3\}$.
-\end{example}
-
-\begin{remark}
-\label{rem:single}
-Note that the singletons hyperedges are irrelevant for our purposes.
-Namely, adding to~$\HH$ the hyperedge~$\{i\}$ for some~$i \in [n]$ just translates the polytope~$\simplex_\HH$ in the direction~$\b{e}_i$, which does not affect the face structure of the polytope.
-For our conditions on hypergraphs of \cref{thm:latticeI,thm:distributiveLatticeI}, it is convenient for us to assume that $\{i\} \in \HH$ for all $i \in [n]$.
-When quoting results from~\cite{BenedettiBergeronMachacek}, the reader will have to be mindful that they took the opposite convention.
-\end{remark}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Acyclic orientations, increasing flips, and hypergraphic posets} 
-\label{subsec:P_H}
-
-We now recall from \cite[Thm.~2.18]{BenedettiBergeronMachacek} a combinatorial model for the graph~$(V_\HH, E_\HH)$ of~$\simplex_\HH$.
-As we are only interested in the $1$-skeleton of~$\simplex_\HH$, we simplify some of the general definitions of~\cite{BenedettiBergeronMachacek} which were designed to deal with all faces of~$\simplex_\HH$.
+\section{From reorientations to ornamentations}
 
 \begin{definition}
-\label{def:acyclicOrientation}
-An \defn{orientation} of~$\HH$ is a map~$O$ from~$\HH$ to~$[n]$ such that~$O(H) \in H$ for all~${H \in \HH}$.
-Equivalently, we often represent the orientation~$O$ as the set of pairs~$\set{(O(H),H)}{H \in \HH}$.
-The orientation~$O$ is \defn{acyclic} if there is no~$H_1, \dots, H_k$ with~$k \ge 2$ such that~$O(H_{i+1}) \in H_i \ssm \{O(H_i)\}$ for~$i \in [k-1]$ and~$O(H_1) \in H_k \ssm \{O(H_k)\}$.
+A \defn{reorientation}~$R$ of a directed graph~$E$ is a directed graph obtained from~$E$ by reversing a subset~$\rev(R)$ of arrows of~$E$.
+The \defn{reorientation lattice}~$\Reori(E)$ of~$E$ is the boolean lattice of reorientations of~$E$, ordered by inclusion of subsets of reversed arrows, meaning $R_1 \le R_2$ if ${\rev(R_1) \subseteq \rev(R_2)}$.
 \end{definition}
 
-\begin{remark}
-The singleton~$\{i\}$ of~$\HH$ is always oriented $O(\{i\})=i$, and plays no role in determining  the acyclicity of~$O$ since $\{i\} \ssm \{O(\{i\})\} = \varnothing$.
-We will therefore omit the singletons when describing or drawing orientations (see also~\cref{exm:intervalHypergraph}).
-If we list the non-singleton elements $(H_1,H_2,...,H_k)$ of $\HH$ in some fixed order, it is then convenient to describe an orientation~$O$ as the tuple $O=(O(H_1),O(H_2),\ldots,O(H_k))$. 
-\end{remark}
-
-\begin{example}
-\label{exm:DH2}
-Using $\HH=\{ 1, 2, 3, 4, 123, 134 \}$ as in~\cref{exm:DH1}, we order the two non-singleton $(123,134)$.
-There are $9$ orientations of~$\HH$, $7$ of which are acyclic as displayed in~\cref{fig:Orientation1}. 
-For instance, the orientation $(O(123), O(134)) = (1,3)$ is cyclic since $O(123) = 1 \in 134$ and $O(134) = 3 \in 123$ is a cycle with $k = 2$.
-%
-\begin{figure}
-	\centerline{
-	\begin{tabular}{c@{\qquad}c}
-		\begin{tikzpicture}[scale=2,baseline=.5cm]
-		\draw [color=gray!10,fill=blue!2] (1.6,1.25)--(1,.5)--(2.2,.5)-- (1.6,1.25); 
-		\draw [color=gray!10,fill=green!5]  (0,0)--(1,.5)--(-.6,.75)--(0,0);
-		\node (23) at (0,0) {$\scriptstyle (2,3)$}; 		
-		\node (21) at (-.6,.75) {$\scriptstyle (2,1)$};	
-		\node (24) at (1,.5) {$\scriptstyle (2,4)$}; 	
-		\node (34) at (2.2,.5) {$\scriptstyle (3,4)$};
-		\node (14) at (1.6,1.25) {$\scriptstyle (1,4)$};	
-		\node (33) at (1.2,0) {$\scriptstyle (3,3)$};	
-		\node (11) at (0,1.5) {$\scriptstyle (1,1)$};		
-		\path[color=red, ->] (11) edge node[fill=white,inner sep=2pt, font=\tiny ] {$  12 $} (21);
-		\path[color=red, ->] (11) edge node[fill=white,inner sep=2pt, font=\tiny ] {$  13 $} (33);
-		\path[color=red, ->] (11) edge node[fill=white,inner sep=2pt, font=\tiny ] {$  14 $} (14);
-		\path[color=red, ->] (14) edge node[fill=white,inner sep=2pt, font=\tiny ] {$  13 $} (34) ;
-		\path[dotted,color=red, ->] (14) edge node[fill=white,inner sep=2pt, font=\tiny ] {$  12 $} (24)  ;
-		\path[dotted,color=red, ->] (24) edge node[fill=white,inner sep=2pt, font=\tiny ] {$  23 $} (34)  ;
-		\path[dotted,color=red, ->] (21) edge node[fill=white,inner sep=2pt, font=\tiny ] {$  14$} (24);
-		\path[color=red, ->] (21) edge node[fill=white,inner sep=2pt, font=\tiny ] {$  13$} (23);
-		\path[dotted,color=red, <-]  (24) edge node[fill=white,inner sep=2pt, font=\tiny ] {$  34$} (23);
-		\path[color=red, ->]  (23) edge node[fill=white,inner sep=2pt, font=\tiny ] {$  23$} (33);
-		\path[color=red, ->]  (33) edge node[fill=white,inner sep=2pt, font=\tiny ] {$  34$} (34);
-		\end{tikzpicture}
-	&
-		\begin{tikzpicture}[scale=1,baseline=.5cm]
-		\node (11) at (0,0) {$\scriptstyle (1,1)$};
-		\node (21) at (-1,1) {$\scriptstyle (2,1)$};	
-		\node (23) at (-1,2) {$\scriptstyle (2,3)$}; 		
-		\node (14) at (1,1.5) {$\scriptstyle (1,4)$};	
-		\node (24) at (0,3) {$\scriptstyle (2,4)$}; 	
-		\node (33) at (-2,3) {$\scriptstyle (3,3)$};
-		\node (34) at (-1,4) {$\scriptstyle (3,4)$};	
-		\draw (11)--(21);
-		\draw (11)--(14);
-		\draw (21)--(23);
-		\draw (23)--(24);
-		\draw (14)--(24);
-		\draw (23)--(33);
-		\draw (33)--(34);
-		\draw (24)--(34);
-		\end{tikzpicture}
-	\\
-	$\Delta_\HH$ & $P_\HH$\\
-	\end{tabular}
-	}
-	\caption{The polytope $\Delta_{\HH}$ for $\HH=\{ 1, 2, 3, 4, 123, 134 \}$ has seven vertices corresponding to the acyclic orientations of $\HH$ and eleven (oriented) edges corresponding to the increasing flips between these orientations.
-	The poset $P_\HH$ is the transitive closure of the increasing flip graph.}
-	\label{fig:Orientation1}
-\end{figure}
-\end{example}
+In this paper, we actually need to consider the reorientation lattice~$\Reori(\tc(D))$ of the transitive closure~$\tc(D)$ of the directed graph~$D$.
+Indeed, there is a natural surjection from the reorientation lattice~$\Reori(\tc(D))$ to the ornamentation lattice~$\Orn(D)$.
 
 \begin{definition}
-\label{def:flip}
-Two orientations~$O \ne O'$ of~$\HH$ are related by an \defn{increasing flip} if there exist~${1 \le i < j \le n}$ such that for all~$H \in \HH$, 
-\begin{itemize}
-\item if~$O(H) \ne O'(H)$, then~$O(H) = i$ and~$O'(H) = j$, and
-\item if~$\{i,j\} \subseteq H$, then~$O(H) = i \iff O'(H) = j$.
-\end{itemize}
-We denote such a flip by~\flip{O}{i}{j}{O'}.
+\label{def:Reori2Orn}
+For a reorientation~$R$ of~$\tc(D)$, we define a map~$O_{\!R}$ on~$V$ which associates to each vertex~$v \in V$ the inclusion maximal ornament of~$D$ at~$v$ contained in the subset of vertices~$u \in V$ with a directed path to~$v$ in $\rev(R)$.
 \end{definition}
-
-\begin{example}
-\label{exm:DH3}
-\cref{fig:Orientation1} shows all the increasing flips between the acyclic orientations of the hypergraph $\HH=\{ 1, 2, 3, 4, 123, 134 \}$ of \cref{exm:DH1,exm:DH2}.
-For instance, \flip{(2,3)}{2}{3}{(3,3)} indicates that there is an increasing flip from  $O=(2,3)$ to $O'=(3,3)$ with $i=2<3=j$.
-\end{example}
-
-The following correspondance was already observed in~\cite[Thm.~2.18]{BenedettiBergeronMachacek} (it even extends to all faces of~$\simplex_\HH$, but we do not need this level of generality in this paper).
-We provide an alternative short proof for convenience.
-
-\begin{proposition}[{\cite[Thm.~2.18]{BenedettiBergeronMachacek}}]
-\label{prop:Hgraph}
-The graph of the hypergraphic polytope~$\simplex_\HH$ oriented in the direction~$\b{\omega} \eqdef (n, n-1, \dots, 2, 1) - (1, 2, \dots, n-1, n) = (n-3, n-1, \dots, 1-n, 3-n)$ is isomorphic to the increasing flip graph on acyclic orientations of~$\HH$.
-\end{proposition}
-
-\begin{proof}
-Recall that the face of a Minkowski sum~$\sum_i P_i$ minimizing a direction~$\b{v}$ is the Minkowski sum of the faces of the summands~$P_i$ minimizing~$\b{v}$.
-
-The vertex of~$\simplex_H$ minimizing a generic direction~$\b{v}$ is~$\b{e}_i$ for~$i \in H$ such that~$\b{v}_i = \min\set{\b{v}_h\!}{\!h \!\in\! H}$.
-An acyclic orientation of~$\HH$ corresponds to the choice of one vertex in each~$\simplex_H$, and the orientation is acyclic if and only if this choice corresponds to a generic orientation~$\b{v}$, hence to a vertex of~$\simplex_\HH$.
-
-The edges of~$\simplex_H$ are oriented in the directions~$\b{e}_i-\b{e}_j$ for~$i,j \in H$.
-The edges of~$\simplex_\HH$ are thus also oriented by $\b{e}_i-\b{e}_j$, and thus correspond to pairs of acyclic orientations which differ by~a~flip.
-\end{proof}
-
-Finally, the main objects of this paper are the following posets.
-
-\begin{definition}
-The \defn{hypergraphic poset}~$P_\HH$ is the transitive closure of the increasing flip graph on acyclic orientations of~$\HH$.
-\end{definition}
-
-\begin{example}
-\label{exm:DH4}
-For the hypergraph~$\HH=\{ 1, 2, 3, 4, 123, 134 \}$ of \cref{exm:DH1,exm:DH2,exm:DH3}, the poset  $P_\HH$ is represented in~\cref{fig:Orientation1}\,(right).
-\end{example}
-
-\begin{remark}
-\label{rem:edgeNotCover}
-As seen in~\cref{fig:Orientation1} the edges in $E_\HH$ are not necessarily cover relations in~$P_\HH$.
-The simplest case is given by
-%$\HH=\big\{\{1\},\{2\},\{3\},\{1,2,3\}\big\}$, 
-$\HH=\{ 1, 2, 3, 123 \}$, 
-whose hypergraphic polytope~is
-\[
-	\simplex_\HH = \simplex_1 + \simplex_2 + \simplex_3 + \simplex_{123} =
-	\begin{tikzpicture}[scale=.7,baseline=.0cm]
-		\draw [color=gray!10,fill=blue!2] (0,-1)--(0,1)--(1.632,0)--(0,-1) ; 
-		\node (a) at (0,-1) {$\scriptstyle (1)$};
-		\node (b) at (1.632,0) {$\scriptstyle (2)$};
-		\node (c) at (0,1) {$\scriptstyle (3)$};
-		\path[color=red, ->] (a) edge node[fill=white,inner sep=1pt, font=\tiny ] {$ \scriptscriptstyle 13 $} (c);
-		\path[color=red, ->] (a) edge node[fill=white,inner sep=1pt, font=\tiny ] {$\scriptscriptstyle  12 $} (b);
-		\path[color=red, ->] (b) edge node[fill=white,inner sep=1pt, font=\tiny ] {$ \scriptscriptstyle 23 $} (c);
-	\end{tikzpicture}
-\]
-and the left edge~$\flip{(1)}{1}{3}{(3)}$ of $\simplex_\HH$ is not a cover relation of~$P_\HH$.
-\end{remark}
-
-We conclude with an elementary yet relevant symmetry.
-
-\begin{proposition}
-\label{prop:antiIsomorphism}
-For~$x \in n$, define~$x^\leftrightarrow \eqdef n-x+1$.
-For~$H \subseteq [n]$, define~$H^\leftrightarrow \eqdef \set{h^\leftrightarrow}{h \in H}$.
-For an hypergraph~$\HH$, define~$\HH^\leftrightarrow \eqdef \set{H^\leftrightarrow}{H \in \HH}$.
-For an orientation~$O$ of~$\HH$, define the orientation~$O^\leftrightarrow$ of~$\HH^\leftrightarrow$ by~$O^\leftrightarrow(H^\leftrightarrow) \eqdef O(H)^\leftrightarrow$.
-Then the map~$A \mapsto A^\leftrightarrow$ is an anti-isomorphism from~$P_\HH$ to~$P_{\HH^\leftrightarrow}$.
-\end{proposition}
-
-\begin{proof}
-Straightforward.
-\end{proof}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Surjection map} 
-\label{subsec:surjection}
-
-The hypergraphic polytope~$\simplex_\HH$ is a deformed permutahedron (\aka generalized permutahedron~\cite{Postnikov, PostnikovReinerWilliams}, \aka polymatroid~\cite{Edmonds}).
-This means that the normal fan of~$\simplex$ coarsens the normal fan of the permutahedron.
-Hence, there is a natural surjection from the faces of the permutahedron to the faces of~$\simplex_\HH$, which was described in details in~\cite[Lem.~2.9]{BenedettiBergeronMachacek}.
-Here, we focus on the surjection~$\Or$ from the permutations of $[n]$ to the acyclic orientations of~$\HH$.
-
-\begin{definition}
-\label{def:surjection}
-For a permutation~$\pi$ of~$[n]$, the orientation~$\Or_\pi$ of~$\HH$ is defined for all~$H \in \HH$ by
-\[
-\Or_\pi(H) \eqdef  \pi\big(\min\set{j}{\pi(j)\in H}\big).
-\]
-\end{definition}
-
-\begin{proposition}[{\cite[Lem.~2.9]{BenedettiBergeronMachacek}}]
-For any hypergraph~$\HH$ on~$[n]$,
-\begin{itemize}
-\item the map~$\Or$ is a surjection from the permutations of~$[n]$ to the acyclic orientations of~$\HH$,
-\item two acyclic orientations~$A,B$ of~$\HH$ are related by a flip if and only if there are permutations~$\pi_A, \pi_B$ of~$[n]$ which differ by a simple transposition such that~$\Or_{\pi_A} = A$ and~$\Or_{\pi_B} = B$.
-\end{itemize}
-In other words, the graph~$(V_\HH, E_\HH)$ of~$\simplex_\HH$ is isomorphic to the graph obtained by contracting the fibers of~$\Or$ in the graph of the permutahedron.
-\end{proposition}
-
-\begin{corollary}
-\label{coro:weakToP}
-The map~$\Or$ defines a poset morphism from the weak order on permutations to the hypergraphic poset~$P_\HH$.
-\end{corollary}
-
-Finally, we describe the fibers of the surjection~$\Or : \fS_n \to V_\HH$.
-Given an acyclic orientation~$A$ of~$\HH$, define $\less_A$ as the order on $[n]$ obtained by the transitive closure of the union of the \linebreak orders $\set{A(H) < h}{h \in H \ssm \{A(H)\}}$ for each $H \in \HH$.
-That is,
-\[ 
-	{\less_A} =  \text{Trans. cl. }
-	\bigcup_{H \in \HH} 
-	\begin{tikzpicture}[scale=1,baseline=.0cm]
-		\node at (0,-.45) {$\scriptstyle A(H)$};
-		\node at (0,.6) {$\scriptstyle h \in H \ssm \{A(H)\}$};
-		\node at (.2,.35) {$\ldots$};
-		\draw [thick] (0,-.3)--(-.5,.4); 
-		\draw [thick] (0,-.3)--(-.3,.4); 
-		\draw [thick] (0,-.3)--(-.1,.4); 
-		\draw [thick] (0,-.3)--(.5,.4); 
-	\end{tikzpicture} \,.
-\]
-This is a well defined partial order since $A$ is acyclic.
-The following lemma is straightforward.
 
 \begin{lemma}
-\label{lem:prepi}
-For any acyclic orientation $A$ of~$\HH$, the preimage $\Or^{-1}(A) \eqdef \set{\pi}{\Or_\pi=A}$ is the set of linear extensions of~$\less_A$.
+\label{lem:Reori2Orn1}
+For any reorientation~$R$ of~$\tc(D)$, the map~$O_{\!R}$ is an ornamentation of~$D$.
 \end{lemma}
 
-\begin{example}
-\label{exm:DH5}
-Continuing with the hypergraph $\HH=\{ 1, 2, 3, 4, 123, 134 \}$ of \cref{exm:DH1,exm:DH2,exm:DH3,exm:DH4}, let $A$ be the acyclic orientation $(2,4)$.
-The order~$\less_A$ is the following
-\[
-	{\less_A} = \text{Transitive closure }\Bigg(
-	\begin{tikzpicture}[scale=1,baseline=.2cm]
-		\node (2) at (0,0) {$\scriptstyle 2$};
-		\node (1) at (-.4,.7) {$\scriptstyle 1$};
-		\node (3) at (.4,.7) {$\scriptstyle 3$};
-		\draw [thick] (2)--(1); 
-		\draw [thick] (2)--(3); 
-	\end{tikzpicture} 
-	\cup
-	\begin{tikzpicture}[scale=1,baseline=.2cm]
-		\node (4) at (0,0) {$\scriptstyle 4$};
-		\node (1) at (-.4,.7) {$\scriptstyle 1$};
-		\node (3) at (.4,.7) {$\scriptstyle 3$};
-		\draw [thick] (4)--(1); 
-		\draw [thick] (4)--(3); 
-	\end{tikzpicture} 
-	\Bigg)
-	=
-	\begin{tikzpicture}[scale=1,baseline=.2cm]
-		\node (4) at (.4,0) {$\scriptstyle 4$};
-		\node (2) at (-.4,0) {$\scriptstyle 2$};
-		\node (1) at (-.4,.7) {$\scriptstyle 1$};
-		\node (3) at (.4,.7) {$\scriptstyle 3$};
-		\draw [thick] (4)--(1); 
-		\draw [thick] (4)--(3); 
-		\draw [thick] (2)--(1); 
-		\draw [thick] (2)--(3); 
-	\end{tikzpicture} 	
-\]
-The linear extensions of this order are the permutations $2413$, $2431$, $4213$ and $4231$.
-All other fibers are represented in \cref{fig:surjectionMap}.
+\begin{proof}
+By definition, $O_{\!R}(v) \in \Orn(v \in D)$ for all~$v \in V$.
+Consider now~$u,v \in V$ such that~$u \in O_{\!R}(v)$.
+Since~$O_{\!R}(u) \in \Orn(u \in D)$ and~$O_{\!R}(v) \in \Orn(v \in D)$ with~${u \in O_{\!R}(v)}$, \cref{lem:unionOrnaments} gives~$O_{\!R}(u) \cup O_{\!R}(v) \in \Orn(v \in D)$.
+Moreover, by path concatenation, there is a path from any vertex of~$O_{\!R}(u) \cup O_{\!R}(v)$ to~$v$ in~$\rev(R)$.
+By maximality of~$O_{\!R}(v)$, we conclude that~$O_{\!R}(u) \subseteq O_{\!R}(v)$, so that~$O_{\!R}(u) \subseteq O_{\!R}(v)$.
+\end{proof}
 
-\begin{figure}
-	\centerline{
-		\includegraphics[scale=.6]{weakOrderCongruence1}
-		\qquad
-		\raisebox{1cm}{
-		\begin{tikzpicture}[scale=1,baseline=.5cm]
-		\node (11) at (0,0) {$\scriptstyle (1,1)$};
-		\node (21) at (-1,1) {$\scriptstyle (2,1)$};	
-		\node (23) at (-1,2) {$\scriptstyle (2,3)$}; 		
-		\node (14) at (1,1.5) {$\scriptstyle (1,4)$};	
-		\node (24) at (0,3) {$\scriptstyle (2,4)$}; 	
-		\node (33) at (-2,3) {$\scriptstyle (3,3)$};
-		\node (34) at (-1,4) {$\scriptstyle (3,4)$};	
-		\draw (11)--(21);
-		\draw (11)--(14);
-		\draw (21)--(23);
-		\draw (23)--(24);
-		\draw (14)--(24);
-		\draw (23)--(33);
-		\draw (33)--(34);
-		\draw (24)--(34);
-		\end{tikzpicture}
-		}
-	}
-	\caption{The poset morphism~$\Or$ from the weak order (left) to the hypergraphical poset~$P_\HH$ (right), for $\HH=\{ 1, 2, 3, 4, 123, 134 \}$. The fibers of~$\Or$ appear as blue bubbles on the weak order, labeled by their acyclic orientation of~$\HH$ (left).}
-	\label{fig:surjectionMap}
-\end{figure}
+\begin{lemma}
+\label{lem:Reori2Orn2}
+The map~$R \mapsto O_{\!R}$ is order-preserving (meaning that~$R \le R' \implies O_{\!R} \le O_{\!R'}$).
+\end{lemma}
+
+\begin{proof}
+If~$R_1 \le R_2$, then $\rev(R_1) \subseteq \rev(R_2)$, hence any path in~$\rev(R_1)$ is a path in~$\rev(R_2)$, so that~$O_{\!R_1}(v) \subseteq O_{\!R_2}(v)$ for any~$v \in V$, hence~$O_{\!R_1} \le O_{\!R_2}$.
+\end{proof}
+
+\begin{definition}
+For an ornamentation~$O$ of~$D$, we define a reorientation~$R_O$ of~$\tc(D)$ where for each~$(u,v) \in \tc(D)$, we have~$(u,v) \in \rev(R_O)$ if and only if~$u \in O(v)$.
+\end{definition}
+
+\begin{lemma}
+\label{lem:Orn2Reori1}
+The map~$O \mapsto R_{O}$ is order-preserving.
+\end{lemma}
+
+\begin{lemma}
+\label{lem:Orn2Reori1}
+The map~$O \mapsto R_O$ is a section of the map~$R \mapsto O_{\!R}$, which is therefore a surjection from the reorientation lattice~$\Reori(\tc(D))$ to the ornamentation lattice~$\Orn(D)$.
+\end{lemma}
+
+\begin{proof}
+Let~$u,v \in V$ such that there is a path from~$u$ to~$v$ in~$\rev(R_O)$.
+Let~$u = w_0, w_1, \dots, w_p = v$ denote the vertices along this path.
+We have~$(w_{i-1},w_i) \in \rev(R_O)$ hence~$w_{i-1} \in O(w_i)$ for each~$1 \le i \le p$.
+Since~$O$ is an ornamentation, an immediate induction shows that~$w_i \in O(v)$ for all~$0 \le i \le p$.
+We conclude that $u \in O(v)$ if and only if there is a path from~$u$ to~$v$ in~$\rev(R_O)$.
+Since~$O(v)$ is an ornament of~$D$ at~$v$, we conclude that~$O_{\!R_O}(v) = O(v)$.
+\end{proof}
+
+To sum up, the map~$R \mapsto O_{\!R}$ is an order-preserving surjection from the reorientation lattice~$\Reori(\tc(D))$ to the ornamentation lattice~$\Orn(D)$.
+Unfortunately, it does not preserve the lattice structure, as illustrated by the following example.
+
+\begin{example}
 \end{example}
 
+To correct this default, we restrict our attention to transitively closed reorientations.
+
+\begin{definition}
+A reorientation~$R$ of~$\tc(D)$ is \defn{transitively closed} if~$\rev(R)$ is transitively closed %, that is~$(u,v), (v,w) \in \rev(R)$ implies $(u,w) \in \rev(R)$.
+and \defn{transitively coclosed} if the complement~$\tc(D) \ssm \rev(R)$ is transitively closed.
+We denote by~$\Rcl(\tc(D))$ and $\Rco(\tc(D))$ the sets of transitively closed and transitively coclosed reorientations of $\tc(D)$ respectively.
+\end{definition}
+
+\begin{lemma}
+$\Rcl(\tc(D))$ (resp.~$\Rco(\tc(D))$) induces a meet (resp.~join) subsemilattice of~$\Reori(\tc(D))$, which is a lattice.
+\end{lemma}
+
+\begin{proof}
+As the intersection of two transitively closed relations is transitively closed, $R, R' \in \Rcl(\tc(D))$ implies $R \meet R' \in \Rcl(\tc(D))$.
+As~$\tc(D)$ is transitively closed, the maximal reorientation of~$\tc(D)$ is transitively closed, so that $\Rcl(\tc(D))$ is a bounded meet semilattice, hence a lattice.
+The proof for~$\Rco(\tc(D))$ is symmetric.
+\end{proof}
+
+\begin{lemma}
+For any ornamentation~$O$ of~$D$, the reorientation~$R_O$ is transitively closed. Hence, the map~$R \mapsto O_{\!R}$ restricts to a surjection from the transitively closed reorientation lattice~$\Rcl(\tc(D))$ to the ornamentation lattice~$\Orn(D)$.
+\end{lemma}
+
+\begin{proof}
+Let~$u,v,w \in V$ such that~$(u,v), (v,w) \in \rev(R_O)$.
+Then~$u \in O(v)$ and~$v \in O(w)$, so that~$u \in O(w)$ since~$O$ is an ornamentation.
+Hence~$(u,w) \in \rev(R_O)$.
+\end{proof}
+
+\begin{proposition}
+The map~$R \mapsto O_{\!R}$ is a meet semilattice morphism from the transitively closed reorientation lattice~$\Rcl(\tc(D))$ to the ornamentation lattice~$\Orn(D)$.
+\end{proposition}
+
+\begin{proof}
+\vincent{Todo. See notes of Jose and Antoine.}
+\end{proof}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\section*{Acknowledgments}
+\section{From sourcings to ornamentations}
+
+We now assume that~$V$ is totally ordered, for instance that~$V = [n]$ with the natural order.
+%We now assume that~$D$ is an increasing graph on~$V = [n]$.
+
+\begin{definition}
+A \defn{sourcing}~$S$ of a hypergraph~$\HH$ on~$V$ is a map~$S : \HH \to V$ such that~$S(H) \in H$ for all hyperedges~$H \in \HH$.
+We then denote by~$\rev(S)$ the pairs~$(u,v)$ with~$u \le v$ such that there is~$H \in \HH$ with~$u \in H$ and~$v = S(H)$.
+The \defn{sourcing lattice}~$\Sour(\HH)$ is the lattice of sourcings of~$\HH$ ordered componentwise, meaning~$S_1 \le S_2$ if~$S_1(H) \le S_2(H)$ for all~$H \in \HH$.
+\end{definition}
+
+%In this paper, we will consider sourcings of the interval hypergraph of~$D$.
+%
+%\begin{definition}
+%Let~$D$ be a directed graph on~$V$.
+%For~$u,v \in V$, the \defn{interval}~$[u,v]$ is the union of all directed paths from~$u$ to~$v$.
+%The \defn{interval hypergraph} of~$D$ is the collection~$\II$(D) of non-empty intervals~$[u,v]$ for all~$u,v \in V$.
+%\end{definition}
+
+We now assume that~$D$ is an increasing graph on~$V = [n]$, and we consider sourcings of the path hypergraph of~$D$.
+
+\begin{definition}
+The \defn{path hypergraph} of a directed graph~$D$ is the collection~$\PP$(D) of all directed paths in~$D$.
+\end{definition}
+
+\begin{remark}
+Any sourcing~$S$ of~$\PP(D)$ can be lifted to a reorientation~$R$ of~$\tc(D)$ where~$\rev(R) = \rev(S) \cap \tc(D)$.
+In contrast, not all reorientations of~$\tc(D)$ can be projected to a sourcing of~$\PP(D)$, because reorientations might have cycles inside paths of~$D$.
+We will fix this problem by considering acyclic reorientations and acyclic sourcings in \cref{sec:acyclic}.
+\end{remark}
+
+\begin{definition}
+\label{def:Sourc2Orn}
+For a sourcing~$S$ of~$\PP(D)$, we define a map~$O_{\!S}$ on~$V$ which associates to each vertex~$v \in V$ the inclusion maximal ornament of~$D$ at~$v$ contained in the subset of vertices~$u \in V$ with a directed path to~$v$ in $\rev(S)$. % such that there is~$P_0, \dots, P_k \in \PP(D)$ with~$u \in P_0 \ssm \{S(P_0)\}$, $v = S(P_k)$, and~$S(P_{i-1}) \in P_i \ssm \{S(P_i)\}$ for~all~$i \in [k]$.
+\end{definition}
+
+\begin{lemma}
+\label{lem:Sour2Orn2}
+For any sourcing~$S$ of~$\PP(D)$, the map~$O_{\!S}$ is an ornamentation of~$D$.
+\end{lemma}
+
+\begin{proof}
+The proof is identical to that of~\cref{lem:Reori2Orn1}.
+In fact, it also follows from~\cref{lem:Reori2Orn1} since~$O_{\!S} = O_{\!R}$ where~$R$ is the reorientation of~$\tc(D)$ defined by~$\rev(R) = \rev(S) \cap \tc(D)$.
+\end{proof}
+
+\begin{lemma}
+\label{lem:Sour2Orn2}
+The map~$S \mapsto O_{\!S}$ is order-preserving.
+\end{lemma}
+
+\begin{proof}
+The proof is identical to that of~\cref{lem:Reori2Orn2}.
+In fact, it also follows from~\cref{lem:Reori2Orn2} since the map~$S \mapsto R$ where~$\rev(R) = \rev(S) \cap \tc(D)$ is order preserving.
+%If~$S_1 \le S_2$, then $\rev(S_1) \subseteq \rev(S_2)$, hence any path in~$\rev(S_1)$ is a path in~$\rev(S_2)$, so that~$O_{\!S_1}(v) \subseteq O_{\!S_2}(v)$ for any~$v \in V$, hence~$O_{\!S_1} \le O_{\!S_2}$.
+\end{proof}
+
+\begin{definition}
+For an ornamentation~$O$ of~$D$, we define a sourcing~$S_O$ of~$\PP(D)$ where the source~$S_O(P)$ for a path~$P$ from~$u$ to~$v$ in~$D$ is the maximal~$w \in P$ such that~$u \in O(w)$.
+\end{definition}
+
+\begin{lemma}
+The map~$O \mapsto S_O$ is a section of the map~$S \mapsto O_{\!S}$, which is therefore a surjection from the sourcing lattice~$\Sour(\PP(D))$ to the ornamentation lattice~$\Orn(D)$.
+\end{lemma}
+
+\begin{proof}
+Let~$u,v \in V$.
+If~$u \in O(v)$, then there is a path~$P$ from~$u$ to~$v$ in~$O(v)$, hence~$(u,v) \in \rev(S_O)$.
+Assume that there is a path from~$u$ to~$v$ in~$\rev(S_O)$.
+Let~$u = w_0 \le w_1 \le \dots \le w_p = v$ denote the vertices along this path.
+For each $1 \le i \le p$, there is a path~$P_i$ in~$D$ such that~$w_{i-1} \in P_i$ and~$w_i = S_O(P_i)$, hence~$w_{i-1} \in O(w_i)$.
+Since~$O$ is an ornamentation, an immediate induction shows that~$w_i \in O(v)$ for all~$0 \le i \le p$.
+We conclude that $u \in O(v)$ if and only if there is a path from~$u$ to~$v$ in~$\rev(S_O)$.
+Since~$O(v)$ is an ornament of~$D$ at~$v$, we conclude that~$O_{\!S_O}(v) = O(v)$.
+\end{proof}
+
+To sum up, the map~$S \mapsto O_{\!S}$ is an order-preserving surjection from the sourcing lattice~$\Sour(\PP(D))$ to the ornamentation lattice~$\Orn(D)$.
+
+\vincent{We can play the same game with transitively closed sourcings~$S$, meaning for which $\rev(S)$ is transitively closed...}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Acyclic reorientations, acyclic sourcings, and acyclic ornamentations}
+\label{sec:acyclic}
+
+We now focus our attention to the acyclic situation.
+We assume here that~$D$ is an increasing graph on~$V = [n]$.
+We then consider the acyclic reorientation poset~$\AReori(\tc(D))$, the acyclic sourcing poset~$\ASour(\PP(D))$, and the acyclic ornamentation poset~$\AOrn(D)$, and define natural surjective poset morphisms:
+\[
+\begin{array}{ccccccc}
+	\fS_n & \surjection & \AReori(\tc(D)) & \surjection & \ASour(\PP(D)) & \bijection & \AOrn(D) \\
+	\quad\pi & \longmapsto & R_\pi \qquad\quad R & \longmapsto & S_{\!R} \qquad\; S & \longmapsto & O_{\!S} \qquad
+\end{array}
+\]
+
+\subsection{Acyclic reorientations}
+
+\begin{definition}
+A reorientation of a directed graph~$E$ is \defn{acyclic} if it contains no directed cycle.
+The \defn{acyclic reorientation poset}~$\AReori(E)$ is the subposet of the reorientation lattice~$\Reori(E)$ induced by acyclic reorientations.
+\end{definition}
+
+\begin{remark}
+Let us recall the polytopal interpretation of the acyclic reorientation poset of~$E$.
+Denote by~$(\b{e}_i)_{i \in [n]}$ the standard basis of~$\R^n$.
+The \defn{graphical zonotope} of~$E$ is the Minkowski sum~$\simplex_E \eqdef \sum_{(u,v) \in E} \simplex_{uv}$, where~$\simplex_{uv}$ is the segment with endpoints~$\b{e}_u$ and~$\b{e}_v$.
+The face lattice of~$\simplex_E$ is described by ordered partitions of~$E$.
+In particular, the graph of~$\simplex_E$, oriented in the direction~$\b{\omega} \eqdef (n, n-1, \dots, 2, 1) - (1, 2, \dots, n-1, n) = (n-1, n-3, \dots, 3-n, 1-n)$, is isomorphic to the Hasse diagram of the acyclic reorientation poset~$\AReori(E)$.
+\end{remark}
+
+Note that the acyclic reorientation poset~$\AReori(E)$ is not always a lattice.
+The lattice theory of acyclic reorientation posets was studied in details in~\cite{Pilaud-acyclicReorientationLattices}.
+Here, we only need the following characterization.
+
+\begin{proposition}[{\cite[Thm.~1]{Pilaud-acyclicReorientationLattices}}]
+The acyclic reorientation poset~$\AReori(E)$ is a lattice if and only if the transitive reduction of any induced subgraph of~$E$ is a forest.
+\end{proposition}
+
+\begin{definition}
+For a permutation~$\pi$ of~$[n]$, we denote by~$R_\pi$ the reorientation of~$\tc(D)$ where $(u,v) \in \tc(D)$ is reoriented in~$R_\pi$ if~$\pi^{-1}(u) > \pi^{-1}(v)$.
+\end{definition}
+
+\begin{lemma}
+The map~$\pi \mapsto R_\pi$ is an order-preserving surjection from the weak order~$\fS_n$ to the acyclic reorientation poset~$\AReori(\tc(D))$.
+\end{lemma}
+
+\begin{proof}
+\vincent{todo}
+\end{proof}
+
+\subsection{Acyclic sourcings}
+
+\begin{definition}
+A sourcing~$S$ of a hypergraph~$\HH$ is \defn{acyclic} if there is no distinct~$H_0, \dots, H_k \in \HH$ such that~$S(H_{i-1}) \in H_i \ssm \{S(H_i)\}$ for all~$i \in [k]$ and~$S(H_k) \in H_0 \ssm \{S(H_0)\}$.
+The \defn{acyclic sourcing poset}~$\ASour(\HH)$ is the subposet of the sourcing lattice~$\Sour(\HH)$ induced by acyclic sourcings.
+\end{definition}
+
+\begin{remark}
+Let us recall the polytopal interpretation of the acyclic sourcing poset of a hypergraph~$\HH$.
+We still denote by~$(\b{e}_i)_{i \in [n]}$ the standard basis of~$\R^n$.
+The \defn{hypergraphic polytope} of~$\HH$ is the Minkowski sum
+\(
+\simplex_\HH \eqdef \sum_{H\in \HH} \simplex_H\,,
+\)
+where $\simplex_H$ is the simplex given by the convex hull of the points $\b{e}_h$ for~$h \in H$.
+The face lattice of~$\simplex_\HH$ was described combinatorially in terms of acyclic orientations of~$\HH$ in~\cite{BenedettiBergeronMachacek}.
+In particular, the graph of~$\simplex_\HH$, oriented in the direction~$\b{\omega}$, is isomorphic to the Hasse diagram of the acyclic sourcing poset~$\ASour(\HH)$.
+\end{remark}
+
+Note that the acyclic sourcing poset of~$\HH$ is not always a lattice.
+Characterizing the hypergraphs whose acyclic sourcing poset is a lattice seems a difficult question in general.
+We will study this question for subhypergraphs of the interval hypergraph of directed trees in \cref{sec:partialIntreevalHypergraphicPosets}.
+
+\begin{definition}
+For an acyclic reorientation~$R$ of~$\tc(D)$, we denote by~$S_{\!R}$ the map on~$\PP(D)$ where~$S_{\!R}(P)$ is the source of~$P$ in~$R$.
+\end{definition}
+
+\begin{lemma}
+The map~$R \mapsto S_{\!R}$ is an order-preserving surjection from the acyclic reorientation poset~$\AReori(\tc(D))$ to the acyclic sourcing poset~$\ASour(\PP(D))$.
+\end{lemma}
+
+\begin{proof}
+Observe first that~$S_{\!R}$ is well-defined since~$[u,v]$ is a clique in~$\tc(D)$ for any~$u,v \in V$.
+Moreover, $S_{\!R}$ is acyclic since $R$ is acyclic.
+Indeed, if~$P_0, \dots, P_k \in \PP(D)$ are such that~$S_{\!R}(P_{i-1}) \in P_i \ssm \{S_{\!R}(P_i)\}$, then~$S_{\!R}(P_k), \dots, S_{\!R}(P_0)$ form a directed path in~$R$, so that~$R$ has no edge from~$S_{\!R}(P_0)$ to~$S_{\!R}(P_k))$, hence~$S_{\!R}(P_k)) \notin P_0 \ssm \{S_{\!R}(P_0)\}$.
+Finally, for two acyclic reorientations~$R_1$ and~$R_2$ of~$\tc(D)$, if~$R_1 \le R_2$, then~$\rev(R_1) \subseteq \rev(R_2)$, hence the source of any path~$P$ in~$R_1$ is smaller than the source of~$P$ in~$R_2$, hence~$S_{\!R_1} \le S_{\!R_2}$.
+\end{proof}
+
+\subsection{Acyclic ornamentations}
+
+Remember from \cref{def:Reori2Orn} (resp.~\cref{def:Sourc2Orn}) that we have defined an ornamentation~$O_{\!R}$ (resp.~$O_{\!S}$) from any reorientation~$R$ of~$\tc(D)$ (resp.~sourcing~$S$ of~$\PP(D)$).
+Conversely, we have defined an reorientation~$R_O$ and a sourcing~$S_O$ for any ornamentation~$O$.
+These maps behave well when everything is acyclic.
+
+\begin{lemma}
+For any acyclic reorientation~$R$ of~$\tc(D)$, we have~$O_{\!R} = O_{\!S_{\!R}}$.
+\end{lemma}
+
+\begin{lemma}
+For any ornamentation~$O$, the reorientation~$R_O$ is acyclic if and only if the sourcing~$S_O$ is acyclic.
+\end{lemma}
+
+\begin{definition}
+An ornamentation~$O$ of~$D$ is \defn{acyclic} if $R_O$ (or equivalently~$S_O$) is acyclic.
+The \defn{acyclic ornamentation poset}~$\AOrn(D)$ is the subposet of the ornamentation lattice~$\Orn(D)$ induced by acyclic ornamentations.
+\end{definition}
+
+\begin{lemma}
+The map~$S \mapsto O_{\!S}$ is injective on acyclic sourcings.
+Hence, it defines a poset isomorphism form the acyclic sourcing poset~$\ASour(\PP(D))$ to the acyclic ornamentation poset~$\AOrn(D)$.
+\end{lemma}
+
+\begin{proof}
+Let~$S_1 \ne S_2$ be two distinct acyclic sourcings of~$\PP(D)$.
+There exists~$P \in \PP(D)$ such that~$u \eqdef S_1(P) \ne S_2(P) \defeq v$.
+We can assume by symmetry that~$u < v$.
+Then~$u \notin O_{\!S_1}(v)$ (by acyclicity of~$S_1$) while~$u \in O_{\!S_2}(v)$ (by definition of~$O_{\!S_2}$).
+Hence~$O_{\!S_1} \ne O_{\!S_2}$.
+
+Finally, we have seen that~$S \mapsto O_{\!S}$ is order-preserving in \cref{lem:Sour2Orn2}, 
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Rooted trees}
+
+In this section, we discuss the specific situation when the ground graph~$D$ is an rooted tree.
+
+\begin{proposition}
+Assume that~$T$ is a rooted tree (with edges oriented away from the root). Then
+\begin{enumerate}
+\item The acyclic reorientation poset~$\AReori(\tc(T))$, the acyclic sourcing poset~$\ASour(\PP(T))$, and the acyclic ornamentation poset~$\AOrn(T)$ are lattices.
+\item All ornamentations of~$T$ are acyclic, so that~$\ASour(\PP(T)) \simeq \AOrn(T) = \Orn(T)$.
+\item The map $R \mapsto S_{\!R}$ is a surjective lattice map, hence~$\ASour(\PP(T))$ is a lattice quotient~of~$\AReori(\tc(T))$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\end{proof}
+
+\begin{corollary}
+If~$T$ is a rooted tree, then the Hasse diagram of the ornamentation lattice~$\Orn(T)$ is isomorphic to the graph of the interval hypergraphic polytope~$\simplex_{\PP(D)} \eqdef \sum{u \le_T v} \simplex{[u,v]}$ oriented in the direction~$\omega$.
+\end{corollary}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Partial intreeval hypergraphic lattices}
+\label{sec:partialIntreevalHypergraphicPosets}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Acknowledgments}
+
+This work was initiated at the Banff workshop ``Lattice Theory'' in January 2025.
+We are grateful to the organizers (Emily Barnard, Cesar Ceballos, Colin Defant, Osamu Iyama, and Nathan Williams) and to all participants for the friendly and inspiring atmosphere.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \bibliographystyle{alpha}
-\bibliography{IH_lattices}
+\bibliography{intreevalLattices}
 \label{sec:biblio}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
