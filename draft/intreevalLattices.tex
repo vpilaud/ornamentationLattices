@@ -137,6 +137,7 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\Nantel}[1]{\todo[inline,color=red!30]{#1 \\ \hfill --- N.}}
 \newcommand{\vincent}[1]{\todo[size=\tiny,color=blue!30]{ #1 \\ \hfill --- V.}\,}
 \newcommand{\Vincent}[1]{\todo[inline,color=blue!30]{#1 \\ \hfill --- V.}}
+\newcommand{\jose}[1]{\todo[size=\tiny,color=red!30]{ #1 \\ \hfill --- J.}\,}
 
 % permutations
 \newcommand{\fS}{\mathfrak{S}} % symmetric group
@@ -336,6 +337,7 @@ Part~(ii) is a specialization of Part~(i) to~$u = v$ and~$u' = v$.
 \end{proof}
 
 \begin{theorem}
+\label{thm:Orn-meet_and_join}
 The set~$\Orn(D)$ of ornamentations of~$D$ is a lattice under componentwise inclusion, meaning~$O_1 \le O_2$ if~$O_1(v) \subseteq O_2(v)$ for all~$v \in V$.
 For any two ornamentations~$O_1$ and~$O_2$ of~$D$,
 \begin{itemize}
@@ -525,6 +527,7 @@ We denote by~$\Rcl(\tc(D))$ and $\Rco(\tc(D))$ the sets of transitively closed a
 \end{definition}
 
 \begin{lemma}
+\label{lem:rcl-subsemilattice}
 $\Rcl(\tc(D))$ (resp.~$\Rco(\tc(D))$) induces a meet (resp.~join) subsemilattice of~$\Reori(\tc(D))$, which is a lattice.
 \end{lemma}
 
@@ -550,6 +553,26 @@ The map~$R \mapsto \orn{R}$ is a meet semilattice morphism from the transitively
 
 \begin{proof}
 \vincent{Todo. See notes of Jose and Antoine.}
+\jose{I have added the details, feel free to rewrite if necessary.}
+Let $R$ and $R'$ be two transitively closed reorientations of $\tc(D)$, and $O_\meet = \orn{R} \meet \orn{R'}$.
+We want to show that $O_\meet = \orn{R \meet R'}$.
+
+Let $u \in O_\meet(v)$.
+Then, there exists a path from $u$ to $v$ in $O_\meet(v) \subseteq \orn{R}(v) \cap \orn{R'}(v)$.
+Let~$u = w_0, w_1, \dots, w_p = v$ denote the vertices along this path.
+By definition of $\orn{R}$ and $\orn{R'}$, there is a path from each $w_i$ to $v$ in both $\rev(R)$ and $\rev(R')$.
+Since $R$ and $R'$ are transitively closed, each arrow $(w_i,v)$ of $\tc(D)$ is in both $\rev(R)$ and $\rev(R')$;
+and therefore in $\rev(R \meet R') = \rev(R) \cap \rev(R')$ (\cref{lem:rcl-subsemilattice}).
+So, $\{u = w_0, w_1, \dots, w_p = v\} \in \Orn(v \in D)$ and each $w_i$ has a directed path to $v$ in $\rev(R) \cap \rev(R')$.
+By maximality of $\orn{R \meet R'}(v)$, we deduce $u \in \orn{R \meet R'}(v)$.
+Thus, we have shown that $O_\meet \leq \orn{R \meet R'}$.
+
+Now let $u \in \orn{R \meet R'}(v)$ and
+let $u = w_0, w_1, \dots, w_p = v$ denote the vertices along a path from $u$ to $v$ in $\orn{R \meet R'}(v)$.
+Thus, each arrow $(w_i,v)$ of $\tc(D)$ is in $\rev(R \meet R') = \rev(R) \cap \rev(R')$,
+showing that this same path is contained in both $\orn{R}(v)$ and $\orn{R'}(v)$.
+By \cref{thm:Orn-meet_and_join}, $\{u = w_0, w_1, \dots, w_p = v\} \subseteq O_\meet(v)$.
+We have shown that $O_\meet \geq \orn{R \meet R'}$, and therefore they are equal.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
