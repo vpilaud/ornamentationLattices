@@ -575,6 +575,8 @@ By \cref{thm:Orn-meet_and_join}, $\{u = w_0, w_1, \dots, w_p = v\} \subseteq O_\
 We have shown that $O_\meet \geq \orn{R \meet R'}$, and therefore they are equal.
 \end{proof}
 
+\vincent{There are a lot of things discussed in Jose and Antoine's file that should be added here...}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -628,9 +630,18 @@ We will fix this problem by restricting to acyclic reorientations and acyclic so
 At the moment, we thus need define a map from all sourcings of~$\PP(D)$ to all ornamentations of~$D$.
 
 \begin{definition}
-\label{def:Sourc2Orn}
+\label{def:Sour2Orn}
 For a sourcing~$S$ of~$\PP(D)$, we define a map~$\orn{S}$ on~$V$ which associates to each vertex~$v \in V$ the inclusion maximal ornament of~$D$ at~$v$ contained in the subset of vertices~$u \in V$ with a directed path to~$v$ in $\rev(S)$. % such that there is~$P_0, \dots, P_k \in \PP(D)$ with~$u \in P_0 \ssm \{S(P_0)\}$, $v = S(P_k)$, and~$S(P_{i-1}) \in P_i \ssm \{S(P_i)\}$ for~all~$i \in [k]$.
 \end{definition}
+
+\begin{lemma}
+\label{lem:Sour2Orn1}
+For any sourcing~$S$ of~$\PP(D)$, we have~$\orn{S} = \orn{\reori{S}}$.
+\end{lemma}
+
+\begin{proof}
+Immediate from \cref{def:Reori2Orn,def:Sour2Reori,def:Sour2Orn}.
+\end{proof}
 
 \begin{lemma}
 \label{lem:Sour2Orn2}
@@ -638,18 +649,18 @@ For any sourcing~$S$ of~$\PP(D)$, the map~$\orn{S}$ is an ornamentation of~$D$.
 \end{lemma}
 
 \begin{proof}
-The proof is identical to that of~\cref{lem:Reori2Orn1}.
-In fact, it also follows from~\cref{lem:Reori2Orn1} since~$\orn{S} = \orn{\reori{S}}$.
+%The proof is identical to that of~\cref{lem:Reori2Orn1}.
+Follows from~\cref{lem:Reori2Orn1,lem:Sour2Orn1}.
 \end{proof}
 
 \begin{lemma}
-\label{lem:Sour2Orn2}
+\label{lem:Sour2Orn3}
 The map~$S \mapsto \orn{S}$ is order-preserving.
 \end{lemma}
 
 \begin{proof}
-The proof is identical to that of~\cref{lem:Reori2Orn2}.
-In fact, it also follows from~\cref{lem:Reori2Orn2,lem:Sour2Reori} since~$\orn{S} = \orn{\reori{S}}$.
+%The proof is identical to that of~\cref{lem:Reori2Orn2}.
+Follows from~\cref{lem:Reori2Orn2,lem:Sour2Reori,lem:Sour2Orn1}.
 %If~$S_1 \le S_2$, then $\rev(S_1) \subseteq \rev(S_2)$, hence any path in~$\rev(S_1)$ is a path in~$\rev(S_2)$, so that~$\orn{S_1}(v) \subseteq \orn{S_2}(v)$ for any~$v \in V$, hence~$\orn{S_1} \le \orn{S_2}$.
 \end{proof}
 
@@ -870,7 +881,7 @@ The map~$R \mapsto \asour{R}$ is an order-preserving surjection from the acyclic
 
 \subsection{Acyclic ornamentations}
 
-Remember from \cref{def:Reori2Orn} (resp.~\cref{def:Sourc2Orn}) that we have defined an ornamentation~$\orn{R}$ (resp.~$\orn{S}$) from any reorientation~$R$ of~$\tc(D)$ (resp.~sourcing~$S$ of~$\PP(D)$).
+Remember from \cref{def:Reori2Orn} (resp.~\cref{def:Sour2Orn}) that we have defined an ornamentation~$\orn{R}$ (resp.~$\orn{S}$) from any reorientation~$R$ of~$\tc(D)$ (resp.~sourcing~$S$ of~$\PP(D)$).
 %Conversely, we have defined a reorientation~$\reori{O}$ and a sourcing~$\sour{O}$ for any ornamentation~$O$.
 %These maps behave well when everything is acyclic.
 %\vincent{NO. They work poorly. I need to redefine everything...}
@@ -1003,7 +1014,7 @@ We have seen in \cref{lem:Orn2Sour2} that the map~$O \mapsto \sour{O}$ is a sect
 By definition of acyclic ornamentations, the map~$O \mapsto \asour{O}$ is thus also a section of the map~$S \mapsto \aorn{S}$ on acyclic sourcings.
 Hence, the map~$S \mapsto \aorn{S}$ is surjective.
 
-Finally, we have seen that~$S \mapsto \orn{S}$ and~$O \mapsto \sour{O}$ are order-preserving in \cref{lem:Sour2Orn2,lem:Orn2Sour1}.
+Finally, we have seen that~$S \mapsto \orn{S}$ and~$O \mapsto \sour{O}$ are order-preserving in \cref{lem:Sour2Orn3,lem:Orn2Sour1}.
 We conclude that~$S \mapsto \aorn{S}$ and~$O \mapsto \asour{O}$ are inverse isomorphisms from the acyclic sourcing poset~$\ASour(\PP(D))$ to the acyclic ornamentation poset~$\AOrn(D)$.
 \end{proof}
 
@@ -1060,12 +1071,69 @@ Complete binary tree?
 \end{example}
 
 \begin{example}
-Brooms?
+The \defn{$(m,n)$-broom} is the rooted tree obtained by attaching $m$ nodes (called \defn{bristles}) to an $n$-path (called \defn{handle}).
+We denote by~$B_{m,n}$ the number of (acyclic) ornamentations of the $(m,n)$-broom, by~$B(x,y) \eqdef \sum_{m \ge 0, n \ge 0} B_{m,n} \, x^m \, y^n$ their generating function, and by~$B_m(y) \eqdef [x^m] \, B(x,y) = \sum_{n \ge 0} B_{m,n} \, y^n$ the coefficient of~$x^m$ in~$B(x,y)$.
+As~$B_{0,m} = B_{1,n-1}$ is the $n$th Catalan number~$C_n \eqdef \frac{1}{n+1}\binom{2n}{n}$, we have $B_0(y) = C(y)$ and~$B_1(y) = (C(y) - 1)/y$ where~$C(y) \eqdef \sum_{n \ge 0} C_n \, y^n = \frac{1-\sqrt{1-4y}}{2y}$.
+\end{example}
+
+\begin{proposition}
+\label{prop:brooms1}
+The numbers~$B_{m,n}$ satisfy the following recurrence relation:
+\[
+B_{m,n} = \sum_{k = 0}^m \sum_{\ell = 1}^n \binom{m}{k} \, C_{n-\ell} \, B_{k,\ell-1}
+\]
+where~$\displaystyle C_n \eqdef \frac{1}{n+1}\binom{2n}{n}$ is the $n$th Catalan number.
+\end{proposition}
+
+\begin{proof}
+Consider an ornament~$U$ of the $(m,n)$-broom containing~$k \ge 1$ bristles and $\ell \ge 1$ vertices of the handle.
+The ornamentations~$O$ of the $(m,n)$-broom containing~$U$ are clearly in bijection with pairs formed by an ornamentation of the $(k, \ell-1)$-broom and an ornamentation of the $(n-\ell)$-path.
+Conversely, we can associate to each ornamentation of the $(m,n)$-broom the inclusion maximal ornament~$U$ of~$O$ containing at least one bristle (note that there might be no such ornament).
+The formula immediately follows.
+\end{proof}
+
+\begin{proposition}
+\label{prop:brooms2}
+For any~$m \in \N$, we have
+\[
+y \, B_m(y) \, C(y) = \sum_{k = 0}^m (-1)^{m-k} \binom{m}{k} \, B_k(y).
+\]
+where~$\displaystyle C(y) \eqdef \sum_{n \ge 0} C_n \, y^n = \frac{1-\sqrt{1-4y}}{2y}$.
+\end{proposition}
+
+\begin{proof}
+The same argument as in the proof of \cref{prop:brooms1} gives the functional equation
+\[
+B_m = 1 + y \, C \, \sum_{k = 0}^m \binom{m}{k} \, B_k.
+\]
+As the inverse of the binomial matrix~$\big[\binom{m}{k}\big]_{m,k}$ is the signed binomial matrix~$\big[(-1)^{m-k}\binom{m}{k}\big]_{m,k}$, we obtain that
+\[
+y \, B_m \, C = \sum_{k = 0}^m (-1)^{m-k} \binom{m}{k} \,(B_k - 1) = \sum_{k = 0}^m (-1)^{m-k} \binom{m}{k} \, B_k.
+\qedhere
+\]
+\end{proof}
+
+\begin{example}
+For~$m = 2$, we have
+\(
+B_2 = 1 + y \, C \, (B_0 + 2  \, B_1 + B_2) = 1 + y \, C( C + 2 \, (C - 1) / y + B_2)
+\)
+from which we derive that
+\(
+B_2 \, (1 - y \, C) = 1 + y \, C^2 + 2 \, C \, (C - 1) = 2 \, C^2 - C. 
+\)
+Finally, we observe that
+\(
+C^2 (1+y \, C) \, ( 1 - y \, C) = C^2 \, (1 - y^2 \, C^2) = C^2 - y^2 \, C^4 = C^2 - (C - 1)^2 = 2 \, C^2 - C
+\)
+We conclude that~$B_2 = C^3 (1+y \, C)$.
+\end{example}
+
 %sage: n = 2 
 %....: for m in range(6): 
 %....:     print(m, len(digraph_ornamentation_lattice(DiGraph([list(range(n+m)), [(i,n) for i in range(n)] + [(n+j,n+j+Integer(1)) for j in range(m)]])))) 
 %....:                                                                                                                                                                                                     
-%0 8
+%0 4
 %1 13
 %2 42
 %3 138
@@ -1092,8 +1160,22 @@ Brooms?
 %1 97
 %2 450
 %3 1878
-\end{example}
 
+%sage: def B(n,m): 
+%....:     if n == 0: return 1 
+%....:     if m == 1: return catalan_number(n+1) 
+%....:     return add(binomial(m,l) * add(B(k-1,l)*catalan_number(n-k) for k in range(1,n+1)) for l in range(m+1)) 
+%....:                                                                                                                                                                                                       
+%sage: for n in range(7): 
+%....:     print([B(n,m) for m in range(1,7)]) 
+%....:                                                                                                                                                                                                       
+%[1, 1, 1, 1, 1, 1]
+%[2, 4, 8, 16, 32, 64] --> 2^n
+%[5, 13, 35, 97, 275, 793] --> 2^n + 3^n
+%[14, 42, 134, 450, 1574, 5682] --> not in OEIS
+%[42, 138, 492, 1878, 7572, 31878]
+%[132, 462, 1782, 7458, 33342, 157122]
+%[429, 1573, 6435, 28873, 139659, 717673]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
