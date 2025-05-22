@@ -638,27 +638,24 @@ The map~$R \mapsto \orn{R}$ is a meet semilattice morphism from the transitively
 \end{proposition}
 
 \begin{proof}
-\vincent{Todo. See notes of Jose and Antoine.}
-\jose{I have added the details, feel free to rewrite if necessary.}
-Let $R_1$ and $R_2$ be two transitively closed reorientations of $\tc(D)$, and $O_\meet = \orn{R_1} \meet \orn{R_2}$.
-We want to show that $O_\meet = \orn{R_1 \meet R_2}$.
+Given two transitively closed reorientations~$R_1$ and~$R_2$ of $\tc(D)$, we want to show that $\orn{R_1 \meet R_2} = \orn{R_1} \meet \orn{R_2}$.
+Let us define by~$O_\meet \eqdef \orn{R_1} \meet \orn{R_2}$.
 
 Let $u \in O_\meet(v)$.
-Then, there exists a path from $u$ to $v$ in $O_\meet(v) \subseteq \orn{R_1}(v) \cap \orn{R_2}(v)$.
-Let~$u = w_0, w_1, \dots, w_p = v$ denote the vertices along this path.
+There exists a path~$u = w_0, w_1, \dots, w_p = v$ in $O_\meet(v) \subseteq \orn{R_1}(v) \cap \orn{R_2}(v)$.
 By definition of $\orn{R_1}$ and $\orn{R_2}$, there is a path from each $w_i$ to $v$ in both $\rev(R_1)$ and $\rev(R_2)$.
-Since $R_1$ and $R_2$ are transitively closed, each arrow $(w_i,v)$ of $\tc(D)$ is in both $\rev(R_1)$ and $\rev(R_2)$;
-and therefore in $\rev(R_1 \meet R_2) = \rev(R_1) \cap \rev(R_2)$ (\cref{lem:rcl-subsemilattice}).
+Since~$R_1$ and~$R_2$ are both transitively closed, each arrow $(w_i,v)$ of $\tc(D)$ is in both~$\rev(R_1)$ and~$\rev(R_2)$,
+and therefore in $\rev(R_1 \meet R_2) = \rev(R_1) \cap \rev(R_2)$ (by \cref{lem:rcl-subsemilattice}).
 So, $\{u = w_0, w_1, \dots, w_p = v\} \in \Orn(v \in D)$ and each $w_i$ has a directed path to $v$ in $\rev(R_1) \cap \rev(R_2)$.
 By maximality of $\orn{R_1 \meet R_2}(v)$, we deduce $u \in \orn{R_1 \meet R_2}(v)$.
 Thus, we have shown that $O_\meet \leq \orn{R_1 \meet R_2}$.
 
-Now let $u \in \orn{R_1 \meet R_2}(v)$ and
-let $u = w_0, w_1, \dots, w_p = v$ denote the vertices along a path from $u$ to $v$ in $\orn{R_1 \meet R_2}(v)$.
+Conversely, let $u \in \orn{R_1 \meet R_2}(v)$.
+There is a path $u = w_0, w_1, \dots, w_p = v$ in $\orn{R_1 \meet R_2}(v)$.
 Thus, each arrow $(w_i,v)$ of $\tc(D)$ is in $\rev(R_1 \meet R_2) = \rev(R_1) \cap \rev(R_2)$,
 showing that this same path is contained in both $\orn{R_1}(v)$ and $\orn{R_2}(v)$.
 By \cref{thm:Orn-meet_and_join}, $\{u = w_0, w_1, \dots, w_p = v\} \subseteq O_\meet(v)$.
-We have shown that $O_\meet \geq \orn{R_1 \meet R_2}$, and therefore they are equal.
+Thus, we have shown that $O_\meet \geq \orn{R_1 \meet R_2}$.
 \end{proof}
 
 In contrast, the map~$R \mapsto \orn{R}$ is not necessarily a join semilattice morphism from the transitively closed reorientation lattice~$\Rcl(\tc(D))$ to the ornamentation lattice~$\Orn(D)$, as already illustrated in \cref{rem:Reori2OrnSemilatticeMap}.
