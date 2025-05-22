@@ -515,6 +515,15 @@ The map~$R \mapsto \orn{R}$ is an order-preserving surjection from the reorienta
 \end{proposition}
 
 \begin{remark}
+\label{rem:Orn2ReoriMiddle}
+In general, the reorientation~$\reori{O}$ is neither minimal nor maximal among the reorientations~$R$ of~$\tc(D)$ such that~$\orn{R} = O$.
+For instance, for the fiber of the ornamentation $O = \!\!\raisebox{-.25cm}{\includegraphics[scale=.8]{ornamentationI7}}$ contains
+\[
+\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI9}}\!\! \le \reori{O} = \!\!\!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI10}}\!\! \le \!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI11}}
+\]
+\end{remark}
+
+\begin{remark}
 \label{rem:Reori2OrnIntervals}
 The fibers of the surjection~$R \mapsto \orn{R}$ do not all admit a minimum nor a maximum.
 For instance, 
@@ -522,7 +531,7 @@ For instance,
 \item the fiber of \raisebox{-.25cm}{\includegraphics[scale=.8]{ornamentationI5}} has two minima \!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI5}}\!\! and \!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI6}}\!\!\!\!,
 \item the fiber of \raisebox{-.25cm}{\includegraphics[scale=.8]{ornamentationI6}} has two maxima \!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI7}}\!\! and \!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI8}}\!\!\!\!.
 \end{itemize}
-Note that for the maximum, we had to consider a directed graph containing a cycle, due to the following statement.
+Note that for the maximum, we had to consider a directed graph containing a cycle, due to \cref{prop:Reori2OrnMaxTree} below.
 \end{remark}
 
 \begin{definition}
@@ -533,7 +542,7 @@ Let~$\maxreori{O}$ denote the reorientation of~$\tc(T)$ where for each path~$u \
 
 \begin{proposition}
 \label{prop:Reori2OrnMaxTree}
-For any ornamentation~$O$ of a directed tree~$T$, the reorientation~$\maxreori{O}$ is the maximal reorientation~$R$ of~$\tc(T)$ with~$\orn{R} = O$.
+For any ornamentation~$O$ of a directed tree~$T$, the reorientation~$\maxreori{O}$ is the maximum reorientation~$R$ of~$\tc(T)$ with~$\orn{R} = O$.
 \end{proposition}
 
 \begin{proof}
@@ -617,11 +626,11 @@ Then~$u \in O(v)$ and~$v \in O(w)$, so that~$u \in O(w)$ since~$O$ is an ornamen
 Hence~$(u,w) \in \rev(\reori{O})$.
 \end{proof}
 
-This surjection behaves much nicer with respect to \cref{rem:Reori2OrnIntervals,rem:Reori2OrnSemilatticeMap}.
+This surjection behaves much nicer with respect to \cref{rem:Orn2ReoriMiddle,rem:Reori2OrnIntervals,rem:Reori2OrnSemilatticeMap}.
 
 \begin{proposition}
 \label{prop:Reori2OrnMinTC}
-For any ornamentation~$O$ of~$D$, the reorientation~$\reori{O}$ is the minimal transitively closed reorientation~$R$ of~$\tc(T)$ with~$\orn{R} = O$.
+For any ornamentation~$O$ of~$D$, the reorientation~$\reori{O}$ is the minimum transitively closed reorientation~$R$ of~$\tc(T)$ with~$\orn{R} = O$.
 \end{proposition}
 
 \begin{proof}
@@ -661,7 +670,7 @@ Thus, we have shown that $O_\meet \geq \orn{R_1 \meet R_2}$.
 In contrast, the map~$R \mapsto \orn{R}$ is not necessarily a join semilattice morphism from the transitively closed reorientation lattice~$\Rcl(\tc(D))$ to the ornamentation lattice~$\Orn(D)$, as already illustrated in \cref{rem:Reori2OrnSemilatticeMap}.
 
 \begin{proposition}
-\label{prop:Reori2OrnMaxTree}
+\label{prop:ReoriTC2OrnIntervalTree}
 For any ornamentation~$O$ of a directed tree~$T$, the reorientation~$\maxreori{O}$  of~\cref{def:Reori2OrnMaxTree} is transitively closed.
 Hence, the transitively closed reorientations~$R$ of~$\tc(T)$ with~${\orn{R} = O}$ form an interval of the transitively closed reorientation lattice~$\Rcl(\tc(T))$.
 \end{proposition}
