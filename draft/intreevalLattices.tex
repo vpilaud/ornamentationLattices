@@ -164,6 +164,7 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\aorn}[1]{\mymap{AO}{#1}}  % acyclic ornamentation
 \DeclareMathOperator{\Reori}{\c{R}}  % reorientations
 \newcommand{\reori}[1]{\mymap{R}{#1}}  % reorientation
+\newcommand{\maxreori}[1]{\smash{\mymap{R}{#1}^{\uparrow}}}  % maximal reorientation
 \DeclareMathOperator{\AReori}{\c{AR}}  % acyclic reorientations
 \newcommand{\areori}[1]{\mymap{AR}{#1}}  % acyclic reorientation
 \DeclareMathOperator{\Rcl}{\c{R}^{cl}}  % transitively closed reorientations
@@ -480,7 +481,7 @@ If~$R_1 \le R_2$, then $\rev(R_1) \subseteq \rev(R_2)$, hence any path in~$\rev(
 
 \begin{definition}
 For an ornamentation~$O$ of~$D$, we define a reorientation~$\reori{O}$ of~$\tc(D)$ where for each~$(u,v) \in \tc(D)$, we have~$(u,v) \in \rev(\reori{O})$ if and only if~$u \in O(v)$.
-\vincent{This map is not compatible with acyclicity later...}
+\vincent{This map is not compatible with acyclicity later... But I don't see how to fix that.}
 \end{definition}
 
 \begin{lemma}
@@ -509,16 +510,83 @@ Since~$O(v)$ is an ornament of~$D$ at~$v$, we conclude that~$\orn{\reori{O}}(v) 
 To sum up, we obtained the following statement.
 
 \begin{proposition}
+\label{prop:Reori2Orn}
 The map~$R \mapsto \orn{R}$ is an order-preserving surjection from the reorientation lattice~$\Reori(\tc(D))$ to the ornamentation lattice~$\Orn(D)$.
 \end{proposition}
 
-Unfortunately, this surjection does not preserve the lattice structure, as illustrated by the following example.
+\begin{remark}
+\label{rem:Reori2OrnIntervals}
+The fibers of the surjection~$R \mapsto \orn{R}$ do not all admit a minimum nor a maximum.
+For instance, 
+\begin{itemize}
+\item the fiber of \raisebox{-.25cm}{\includegraphics[scale=.8]{ornamentationI5}} has two minima \!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI5}}\!\! and \!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI6}}\!\!\!\!,
+\item the fiber of \raisebox{-.25cm}{\includegraphics[scale=.8]{ornamentationI6}} has two maxima \!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI7}}\!\! and \!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI8}}\!\!\!\!.
+\end{itemize}
+Note that for the maximum, we had to consider a directed graph containing a cycle, due to the following statement.
+\end{remark}
 
-\begin{example}
-\vincent{todo}
-\end{example}
+\begin{definition}
+\label{def:Reori2OrnMaxTree}
+Consider an ornamentation~$O$ of a directed (but not necessarily rooted) tree~$T$.
+Let~$\maxreori{O}$ denote the reorientation of~$\tc(T)$ where for each path~$u \to u' \to \dots \to v$ in~$T$ (note that $u'$ might coincide with~$v$), the edge~$(u,v)$ is in~$\rev(\maxreori{O})$ if and only if there is no~$w \in V$ such that~$u \notin O(w)$ while~$u', v \in O(w)$.
+\end{definition}
 
-To correct this default, we restrict our attention to transitively closed reorientations.
+\begin{proposition}
+\label{prop:Reori2OrnMaxTree}
+For any ornamentation~$O$ of a directed tree~$T$, the reorientation~$\maxreori{O}$ is the maximal reorientation~$R$ of~$\tc(T)$ with~$\orn{R} = O$.
+\end{proposition}
+
+\begin{proof}
+We first prove that~$\orn{\maxreori{O}} = O$.
+Fix~$u,v \in V$.
+Observe first that~$u \in O(v)$ implies~$(u,v) \in \rev(\maxreori{O})$ since~$v \in O(w)$ implies~$u \in O(v) \subseteq O(w)$ for any~$w \in V$, so that~$u \in  \orn{\maxreori{O}}(v)$ by definition.
+Conversely, assume that~$u \notin O(v)$ and consider such an~$u$ which is closest to~$v$.
+Consider the path~$u \to u' \to \dots \to v$ in~$T$.
+For any~$v'$ between~$u'$ and~$v$, we have~$u \notin O(v)$ while~$u', v' \in O(v)$, which implies that~$(u,v') \notin \rev(\maxreori{O})$.
+Hence, there is no path from~$u$ to~$v$ in~$\rev(\maxreori{O})$, and thus~$u \notin \orn{\maxreori{O}}(v)$.
+We conclude that~$u \in O(v) \iff u \in \orn{\maxreori{O}}(v)$, that is~$O = \orn{\maxreori{O}}$.
+
+Consider now any reorientation~$R$ of~$\tc(T)$ such that~$\orn{R} = O$.
+Assume that there is~$u,v \in V$ such that~$(u,v) \in \rev(R) \ssm \rev(\maxreori{O})$.
+Consider the path~$u \to u' \to \dots \to v$ in~$T$, and let~$w \in V$ be such that~$u \notin O(w)$ while~$u', v \in O(w)$.
+Since~$\orn{R} = O$ and~$v \in O(w)$, there is a path from~$v$ to~$w$ in~$\rev(R)$, hence from~$u$ to~$v$ in~$\rev(R)$ since~$(u,v) \in \rev(R)$.
+Moreover, since~$(u,u') \in T$ and~$u' \in O(w)$, the set~$O(w) \cup \{u\}$ is an ornament of~$T$ at~$w$.
+Hence, $O(w) \cup \{u\}$ contradicts the maximality of~$\orn{R}(w)$.
+We conclude that if~$\orn{R} = O$, then~$\rev(R) \subseteq \rev(\maxreori{O})$, hence~$R \le \maxreori{O}$.
+\end{proof}
+
+\begin{remark}
+\label{rem:Reori2OrnSemilatticeMap}
+Even for directed trees, the surjection~$R \mapsto \orn{R}$ does not preserve neither the meet nor the join semilattice structure.
+For instance,
+
+\centerline{
+\begin{tabular}{c@{$\;\join\;$}c@{\;}c@{\;}c@{\qquad\text{and}\qquad}c@{$\;\meet\;$}c@{\;}c@{\;}c@{}c}
+	\raisebox{-.2cm}{\includegraphics[scale=.8]{reorientationI1}} &
+	\raisebox{-.2cm}{\includegraphics[scale=.8]{reorientationI2}} &
+	$=$ &
+	\raisebox{-.2cm}{\includegraphics[scale=.8]{reorientationI3}} &
+	\raisebox{-.2cm}{\includegraphics[scale=.8]{reorientationI3}} &
+	\raisebox{-.2cm}{\includegraphics[scale=.8]{reorientationI4}} &
+	$=$ &
+	\raisebox{-.2cm}{\includegraphics[scale=.8]{reorientationI2}} &
+	,
+	\\
+	\raisebox{-.2cm}{\includegraphics[scale=.8]{ornamentationI1}} &
+	\raisebox{-.2cm}{\includegraphics[scale=.8]{ornamentationI2}} &
+	$\ne$ &
+	\raisebox{-.2cm}{\includegraphics[scale=.8]{ornamentationI3}} &
+	\raisebox{-.2cm}{\includegraphics[scale=.8]{ornamentationI3}} &
+	\raisebox{-.2cm}{\includegraphics[scale=.8]{ornamentationI4}} &
+	$\ne$ &
+	\raisebox{-.2cm}{\includegraphics[scale=.8]{ornamentationI2}} &
+	.
+\end{tabular}
+}
+
+\medskip\noindent
+To correct this default, we can restrict our attention to transitively closed reorientations of~$\tc(D)$.
+\end{remark}
 
 \begin{definition}
 A reorientation~$R$ of~$\tc(D)$ is \defn{transitively closed} if~$\rev(R)$ is transitively closed %, that is~$(u,v), (v,w) \in \rev(R)$ implies $(u,w) \in \rev(R)$.
@@ -532,14 +600,16 @@ $\Rcl(\tc(D))$ (resp.~$\Rco(\tc(D))$) induces a meet (resp.~join) subsemilattice
 \end{lemma}
 
 \begin{proof}
-As the intersection of two transitively closed relations is transitively closed, $R, R' \in \Rcl(\tc(D))$ implies $R \meet R' \in \Rcl(\tc(D))$.
+As the intersection of two transitively closed relations is transitively closed, $R_1, R_2 \in \Rcl(\tc(D))$ implies $R_1 \meet R_2 \in \Rcl(\tc(D))$.
 As~$\tc(D)$ is transitively closed, the maximal reorientation of~$\tc(D)$ is transitively closed, so that $\Rcl(\tc(D))$ is a bounded meet semilattice, hence a lattice.
 The proof for~$\Rco(\tc(D))$ is symmetric.
 \end{proof}
 
-\begin{lemma}
-For any ornamentation~$O$ of~$D$, the reorientation~$\reori{O}$ is transitively closed. Hence, the map~$R \mapsto \orn{R}$ restricts to a surjection from the transitively closed reorientation lattice~$\Rcl(\tc(D))$ to the ornamentation lattice~$\Orn(D)$.
-\end{lemma}
+\begin{proposition}
+\label{prop:ReoriTC2Orn}
+For any ornamentation~$O$ of~$D$, the reorientation~$\reori{O}$ is transitively closed.
+Hence, the map~$R \mapsto \orn{R}$ restricts to a surjection from the transitively closed reorientation lattice~$\Rcl(\tc(D))$ to the ornamentation lattice~$\Orn(D)$.
+\end{proposition}
 
 \begin{proof}
 Let~$u,v,w \in V$ such that~$(u,v), (v,w) \in \rev(\reori{O})$.
@@ -547,35 +617,66 @@ Then~$u \in O(v)$ and~$v \in O(w)$, so that~$u \in O(w)$ since~$O$ is an ornamen
 Hence~$(u,w) \in \rev(\reori{O})$.
 \end{proof}
 
+This surjection behaves much nicer with respect to \cref{rem:Reori2OrnIntervals,rem:Reori2OrnSemilatticeMap}.
+
 \begin{proposition}
+\label{prop:Reori2OrnMinTC}
+For any ornamentation~$O$ of~$D$, the reorientation~$\reori{O}$ is the minimal transitively closed reorientation~$R$ of~$\tc(T)$ with~$\orn{R} = O$.
+\end{proposition}
+
+\begin{proof}
+Consider any transitively closed reorientation~$R$ of~$\tc(D)$ such that~$\orn{R} = O$.
+Let~$u,v \in V$ be such that~$(u,v) \in \rev(\reori{O})$, that is, such that~$u \in O(v)$.
+By definition of~$\orn{R}(v) = O(v)$, there is a directed path from~$u$ to~$v$ in~$\rev(R)$.
+As $R$ is transitively closed, this implies that~$(u,v) \in \rev(R)$.
+We conclude that~$\rev(\reori{O}) \subseteq \rev(R)$, so that~$\reori{O} \le R$.
+\end{proof}
+
+\begin{proposition}
+\label{prop:Reori2OrnMeetSemilaticeTC}
 The map~$R \mapsto \orn{R}$ is a meet semilattice morphism from the transitively closed reorientation lattice~$\Rcl(\tc(D))$ to the ornamentation lattice~$\Orn(D)$.
 \end{proposition}
 
 \begin{proof}
 \vincent{Todo. See notes of Jose and Antoine.}
 \jose{I have added the details, feel free to rewrite if necessary.}
-Let $R$ and $R'$ be two transitively closed reorientations of $\tc(D)$, and $O_\meet = \orn{R} \meet \orn{R'}$.
-We want to show that $O_\meet = \orn{R \meet R'}$.
+Let $R_1$ and $R_2$ be two transitively closed reorientations of $\tc(D)$, and $O_\meet = \orn{R_1} \meet \orn{R_2}$.
+We want to show that $O_\meet = \orn{R_1 \meet R_2}$.
 
 Let $u \in O_\meet(v)$.
-Then, there exists a path from $u$ to $v$ in $O_\meet(v) \subseteq \orn{R}(v) \cap \orn{R'}(v)$.
+Then, there exists a path from $u$ to $v$ in $O_\meet(v) \subseteq \orn{R_1}(v) \cap \orn{R_2}(v)$.
 Let~$u = w_0, w_1, \dots, w_p = v$ denote the vertices along this path.
-By definition of $\orn{R}$ and $\orn{R'}$, there is a path from each $w_i$ to $v$ in both $\rev(R)$ and $\rev(R')$.
-Since $R$ and $R'$ are transitively closed, each arrow $(w_i,v)$ of $\tc(D)$ is in both $\rev(R)$ and $\rev(R')$;
-and therefore in $\rev(R \meet R') = \rev(R) \cap \rev(R')$ (\cref{lem:rcl-subsemilattice}).
-So, $\{u = w_0, w_1, \dots, w_p = v\} \in \Orn(v \in D)$ and each $w_i$ has a directed path to $v$ in $\rev(R) \cap \rev(R')$.
-By maximality of $\orn{R \meet R'}(v)$, we deduce $u \in \orn{R \meet R'}(v)$.
-Thus, we have shown that $O_\meet \leq \orn{R \meet R'}$.
+By definition of $\orn{R_1}$ and $\orn{R_2}$, there is a path from each $w_i$ to $v$ in both $\rev(R_1)$ and $\rev(R_2)$.
+Since $R_1$ and $R_2$ are transitively closed, each arrow $(w_i,v)$ of $\tc(D)$ is in both $\rev(R_1)$ and $\rev(R_2)$;
+and therefore in $\rev(R_1 \meet R_2) = \rev(R_1) \cap \rev(R_2)$ (\cref{lem:rcl-subsemilattice}).
+So, $\{u = w_0, w_1, \dots, w_p = v\} \in \Orn(v \in D)$ and each $w_i$ has a directed path to $v$ in $\rev(R_1) \cap \rev(R_2)$.
+By maximality of $\orn{R_1 \meet R_2}(v)$, we deduce $u \in \orn{R_1 \meet R_2}(v)$.
+Thus, we have shown that $O_\meet \leq \orn{R_1 \meet R_2}$.
 
-Now let $u \in \orn{R \meet R'}(v)$ and
-let $u = w_0, w_1, \dots, w_p = v$ denote the vertices along a path from $u$ to $v$ in $\orn{R \meet R'}(v)$.
-Thus, each arrow $(w_i,v)$ of $\tc(D)$ is in $\rev(R \meet R') = \rev(R) \cap \rev(R')$,
-showing that this same path is contained in both $\orn{R}(v)$ and $\orn{R'}(v)$.
+Now let $u \in \orn{R_1 \meet R_2}(v)$ and
+let $u = w_0, w_1, \dots, w_p = v$ denote the vertices along a path from $u$ to $v$ in $\orn{R_1 \meet R_2}(v)$.
+Thus, each arrow $(w_i,v)$ of $\tc(D)$ is in $\rev(R_1 \meet R_2) = \rev(R_1) \cap \rev(R_2)$,
+showing that this same path is contained in both $\orn{R_1}(v)$ and $\orn{R_2}(v)$.
 By \cref{thm:Orn-meet_and_join}, $\{u = w_0, w_1, \dots, w_p = v\} \subseteq O_\meet(v)$.
-We have shown that $O_\meet \geq \orn{R \meet R'}$, and therefore they are equal.
+We have shown that $O_\meet \geq \orn{R_1 \meet R_2}$, and therefore they are equal.
 \end{proof}
 
-\vincent{There are a lot of things discussed in Jose and Antoine's file that should be added here...}
+In contrast, the map~$R \mapsto \orn{R}$ is not necessarily a join semilattice morphism from the transitively closed reorientation lattice~$\Rcl(\tc(D))$ to the ornamentation lattice~$\Orn(D)$, as already illustrated in \cref{rem:Reori2OrnSemilatticeMap}.
+
+\begin{proposition}
+\label{prop:Reori2OrnMaxTree}
+For any ornamentation~$O$ of a directed tree~$T$, the reorientation~$\maxreori{O}$  of~\cref{def:Reori2OrnMaxTree} is transitively closed.
+Hence, the transitively closed reorientations~$R$ of~$\tc(T)$ with~${\orn{R} = O}$ form an interval of the transitively closed reorientation lattice~$\Rcl(\tc(T))$.
+\end{proposition}
+
+\begin{proof}
+Assume that there is a directed path~$u \to u' \to \dots \to v$ in~$T$ such that~$(u,v) \notin \maxreori{O}$.
+Let~$w \in V$ be such that $u \notin O(w)$ but~$u',v' \in O$.
+Then, for any~$v'$ between~$u'$ and~$v$, we have~$v' \in O(w)$, hence~$(u,v') \not \in \maxreori{O}$.
+We thus obtained that~$(u,v'), (v',v) \in \maxreori{O}$ implies~$(u,v) \in \maxreori{O}$, that is, $\maxreori{O}$ is transitively closed.
+\vincent{not only it has a max, but it has a Tamari max....}
+We conclude that the fiber of~$O$ is an interval, since it has a minimum by \cref{prop:Reori2OrnMinTC} and a maximum by \cref{prop:Reori2OrnMaxTree}.
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -613,7 +714,7 @@ We first observe that any sourcing~$S$ of~$\PP(D)$ can be lifted to a reorientat
 \begin{definition}
 \label{def:Sour2Reori}
 For a sourcing~$S$ of~$\PP(D)$, we denote by~$\reori{S}$ the reorientation of~$\tc(D)$ defined by~$\rev(\reori{S}) = \rev(S)$.
-\vincent{This map is not compatible with acyclicity later...}
+\vincent{This map is not compatible with acyclicity later... But I don't see how to fix that.}
 \end{definition}
 
 \begin{lemma}
@@ -1183,6 +1284,10 @@ We conclude that~$B_2 = C^3 (1+y \, C)$.
 
 \section{Directed trees}
 \label{sec:directedTrees}
+
+\begin{proposition}
+\end{proposition}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
