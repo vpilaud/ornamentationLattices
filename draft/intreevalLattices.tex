@@ -307,6 +307,7 @@ In all our pictures, $V = [n]$ and the edges are increasing (so we do not need t
 The following definition, first introduced for rooted trees in~\cite{} and extended to arbitrary directed graphs in~\cite{}, is illustrated in \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX,fig:ornamentationsD}
 
 \begin{definition}
+\label{def:Orn}
 An \defn{ornament} at a vertex $v$ of~$D$ is a subset~$U \subseteq V$ such that there is a path from any $u \in U$ to~$v$ in the directed subgraph of~$D$ induced by~$U$.
 An \defn{ornamentation} of~$D$ is a map $O$ on $V$ which assigns an ornament~$O(v)$ at each vertex~$v \in V$ such that~$u \in O(v) \implies O(u) \subseteq O(v)$ for all~$u,v \in V$.
 We denote by~$\Orn(v \in D)$ the set of ornaments at a vertex~$v$ of~$D$ and by~$\Orn(D)$ the set of ornamentations of~$D$.
@@ -444,6 +445,7 @@ The Hasse diagram of the ornamentation lattice of any directed graph is isomorph
 \label{sec:reorientations}
 
 \begin{definition}
+\label{def:Reori}
 A \defn{reorientation}~$R$ of a directed graph~$E$ is a directed graph obtained from~$E$ by reversing a subset~$\rev(R)$ of arrows of~$E$.
 The \defn{reorientation lattice}~$\Reori(E)$ of~$E$ is the boolean lattice of reorientations of~$E$, ordered by inclusion of subsets of reversed arrows, meaning $R_1 \le R_2$ if ${\rev(R_1) \subseteq \rev(R_2)}$.
 \end{definition}
@@ -480,6 +482,7 @@ If~$R_1 \le R_2$, then $\rev(R_1) \subseteq \rev(R_2)$, hence any path in~$\rev(
 \end{proof}
 
 \begin{definition}
+\label{def:Orn2Reori}
 For an ornamentation~$O$ of~$D$, we define a reorientation~$\reori{O}$ of~$\tc(D)$ where for each~$(u,v) \in \tc(D)$, we have~$(u,v) \in \rev(\reori{O})$ if and only if~$u \in O(v)$.
 \vincent{This map is not compatible with acyclicity later... But I don't see how to fix that.}
 \end{definition}
@@ -495,7 +498,7 @@ If~$O_1 \le O_2$, then $O_1(v) \subseteq O_2(v)$ for all~$v \in V$, thus~$\rev(\
 
 \begin{lemma}
 \label{lem:Orn2Reori2}
-The map~$O \mapsto \reori{O}$ is a section of the map~$R \mapsto \orn{R}$.
+For any ornamentation~$O$ of~$D$, we have~$\orn{\reori{O}} = O$. In other words, the map~$O \mapsto \reori{O}$ is a section of the map~$R \mapsto \orn{R}$.
 \end{lemma}
 
 \begin{proof}
@@ -598,6 +601,7 @@ To correct this default, we can restrict our attention to transitively closed re
 \end{remark}
 
 \begin{definition}
+\label{def:transitivelyClosed}
 A reorientation~$R$ of~$\tc(D)$ is \defn{transitively closed} if~$\rev(R)$ is transitively closed %, that is~$(u,v), (v,w) \in \rev(R)$ implies $(u,w) \in \rev(R)$.
 and \defn{transitively coclosed} if the complement~$\tc(D) \ssm \rev(R)$ is transitively closed.
 We denote by~$\Rcl(\tc(D))$ and $\Rco(\tc(D))$ the sets of transitively closed and transitively coclosed reorientations of $\tc(D)$ respectively.
@@ -613,6 +617,11 @@ As the intersection of two transitively closed relations is transitively closed,
 As~$\tc(D)$ is transitively closed, the maximal reorientation of~$\tc(D)$ is transitively closed, so that $\Rcl(\tc(D))$ is a bounded meet semilattice, hence a lattice.
 The proof for~$\Rco(\tc(D))$ is symmetric.
 \end{proof}
+
+\begin{remark}
+Observe however that~$\Rcl(\tc(D)) \cap \Rco(\tc(D))$ may be neither a meet nor a join subsemilattice of~$\Reori(\tc(D))$.
+\vincent{todo if we indeed keep the definition of the transitively coclosed reorientations.}
+\end{remark}
 
 \begin{proposition}
 \label{prop:ReoriTC2Orn}
@@ -684,6 +693,8 @@ We thus obtained that~$(u,v'), (v',v) \in \maxreori{O}$ implies~$(u,v) \in \maxr
 We conclude that the fiber of~$O$ is an interval, since it has a minimum by \cref{prop:Reori2OrnMinTC} and a maximum by \cref{prop:Reori2OrnMaxTree}.
 \end{proof}
 
+\vincent{Can we say similar things about the restriction of the map~$R \mapsto \orn{R}$ to transitively coclosed reorientations of~$\tc(D)$? If not, we should only define transitively closed reorientations...}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -695,6 +706,7 @@ We now assume that~$V$ is totally ordered, say that~$V = [n]$ with the natural o
 %We now assume that~$D$ is an increasing graph on~$V = [n]$.
 
 \begin{definition}
+\label{def:Sour}
 A \defn{sourcing}~$S$ of a hypergraph~$\HH$ on~$V$ is a map~$S : \HH \to V$ such that~$S(H) \in H$ for all hyperedges~$H \in \HH$.
 We denote by~$\rev(S)$ the pairs~$(u,v) \in V^2$ with~$u < v$ and such that there is~$H \in \HH$ with~$u \in H$ and~$v = S(H)$,
 The \defn{sourcing lattice}~$\Sour(\HH)$ is the lattice of sourcings of~$\HH$ ordered componentwise, meaning~$S_1 \le S_2$ if~$S_1(H) \le S_2(H)$ for all~$H \in \HH$.
@@ -712,7 +724,8 @@ In other words, $\Sour(\HH)$ is the Cartesian product of the subchains of~$V$ in
 We now assume that~$D$ is an increasing graph on~$V = [n]$, and we consider sourcings of the path hypergraph of~$D$.
 
 \begin{definition}
-The \defn{path hypergraph} of a directed graph~$D$ is the collection~$\PP$(D) of vertex sets of directed paths in~$D$.
+\label{def:pathHypergraph}
+The \defn{path hypergraph} of a directed graph~$D$ is the collection~$\PP(D)$ of vertex sets of directed paths in~$D$.
 \end{definition}
 
 We first observe that any sourcing~$S$ of~$\PP(D)$ can be lifted to a reorientation~$\reori{S}$ of~$\tc(D)$
@@ -772,7 +785,9 @@ Follows from~\cref{lem:Reori2Orn2,lem:Sour2Reori,lem:Sour2Orn1}.
 \end{proof}
 
 \begin{definition}
+\label{def:Orn2Sour}
 For an ornamentation~$O$ of~$D$, we define a sourcing~$\sour{O}$ of~$\PP(D)$ where the source~$\sour{O}(P)$ for a path~$P$ from~$u$ to~$v$ in~$D$ is the maximal~$w \in P$ such that~$u \in O(w)$.
+\vincent{This map is not compatible with acyclicity later... But I don't see how to fix that.}
 \end{definition}
 
 \begin{lemma}
@@ -789,7 +804,7 @@ Therefore, $\sour{O_1}(P) \le \sour{O_2}(P)$ for any path~$P \in \PP(D)$, hence~
 
 \begin{lemma}
 \label{lem:Orn2Sour2}
-The map~$O \mapsto \sour{O}$ is a section of the map~$S \mapsto \orn{S}$.
+For any ornamentation~$O$ of~$D$, we have~$\orn{\sour{O}} = O$. In other words, the map~$O \mapsto \sour{O}$ is a section of the map~$S \mapsto \orn{S}$.
 \end{lemma}
 
 \begin{proof}
@@ -803,6 +818,24 @@ We conclude that $u \in O(v)$ if and only if there is a path from~$u$ to~$v$ in~
 Since~$O(v)$ is an ornament of~$D$ at~$v$, we conclude that~$\orn{\sour{O}}(v) = O(v)$.
 \end{proof}
 
+\begin{lemma}
+\label{lem:Orn2Sour3}
+For any ornamentation~$O$ of~$D$, we have~$\reori{O} = \reori{\sour{O}}$.
+\end{lemma}
+
+\begin{proof}
+As~$\rev(\reori{O}) = \set{(u,v)}{u \in O(v)}$ by \cref{def:Orn2Reori} and~$\rev(\reori{\sour{O}}) = \rev(\sour{O})$ by \cref{def:Sour2Reori}, we just need to prove that~$(u,v) \in \rev(\sour{O}) \iff u \in O(v)$.
+By \cref{def:Sour}, $(u,v) \in \rev(\sour{O})$ if and only if there is~$P \in \PP(D)$ such that~$u \in P$ and~$v = \sour{O}(P)$.
+If there is a path~$P$ with~$u \in P$ and~$v = \sour{O}(P)$, then~$u \in O(v)$ by \cref{def:Orn2Sour}.
+Conversely, if~$u \in O(v)$, there is a path~$P$ from~$u$ to~$v$ in~$O(v)$.
+For this path, we have~$u \in P$ and~$v = \sour{O}(P)$ by \cref{def:Orn2Sour} since~$u \in O(v)$.
+\end{proof}
+
+\begin{remark}
+Note however that there are sourcings~$S$ of~$\PP(D)$ with~$\reori{S} \ne \reori{\orn{S}}$.
+\vincent{todo}
+\end{remark}
+
 To sum up, we obtained the following statement.
 
 \begin{proposition}
@@ -815,7 +848,7 @@ For instance, $\orn{S}$ is the maximal ornamentation of~$D$ for any sourcing~$S$
 In contrast, we will see in \cref{sec:acyclic} that~$S \mapsto \orn{S}$ is injective on acyclic sourcings of~$\PP(D)$.
 \end{remark}
 
-\vincent{We can play the same game with transitively closed sourcings~$S$, meaning for which $\rev(S)$ is transitively closed...}
+\vincent{We can play the same game with transitively closed sourcings~$S$, meaning for which $\rev(S)$ is transitively closed... Maybe just a remark about it is enough...}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -840,6 +873,7 @@ We then consider the acyclic reorientation poset~$\AReori(\tc(D))$, the acyclic 
 Acyclic reorientations of directed acyclic graphs is a classical subject, see for instance~\cite{Pilaud-acyclicReorientationLattices}.
 
 \begin{definition}
+\label{def:AReori}
 A reorientation of a directed graph~$E$ is \defn{acyclic} if it contains no directed cycle.
 The \defn{acyclic reorientation poset}~$\AReori(E)$ is the subposet of the reorientation lattice~$\Reori(E)$ induced by acyclic reorientations.
 \end{definition}
@@ -868,6 +902,7 @@ For a permutation~$\pi$ of~$[n]$, we denote by~$\areori{\pi}$ the reorientation 
 \end{definition}
 
 \begin{proposition}
+\label{prop:Perm2AReori}
 The map~$\pi \mapsto \areori{\pi}$ is an order-preserving surjection from the weak order~$\fS_n$ to the acyclic reorientation poset~$\AReori(\tc(D))$.
 \end{proposition}
 
@@ -882,6 +917,7 @@ It is surjective since the fiber of any reorientation~$R$ is the set of linear e
 Acyclic sourcings of hypergraphs were introduced in~\cite{BenedettiBergeronMachacek,BergeronPilaud} as combinatorial models for the vertex sets of hypergraphic polytopes.
 
 \begin{definition}
+\label{def:ASour}
 A sourcing~$S$ of a hypergraph~$\HH$ is \defn{acyclic} if there is no distinct~$H_0, \dots, H_k \in \HH$ such that~$S(H_{i-1}) \in H_i \ssm \{S(H_i)\}$ for all~$i \in [k]$ and~$S(H_k) \in H_0 \ssm \{S(H_0)\}$.
 The \defn{acyclic sourcing poset}~$\ASour(\HH)$ is the subposet of the sourcing lattice~$\Sour(\HH)$ induced by acyclic sourcings.
 \end{definition}
@@ -908,11 +944,12 @@ We have observed in \cref{sec:sourcings} that there is no natural surjection fro
 We now recall that there is such a surjection when focussing on acyclic reorientations and acyclic sourcings.
 
 \begin{definition}
+\label{def:AReori2ASour}
 For an acyclic reorientation~$R$ of~$\tc(D)$, we denote by~$\asour{R}$ the sourcing on~$\PP(D)$ where~$\asour{R}(P)$ is the source of~$P$ in~$R$ (it is well-defined since any path in~$D$ forms a clique in~$\tc(D)$).
 \end{definition}
 
 \begin{lemma}
-\label{lem:rev}
+\label{lem:AReori2ASour1}
 For any acyclic reorientation~$R$ of~$\tc(D)$, we have~$\rev(\asour{R}) \subseteq \rev(R)$ .
 \end{lemma}
 
@@ -924,7 +961,7 @@ Since~$P$ forms a clique in~$\tc(D)$, and $R$ is acyclic, we conclude that~$(u,v
 \end{proof}
 
 \begin{lemma}
-\label{lem:AReori2ASour1}
+\label{lem:AReori2ASour2}
 For any acyclic reorientation~$R$ of~$\tc(D)$, the sourcing~$\asour{R}$ is acyclic.
 \end{lemma}
 
@@ -933,7 +970,7 @@ If~$P_0, \dots, P_k \in \PP(D)$ are such that~$\asour{R}(P_{i-1}) \in P_i \ssm \
 \end{proof}
 
 \begin{lemma}
-\label{lem:AReori2ASour2}
+\label{lem:AReori2ASour3}
 The map~$R \mapsto \asour{R}$ is order-preserving.
 \end{lemma}
 
@@ -942,10 +979,14 @@ The map~$R \mapsto \asour{R}$ is order-preserving.
 If~$R_1 \le R_2$, then~$\rev(R_1) \subseteq \rev(R_2)$, hence the source of any path~$P$ in~$R_1$ is smaller than the source of~$P$ in~$R_2$, hence~$\asour{R_1} \le \asour{R_2}$.
 \end{proof}
 
-We now define a section of the map~$R \mapsto \asour{R}$.
+\begin{remark}
 Note that the reorientation~$\reori{S}$ of~$\tc(D)$ defined in \cref{def:Sour2Reori} by~$\rev(\reori{S}) = \rev(S)$ is not always acyclic even when~$S$ is acyclic.
+\vincent{todo}
+We thus need to define a section of the map~$R \mapsto \asour{R}$.
+\end{remark}
 
 \begin{definition}
+\label{def:ASour2AReori}
 Let~$S$ be an acyclic sourcing of~$\PP(D)$.
 We denote by $\arr(S)$ the pairs~$(u,v) \in V^2$ such that there is~$H \in \HH$ with~$u \in H$ and~$v = S(H)$.
 Let~$\areori{S}$ be the reorientation of~$\tc(D)$ defined by~$\rev(\areori{S}) = \tc(\arr(S)) \cap \tc(D)$.
@@ -973,7 +1014,7 @@ The map~$S \mapsto \areori{S}$ is order-preserving.
 
 \begin{lemma}
 \label{lem:ASour2AReori3}
-The map~$S \mapsto \areori{S}$ is a section of the map~$R \mapsto \asour{R}$.
+For any acyclic sourcing~$S$ of~$\PP(D)$, we have~$\asour{\areori{S}} = S$. In other words, the map~$S \mapsto \areori{S}$ is a section of the map~$R \mapsto \asour{R}$.
 \end{lemma}
 
 \begin{proof}
@@ -983,6 +1024,7 @@ The map~$S \mapsto \areori{S}$ is a section of the map~$R \mapsto \asour{R}$.
 To sum up, we obtained the following statement.
 
 \begin{proposition}
+\label{prop:AReori2ASour}
 The map~$R \mapsto \asour{R}$ is an order-preserving surjection from the acyclic reorientation poset~$\AReori(\tc(D))$ to the acyclic sourcing poset~$\ASour(\PP(D))$.
 \end{proposition}
 
@@ -1008,12 +1050,12 @@ The statement thus follows directly from the definition of~$\orn{R}(v)$ (resp.~$
 \end{proof}
 
 \begin{lemma}
-\label{lem:AOrn1}
+\label{lem:AReori2ASour2AOrn}
 For any acyclic reorientation~$R$ of~$\tc(D)$, we have~$\orn{R} = \orn{\asour{R}}$.
 \end{lemma}
 
 \begin{proof}
-Since~$R$ is acyclic, we have~$\rev(\asour{R}) \subseteq \rev(R)$ by \cref{lem:rev}, hence~$\orn{\asour{R}}(v) \subseteq \orn{R}(v)$ for any~$v \in V$.
+Since~$R$ is acyclic, we have~$\rev(\asour{R}) \subseteq \rev(R)$ by \cref{lem:AReori2ASour1}, hence~$\orn{\asour{R}}(v) \subseteq \orn{R}(v)$ for any~$v \in V$.
 Conversely, consider~$u,v \in V$ such that~$u \in \orn{R}(v)$.
 Let~$P$ be a path from~$u$ to~$v$ in~$\orn{R}(v)$.
 By \cref{lem:acyclicSimplifiesDef}, we have~$(w,v) \in \rev(R)$ for all~$w \in P$.
@@ -1033,50 +1075,46 @@ We conclude that~$\orn{R}(v) \subseteq \rev(\asour{R})$, hence that~$\orn{R}(v) 
 %
 %These lemmas enable us to define acyclic ornamentations.
 
-\begin{lemma}
-\label{lem:ASour2AOrn1}
-The map~$S \mapsto \orn{S}$ is injective on acyclic sourcings.
-\end{lemma}
-
-\begin{proof}
-Let~$S_1 \ne S_2$ be two distinct acyclic sourcings of~$\PP(D)$.
-There exists~$P \in \PP(D)$ such that~$u \eqdef S_1(P) \ne S_2(P) \defeq v$.
-We can assume by symmetry that~$u < v$.
-Then~$u \notin \orn{S_1}(v)$ (by acyclicity of~$S_1$) while~$u \in \orn{S_2}(v)$ (by definition of~$\orn{S_2}$).
-Hence~$\orn{S_1} \ne \orn{S_2}$.
-\end{proof}
-
-\begin{lemma}
-\label{lem:ASour2AOrn2}
-For any acyclic sourcing~$S$ of~$\PP(D)$, we have~$\sour{\orn{S}} = S$.
-\end{lemma}
-
-\begin{proof}
-\vincent{todo: I am not even sure that it is true...}
-\end{proof}
-
+%\begin{lemma}
+%\label{lem:ASour2AOrn2}
+%For any acyclic sourcing~$S$ of~$\PP(D)$, we have~$\sour{\orn{S}} = S$.
+%\end{lemma}
+%
+%\begin{proof}
+%\vincent{todo: I am not even sure that it is true...}
+%\end{proof}
+%
 \begin{lemma}
 \label{lem:AOrn2}
 The following conditions are equivalent for an ornamentation~$O$ of~$D$:
 \begin{enumerate}[(i)]
 \item there exists an acyclic reorientation~$R$ of~$\tc(D)$ such that~$\orn{R} = O$,
-\item there exists an acyclic sourcing~$S$ of~$\PP(D)$ such that~$\orn{S} = O$,
-\item the sourcing~$\sour{O}$ is acyclic.
+\item there exists an acyclic sourcing~$S$ of~$\PP(D)$ such that~$\orn{S} = O$.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-(i) $\Rightarrow$ (ii): If~$R$ is an acyclic reorientation of~$\tc(D)$ such that~$\orn{R} = O$, then~$S \eqdef \asour{R}$ is an acyclic sourcing of~$\PP(D)$ such that~$\orn{S} = \orn{R} = O$ by \cref{lem:AOrn1}.
+(i) $\Rightarrow$ (ii): If~$R$ is an acyclic reorientation of~$\tc(D)$ such that~$\orn{R} = O$, then~$S \eqdef \asour{R}$ is an acyclic sourcing of~$\PP(D)$ such that~$\orn{S} = \orn{\asour{R}} = \orn{R} = O$ by \cref{lem:AReori2ASour2AOrn}.
 
 \medskip\noindent
-(ii) $\Rightarrow$ (iii): If~$S$ is an acyclic sourcing of~$\PP(D)$ such that~$\orn{S} = O$, then~$\sour{O} = \sour{\orn{S}} = S$ by \cref{lem:ASour2AOrn2}, so that~$\sour{O} = S$ is acyclic.
-
-\medskip\noindent
-(iii) $\Rightarrow$ (i): If~$\sour{O}$ is acyclic, we can consider the acyclic reorientation~$R \eqdef \areori{\sour{O}}$ of~$\tc(D)$. We have~$\orn{R} = \orn{\asour{R}}$ by \cref{lem:AOrn1},~${\asour{R} = \sour{O}}$ by \cref{lem:ASour2AReori3}, and~$ \orn{\sour{O}} = O$ by \cref{lem:Orn2Sour2}. Hence, we obtain that~$\orn{R} = \orn{\asour{R}} = \orn{\sour{O}} = O$.
+(ii) $\Rightarrow$ (i): If~$S$ is an acyclic sourcing of~$\PP(D)$ such that~$\orn{S} = O$, then~$R \eqdef \areori{S}$ is an acyclic reorientation of~$\tc(D)$ such that~$\orn{R} = \orn{\areori{S}} = \orn{\asour{\areori{S}}} = \orn{S} = O$ by \cref{lem:ASour2AReori3,lem:AReori2ASour2AOrn}.
 \end{proof}
 
 \begin{remark}
-Careful, the conditions of \cref{lem:AOrn2} are not equivalent to $\reori{O}$ being acyclic.
+\label{rem:sectionsIncompatibleAcyclicity}
+Careful, the conditions of \cref{lem:AOrn2} are not equivalent to $\reori{O}$ and/or~$\sour{O}$ being acyclic.
+For instance, consider the two ornamentations
+\[
+O_1 = \! \includegraphics[scale=.8,valign=c]{acyclicOrnamentationR}
+\qquad\text{and}\qquad
+O_2 = \! \includegraphics[scale=.8,valign=c]{acyclicOrnamentationD}
+\]
+Note that~$O_1 = \orn{\reori{34251}}$ and~$O_2 = \orn{\reori{3412}}$ so that they both fulfill the conditions of \cref{lem:AOrn2}.
+However,
+\begin{itemize}
+\item the reorientation~$\reori{O_1}$ is cyclic since it contains the cycle~$1 \to 4 \to 3 \to 5 \to 1$,
+\item the sourcing~$\sour{O_2}$ is cyclic since~$\sour{O_2}(\{3,4\}) = 3$ and~$\Sour{O_2}(\{1,3,4\}) = 4$.
+\end{itemize}
 \end{remark}
 
 \begin{definition}
@@ -1085,9 +1123,8 @@ The \defn{acyclic ornamentation poset}~$\AOrn(D)$ is the subposet of the ornamen
 \end{definition}
 
 To keep our notations coherent, we denote by~$\aorn{R} \eqdef \orn{R}$ the acyclic ornamentation of~$D$ corresponding to an acyclic reorientation~$R$ of~$\tc(D)$, and by~$\aorn{S} \eqdef \orn{S}$ the acyclic ornamentation of~$D$ corresponding to an acyclic sourcing~$S$ of~$\PP(D)$.
-Conversely, for an acyclic ornamentation~$O$ of~$D$, we denote the corresponding acyclic sourcing of~$\PP(D)$ by~$\asour{O} \eqdef \sour{O}$, and we define an acyclic reorientation of~$\tc(D)$ by~$\areori{O} \eqdef \areori{\asour{O}}$.
-Be careful that~$\areori{O}$ is in general distinct from~$\reori{O}$ (the latter might not be acyclic).
-\vincent{Not sure that we need all that...}
+Conversely, for an acyclic ornamentation~$O$ of~$D$, we denote the corresponding acyclic sourcing of~$\PP(D)$ by~$\asour{O}$, and we define an acyclic reorientation of~$\tc(D)$ by~$\areori{O} \eqdef \areori{\asour{O}}$.
+Be careful that~$\asour{O} \ne \sour{O}$ and~$\areori{O} \ne \reori{O}$ in general (as~$\sour{O}$ and~$\reori{O}$ might not be acyclic even if~$O$ is acyclic, see \cref{rem:sectionsIncompatibleAcyclicity}).
 
 \begin{remark}
 We will see in \cref{sec:rootedTrees} that all ornamentations of a rooted tree~$T$ (with increasing edges all oriented toward the root) are acyclic.
@@ -1110,7 +1147,21 @@ since their fibers are all singletons, containing the cyclic reorientations of~$
 (in which we have colored a directed cycle in red).
 \end{remark}
 
+\begin{lemma}
+\label{lem:ASour2AOrn1}
+The map~$S \mapsto \orn{S}$ is injective on acyclic sourcings.
+\end{lemma}
+
+\begin{proof}
+Let~$S_1 \ne S_2$ be two distinct acyclic sourcings of~$\PP(D)$.
+There exists~$P \in \PP(D)$ such that~$u \eqdef S_1(P) \ne S_2(P) \defeq v$.
+We can assume by symmetry that~$u < v$.
+Then~$u \notin \orn{S_1}(v)$ (by acyclicity of~$S_1$) while~$u \in \orn{S_2}(v)$ (by definition of~$\orn{S_2}$).
+Hence~$\orn{S_1} \ne \orn{S_2}$.
+\end{proof}
+
 \begin{proposition}
+\label{prop:ASour2AOrn}
 The map~$S \mapsto \aorn{S}$ is a poset isomorphism from the acyclic sourcing poset~$\ASour(\PP(D))$ to the acyclic ornamentation poset~$\AOrn(D)$.
 \end{proposition}
 
