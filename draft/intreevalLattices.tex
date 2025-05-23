@@ -804,7 +804,7 @@ Therefore, $\sour{O_1}(P) \le \sour{O_2}(P)$ for any path~$P \in \PP(D)$, hence~
 
 \begin{lemma}
 \label{lem:Orn2Sour2}
-For any ornamentation~$O$ of~$D$, we have~$\orn{\sour{O}} = O$. In other words, the map~$O \mapsto \sour{O}$ is a section of the map~$S \mapsto \orn{S}$.
+For any ornamentation~$O$ of~$D$, we have~$\orn{\sour{O}} = O$. In other words, the map~${O \mapsto \sour{O}}$ is a section of the map~$S \mapsto \orn{S}$.
 \end{lemma}
 
 \begin{proof}
@@ -833,7 +833,10 @@ For this path, we have~$u \in P$ and~$v = \sour{O}(P)$ by \cref{def:Orn2Sour} si
 
 \begin{remark}
 Note however that there are sourcings~$S$ of~$\PP(D)$ with~$\reori{S} \ne \reori{\orn{S}}$.
-\vincent{todo}
+For instance, on the graph~\includegraphics[scale=.8,valign=c]{graphI}, for the sourcing~$S$ given by~$S(\{1,2\}) = 1$, $S(\{2,3\}) = 2$ and~$S(\{1,3\}) = 3$, we have $\orn{S} = \raisebox{-.2cm}{\includegraphics[scale=.8]{ornamentationI1}}$ so that
+\[
+\reori{S} = \raisebox{-.2cm}{\includegraphics[scale=.8]{reorientationI1}} \ne \raisebox{-.2cm}{\includegraphics[scale=.8]{reorientationI0}} = \reori{\orn{S}}.
+\]
 \end{remark}
 
 To sum up, we obtained the following statement.
@@ -980,19 +983,44 @@ If~$R_1 \le R_2$, then~$\rev(R_1) \subseteq \rev(R_2)$, hence the source of any 
 \end{proof}
 
 \begin{remark}
-Note that the reorientation~$\reori{S}$ of~$\tc(D)$ defined in \cref{def:Sour2Reori} by~$\rev(\reori{S}) = \rev(S)$ is not always acyclic even when~$S$ is acyclic.
-\vincent{todo}
+\label{rem:Sour2ReoriIncompatibleAcyclicity}
+The reorientation~$\reori{S}$ of~$\tc(D)$ defined in \cref{def:Sour2Reori} by~$\rev(\reori{S}) = \rev(S)$ is not always acyclic even when~$S$ is acyclic.
+For instance, consider the directed graph~$D$ and the two reorientations~$R_1$ and~$R_2$ of~$\tc(D)$ given by
+\[
+D = \! \includegraphics[scale=.8,valign=c]{graphR}
+\qquad\qquad
+R_1 = \! \includegraphics[scale=.8,valign=c]{reorientationR1}
+\qquad\text{and}\qquad
+R_2 = \! \includegraphics[scale=.8,valign=c]{reorientationR2}
+.
+\]
+Note that~$R_1$ is acyclic so that~$\asour{R_1}$ is acyclic, and that~$\reori{\asour{R_1}} = R_2$ is cyclic.
 We thus need to define a section of the map~$R \mapsto \asour{R}$.
 \end{remark}
 
 \begin{definition}
 \label{def:ASour2AReori}
 Let~$S$ be an acyclic sourcing of~$\PP(D)$.
-We denote by $\arr(S)$ the pairs~$(u,v) \in V^2$ such that there is~$H \in \HH$ with~$u \in H$ and~$v = S(H)$.
+We denote by $\arr(S)$ the pairs~$(u,v) \in V^2$ such that there is~$P \in \PP(D)$ with~$u \in P$ and~$v = S(P)$.
 Let~$\areori{S}$ be the reorientation of~$\tc(D)$ defined by~$\rev(\areori{S}) = \tc(\arr(S)) \cap \tc(D)$.
 \end{definition}
 
+\begin{remark}
+\label{rem:ASour2AReori}
 Note that~$\rev(S) \subseteq \rev(\areori{S})$, but the inclusion might be strict.
+In fact, the map~$S \mapsto \areori{S}$ is not order-preserving.
+For instance, consider the directed graph~$D$ and the two reorientations~$R_1$ and~$R_2$ of~$\tc(D)$ given by
+\[
+D = \! \includegraphics[scale=.8,valign=c]{graphR}
+\qquad\qquad
+R_1 = \! \includegraphics[scale=.8,valign=c]{reorientationR1}
+\qquad\text{and}\qquad
+R_2 = \! \includegraphics[scale=.8,valign=c]{reorientationR3}
+.
+\]
+Let~$S_1 = \asour{R_1}$ and~$S_2 = \asour{R_2}$.
+Then one can check that~$S_1 < S_2$ while~$\areori{S_1} = R_1 \not< R_2 = \areori{S_2}$.
+\end{remark}
 
 \begin{lemma}
 \label{lem:ASour2AReori1}
@@ -1000,25 +1028,21 @@ For any acyclic sourcing~$S$ of~$\PP(D)$, the reorientation~$\areori{S}$ of~$\tc
 \end{lemma}
 
 \begin{proof}
-\vincent{todo}
+If~$\areori{S}$ contains a cycle, so does~$\arr(S)$, so that~$S$ is cyclic by \cref{def:ASour}.
 \end{proof}
 
 \begin{lemma}
 \label{lem:ASour2AReori2}
-The map~$S \mapsto \areori{S}$ is order-preserving.
-\end{lemma}
-
-\begin{proof}
-\vincent{todo}
-\end{proof}
-
-\begin{lemma}
-\label{lem:ASour2AReori3}
 For any acyclic sourcing~$S$ of~$\PP(D)$, we have~$\asour{\areori{S}} = S$. In other words, the map~$S \mapsto \areori{S}$ is a section of the map~$R \mapsto \asour{R}$.
 \end{lemma}
 
 \begin{proof}
-\vincent{todo}
+Pick~$P \in \PP(D)$ and let~$v = S(P)$.
+For any~$u \in P$, we have~$(u,v) \in \arr(S)$.
+If~$u < v$, then~$(u,v) \in \rev(\areori{S})$.
+If~$u > v$, then~$(v,u) \notin \tc(\arr(S))$ by acyclicity of~$S$, so that~$(v,u) \notin \rev(\areori{S})$, so that~$(u,v) \in \rev(\areori{S})$ (since $P$ is a tournament in~$\areori{S}$).
+Hence, $v$ is the source of~$P$ in~$\areori{S}$, so that~$\asour{\areori{S}}(P) = v = S(P)$.
+We conclude that~$\asour{\areori{S}} = S$. 
 \end{proof}
 
 To sum up, we obtained the following statement.
@@ -1064,26 +1088,6 @@ We thus obtain that~$(u,v) \in \rev(\asour{R})$.
 We conclude that~$\orn{R}(v) \subseteq \rev(\asour{R})$, hence that~$\orn{R}(v) \subseteq \orn{\asour{R}}(v)$ by maximality of~$\orn{\asour{R}}(v)$.
 \end{proof}
 
-%\begin{lemma}
-%For any ornamentation~$O$, the reorientation~$\reori{O}$ is acyclic if and only if the sourcing~$\sour{O}$ is acyclic. If so, $\reori{O} = \reori{\sour{O}}$ and~$\sour{O} = \sour{\reori{O}}$.
-%\end{lemma}
-%
-%\begin{proof}
-%Finally, by \cref{lem:ASour2AReori3}, we have~$\sour{O} = \sour{\reori{\sour{O}}} = \sour{\reori{O}}$.
-%\vincent{todo}
-%\end{proof}
-%
-%These lemmas enable us to define acyclic ornamentations.
-
-%\begin{lemma}
-%\label{lem:ASour2AOrn2}
-%For any acyclic sourcing~$S$ of~$\PP(D)$, we have~$\sour{\orn{S}} = S$.
-%\end{lemma}
-%
-%\begin{proof}
-%\vincent{todo: I am not even sure that it is true...}
-%\end{proof}
-%
 \begin{lemma}
 \label{lem:AOrn2}
 The following conditions are equivalent for an ornamentation~$O$ of~$D$:
@@ -1097,17 +1101,18 @@ The following conditions are equivalent for an ornamentation~$O$ of~$D$:
 (i) $\Rightarrow$ (ii): If~$R$ is an acyclic reorientation of~$\tc(D)$ such that~$\orn{R} = O$, then~$S \eqdef \asour{R}$ is an acyclic sourcing of~$\PP(D)$ such that~$\orn{S} = \orn{\asour{R}} = \orn{R} = O$ by \cref{lem:AReori2ASour2AOrn}.
 
 \medskip\noindent
-(ii) $\Rightarrow$ (i): If~$S$ is an acyclic sourcing of~$\PP(D)$ such that~$\orn{S} = O$, then~$R \eqdef \areori{S}$ is an acyclic reorientation of~$\tc(D)$ such that~$\orn{R} = \orn{\areori{S}} = \orn{\asour{\areori{S}}} = \orn{S} = O$ by \cref{lem:ASour2AReori3,lem:AReori2ASour2AOrn}.
+(ii) $\Rightarrow$ (i): If~$S$ is an acyclic sourcing of~$\PP(D)$ such that~$\orn{S} = O$, then~$R \eqdef \areori{S}$ is an acyclic reorientation of~$\tc(D)$ such that~$\orn{R} = \orn{\areori{S}} = \orn{\asour{\areori{S}}} = \orn{S} = O$ by \cref{lem:ASour2AReori2,lem:AReori2ASour2AOrn}.
 \end{proof}
 
 \begin{remark}
-\label{rem:sectionsIncompatibleAcyclicity}
+\label{rem:Orn2Sour&Orn2ReoriIncompatibleAcyclicity}
 Careful, the conditions of \cref{lem:AOrn2} are not equivalent to $\reori{O}$ and/or~$\sour{O}$ being acyclic.
 For instance, consider the two ornamentations
 \[
 O_1 = \! \includegraphics[scale=.8,valign=c]{acyclicOrnamentationR}
 \qquad\text{and}\qquad
 O_2 = \! \includegraphics[scale=.8,valign=c]{acyclicOrnamentationD}
+.
 \]
 Note that~$O_1 = \orn{\reori{34251}}$ and~$O_2 = \orn{\reori{3412}}$ so that they both fulfill the conditions of \cref{lem:AOrn2}.
 However,
@@ -1124,7 +1129,7 @@ The \defn{acyclic ornamentation poset}~$\AOrn(D)$ is the subposet of the ornamen
 
 To keep our notations coherent, we denote by~$\aorn{R} \eqdef \orn{R}$ the acyclic ornamentation of~$D$ corresponding to an acyclic reorientation~$R$ of~$\tc(D)$, and by~$\aorn{S} \eqdef \orn{S}$ the acyclic ornamentation of~$D$ corresponding to an acyclic sourcing~$S$ of~$\PP(D)$.
 Conversely, for an acyclic ornamentation~$O$ of~$D$, we denote the corresponding acyclic sourcing of~$\PP(D)$ by~$\asour{O}$, and we define an acyclic reorientation of~$\tc(D)$ by~$\areori{O} \eqdef \areori{\asour{O}}$.
-Be careful that~$\asour{O} \ne \sour{O}$ and~$\areori{O} \ne \reori{O}$ in general (as~$\sour{O}$ and~$\reori{O}$ might not be acyclic even if~$O$ is acyclic, see \cref{rem:sectionsIncompatibleAcyclicity}).
+Be careful that~$\asour{O} \ne \sour{O}$ and~$\areori{O} \ne \reori{O}$ in general (as~$\sour{O}$ and~$\reori{O}$ might not be acyclic even if~$O$ is acyclic, see \cref{rem:Orn2Sour&Orn2ReoriIncompatibleAcyclicity}).
 
 \begin{remark}
 We will see in \cref{sec:rootedTrees} that all ornamentations of a rooted tree~$T$ (with increasing edges all oriented toward the root) are acyclic.
