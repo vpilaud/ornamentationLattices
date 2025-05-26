@@ -308,7 +308,7 @@ The following definition, first introduced for rooted trees in~\cite{} and exten
 
 \begin{definition}
 \label{def:Orn}
-An \defn{ornament} at a vertex $v$ of~$D$ is a subset~$U \subseteq V$ such that there is a path from any $u \in U$ to~$v$ in the directed subgraph of~$D$ induced by~$U$.
+An \defn{ornament} at a vertex $v$ of~$D$ is a subset~$U \subseteq V$ such that there is a directed path from any $u \in U$ to~$v$ in the subgraph of~$D$ induced by~$U$.
 An \defn{ornamentation} of~$D$ is a map $O$ on $V$ which assigns an ornament~$O(v)$ at each vertex~$v \in V$ such that~$u \in O(v) \implies O(u) \subseteq O(v)$ for all~$u,v \in V$.
 We denote by~$\Orn(v \in D)$ the set of ornaments at a vertex~$v$ of~$D$ and by~$\Orn(D)$ the set of ornamentations of~$D$.
 \end{definition}
@@ -339,7 +339,7 @@ Part~(ii) is a specialization of Part~(i) to~$u = v$ and~$u' = v$.
 \end{proof}
 
 \begin{theorem}
-\label{thm:Orn-meet_and_join}
+\label{thm:OrnMeetJoin}
 The set~$\Orn(D)$ of ornamentations of~$D$ is a lattice under componentwise inclusion, meaning~$O_1 \le O_2$ if~$O_1(v) \subseteq O_2(v)$ for all~$v \in V$.
 For any two ornamentations~$O_1$ and~$O_2$ of~$D$,
 \begin{itemize}
@@ -672,7 +672,7 @@ Conversely, let $u \in \orn{R_1 \meet R_2}(v)$.
 There is a path $u = w_0, w_1, \dots, w_p = v$ in $\orn{R_1 \meet R_2}(v)$.
 Thus, each arrow $(w_i,v)$ of $\tc(D)$ is in $\rev(R_1 \meet R_2) = \rev(R_1) \cap \rev(R_2)$,
 showing that this same path is contained in both $\orn{R_1}(v)$ and $\orn{R_2}(v)$.
-By \cref{thm:Orn-meet_and_join}, $\{u = w_0, w_1, \dots, w_p = v\} \subseteq O_\meet(v)$.
+By \cref{thm:OrnMeetJoin}, $\{u = w_0, w_1, \dots, w_p = v\} \subseteq O_\meet(v)$.
 Thus, we have shown that $O_\meet \geq \orn{R_1 \meet R_2}$.
 \end{proof}
 
@@ -891,11 +891,21 @@ In particular, the graph of~$\simplex_E$, oriented in the direction~$\b{\omega} 
 
 Note that the acyclic reorientation poset~$\AReori(E)$ is not always a lattice.
 The lattice theory of acyclic reorientation posets was studied in details in~\cite{Pilaud-acyclicReorientationLattices}.
-For our purposes, we will only need the following characterization.
+For our purposes, we will only need the following characterizations.
 
 \begin{proposition}[{\cite[Thm.~1]{Pilaud-acyclicReorientationLattices}}]
 \label{prop:acyclicReorientationLattices}
 The acyclic reorientation poset~$\AReori(E)$ is a lattice if and only if the transitive reduction of any induced subgraph of~$E$ is a forest.
+\end{proposition}
+
+\begin{proposition}[{\cite[Thm.~9]{Pilaud-acyclicReorientationLattices}}]
+\label{prop:acyclicReorientationLatticesJoinMeet}
+When the acyclic reorientation poset~$\AReori(E)$ is a lattice, the meet and join of two acyclic reorientations~$R_1$ and~$R_2$ of~$E$ are given by
+\[
+\rev(R_1 \join R_2) = \tc \big( \rev(R_1) \cup \rev(R_2) \big)
+\quad\text{and}\quad
+E \ssm \rev(R_1 \meet R_2) = \tc \big( E \ssm (\rev(R_1) \cap \rev(R_2)) \big).
+\]
 \end{proposition}
 
 We now recall the standard map from permutations to acyclic orientations.
@@ -1055,13 +1065,20 @@ The map~$R \mapsto \asour{R}$ is an order-preserving surjection from the acyclic
 \subsection{Acyclic ornamentations}
 
 Remember from \cref{def:Reori2Orn} (resp.~\cref{def:Sour2Orn}) that we have defined an ornamentation~$\orn{R}$ (resp.~$\orn{S}$) from any reorientation~$R$ of~$\tc(D)$ (resp.~sourcing~$S$ of~$\PP(D)$).
-%Conversely, we have defined a reorientation~$\reori{O}$ and a sourcing~$\sour{O}$ for any ornamentation~$O$.
-%These maps behave well when everything is acyclic.
-%\vincent{NO. They work poorly. I need to redefine everything...}
+We now observe that these maps behave well on acyclic reorientations of~$\tc(D)$ and acyclic sourcings of~$\PP(D)$, which enables us to define acyclic ornamentations of~$D$.
 
-%\begin{lemma}
-%For any acyclic reorientation~$R$ of~$\tc(D)$ (resp.~acyclic sourcing~$S$ of~$\PP(D)$), $\orn{R}(v)$ (resp.~$\orn{S}(v)$) is the inclusion maximal ornament of~$D$ at~$v$ contained in the subset of vertices~$u \in V$ such that~$(u,v)$ is in~$\rev(R)$ (resp.~in~$\rev(S)$) for any~$v \in V$, .
-%\end{lemma}
+\begin{lemma}
+\label{lem:ASour2AOrn1}
+The map~$S \mapsto \orn{S}$ is injective on acyclic sourcings.
+\end{lemma}
+
+\begin{proof}
+Let~$S_1 \ne S_2$ be two distinct acyclic sourcings of~$\PP(D)$.
+There exists~$P \in \PP(D)$ such that~$u \eqdef S_1(P) \ne S_2(P) \defeq v$.
+We can assume by symmetry that~$u < v$.
+Then~$u \notin \orn{S_1}(v)$ (by acyclicity of~$S_1$) while~$u \in \orn{S_2}(v)$ (by definition of~$\orn{S_2}$).
+Hence~$\orn{S_1} \ne \orn{S_2}$.
+\end{proof}
 
 \begin{lemma}
 \label{lem:acyclicSimplifiesDef}
@@ -1123,12 +1140,13 @@ However,
 \end{remark}
 
 \begin{definition}
+\label{def:AOrn}
 An ornamentation~$O$ of~$D$ is \defn{acyclic} if the equivalent conditions of \cref{lem:AOrn2} are satisfied.
 The \defn{acyclic ornamentation poset}~$\AOrn(D)$ is the subposet of the ornamentation lattice~$\Orn(D)$ induced by acyclic ornamentations.
 \end{definition}
 
 To keep our notations coherent, we denote by~$\aorn{R} \eqdef \orn{R}$ the acyclic ornamentation of~$D$ corresponding to an acyclic reorientation~$R$ of~$\tc(D)$, and by~$\aorn{S} \eqdef \orn{S}$ the acyclic ornamentation of~$D$ corresponding to an acyclic sourcing~$S$ of~$\PP(D)$.
-Conversely, for an acyclic ornamentation~$O$ of~$D$, we denote the corresponding acyclic sourcing of~$\PP(D)$ by~$\asour{O}$, and we define an acyclic reorientation of~$\tc(D)$ by~$\areori{O} \eqdef \areori{\asour{O}}$.
+Conversely, for an acyclic ornamentation~$O$ of~$D$, we denote by~$\asour{O}$ the corresponding acyclic sourcing of~$\PP(D)$ (\cref{lem:ASour2AOrn1}), and we define an acyclic reorientation of~$\tc(D)$ by~$\areori{O} \eqdef \areori{\asour{O}}$.
 Be careful that~$\asour{O} \ne \sour{O}$ and~$\areori{O} \ne \reori{O}$ in general (as~$\sour{O}$ and~$\reori{O}$ might not be acyclic even if~$O$ is acyclic, see \cref{rem:Orn2Sour&Orn2ReoriIncompatibleAcyclicity}).
 
 \begin{remark}
@@ -1151,19 +1169,6 @@ since their fibers are all singletons, containing the cyclic reorientations of~$
 \]
 \end{remark}
 
-\begin{lemma}
-\label{lem:ASour2AOrn1}
-The map~$S \mapsto \orn{S}$ is injective on acyclic sourcings.
-\end{lemma}
-
-\begin{proof}
-Let~$S_1 \ne S_2$ be two distinct acyclic sourcings of~$\PP(D)$.
-There exists~$P \in \PP(D)$ such that~$u \eqdef S_1(P) \ne S_2(P) \defeq v$.
-We can assume by symmetry that~$u < v$.
-Then~$u \notin \orn{S_1}(v)$ (by acyclicity of~$S_1$) while~$u \in \orn{S_2}(v)$ (by definition of~$\orn{S_2}$).
-Hence~$\orn{S_1} \ne \orn{S_2}$.
-\end{proof}
-
 \begin{proposition}
 \label{prop:ASour2AOrn}
 The map~$S \mapsto \aorn{S}$ is a poset isomorphism from the acyclic sourcing poset~$\ASour(\PP(D))$ to the acyclic ornamentation poset~$\AOrn(D)$.
@@ -1172,9 +1177,8 @@ The map~$S \mapsto \aorn{S}$ is a poset isomorphism from the acyclic sourcing po
 \begin{proof}
 By \cref{lem:ASour2AOrn1}, the map~$S \mapsto \aorn{S}$ is injective on acyclic sourcings.
 
-We have seen in \cref{lem:Orn2Sour2} that the map~$O \mapsto \sour{O}$ is a section of the map~$S \mapsto \orn{S}$ on all sourcings.
-By definition of acyclic ornamentations, the map~$O \mapsto \asour{O}$ is thus also a section of the map~$S \mapsto \aorn{S}$ on acyclic sourcings.
-Hence, the map~$S \mapsto \aorn{S}$ is surjective.
+We have seen in \cref{lem:Orn2Sour2} that the map~$S \mapsto \orn{S}$ is surjective on all ornamentations.
+By definition of acyclic ornamentations, the map~$S \mapsto \aorn{S}$ is surjective on acyclic ornamentations.
 
 Finally, we have seen that~$S \mapsto \orn{S}$ and~$O \mapsto \sour{O}$ are order-preserving in \cref{lem:Sour2Orn3,lem:Orn2Sour1}.
 We conclude that~$S \mapsto \aorn{S}$ and~$O \mapsto \asour{O}$ are inverse isomorphisms from the acyclic sourcing poset~$\ASour(\PP(D))$ to the acyclic ornamentation poset~$\AOrn(D)$.
@@ -1184,22 +1188,142 @@ We conclude that~$S \mapsto \aorn{S}$ and~$O \mapsto \asour{O}$ are inverse isom
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Directed trees}
+\label{sec:directedTrees}
+
+In this section, we focus on the specific situation when the ground graph~$D$ is a directed tree~$T$ (but not necessarily a rooted tree).
+We start by a few observations.
+
+\begin{lemma}
+\label{lem:meetOrnT}
+If~$T$ is a directed tree, and~$U,U' \in \Orn(v \in T)$, then~$U \cap U' \in \Orn(v \in T)$.
+\end{lemma}
+
+\begin{proof}
+In a directed tree, the ornaments are precisely the directed paths, and the intersection of two directed paths is a directed path.
+\end{proof}
+
+\begin{corollary}
+\label{coro:meetOrnT}
+The meet of two ornamentations~$O_1$ and~$O_2$ of a directed tree~$T$ is given by
+\[
+(O_1 \meet O_2)(v) = O_1(v) \cap O_2(v).
+\]
+\end{corollary}
+
+\begin{lemma}
+For a directed tree~$T$ and an acyclic reorientation~$R$ of~$\tc(T)$, we have~$u \in \orn{R}(v)$ if and only if~$u' \in \rev(R)$ for all~$u'$ along the path from~$u$ to~$v$ in~$T$.
+\end{lemma}
+
+\begin{proof}
+Since~$T$ is a directed tree, its ornaments are directed paths.
+Since~$R$ is acyclic, there is a directed path from~$u$ to~$v$ in~$\rev(R)$ if and only if~$(u,v) \in \rev(R)$.
+By \cref{def:Reori2Orn}, $\orn{R}(v)$ is the maximal ornament of~$T$ at~$v$ contained in the subset of vertices~$u \in V$ with a directed path to~$v$ in $\rev(R)$.
+Hence, $u \in \orn{R}(v)$ if and only if~$u' \in \rev(R)$ for all~$u'$ along the path from~$u$ to~$v$ in~$T$.
+\end{proof}
+
+\begin{lemma}
+For an ornamentation~$O$ of a directed tree~$T$, the reorientation~$\reori{O}$ is transitively closed and coclosed.
+Hence, any induced oriented cycle in~$\reori{O}$ is an induced alternating cycle in~$\tc(T)$ (meaning taking alternatively forward and backward arrows).
+\end{lemma}
+
+\begin{proof}
+Let~$u, v, w \in V$ such that~$(u,v)$ and~$(v,w)$ are in~$\tc(T)$.
+Assume that~${(u,v), (v,w) \in \rev(\reori{O})}$.
+Then~$u \in O(v)$ and~$v \in O(w)$, hence~$u \in O(w)$ since~$O$ is an ornamentation, thus ${(u,w) \in \rev(\reori{O})}$.
+Conversely, assume that~$(u,w) \in \rev(\reori{O})$. Then~$u \in O(w)$. As~$T$ is a tree, the complete path from~$u$ to~$w$ is in~$O(w)$, hence~$v \in O(w)$ and thus $(v,w) \in \rev(\reori{O})$.
+The last statement immediately follows as an induced cycle cannot chain two consecutive forward arrows, nor two consecutive backwards arrows.
+\end{proof}
+
+\begin{lemma}
+Consider an induced alternating cycle~$C = d_1 \rightarrow u_1 \leftarrow d_2 \rightarrow u_2 \dots d_k \rightarrow u_k \leftarrow d_1$ in~$\tc(T)$ for a directed tree~$T$.
+Then~$k = 2$ and there exists~$v \in V$ such that~$(d_1, v)$, $(d_2,v)$, $(v,u_1)$, and~$(v,u_2)$ are in~$\tc(T)$.
+\end{lemma}
+
+\begin{proof}
+Assume first that~$(d_1,u_k)$ is an edge of~$T$.
+Let~$D$ and~$U$ denote the connected components of~$T \ssm \{(d_1,u_k)\}$ containing~$d_1$ and~$u_k$ respectively.
+Let~$i \in [k]$ be maximal such that~$d_i \in D$.
+Since~$d_{i+1} \in U$ and~$d_{i+1} \to u_i$ in~$\tc(T)$, we have~$u_i \in U$.
+Hence, the edge~$(d_1,u_k)$ is an edge of the path from~$d_i$ to~$u_i$ in~$T$.
+We conclude that~$C$ was not induced.
+
+Therefore, there is~$w \in V$ such that~$(d_1,w)$ and~$(w,u_k)$ are in~$\tc(T)$.
+Since~$C$ is induced, we obtain again an induced alternating cycle by replacing either~$d_1$ or~$u_k$ by~$x$ in~$C$, say~$u_k$ by symmetry.
+By induction on the sum of the length of the paths between~$d_i$ and~$u_i$ in~$T$, we obtain that~$k = 2$ there is~$v \in V$ such that~$(d_1, v)$, $(d_2,v)$, $(v,u_1)$, and~$(v,w)$ are in~$\tc(T)$, and as~$w$ is between~$d_1$ and~$u_2$, we also get~$(v,u_2) \in \tc(T)$.
+\end{proof}
+
+\begin{theorem}
+\label{thm:MacNeille}
+The ornamentation lattice~$\Orn(T)$ of a directed tree~$T$ has no strict subposet which forms a lattice and contains all acyclic ornamentations of~$T$.
+In other words, the ornamentation lattice~$\Orn(T)$ is the MacNeille completion of the acyclic ornamentation lattice~$\AOrn(T)$.
+\end{theorem}
+
+\begin{proof}%[Proof of \cref{thm:MacNeille}]
+We work by induction on the length of the smallest induced cycle.
+\end{proof}
+
+\begin{remark}
+\label{rem:MacNeille}
+Note that~\cref{thm:MacNeille} fails beyond directed trees.
+For instance, for the directed graph of  \cref{fig:ornamentationsD}, the acyclic ornamentation poset is not a lattice, but adding the two cyclic ornamentations
+\[
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD3}
+\quad\text{and}\quad
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD4}
+\]
+suffices to make it a lattice.
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Rooted trees}
 \label{sec:rootedTrees}
 
-In this section, we discuss the specific situation when the ground graph~$D$ is a rooted tree.
+In this section, we discuss the specific situation when the ground graph~$D$ is a rooted tree~$T$ (with increasing edges all oriented toward the root).
 
 \begin{proposition}
-\label{prop:rootedTrees}
-Assume that~$T$ is a rooted tree (with increasing edges all oriented toward the root). Then
-\begin{enumerate}
-\item The acyclic reorientation poset~$\AReori(\tc(T))$, the acyclic sourcing poset~$\ASour(\PP(T))$, and the acyclic ornamentation poset~$\AOrn(T)$ are lattices.
-\item All ornamentations of~$T$ are acyclic, so that~$\ASour(\PP(T)) \simeq \AOrn(T) = \Orn(T)$.
-\item The map $R \mapsto \asour{R}$ is a surjective lattice map, hence~$\ASour(\PP(T))$ is a lattice quotient~of~$\AReori(\tc(T))$.
-\end{enumerate}
+\label{prop:rootedTrees1}
+For any ornamentation~$O$ of a rooted tree~$T$, the reorientation~$\reori{O}$ of~$\tc(T)$ and the sourcing~$\sour{O}$ of~$\PP(T)$ are both acyclic.
+In particular, all ornamentations of~$T$ are acyclic and~$\ASour(\PP(T)) \simeq \AOrn(T) = \Orn(T)$.
 \end{proposition}
 
 \begin{proof}
+Assume that~$\reori{O}$ contains an oriented cycle~$C$, and assume that~$C$ is minimal.
+Let~$u$ be the vertex of~$C$ closest to the root of~$T$.
+Let~$v$ be the last vertex along~$C$ such that the path from~$u$ to~$v$ in~$C$ moves away from~$u$ at each step.
+Finally, let~$w$ be the vertex just after~$v$ along~$C$.
+Since~$(v,w) \in \tc(T)$, the vertex~$w$ is along the path from~$v$ to the root of~$T$, hence between~$u$ and~$v$.
+Since the edges of~$C$ between~$u$ and~$v$ are in~$\rev(\reori{O})$, we obtain that~$v \in O(u)$, hence~$w \in O(u)$ since~$w$ lies along the path from~$u$ to~$v$ in~$T$.
+We conclude that~$(u,w) \in \rev(\reori{O})$, contradicting the minimality of the cycle~$C$.
+The proof for the acyclicity of~$\sour{O}$ is similar.
+\end{proof}
+
+\begin{proposition}
+\label{prop:rootedTrees2}
+For a rooted tree~$T$, the acyclic reorientation poset~$\AReori(\tc(T))$, the acyclic sourcing poset~$\ASour(\PP(T))$, and the acyclic ornamentation poset~$\AOrn(T)$ are all lattices.
+\end{proposition}
+
+\begin{proof}
+Given any subset~$X$ of vertices of~$T$, denote by~$T[X]$ the forest on~$X$ where the parent of~$x \in X$ is the vertex of~$X$ closest to~$x$ along the path from the root of~$T$ to~$x$.
+Then the subgraph of~$\tc(T)$ induced by~$X$ is the transitive closure of~$T[X]$, so that its transitive reduction is a forest.
+We conclude by~\cref{prop:acyclicReorientationLatticesJoinMeet} that~$\AReori(\tc(T))$ is a lattice.
+Finally, \cref{prop:rootedTrees1} ensures that~$\ASour(\PP(T))$ and~$\AOrn(T)$ are both isomorphic to~$\Orn(T)$, which is a lattice by~\cref{thm:OrnMeetJoin}.
+\end{proof}
+
+\begin{proposition}
+\label{prop:rootedTrees3}
+For a rooted tree~$T$, the map $R \mapsto \aorn{R}$ is a surjective lattice map, hence the lattices~$\ASour(\PP(T)) \simeq \AOrn(T) = \Orn(T)$ are lattice quotients~of~$\AReori(\tc(T))$.
+\end{proposition}
+
+\begin{proof}
+The map is surjective by \cref{def:AOrn}, thus we only need to show that ${\orn{R_1 \meet R_2} = \orn{R_1} \meet \orn{R_2}}$ and~$\orn{R_1 \join R_2} = \orn{R_1} \join \orn{R_2}$ for any two acyclic reorientations~$R_1$ and~$R_2$ of $\tc(T)$.
+Remember the formulas for~$\rev(R_1 \meet R_2)$ and~$\rev(R_1 \join R_2)$ from~\cref{prop:acyclicReorientationLatticesJoinMeet}, and let us define by~$O_\meet \eqdef \orn{R_1} \meet \orn{R_2}$ and~$O_\join \eqdef \orn{R_1} \join \orn{R_2}$.
+
+%Observe that~$u \in O_\join(v)$ is equivalent by \cref{thm:OrnMeetJoin} to the existence of a path~$u = w_0, \dots, w_p = v$ such that~$w_{i-1} \in $
+
 \vincent{todo}
 \end{proof}
 
@@ -1338,17 +1462,6 @@ We conclude that~$B_2 = C^3 (1+y \, C)$.
 %[42, 138, 492, 1878, 7572, 31878]
 %[132, 462, 1782, 7458, 33342, 157122]
 %[429, 1573, 6435, 28873, 139659, 717673]
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Directed trees}
-\label{sec:directedTrees}
-
-\begin{proposition}
-\end{proposition}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
