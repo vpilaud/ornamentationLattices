@@ -1398,7 +1398,7 @@ Complete binary tree?
 
 \begin{example}
 The \defn{$(m,n)$-broom} is the rooted tree obtained by attaching $m$ nodes (called \defn{bristles}) to an $n$-path (called \defn{handle}).
-We denote by~$B_{m,n}$ the number of (acyclic) ornamentations of the $(m,n)$-broom, by~$B(x,y) \eqdef \sum_{m \ge 0, n \ge 0} B_{m,n} \, x^m/m! \, y^n$ their generating function (exponential in~$x$, standard in~$y$), and by~$B_m(y) \eqdef m! \, [x^m] \, B(x,y) = \sum_{n \ge 0} B_{m,n} \, y^n$ the coefficient of~$x^m$ in~$B(x,y)$.
+We denote by~$B_{m,n}$ the number of (acyclic) ornamentations of the $(m,n)$-broom, by~$B(x,y) \eqdef \sum_{m \ge 0, n \ge 0} B_{m,n} \, x^m/m! \, y^n$ their generating function (exponential in~$x$ and ordinary in~$y$), and by~$B_m(y) \eqdef m! \, [x^m] \, B(x,y) = \sum_{n \ge 0} B_{m,n} \, y^n$ the coefficient of~$x^m$ in~$B(x,y)$.
 As~$B_{0,m} = B_{1,n-1}$ is the $n$th Catalan number~$C_n \eqdef \frac{1}{n+1}\binom{2n}{n}$, we have $B_0(y) = C(y)$ and~$B_1(y) = (C(y) - 1)/y$ where~$C(y) \eqdef \sum_{n \ge 0} C_n \, y^n = \frac{1-\sqrt{1-4y}}{2y}$.
 \end{example}
 
@@ -1427,7 +1427,29 @@ where~$C(y) \eqdef \sum_{n \ge 0} C_n \, y^n = \frac{1-\sqrt{1-4y}}{2y}$.
 \end{proposition}
 
 \begin{proof}
-\vincent{todo}
+Recall that if
+\[
+U(x,y) = \sum_{m \ge 0, n \ge 0} U_{m,n} \, x^m/m! \, y^n
+\qquad\text{and}\qquad
+V(x,y) = \sum_{m \ge 0, n \ge 0} V_{m,n} \, x^m/m! \, y^n
+\]
+are two generating functions exponential in~$x$ and ordinary in~$y$, then
+\[
+U(x,y) \cdot V(x,y) = \sum_{m \ge 0, n \ge 0} W_{m,n}  \, x^m/m! \, y^n
+\qquad\text{where}\qquad
+W_{m,n} = \sum_{k = 0}^m \sum_{\ell = 0}^n \binom{m}{k} \, U_{k,\ell} \, V_{n-k,n-\ell}.
+\]
+Consider~$U(x,y) \eqdef B(x,y) \, y$ and~$V(x,y) \eqdef e^x \, C(y)$, we obtain
+\begin{align*}
+B(x,y) \, y \, e^x \, C(y) & = \sum_{m \ge 0, n \ge 1}  \left( \sum_{k = 0}^m \sum_{\ell = 1}^n \binom{m}{k} \, B_{k,\ell-1} \, C_{n-\ell} \right) \, x^m/m! \, y^n \\
+& = \sum_{m \ge 0, n \ge 1} B_{m,n} \, x^m/m! \, y^n \\
+& = B(x,y) - y
+\end{align*}
+from which we derive that
+\[
+B(x,y) = \frac{e^x}{1-e^x \cdot y \cdot C(y)}.
+\qedhere
+\]
 \end{proof}
 
 \begin{proposition}
