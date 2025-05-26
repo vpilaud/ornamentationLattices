@@ -520,9 +520,9 @@ The map~$R \mapsto \orn{R}$ is an order-preserving surjection from the reorienta
 \begin{remark}
 \label{rem:Orn2ReoriMiddle}
 In general, the reorientation~$\reori{O}$ is neither minimal nor maximal among the reorientations~$R$ of~$\tc(D)$ such that~$\orn{R} = O$.
-For instance, for the fiber of the ornamentation $O = \!\!\raisebox{-.25cm}{\includegraphics[scale=.8]{ornamentationI7}}$ contains
+For instance, the following three reorientations belong to the fiber of the ornamentation $O = \!\!\raisebox{-.25cm}{\includegraphics[scale=.8]{ornamentationI7}}$:
 \[
-\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI9}}\!\! \le \reori{O} = \!\!\!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI10}}\!\! \le \!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI11}}
+\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI9}}\!\! < \reori{O} = \!\!\!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI10}}\!\! < \!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI11}}
 \]
 \end{remark}
 
@@ -685,10 +685,10 @@ Hence, the transitively closed reorientations~$R$ of~$\tc(T)$ with~${\orn{R} = O
 \end{proposition}
 
 \begin{proof}
-Assume that there is a directed path~$u \to u' \to \dots \to v$ in~$T$ such that~$(u,v) \notin \maxreori{O}$.
-Let~$w \in V$ be such that $u \notin O(w)$ but~$u',v' \in O$.
-Then, for any~$v'$ between~$u'$ and~$v$, we have~$v' \in O(w)$, hence~$(u,v') \not \in \maxreori{O}$.
-We thus obtained that~$(u,v'), (v',v) \in \maxreori{O}$ implies~$(u,v) \in \maxreori{O}$, that is, $\maxreori{O}$ is transitively closed.
+Assume that there is a directed path~$u \to u' \to \dots \to v$ in~$T$ such that~$(u,v) \notin \rev(\maxreori{O})$.
+Let~$w \in V$ be such that $u \notin O(w)$ but~$u',v' \in O(w)$.
+Then, for any~$v'$ between~$u'$ and~$v$, we have~$v' \in O(w)$, hence~$(u,v') \not \in \rev(\maxreori{O})$.
+We thus obtained that~$(u,v'), (v',v) \in \rev(\maxreori{O})$ implies~$(u,v) \in \rev(\maxreori{O})$, that is, $\rev(\maxreori{O})$ is transitively closed.
 \vincent{not only it has a max, but it has a Tamari max....}
 We conclude that the fiber of~$O$ is an interval, since it has a minimum by \cref{prop:Reori2OrnMinTC} and a maximum by \cref{prop:Reori2OrnMaxTree}.
 \end{proof}
@@ -708,7 +708,7 @@ We now assume that~$V$ is totally ordered, say that~$V = [n]$ with the natural o
 \begin{definition}
 \label{def:Sour}
 A \defn{sourcing}~$S$ of a hypergraph~$\HH$ on~$V$ is a map~$S : \HH \to V$ such that~$S(H) \in H$ for all hyperedges~$H \in \HH$.
-We denote by~$\rev(S)$ the pairs~$(u,v) \in V^2$ with~$u < v$ and such that there is~$H \in \HH$ with~$u \in H$ and~$v = S(H)$,
+We denote by~$\rev(S)$ the pairs~$(u,v) \in V^2$ with~$u < v$ and such that there is~$H \in \HH$ with~$u \in H$ and~$v = S(H)$.
 The \defn{sourcing lattice}~$\Sour(\HH)$ is the lattice of sourcings of~$\HH$ ordered componentwise, meaning~$S_1 \le S_2$ if~$S_1(H) \le S_2(H)$ for all~$H \in \HH$.
 In other words, $\Sour(\HH)$ is the Cartesian product of the subchains of~$V$ induced by the hyperedges~$\HH$.
 \end{definition}
@@ -944,7 +944,7 @@ Such characterizations exist for specific families of hypergraphs, notably for g
 We will further study this question for subhypergraphs of the path hypergraph of directed trees in \cref{sec:intreevalHypergraphicPosets}.
 
 We have observed in \cref{sec:sourcings} that there is no natural surjection from all reorientations of~$\tc(D)$ to all sourcings of~$\PP(D)$.
-We now recall that there is such a surjection when focussing on acyclic reorientations and acyclic sourcings.
+We now recall that there is such a surjection when focusing on acyclic reorientations and acyclic sourcings.
 
 \begin{definition}
 \label{def:AReori2ASour}
@@ -1210,7 +1210,7 @@ If~$T$ is a rooted tree, then the Hasse diagram of the ornamentation lattice~$\O
 \vincent{This is not completely proved here since I have not proved that the graph is transitively reduced...}
 
 \begin{remark}
-Lattice quotients of acyclic reorientation lattices were studied in details in~\cite{Pilaud-acyclicReorientationLattices}.
+Lattice quotients of acyclic reorientation lattices were studied in detail in~\cite{Pilaud-acyclicReorientationLattices}.
 We can reformulate \cref{prop:rootedTrees} using the language of~\cite{Pilaud-acyclicReorientationLattices}: if~$T$ is a rooted tree with increasing edges all oriented towards the root, then
 \begin{enumerate}
 \item the transitive closure~$\tc(T)$ is skeletal, so that~$\AReori(\tc(T))$ is an acyclic reorientation lattice,
