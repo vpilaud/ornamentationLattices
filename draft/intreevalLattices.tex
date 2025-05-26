@@ -890,7 +890,7 @@ In particular, the graph of~$\simplex_E$, oriented in the direction~$\b{\omega} 
 \end{remark}
 
 Note that the acyclic reorientation poset~$\AReori(E)$ is not always a lattice.
-The lattice theory of acyclic reorientation posets was studied in details in~\cite{Pilaud-acyclicReorientationLattices}.
+The lattice theory of acyclic reorientation posets was studied in detail in~\cite{Pilaud-acyclicReorientationLattices}.
 For our purposes, we will only need the following characterization.
 
 \begin{proposition}[{\cite[Thm.~1]{Pilaud-acyclicReorientationLattices}}]
@@ -1128,12 +1128,12 @@ The \defn{acyclic ornamentation poset}~$\AOrn(D)$ is the subposet of the ornamen
 \end{definition}
 
 To keep our notations coherent, we denote by~$\aorn{R} \eqdef \orn{R}$ the acyclic ornamentation of~$D$ corresponding to an acyclic reorientation~$R$ of~$\tc(D)$, and by~$\aorn{S} \eqdef \orn{S}$ the acyclic ornamentation of~$D$ corresponding to an acyclic sourcing~$S$ of~$\PP(D)$.
-Conversely, for an acyclic ornamentation~$O$ of~$D$, we denote the corresponding acyclic sourcing of~$\PP(D)$ by~$\asour{O}$, and we define an acyclic reorientation of~$\tc(D)$ by~$\areori{O} \eqdef \areori{\asour{O}}$.
+Conversely, for an acyclic ornamentation~$O$ of~$D$, we denote the corresponding acyclic sourcing of~$\PP(D)$ by~$\asour{O}$\jose{well-defined? could there be more than one?}, and we define an acyclic reorientation of~$\tc(D)$ by~$\areori{O} \eqdef \areori{\asour{O}}$.
 Be careful that~$\asour{O} \ne \sour{O}$ and~$\areori{O} \ne \reori{O}$ in general (as~$\sour{O}$ and~$\reori{O}$ might not be acyclic even if~$O$ is acyclic, see \cref{rem:Orn2Sour&Orn2ReoriIncompatibleAcyclicity}).
 
 \begin{remark}
 We will see in \cref{sec:rootedTrees} that all ornamentations of a rooted tree~$T$ (with increasing edges all oriented toward the root) are acyclic.
-This is wrong in general, even for directed trees.
+This is false in general, even for directed trees.
 For instance, the cyclic ornamentations of~$D$ in \cref{fig:ornamentationsX,fig:ornamentationsD,fig:ornamentationsT} are
 \[
 \includegraphics[scale=.8,valign=c]{cyclicOrnamentationX1}\;\includegraphics[scale=.8,valign=c]{cyclicOrnamentationX2}
@@ -1141,7 +1141,7 @@ For instance, the cyclic ornamentations of~$D$ in \cref{fig:ornamentationsX,fig:
 \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1}\;\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD2}\;\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD3}\;\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD4}
 \;\;\text{and}\;\;
 \includegraphics[scale=.8,valign=c]{cyclicOrnamentationT1}\;\includegraphics[scale=.8,valign=c]{cyclicOrnamentationT2}\]
-since their fibers are all singletons, containing the cyclic reorientations of~$\tc(D)$ given by
+since {\bf their fibers}\jose{their $\mathsf{O}$-fibers? the fibers of $\mathsf{O}$ at these elements?} are all singletons, containing the cyclic reorientations of~$\tc(D)$ given by
 \[
 \includegraphics[scale=.8,valign=c]{cyclicReorientationX1}\;\includegraphics[scale=.8,valign=c]{cyclicReorientationX2}
 \;\;\text{and}\;\;
@@ -1200,6 +1200,14 @@ Assume that~$T$ is a rooted tree (with increasing edges all oriented toward the 
 \end{proposition}
 
 \begin{proof}
+For Part (1),
+the transitive reduction $D$ of any induced subgraph of $\tc(T)$ is a (rooted) forest.
+Indeed, any such $D$ is clearly acyclic and all the out-degrees of its vertices are at most one.
+Otherwise, if $(u,v)$ and $(u,v')$ are edges in $D$, then both $v,v'$ are vertices in the unique path from $u$ to the root of $T$, and thus form an edge of $D$, contradicting that $D$ is transitively reduced.
+It follows from \cref{prop:acyclicReorientationLattices} that $\AReori(\tc(T))$ is a lattice.
+The other two claims in Part (1) follow from Part (2).
+
+For Part (2), it is enough to show that the sourcing $\sour{O}$ in \cref{def:Orn2Sour} is acyclic for any ornamentation $O$.
 \vincent{todo}
 \end{proof}
 
