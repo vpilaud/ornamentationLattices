@@ -635,6 +635,11 @@ Then~$u \in O(v)$ and~$v \in O(w)$, so that~$u \in O(w)$ since~$O$ is an ornamen
 Hence~$(u,w) \in \rev(\reori{O})$.
 \end{proof}
 
+\begin{remark}
+Note that~$\reori{O}$ is not always transitively coclosed.
+\vincent{todo}
+\end{remark}
+
 This surjection behaves much nicer with respect to \cref{rem:Orn2ReoriMiddle,rem:Reori2OrnIntervals,rem:Reori2OrnSemilatticeMap}.
 
 \begin{proposition}
@@ -1012,6 +1017,7 @@ We thus need to define a section of the map~$R \mapsto \asour{R}$.
 \label{def:ASour2AReori}
 Let~$S$ be an acyclic sourcing of~$\PP(D)$.
 We denote by $\arr(S)$ the pairs~$(u,v) \in V^2$ such that there is~$P \in \PP(D)$ with~$u \in P$ and~$v = S(P)$.
+\vincent{note that we can assume that~$P$ is a path from~$u$ to~$v$. But there might be more than one path since~$D$ is not a tree.}
 Let~$\areori{S}$ be the reorientation of~$\tc(D)$ defined by~$\rev(\areori{S}) = \tc(\arr(S)) \cap \tc(D)$.
 \end{definition}
 
@@ -1135,7 +1141,7 @@ Note that~$O_1 = \orn{\reori{34251}}$ and~$O_2 = \orn{\reori{3412}}$ so that the
 However,
 \begin{itemize}
 \item the reorientation~$\reori{O_1}$ is cyclic since it contains the cycle~$1 \to 4 \to 3 \to 5 \to 1$,
-\item the sourcing~$\sour{O_2}$ is cyclic since~$\sour{O_2}(\{3,4\}) = 3$ and~$\Sour{O_2}(\{1,3,4\}) = 4$.
+\item the sourcing~$\sour{O_2}$ is cyclic since~$\sour{O_2}(\{3,4\}) = 3$ and~$\sour{O_2}(\{1,3,4\}) = 4$.
 \end{itemize}
 \end{remark}
 
@@ -1146,7 +1152,7 @@ The \defn{acyclic ornamentation poset}~$\AOrn(D)$ is the subposet of the ornamen
 \end{definition}
 
 To keep our notations coherent, we denote by~$\aorn{R} \eqdef \orn{R}$ the acyclic ornamentation of~$D$ corresponding to an acyclic reorientation~$R$ of~$\tc(D)$, and by~$\aorn{S} \eqdef \orn{S}$ the acyclic ornamentation of~$D$ corresponding to an acyclic sourcing~$S$ of~$\PP(D)$.
-Conversely, for an acyclic ornamentation~$O$ of~$D$, we denote the corresponding acyclic sourcing of~$\PP(D)$ by~$\asour{O}$\jose{well-defined? could there be more than one?}, and we define an acyclic reorientation of~$\tc(D)$ by~$\areori{O} \eqdef \areori{\asour{O}}$.
+Conversely, for an acyclic ornamentation~$O$ of~$D$, we denote by~$\asour{O}$ the corresponding acyclic sourcing of~$\PP(D)$ (\cref{lem:ASour2AOrn1}), and we define an acyclic reorientation of~$\tc(D)$ by~$\areori{O} \eqdef \areori{\asour{O}}$.
 Be careful that~$\asour{O} \ne \sour{O}$ and~$\areori{O} \ne \reori{O}$ in general (as~$\sour{O}$ and~$\reori{O}$ might not be acyclic even if~$O$ is acyclic, see \cref{rem:Orn2Sour&Orn2ReoriIncompatibleAcyclicity}).
 
 \begin{remark}
@@ -1159,7 +1165,7 @@ For instance, the cyclic ornamentations of~$D$ in \cref{fig:ornamentationsX,fig:
 \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1}\;\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD2}\;\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD3}\;\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD4}
 \;\;\text{and}\;\;
 \includegraphics[scale=.8,valign=c]{cyclicOrnamentationT1}\;\includegraphics[scale=.8,valign=c]{cyclicOrnamentationT2}\]
-since {\bf their fibers}\jose{their $\mathsf{O}$-fibers? the fibers of $\mathsf{O}$ at these elements?} are all singletons, containing the cyclic reorientations of~$\tc(D)$ given by
+since their fibers under~$R \mapsto \orn{R}$ are all singletons, containing the cyclic reorientations of~$\tc(D)$ given by
 \[
 \includegraphics[scale=.8,valign=c]{cyclicReorientationX1}\;\includegraphics[scale=.8,valign=c]{cyclicReorientationX2}
 \;\;\text{and}\;\;
@@ -1191,7 +1197,7 @@ We conclude that~$S \mapsto \aorn{S}$ and~$O \mapsto \asour{O}$ are inverse isom
 \section{Directed trees}
 \label{sec:directedTrees}
 
-In this section, we focus on the specific situation when the ground graph~$D$ is a directed tree~$T$ (but not necessarily a rooted tree).
+In this section, we focus on the specific situation when the ground directed graph~$D$ is a directed tree~$T$ (but not necessarily a rooted tree), as for example in  in \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX}.
 We start by a few observations.
 
 \begin{lemma}
@@ -1224,23 +1230,31 @@ Hence, $u \in \orn{R}(v)$ if and only if~$u' \in \rev(R)$ for all~$u'$ along the
 
 \begin{lemma}
 For an ornamentation~$O$ of a directed tree~$T$, the reorientation~$\reori{O}$ is transitively closed and coclosed.
-Hence, any induced oriented cycle in~$\reori{O}$ is an induced alternating cycle in~$\tc(T)$ (meaning taking alternatively forward and backward arrows).
+Hence, any induced oriented cycle in~$\reori{O}$ is an induced cycle in~$\tc(T)$.
 \end{lemma}
 
 \begin{proof}
-Let~$u, v, w \in V$ such that~$(u,v)$ and~$(v,w)$ are in~$\tc(T)$.
-Assume that~${(u,v), (v,w) \in \rev(\reori{O})}$.
-Then~$u \in O(v)$ and~$v \in O(w)$, hence~$u \in O(w)$ since~$O$ is an ornamentation, thus ${(u,w) \in \rev(\reori{O})}$.
-Conversely, assume that~$(u,w) \in \rev(\reori{O})$. Then~$u \in O(w)$. As~$T$ is a tree, the complete path from~$u$ to~$w$ is in~$O(w)$, hence~$v \in O(w)$ and thus $(v,w) \in \rev(\reori{O})$.
-The last statement immediately follows as an induced cycle cannot chain two consecutive forward arrows, nor two consecutive backwards arrows.
+We have already seen in \cref{prop:ReoriTC2Orn} that~$\reori{O}$ is transitively closed.
+Let~$u, v, w \in V$ be such that~$(u,v)$ and~$(v,w)$ are in~$\tc(T)$,
+%Assume that~${(u,v), (v,w) \in \rev(\reori{O})}$.
+%Then~$u \in O(v)$ and~$v \in O(w)$, hence~$u \in O(w)$ since~$O$ is an ornamentation, thus ${(u,w) \in \rev(\reori{O})}$.
+and that~$(u,w) \in \rev(\reori{O})$. Then~$u \in O(w)$. As~$T$ is a tree, the complete path from~$u$ to~$w$ is in~$O(w)$, hence~$v \in O(w)$ and thus $(v,w) \in \rev(\reori{O})$.
+We conclude that~$\reori{O}$ is transitively coclosed.
+%The last statement immediately follows as an induced cycle cannot chain two consecutive forward arrows, nor two consecutive backwards arrows.
 \end{proof}
 
+We say that $a,b,d,e \in V$ are \defn{starred} in~$T$ if there is $c \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$ and~$(c,e)$ are all in~$\tc(T)$.
+
 \begin{lemma}
-Consider an induced alternating cycle~$C = d_1 \rightarrow u_1 \leftarrow d_2 \rightarrow u_2 \dots d_k \rightarrow u_k \leftarrow d_1$ in~$\tc(T)$ for a directed tree~$T$.
-Then~$k = 2$ and there exists~$v \in V$ such that~$(d_1, v)$, $(d_2,v)$, $(v,u_1)$, and~$(v,u_2)$ are in~$\tc(T)$.
+\label{lem:X}
+For a directed tree~$T$, any induced cycle in~$\tc(T)$ is of the form~$(a,c,b,d)$ where~$a,b,c,d$ are starred.
 \end{lemma}
 
 \begin{proof}
+Let~$C$ be an induced cycle in~$\tc(T)$.
+As~$\tc(T)$ is transitive, $C$ is alternating (meaning taking alternatively forward and backward arrows).
+We can thus write~$C = (d_1, u_1, d_2, u_2, \dots, d_k, u_k)$ where~$(d_i, u_i)$ and~$(u_i, d_{i+1})$ are in~$\tc(T)$ for all~$i \in [k]$.
+
 Assume first that~$(d_1,u_k)$ is an edge of~$T$.
 Let~$D$ and~$U$ denote the connected components of~$T \ssm \{(d_1,u_k)\}$ containing~$d_1$ and~$u_k$ respectively.
 Let~$i \in [k]$ be maximal such that~$d_i \in D$.
@@ -1279,14 +1293,32 @@ suffices to make it a lattice.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Rooted trees}
+\section{Starred-free trees and rooted trees}
 \label{sec:rootedTrees}
 
-In this section, we discuss the specific situation when the ground graph~$D$ is a rooted tree~$T$ (with increasing edges all oriented toward the root).
+In this section, we discuss the specific situation when the ground directed graph~$D$ is a starred-free tree~$T$, defined as follows
+
+\begin{lemma}
+\label{lem:starredFreeTrees}
+The following conditions are equivalent for a directed tree~$T$:
+\begin{enumerate}[(i)]
+\item there is no~$u,v \in T$ such that~$u$ has at least two incoming edges in~$T$, $v$ has at least two outgoing edges in~$T$, and $T$ has a directed path from~$u$ to~$v$,
+\item there is no $a,b,c,d,e \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$, and~$(c,e)$ are all in~$\tc(T)$,
+\item $\tc(T)$ contains no induced cycle.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\end{proof}
+
+\begin{definition}
+We say that a directed free~$T$ is \defn{starred-free} if it satisfies the equivalent conditions of \cref{lem:starredFreeTrees}.
+Note that rooted trees (with increasing edges all oriented toward the root) are starred-free.
+\end{definition}
 
 \begin{proposition}
 \label{prop:rootedTrees1}
-For any ornamentation~$O$ of a rooted tree~$T$, the reorientation~$\reori{O}$ of~$\tc(T)$ and the sourcing~$\sour{O}$ of~$\PP(T)$ are both acyclic.
+For any ornamentation~$O$ of a starred-tree tree~$T$, the reorientation~$\reori{O}$ of~$\tc(T)$ and the sourcing~$\sour{O}$ of~$\PP(T)$ are both acyclic.
 In particular, all ornamentations of~$T$ are acyclic and~$\ASour(\PP(T)) \simeq \AOrn(T) = \Orn(T)$.
 \end{proposition}
 
@@ -1299,6 +1331,7 @@ Since~$(v,w) \in \tc(T)$, the vertex~$w$ is along the path from~$v$ to the root 
 Since the edges of~$C$ between~$u$ and~$v$ are in~$\rev(\reori{O})$, we obtain that~$v \in O(u)$, hence~$w \in O(u)$ since~$w$ lies along the path from~$u$ to~$v$ in~$T$.
 We conclude that~$(u,w) \in \rev(\reori{O})$, contradicting the minimality of the cycle~$C$.
 The proof for the acyclicity of~$\sour{O}$ is similar.
+\vincent{Need to be rewritten for starred-free.}
 %For Part (1),
 %the transitive reduction $D$ of any induced subgraph of $\tc(T)$ is a (rooted) forest.
 %Indeed, any such $D$ is clearly acyclic and all the out-degrees of its vertices are at most one.
@@ -1309,10 +1342,11 @@ The proof for the acyclicity of~$\sour{O}$ is similar.
 
 \begin{proposition}
 \label{prop:rootedTrees2}
-For a rooted tree~$T$, the acyclic reorientation poset~$\AReori(\tc(T))$, the acyclic sourcing poset~$\ASour(\PP(T))$, and the acyclic ornamentation poset~$\AOrn(T)$ are all lattices.
+For a starred-free tree~$T$, the acyclic reorientation poset~$\AReori(\tc(T))$, the acyclic sourcing poset~$\ASour(\PP(T))$, and the acyclic ornamentation poset~$\AOrn(T)$ are all lattices.
 \end{proposition}
 
 \begin{proof}
+\vincent{Need to be rewritten for starred-free.}
 Given any subset~$X$ of vertices of~$T$, denote by~$T[X]$ the forest on~$X$ where the parent of~$x \in X$ is the vertex of~$X$ closest to~$x$ along the path from the root of~$T$ to~$x$.
 Then the subgraph of~$\tc(T)$ induced by~$X$ is the transitive closure of~$T[X]$, so that its transitive reduction is a forest.
 We conclude by~\cref{prop:acyclicReorientationLatticesJoinMeet} that~$\AReori(\tc(T))$ is a lattice.
@@ -1321,7 +1355,7 @@ Finally, \cref{prop:rootedTrees1} ensures that~$\ASour(\PP(T))$ and~$\AOrn(T)$ a
 
 \begin{proposition}
 \label{prop:rootedTrees3}
-For a rooted tree~$T$, the map $R \mapsto \aorn{R}$ is a surjective lattice map, hence the lattices~$\ASour(\PP(T)) \simeq \AOrn(T) = \Orn(T)$ are lattice quotients~of~$\AReori(\tc(T))$.
+For a starred-free tree~$T$, the map $R \mapsto \aorn{R}$ is a surjective lattice map, hence the lattices~$\ASour(\PP(T)) \simeq \AOrn(T) = \Orn(T)$ are lattice quotients~of~$\AReori(\tc(T))$.
 \end{proposition}
 
 \begin{proof}
@@ -1334,14 +1368,14 @@ Remember the formulas for~$\rev(R_1 \meet R_2)$ and~$\rev(R_1 \join R_2)$ from~\
 \end{proof}
 
 \begin{corollary}
-If~$T$ is a rooted tree, then the Hasse diagram of the ornamentation lattice~$\Orn(T)$ is isomorphic to the graph of the path hypergraphic polytope~$\simplex_{\PP(D)} \eqdef \sum_{u \le_T v} \simplex_{[u,v]_T}$ oriented in the direction~$\omega$.
+If~$T$ is a starred-free tree, then the Hasse diagram of the ornamentation lattice~$\Orn(T)$ is isomorphic to the graph of the path hypergraphic polytope~$\simplex_{\PP(D)} \eqdef \sum_{u \le_T v} \simplex_{[u,v]_T}$ oriented in the direction~$\omega$.
 \end{corollary}
 
 \vincent{This is not completely proved here since I have not proved that the graph is transitively reduced...}
 
 \begin{remark}
 Lattice quotients of acyclic reorientation lattices were studied in detail in~\cite{Pilaud-acyclicReorientationLattices}.
-We can reformulate \cref{prop:rootedTrees} using the language of~\cite{Pilaud-acyclicReorientationLattices}: if~$T$ is a rooted tree with increasing edges all oriented towards the root, then
+We can reformulate \cref{prop:rootedTrees} using the language of~\cite{Pilaud-acyclicReorientationLattices}: if~$T$ is a starred-free tree, then
 \begin{enumerate}
 \item the transitive closure~$\tc(T)$ is skeletal, so that~$\AReori(\tc(T))$ is an acyclic reorientation lattice,
 \item the ornamentation lattice~$\AReori(\tc(T))$ is (isomorphic to) the Tamari lattice of~$\tc(T)$ defined by the $\tc(T)$-sylvester congruence,
@@ -1364,7 +1398,7 @@ Complete binary tree?
 
 \begin{example}
 The \defn{$(m,n)$-broom} is the rooted tree obtained by attaching $m$ nodes (called \defn{bristles}) to an $n$-path (called \defn{handle}).
-We denote by~$B_{m,n}$ the number of (acyclic) ornamentations of the $(m,n)$-broom, by~$B(x,y) \eqdef \sum_{m \ge 0, n \ge 0} B_{m,n} \, x^m \, y^n$ their generating function, and by~$B_m(y) \eqdef [x^m] \, B(x,y) = \sum_{n \ge 0} B_{m,n} \, y^n$ the coefficient of~$x^m$ in~$B(x,y)$.
+We denote by~$B_{m,n}$ the number of (acyclic) ornamentations of the $(m,n)$-broom, by~$B(x,y) \eqdef \sum_{m \ge 0, n \ge 0} B_{m,n} \, x^m/m! \, y^n$ their generating function (exponential in~$x$, standard in~$y$), and by~$B_m(y) \eqdef m! \, [x^m] \, B(x,y) = \sum_{n \ge 0} B_{m,n} \, y^n$ the coefficient of~$x^m$ in~$B(x,y)$.
 As~$B_{0,m} = B_{1,n-1}$ is the $n$th Catalan number~$C_n \eqdef \frac{1}{n+1}\binom{2n}{n}$, we have $B_0(y) = C(y)$ and~$B_1(y) = (C(y) - 1)/y$ where~$C(y) \eqdef \sum_{n \ge 0} C_n \, y^n = \frac{1-\sqrt{1-4y}}{2y}$.
 \end{example}
 
@@ -1382,6 +1416,18 @@ Consider an ornament~$U$ of the $(m,n)$-broom containing~$k \ge 1$ bristles and 
 The ornamentations~$O$ of the $(m,n)$-broom containing~$U$ are clearly in bijection with pairs formed by an ornamentation of the $(k, \ell-1)$-broom and an ornamentation of the $(n-\ell)$-path.
 Conversely, we can associate to each ornamentation of the $(m,n)$-broom the inclusion maximal ornament~$U$ of~$O$ containing at least one bristle (note that there might be no such ornament).
 The formula immediately follows.
+\end{proof}
+
+\begin{proposition}
+The generating function~$B(x,y) \eqdef m! \, [x^m] \, B(x,y) = \sum_{n \ge 0} B_{m,n} \, y^n$ is given~by
+\[
+B(x,y) = \frac{e^x}{1-e^x \cdot y \cdot C(y)}
+\]
+where~$C(y) \eqdef \sum_{n \ge 0} C_n \, y^n = \frac{1-\sqrt{1-4y}}{2y}$.
+\end{proposition}
+
+\begin{proof}
+\vincent{todo}
 \end{proof}
 
 \begin{proposition}
