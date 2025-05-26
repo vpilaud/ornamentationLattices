@@ -1229,8 +1229,9 @@ Hence, $u \in \orn{R}(v)$ if and only if~$u' \in \rev(R)$ for all~$u'$ along the
 \end{proof}
 
 \begin{lemma}
+\label{lem:Orn2ReoriDT}
 For an ornamentation~$O$ of a directed tree~$T$, the reorientation~$\reori{O}$ is transitively closed and coclosed.
-Hence, any induced oriented cycle in~$\reori{O}$ is an induced cycle in~$\tc(T)$.
+Hence, any induced oriented cycle in~$\reori{O}$ is an induced alternating cycle in~$\tc(T)$ (meaning taking alternatively forward and backward arrows).
 \end{lemma}
 
 \begin{proof}
@@ -1240,20 +1241,19 @@ Let~$u, v, w \in V$ be such that~$(u,v)$ and~$(v,w)$ are in~$\tc(T)$,
 %Then~$u \in O(v)$ and~$v \in O(w)$, hence~$u \in O(w)$ since~$O$ is an ornamentation, thus ${(u,w) \in \rev(\reori{O})}$.
 and that~$(u,w) \in \rev(\reori{O})$. Then~$u \in O(w)$. As~$T$ is a tree, the complete path from~$u$ to~$w$ is in~$O(w)$, hence~$v \in O(w)$ and thus $(v,w) \in \rev(\reori{O})$.
 We conclude that~$\reori{O}$ is transitively coclosed.
-%The last statement immediately follows as an induced cycle cannot chain two consecutive forward arrows, nor two consecutive backwards arrows.
+The last statement immediately follows as an induced cycle cannot chain two consecutive forward arrows, nor two consecutive backwards arrows.
 \end{proof}
 
 We say that $a,b,d,e \in V$ are \defn{starred} in~$T$ if there is $c \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$ and~$(c,e)$ are all in~$\tc(T)$.
 
 \begin{lemma}
-\label{lem:X}
-For a directed tree~$T$, any induced cycle in~$\tc(T)$ is of the form~$(a,c,b,d)$ where~$a,b,c,d$ are starred.
+\label{lem:starred}
+For a directed tree~$T$, any induced alternating cycle in~$\tc(T)$ is of the form~$(a,c,b,d)$ where~$a,b,c,d$ are starred.
 \end{lemma}
 
 \begin{proof}
-Let~$C$ be an induced cycle in~$\tc(T)$.
-As~$\tc(T)$ is transitive, $C$ is alternating (meaning taking alternatively forward and backward arrows).
-We can thus write~$C = (d_1, u_1, d_2, u_2, \dots, d_k, u_k)$ where~$(d_i, u_i)$ and~$(u_i, d_{i+1})$ are in~$\tc(T)$ for all~$i \in [k]$.
+Let~$C$ be an alternating induced cycle in~$\tc(T)$.
+We can write~$C = (d_1, u_1, d_2, u_2, \dots, d_k, u_k)$ where~$(d_i, u_i)$ and~$(u_i, d_{i+1})$ are in~$\tc(T)$ for all~$i \in [k]$.
 
 Assume first that~$(d_1,u_k)$ is an edge of~$T$.
 Let~$D$ and~$U$ denote the connected components of~$T \ssm \{(d_1,u_k)\}$ containing~$d_1$ and~$u_k$ respectively.
@@ -1293,45 +1293,55 @@ suffices to make it a lattice.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Starred-free trees and rooted trees}
+\section{Unstarred trees and rooted trees}
 \label{sec:rootedTrees}
 
-In this section, we discuss the specific situation when the ground directed graph~$D$ is a starred-free tree~$T$, defined as follows
+In this section, we discuss the specific situation when the ground directed graph~$D$ is an unstarred tree~$T$, defined as follows
 
 \begin{lemma}
 \label{lem:starredFreeTrees}
-The following conditions are equivalent for a directed tree~$T$:
+The following conditions are equivalent for a directed tree~$T$ on~$V$:
 \begin{enumerate}[(i)]
-\item there is no~$u,v \in T$ such that~$u$ has at least two incoming edges in~$T$, $v$ has at least two outgoing edges in~$T$, and $T$ has a directed path from~$u$ to~$v$,
-\item there is no $a,b,c,d,e \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$, and~$(c,e)$ are all in~$\tc(T)$,
-\item $\tc(T)$ contains no induced cycle.
+\item $\tc(T)$ contains an alternating induced cycle.
+\item there are $a,b,c,d,e \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$, and~$(c,e)$ are all in~$\tc(T)$,
+\item there are~$u,v \in V$ such that~$u$ has at least two incoming edges in~$T$, $v$ has at least two outgoing edges in~$T$, and $T$ has a directed path from~$u$ to~$v$,
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
+(i) $\Rightarrow$ (ii). This is \cref{lem:starred}.
+
+(ii) $\Rightarrow$ (i). Let~$a,b,c,d,e$ as in~(ii). Then~$(a,d,b,e)$ forms an alternating induced cycle in~$\tc(T)$.
+
+(ii) $\Rightarrow$ (iii). Let~$a,b,c,d,e$ as in~(ii). Let $u$ (resp.~$v$) be the first common vertex of the paths from~$a$ and~$b$ to~$c$ (from~$c$ to~$d$ and~$e$). Then~$u$ (resp.~$v$) has at least two incoming (resp.~outgoing) arrows, and there is a path from~$u$ to~$v$ passing through~$c$.
+
+(iii) $\Rightarrow$ (ii). Let~$u,v$ as in~(iii). Let~$a,b$ be two incoming neighbors of~$u$, let~$d,e$ be two outgoinng neighbors of~$v$, and let~$c$ be any vertex along the path from~$u$ to~$v$. Then~$a,b,c,d,e$ are as in~(ii).
 \end{proof}
 
 \begin{definition}
-We say that a directed free~$T$ is \defn{starred-free} if it satisfies the equivalent conditions of \cref{lem:starredFreeTrees}.
-Note that rooted trees (with increasing edges all oriented toward the root) are starred-free.
+We say that a directed free~$T$ is \defn{starred} if it satisfies the equivalent conditions of \cref{lem:starredFreeTrees} and \defn{unstarred} otherwise.
+Note that rooted trees (with increasing edges all oriented toward the root) are unstarred.
 \end{definition}
 
 \begin{proposition}
 \label{prop:rootedTrees1}
-For any ornamentation~$O$ of a starred-tree tree~$T$, the reorientation~$\reori{O}$ of~$\tc(T)$ and the sourcing~$\sour{O}$ of~$\PP(T)$ are both acyclic.
+For any ornamentation~$O$ of an unstared tree~$T$, the reorientation~$\reori{O}$ of~$\tc(T)$ and the sourcing~$\sour{O}$ of~$\PP(T)$ are both acyclic.
 In particular, all ornamentations of~$T$ are acyclic and~$\ASour(\PP(T)) \simeq \AOrn(T) = \Orn(T)$.
 \end{proposition}
 
 \begin{proof}
-Assume that~$\reori{O}$ contains an oriented cycle~$C$, and assume that~$C$ is minimal.
-Let~$u$ be the vertex of~$C$ closest to the root of~$T$.
-Let~$v$ be the last vertex along~$C$ such that the path from~$u$ to~$v$ in~$C$ moves away from~$u$ at each step.
-Finally, let~$w$ be the vertex just after~$v$ along~$C$.
-Since~$(v,w) \in \tc(T)$, the vertex~$w$ is along the path from~$v$ to the root of~$T$, hence between~$u$ and~$v$.
-Since the edges of~$C$ between~$u$ and~$v$ are in~$\rev(\reori{O})$, we obtain that~$v \in O(u)$, hence~$w \in O(u)$ since~$w$ lies along the path from~$u$ to~$v$ in~$T$.
-We conclude that~$(u,w) \in \rev(\reori{O})$, contradicting the minimality of the cycle~$C$.
-The proof for the acyclicity of~$\sour{O}$ is similar.
-\vincent{Need to be rewritten for starred-free.}
+If~$\reori{O}$ is cyclic, it contains an induced oriented cycle (any chord can be used to make the cycle shorter).
+An induced oriented cycle in~$\reori{O}$ is an induced cycle in~$\tc(T)$ by~\cref{lem:Orn2ReoriDT}.
+This would imply that~$T$ is starred by \cref{lem:starred}.
+%Assume that~$\reori{O}$ contains an oriented cycle~$C$, and assume that~$C$ is minimal.
+%Let~$u$ be the vertex of~$C$ closest to the root of~$T$.
+%Let~$v$ be the last vertex along~$C$ such that the path from~$u$ to~$v$ in~$C$ moves away from~$u$ at each step.
+%Finally, let~$w$ be the vertex just after~$v$ along~$C$.
+%Since~$(v,w) \in \tc(T)$, the vertex~$w$ is along the path from~$v$ to the root of~$T$, hence between~$u$ and~$v$.
+%Since the edges of~$C$ between~$u$ and~$v$ are in~$\rev(\reori{O})$, we obtain that~$v \in O(u)$, hence~$w \in O(u)$ since~$w$ lies along the path from~$u$ to~$v$ in~$T$.
+%We conclude that~$(u,w) \in \rev(\reori{O})$, contradicting the minimality of the cycle~$C$.
+%The proof for the acyclicity of~$\sour{O}$ is similar.
+%
 %For Part (1),
 %the transitive reduction $D$ of any induced subgraph of $\tc(T)$ is a (rooted) forest.
 %Indeed, any such $D$ is clearly acyclic and all the out-degrees of its vertices are at most one.
@@ -1342,20 +1352,21 @@ The proof for the acyclicity of~$\sour{O}$ is similar.
 
 \begin{proposition}
 \label{prop:rootedTrees2}
-For a starred-free tree~$T$, the acyclic reorientation poset~$\AReori(\tc(T))$, the acyclic sourcing poset~$\ASour(\PP(T))$, and the acyclic ornamentation poset~$\AOrn(T)$ are all lattices.
+For an unstarred tree~$T$, the acyclic reorientation poset~$\AReori(\tc(T))$, the acyclic sourcing poset~$\ASour(\PP(T))$, and the acyclic ornamentation poset~$\AOrn(T)$ are all lattices.
 \end{proposition}
 
 \begin{proof}
-\vincent{Need to be rewritten for starred-free.}
-Given any subset~$X$ of vertices of~$T$, denote by~$T[X]$ the forest on~$X$ where the parent of~$x \in X$ is the vertex of~$X$ closest to~$x$ along the path from the root of~$T$ to~$x$.
-Then the subgraph of~$\tc(T)$ induced by~$X$ is the transitive closure of~$T[X]$, so that its transitive reduction is a forest.
+%Given any subset~$X$ of vertices of~$T$, denote by~$T[X]$ the forest on~$X$ where the parent of~$x \in X$ is the vertex of~$X$ closest to~$x$ along the path from the root of~$T$ to~$x$.
+%Then the subgraph of~$\tc(T)$ induced by~$X$ is the transitive closure of~$T[X]$, so that its transitive reduction is a forest.
+Given any subset~$U \subset V$, the subgraph of~$\tc(T)$ induced by~$U$ contains no alternating induced cycle, hence no induced cycles of length at least~$4$.
+Hence, its transitive reduction contains no cycle.
 We conclude by~\cref{prop:acyclicReorientationLatticesJoinMeet} that~$\AReori(\tc(T))$ is a lattice.
 Finally, \cref{prop:rootedTrees1} ensures that~$\ASour(\PP(T))$ and~$\AOrn(T)$ are both isomorphic to~$\Orn(T)$, which is a lattice by~\cref{thm:OrnMeetJoin}.
 \end{proof}
 
 \begin{proposition}
 \label{prop:rootedTrees3}
-For a starred-free tree~$T$, the map $R \mapsto \aorn{R}$ is a surjective lattice map, hence the lattices~$\ASour(\PP(T)) \simeq \AOrn(T) = \Orn(T)$ are lattice quotients~of~$\AReori(\tc(T))$.
+For an unstarred tree~$T$, the map $R \mapsto \aorn{R}$ is a surjective lattice map, hence the lattices~$\ASour(\PP(T)) \simeq \AOrn(T) = \Orn(T)$ are lattice quotients~of~$\AReori(\tc(T))$.
 \end{proposition}
 
 \begin{proof}
@@ -1368,14 +1379,14 @@ Remember the formulas for~$\rev(R_1 \meet R_2)$ and~$\rev(R_1 \join R_2)$ from~\
 \end{proof}
 
 \begin{corollary}
-If~$T$ is a starred-free tree, then the Hasse diagram of the ornamentation lattice~$\Orn(T)$ is isomorphic to the graph of the path hypergraphic polytope~$\simplex_{\PP(D)} \eqdef \sum_{u \le_T v} \simplex_{[u,v]_T}$ oriented in the direction~$\omega$.
+If~$T$ is an unstarred tree, then the Hasse diagram of the ornamentation lattice~$\Orn(T)$ is isomorphic to the graph of the path hypergraphic polytope~$\simplex_{\PP(D)} \eqdef \sum_{u \le_T v} \simplex_{[u,v]_T}$ oriented in the direction~$\omega$.
 \end{corollary}
 
 \vincent{This is not completely proved here since I have not proved that the graph is transitively reduced...}
 
 \begin{remark}
 Lattice quotients of acyclic reorientation lattices were studied in detail in~\cite{Pilaud-acyclicReorientationLattices}.
-We can reformulate \cref{prop:rootedTrees} using the language of~\cite{Pilaud-acyclicReorientationLattices}: if~$T$ is a starred-free tree, then
+We can reformulate \cref{prop:rootedTrees} using the language of~\cite{Pilaud-acyclicReorientationLattices}: if~$T$ is an unstarred tree, then
 \begin{enumerate}
 \item the transitive closure~$\tc(T)$ is skeletal, so that~$\AReori(\tc(T))$ is an acyclic reorientation lattice,
 \item the ornamentation lattice~$\AReori(\tc(T))$ is (isomorphic to) the Tamari lattice of~$\tc(T)$ defined by the $\tc(T)$-sylvester congruence,
