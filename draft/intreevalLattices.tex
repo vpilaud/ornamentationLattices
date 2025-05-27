@@ -633,7 +633,7 @@ For instance,
 O = \!\!\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} \qquad \reori{O} = \!\!\includegraphics[scale=.8,valign=c]{cyclicReorientationD1}
 .
 \]
-We will see in \cref{lem:Orn2ReoriDT} that $\reori{O}$ is both transitively closed and coclosed when~$D$ is a directed tree.
+We will see in \cref{lem:Orn2ReoriT} that $\reori{O}$ is both transitively closed and coclosed when~$D$ is a directed tree.
 \end{remark}
 
 This surjection behaves much nicer with respect to \cref{rem:Orn2ReoriMiddle,rem:Reori2OrnIntervals1,rem:Reori2OrnSemilatticeMap}.
@@ -654,7 +654,7 @@ We conclude that~$\rev(\reori{O}) \subseteq \rev(R)$, so that~$\reori{O} \le R$.
 \begin{remark}
 \label{rem:Reori2OrnIntervals2}
 Note that the second example of \cref{rem:Reori2OrnIntervals1} shows that the set of transitively closed reorientations~$R$ of~$\tc(D)$ such that~$\orn{R} = O$ does not admit a maximum either.
-We will see in \cref{prop:ReoriTC2OrnIntervalTree} that it does if~$D$ is a directed tree.
+We will see in \cref{prop:ReoriTC2OrnIntervalT} that it does if~$D$ is a directed tree.
 \end{remark}
 
 \begin{proposition}
@@ -664,23 +664,24 @@ The map~$R \mapsto \orn{R}$ is a meet semilattice morphism from the transitively
 
 \begin{proof}
 Given two transitively closed reorientations~$R_1$ and~$R_2$ of $\tc(D)$, we want to show that $\orn{R_1 \meet R_2} = \orn{R_1} \meet \orn{R_2}$.
-Let us define by~$O_\meet \eqdef \orn{R_1} \meet \orn{R_2}$.
+Since~$R \mapsto \orn{R}$ is order-preserving (\cref{lem:Reori2Orn2}) and~$R_1 \meet R_2 \le R_1$ and~$R_1 \meet R_2 \le R_2$, we have~$\orn{R_1 \meet R_2} \le \orn{R_1}$ and~$\orn{R_1 \meet R_2} \le \orn{R_2}$, hence~$\orn{R_1 \meet R_2} \le \orn{R_1} \meet \orn{R_2}$.
 
-Let $u \in O_\meet(v)$.
-There exists a path~$u = w_0, w_1, \dots, w_p = v$ in $O_\meet(v) \subseteq \orn{R_1}(v) \cap \orn{R_2}(v)$.
+Conversely, consider~$u \in (\orn{R_1} \meet \orn{R_2})(v)$.
+There exists a path~$u = w_0, w_1, \dots, w_p = v$ in $(\orn{R_1} \meet \orn{R_2})(v) \subseteq \orn{R_1}(v) \cap \orn{R_2}(v)$ (by \cref{thm:OrnMeetJoin}).
 By definition of $\orn{R_1}$ and $\orn{R_2}$, there is a path from each $w_i$ to $v$ in both $\rev(R_1)$ and $\rev(R_2)$.
 Since~$R_1$ and~$R_2$ are both transitively closed, each arrow $(w_i,v)$ of $\tc(D)$ is in both~$\rev(R_1)$ and~$\rev(R_2)$,
-and therefore in $\rev(R_1 \meet R_2) = \rev(R_1) \cap \rev(R_2)$ (by \cref{lem:rcl-subsemilattice}).
+and therefore in $\rev(R_1) \cap \rev(R_2) = \rev(R_1 \meet R_2)$ (by \cref{lem:rcl-subsemilattice}).
 So, $\{u = w_0, w_1, \dots, w_p = v\} \in \Orn(v \in D)$ and each $w_i$ has a directed path to $v$ in $\rev(R_1) \cap \rev(R_2)$.
 By maximality of $\orn{R_1 \meet R_2}(v)$, we deduce $u \in \orn{R_1 \meet R_2}(v)$.
-Thus, we have shown that $O_\meet \leq \orn{R_1 \meet R_2}$.
-
-Conversely, let $u \in \orn{R_1 \meet R_2}(v)$.
-There is a path $u = w_0, w_1, \dots, w_p = v$ in $\orn{R_1 \meet R_2}(v)$.
-Thus, each arrow $(w_i,v)$ of $\tc(D)$ is in $\rev(R_1 \meet R_2) = \rev(R_1) \cap \rev(R_2)$,
-showing that this same path is contained in both $\orn{R_1}(v)$ and $\orn{R_2}(v)$.
-By \cref{thm:OrnMeetJoin}, $\{u = w_0, w_1, \dots, w_p = v\} \subseteq O_\meet(v)$.
-Thus, we have shown that $O_\meet \geq \orn{R_1 \meet R_2}$.
+Thus, we have shown that $\orn{R_1} \meet \orn{R_2} \le \orn{R_1 \meet R_2}$, and we conclude that~$\orn{R_1 \meet R_2} = \orn{R_1} \meet \orn{R_2}$.
+%
+%Conversely, let $u \in \orn{R_1 \meet R_2}(v)$.
+%There is a path $u = w_0, w_1, \dots, w_p = v$ in $\orn{R_1 \meet R_2}(v)$.
+%Thus, each arrow $(w_i,v)$ of $\tc(D)$ is in $\rev(R_1 \meet R_2) = \rev(R_1) \cap \rev(R_2)$,
+%showing that this same path is contained in both $\orn{R_1}(v)$ and $\orn{R_2}(v)$.
+%By \cref{thm:OrnMeetJoin}, $\{u = w_0, w_1, \dots, w_p = v\} \subseteq O_\meet(v)$.
+%Thus, we have shown that $O_\meet \geq \orn{R_1 \meet R_2}$.
+\vincent{I removed the second part of the argument as it immediately follows from the order preserving condition.}
 \end{proof}
 
 \begin{remark}
@@ -898,11 +899,11 @@ The acyclic reorientation poset~$\AReori(E)$ is a lattice if and only if the tra
 \begin{proposition}[{\cite[Thm.~9]{Pilaud-acyclicReorientationLattices}}]
 \label{prop:acyclicReorientationLatticesJoinMeet}
 When the acyclic reorientation poset~$\AReori(E)$ is a lattice, the meet and join of two acyclic reorientations~$R_1$ and~$R_2$ of~$E$ are given by
-\[
-\rev(R_1 \join R_2) = \tc \big( \rev(R_1) \cup \rev(R_2) \big)
-\quad\text{and}\quad
-E \ssm \rev(R_1 \meet R_2) = \tc \big( E \ssm (\rev(R_1) \cap \rev(R_2)) \big).
-\]
+\begin{align*}
+\rev(R_1 \join R_2) & = E \;\cap\; \tc \!\big( \rev(R_1) \cup \rev(R_2) \big) \\
+\text{and}\qquad
+E \ssm \rev(R_1 \meet R_2) & = E \;\cap\; \tc \!\big( E \ssm (\rev(R_1) \cap \rev(R_2)) \big).
+\end{align*}
 \end{proposition}
 
 We now recall the standard map from permutations to acyclic orientations.
@@ -1221,7 +1222,8 @@ The meet of two ornamentations~$O_1$ and~$O_2$ of a directed tree~$T$ is given b
 \end{corollary}
 
 \begin{lemma}
-For a directed tree~$T$ and an acyclic reorientation~$R$ of~$\tc(T)$, we have~$u \in \orn{R}(v)$ if and only if~$u' \in \rev(R)$ for all~$u'$ along the path from~$u$ to~$v$ in~$T$.
+\label{lem:Reori2OrnT}
+For a directed tree~$T$ and an acyclic reorientation~$R$ of~$\tc(T)$, we have~$u \in \orn{R}(v)$ if and only if~$(u',v) \in \rev(R)$ for all~$u'$ along the path from~$u$ to~$v$ in~$T$.
 \end{lemma}
 
 \begin{proof}
@@ -1238,7 +1240,7 @@ Hence, $u \in \orn{R}(v)$ if and only if~$u' \in \rev(R)$ for all~$u'$ along the
 We now revisit \cref{rem:Reori2OrnIntervals1,rem:Reori2OrnIntervals2} for directed trees.
 
 \begin{definition}
-\label{def:Reori2OrnMaxTree}
+\label{def:Reori2OrnMaxT}
 Consider an ornamentation~$O$ of a directed tree~$T$.
 Let~$\maxreori{O}$ denote the reorientation of~$\tc(T)$ where for each path~$u \to u' \to \dots \to v$ in~$T$ (note that $u'$ might coincide with~$v$), the edge~$(u,v)$ is in~$\rev(\maxreori{O})$ if and only if there is no~$w \in V$ such that~$u \notin O(w)$ while~$u', v \in O(w)$.
 \end{definition}
@@ -1268,8 +1270,8 @@ We conclude that if~$\orn{R} = O$, then~$\rev(R) \subseteq \rev(\maxreori{O})$, 
 \end{proof}
 
 \begin{proposition}
-\label{prop:ReoriTC2OrnIntervalTree}
-For any ornamentation~$O$ of a directed tree~$T$, the reorientation~$\maxreori{O}$  of~\cref{def:Reori2OrnMaxTree} is transitively closed.
+\label{prop:ReoriTC2OrnIntervalT}
+For any ornamentation~$O$ of a directed tree~$T$, the reorientation~$\maxreori{O}$  of~\cref{def:Reori2OrnMaxT} is transitively closed.
 Hence, the transitively closed reorientations~$R$ of~$\tc(T)$ with~${\orn{R} = O}$ form an interval of the transitively closed reorientation lattice~$\Rcl(\tc(T))$.
 \end{proposition}
 
@@ -1289,7 +1291,7 @@ We conclude that the fiber of~$O$ is an interval, since it has a minimum by \cre
 We now revisit \cref{rem:notTransitivelyCoclosed} for directed trees.
 
 \begin{lemma}
-\label{lem:Orn2ReoriDT}
+\label{lem:Orn2ReoriT}
 For an ornamentation~$O$ of a directed tree~$T$, the reorientation~$\reori{O}$ is transitively closed and coclosed.
 Hence, any induced oriented cycle in~$\reori{O}$ is an induced alternating cycle in~$\tc(T)$ (meaning taking alternatively forward and backward arrows).
 \end{lemma}
@@ -1312,7 +1314,7 @@ For a directed tree~$T$, any induced alternating cycle in~$\tc(T)$ is of the for
 \end{lemma}
 
 \begin{proof}
-Let~$C$ be an alternating induced cycle in~$\tc(T)$.
+Let~$C$ be an induced alternating cycle in~$\tc(T)$.
 We can write~$C = (d_1, u_1, d_2, u_2, \dots, d_k, u_k)$ where~$(d_i, u_i)$ and~$(u_i, d_{i+1})$ are in~$\tc(T)$ for all~$i \in [k]$.
 
 Assume first that~$(d_1,u_k)$ is an edge of~$T$.
@@ -1359,13 +1361,13 @@ suffices to make it a lattice.
 \subsection{Unstarred trees and rooted trees}
 \label{subsec:rootedTrees}
 
-In this section, we discuss the specific situation when the ground directed graph~$D$ is an unstarred tree~$T$, defined as follows
+In this section, we discuss the specific situation when the ground directed graph~$D$ is an unstarred tree~$T$, defined as follows.
 
 \begin{lemma}
 \label{lem:starredFreeTrees}
 The following conditions are equivalent for a directed tree~$T$ on~$V$:
 \begin{enumerate}[(i)]
-\item $\tc(T)$ contains an alternating induced cycle.
+\item $\tc(T)$ contains an induced alternating cycle.
 \item there are $a,b,c,d,e \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$, and~$(c,e)$ are all in~$\tc(T)$,
 \item there are~$u,v \in V$ such that~$u$ has at least two incoming edges in~$T$, $v$ has at least two outgoing edges in~$T$, and $T$ has a directed path from~$u$ to~$v$,
 \end{enumerate}
@@ -1374,7 +1376,7 @@ The following conditions are equivalent for a directed tree~$T$ on~$V$:
 \begin{proof}
 (i) $\Rightarrow$ (ii). This is \cref{lem:starred}.
 
-(ii) $\Rightarrow$ (i). Let~$a,b,c,d,e$ as in~(ii). Then~$(a,d,b,e)$ forms an alternating induced cycle in~$\tc(T)$.
+(ii) $\Rightarrow$ (i). Let~$a,b,c,d,e$ as in~(ii). Then~$(a,d,b,e)$ forms an induced alternating cycle in~$\tc(T)$.
 
 (ii) $\Rightarrow$ (iii). Let~$a,b,c,d,e$ as in~(ii). Let $u$ (resp.~$v$) be the first common vertex of the paths from~$a$ and~$b$ to~$c$ (from~$c$ to~$d$ and~$e$). Then~$u$ (resp.~$v$) has at least two incoming (resp.~outgoing) arrows, and there is a path from~$u$ to~$v$ passing through~$c$.
 
@@ -1382,9 +1384,12 @@ The following conditions are equivalent for a directed tree~$T$ on~$V$:
 \end{proof}
 
 \begin{definition}
+\label{def:starredTree}
 We say that a directed free~$T$ is \defn{starred} if it satisfies the equivalent conditions of \cref{lem:starredFreeTrees} and \defn{unstarred} otherwise.
 Note that rooted trees (with increasing edges all oriented toward the root) are unstarred.
 \end{definition}
+
+For instance, the tree of \cref{fig:ornamentationsX} is starred (it is the smallest starred tree), while that of \cref{fig:ornamentationsNI,fig:ornamentationsAY} are all unstarred.
 
 \begin{proposition}
 \label{prop:rootedTrees1}
@@ -1394,8 +1399,9 @@ In particular, all ornamentations of~$T$ are acyclic and~$\ASour(\PP(T)) \simeq 
 
 \begin{proof}
 If~$\reori{O}$ is cyclic, it contains an induced oriented cycle (any chord can be used to make the cycle shorter).
-An induced oriented cycle in~$\reori{O}$ is an induced cycle in~$\tc(T)$ by~\cref{lem:Orn2ReoriDT}.
-This would imply that~$T$ is starred by \cref{lem:starred}.
+An induced oriented cycle in~$\reori{O}$ is an induced alternating cycle in~$\tc(T)$ by~\cref{lem:Orn2ReoriT}.
+This would imply that~$T$ is starred by \cref{def:starredTree}.
+The proof for the acyclicity of~$\sour{O}$ is similar.
 %Assume that~$\reori{O}$ contains an oriented cycle~$C$, and assume that~$C$ is minimal.
 %Let~$u$ be the vertex of~$C$ closest to the root of~$T$.
 %Let~$v$ be the last vertex along~$C$ such that the path from~$u$ to~$v$ in~$C$ moves away from~$u$ at each step.
@@ -1411,7 +1417,6 @@ This would imply that~$T$ is starred by \cref{lem:starred}.
 %Otherwise, if $(u,v)$ and $(u,v')$ are edges in $D$, then both $v,v'$ are vertices in the unique path from $u$ to the root of $T$, and thus form an edge of $D$, contradicting that $D$ is transitively reduced.
 %It follows from \cref{prop:acyclicReorientationLattices} that $\AReori(\tc(T))$ is a lattice.
 %The other two claims in Part (1) follow from Part (2).
-\vincent{What about the sourcing~$\sour{O}$?}
 \end{proof}
 
 \begin{proposition}
@@ -1422,7 +1427,7 @@ For an unstarred tree~$T$, the acyclic reorientation poset~$\AReori(\tc(T))$, th
 \begin{proof}
 %Given any subset~$X$ of vertices of~$T$, denote by~$T[X]$ the forest on~$X$ where the parent of~$x \in X$ is the vertex of~$X$ closest to~$x$ along the path from the root of~$T$ to~$x$.
 %Then the subgraph of~$\tc(T)$ induced by~$X$ is the transitive closure of~$T[X]$, so that its transitive reduction is a forest.
-Given any subset~$U \subset V$, the subgraph of~$\tc(T)$ induced by~$U$ contains no alternating induced cycle, hence no induced cycles of length at least~$4$.
+Given any subset~$U \subset V$, the subgraph of~$\tc(T)$ induced by~$U$ contains no induced alternating cycle, hence no induced cycles of length at least~$4$.
 Hence, its transitive reduction contains no cycle.
 We conclude by~\cref{prop:acyclicReorientationLatticesJoinMeet} that~$\AReori(\tc(T))$ is a lattice.
 Finally, \cref{prop:rootedTrees1} ensures that~$\ASour(\PP(T))$ and~$\AOrn(T)$ are both isomorphic to~$\Orn(T)$, which is a lattice by~\cref{thm:OrnMeetJoin}.
@@ -1434,12 +1439,28 @@ For an unstarred tree~$T$, the map $R \mapsto \aorn{R}$ is a surjective lattice 
 \end{proposition}
 
 \begin{proof}
-The map is surjective by \cref{def:AOrn}, thus we only need to show that ${\orn{R_1 \meet R_2} = \orn{R_1} \meet \orn{R_2}}$ and~$\orn{R_1 \join R_2} = \orn{R_1} \join \orn{R_2}$ for any two acyclic reorientations~$R_1$ and~$R_2$ of $\tc(T)$.
-Remember the formulas for~$\rev(R_1 \meet R_2)$ and~$\rev(R_1 \join R_2)$ from~\cref{prop:acyclicReorientationLatticesJoinMeet}, and let us define by~$O_\meet \eqdef \orn{R_1} \meet \orn{R_2}$ and~$O_\join \eqdef \orn{R_1} \join \orn{R_2}$.
+The map is surjective by \cref{def:AOrn}.
+Consider two acyclic reorientations~$R_1$ and~$R_2$ of $\tc(T)$.
+We need to show that ${\orn{R_1 \meet R_2} = \orn{R_1} \meet \orn{R_2}}$ and~$\orn{R_1 \join R_2} = \orn{R_1} \join \orn{R_2}$.
+Since~$R \mapsto \orn{R}$ is order-preserving (\cref{lem:Reori2Orn2}) and~$R_1 \meet R_2 \le R_1 \le R_1 \join R_2$ and~$R_1 \meet R_2 \le R_2 \le R_1 \join R_2$, we have~$\orn{R_1 \meet R_2} \le \orn{R_1} \le \orn{R_1 \join R_2}$ and~$\orn{R_1 \meet R_2} \le \orn{R_2} \le \orn{R_1 \join R_2}$, hence~${\orn{R_1 \meet R_2} \le \orn{R_1} \meet \orn{R_2}}$ and~${\orn{R_1} \join \orn{R_2} \le \orn{R_1 \join R_2}}$.
+To prove the converse inequalities, remember the descriptions of~${O_1 \meet O_2}$ and~${O_1 \join O_2}$ from \cref{thm:OrnMeetJoin}, and of~$\rev(R_1 \meet R_2)$ and~$\rev(R_1 \join R_2)$ from~\cref{prop:acyclicReorientationLatticesJoinMeet}.
 
-%Observe that~$u \in O_\join(v)$ is equivalent by \cref{thm:OrnMeetJoin} to the existence of a path~$u = w_0, \dots, w_p = v$ such that~$w_{i-1} \in $
+If~$u \notin \orn{R_1 \meet R_2}(v)$, then there is $u'$ along the path from~$u$ to~$v$ such that~$(u',v) \notin \rev(R_1 \meet R_2)$ by \cref{lem:Reori2OrnT}.
+Therefore, there is a path~$u' = w_0, \dots, w_k = v$ such that~$(w_{i-1}, w_i) \notin \rev(R_1) \cap \rev(R_2)$ by~\cref{prop:acyclicReorientationLatticesJoinMeet}.
+As~$w_{k-1}$ is on the path from~$u$ to~$v$ and~$(w_{k-1},v) \notin \rev(R_1) \cap \rev(R_2)$, we conclude by \cref{lem:Reori2OrnT} that~$u \notin \orn{R_1}(v)$ or~$u \notin \orn{R_2}(v)$, hence~$u \notin \orn{R_1}(v) \cap \orn{R_2}(v) = (\orn{R_1} \meet \orn{R_2})(v)$ (by \cref{coro:meetOrnT}, since~$T$ is a directed tree).
+We conclude that~$(\orn{R_1} \meet \orn{R_2}) \le \orn{R_1 \meet R_2}$, hence that~$\orn{R_1 \meet R_2} = \orn{R_1} \meet \orn{R_2}$.
 
-\vincent{todo}
+Consider now~$u \in \orn{R_1 \join R_2}(v)$.
+Let~$u = w_0, \dots, w_k = v$ denote the path from~$u$ to~$v$.
+By \cref{lem:Reori2OrnT}, $(w_i, v) \in \rev(R_1 \join R_2)$ for all~$i \in [k]$.
+Assume that~$w_{i+1}, \dots, w_k \in (\orn{R_1} \join \orn{R_2})(v)$ for some~$i \in [k-1]$.
+Since~$(w_i, v) \in \rev(R_1 \join R_2) = \tc(T) \cap \tc(\rev(R_1) \cup \rev(R_2))$, there is~${i+1 \le \ell \le k}$ such that~$(w_i, w_\ell) \in \rev(R_1) \cup \rev(R_2)$.
+Assume that~$\ell$ is minimal for this property, and assume by symmetry that~$(w_i, w_\ell) \in \rev(R_1)$.
+Since~$R_1$ is acyclic, we have~$(w_j, w_\ell) \in \rev(R_1)$ for all~${i \le j \le \ell}$.
+By \cref{lem:Reori2OrnT}, we obtain that~$w_i \in \orn{R_1}(w_\ell)$.
+By \cref{thm:OrnMeetJoin}, we therefore obtain that~${w_i \in (\orn{R_1} \join \orn{R_2})(v)}$.
+Hence, by descending induction, we obtain that~$u \in (\orn{R_1} \join \orn{R_2})(v)$.
+We conclude that~$\orn{R_1 \join R_2} \le \orn{R_1} \join \orn{R_2}$, hence that~${\orn{R_1 \join R_2} = \orn{R_1} \join \orn{R_2}}$.
 \end{proof}
 
 \begin{corollary}
@@ -1515,6 +1536,7 @@ The formula immediately follows.
 \end{proof}
 
 \begin{proposition}
+\label{prop:brooms2}
 The generating function~$B(x,y) \eqdef m! \, [x^m] \, B(x,y) = \sum_{n \ge 0} B_{m,n} \, y^n$ is given~by
 \[
 B(x,y) = \frac{e^x}{1-e^x \, y \, C(y)}
@@ -1522,8 +1544,14 @@ B(x,y) = \frac{e^x}{1-e^x \, y \, C(y)}
 where~$C(y) \eqdef \sum_{n \ge 0} C_n \, y^n = \frac{1-\sqrt{1-4y}}{2y}$.
 \end{proposition}
 
-\begin{proof}
-\vincent{Give the other argument here...}
+We give two proofs of \cref{prop:brooms2}: the first is a direct translation of the decomposition of ornamentations of brooms discussed in the proof of \cref{prop:brooms1}, the second is a more pedestrian proof based on the expression of \cref{prop:brooms1}.
+
+\begin{proof}[First proof of \cref{prop:brooms2}]
+The decomposition of ornamentations of brooms discussed in the proof of \cref{prop:brooms1} tells that ornamentations of brooms can be thought of as sequences of pairs, each formed by a subset of bristles and an ornamentation of a path.
+Using classical generatingfunctionology~\cite{FlajoletSedgewick}, this immediately yields the expression of the statement.
+\end{proof}
+
+\begin{proof}[Second proof of \cref{prop:brooms2}]
 Recall that if
 \[
 U(x,y) = \sum_{m \ge 0, n \ge 0} U_{m,n} \, x^m/m! \, y^n
@@ -1550,7 +1578,7 @@ B(x,y) = \frac{e^x}{1-e^x \, y \, C(y)}.
 \end{proof}
 
 \begin{proposition}
-\label{prop:brooms2}
+\label{prop:brooms3}
 For any~$m \in \N$, we have
 \[
 y \, B_m(y) \, C(y) = \sum_{k = 0}^m (-1)^{m-k} \binom{m}{k} \, B_k(y).
