@@ -188,6 +188,7 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\Tgraph}{\sf I\!X\!I} % tie graph
 \newcommand{\Ygraph}{\sf Y} % Y graph
 \newcommand{\Dgraph}{\boldsymbol{\Diamond}} % D graph
+\newcommand{\Kgraph}{\boldsymbol{\triangle}} % K graph
 \newcommand{\Agraph}{\rotatebox[origin=c]{180}{\sf Y}} % A graph
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -224,6 +225,7 @@ We state it as a conjecture.
 
 \begin{conjecture}
 The Hasse diagram of the ornamentation lattice of any directed graph is isomorphic to the skeleton of a polytope oriented in a linear direction. 
+\vincent{Should we assume acyclic?}
 \end{conjecture}
 
 %\vincent{This is the introduction of the other paper. Needs to be updated...}
@@ -322,17 +324,17 @@ We define the reorientation lattice~$\Reori(\tc(D))$ (\cref{subsec:reorientation
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Ornamentation lattices}
+\subsection{Ornamentations}
 \label{subsec:ornamentations}
 
 \begin{figure}
-	\centerline{\includegraphics[scale=.8]{ornamentationsN} \qquad \raisebox{.5cm}{\includegraphics[scale=.8]{ornamentationsI}}}
+	\centerline{\includegraphics[scale=.7]{ornamentationsN} \qquad \raisebox{.5cm}{\includegraphics[scale=.7]{ornamentationsI}}}
 	\caption{The ornamentation lattices~$\Orn(\Ngraph)$ and~$\Orn(\Igraph)$.}
 	\label{fig:ornamentationsNI}
 \end{figure}
 
 \begin{figure}
-	\centerline{\includegraphics[scale=.8]{ornamentationsY} \qquad \includegraphics[scale=.8]{ornamentationsA}}
+	\centerline{\includegraphics[scale=.7]{ornamentationsY} \qquad \includegraphics[scale=.7]{ornamentationsA}}
 	\caption{The ornamentation lattices~$\Orn(\Ygraph)$ and~$\Orn(\Agraph)$.}
 	\label{fig:ornamentationsAY}
 \end{figure}
@@ -411,7 +413,7 @@ Moreover, $O_\join$ is clearly the join of~$O_1$ and~$O_2$ in componentwise incl
 
 \begin{example}
 The ornamentation lattice of the graph with a single edge is a $2$-elements chain.
-The ornamentation lattice of a graph with no path of length $2$ is a boolean lattice (see \eg \cref{fig:ornamentationsNI}\,(left) and \cref{fig:ornamentationsT}).
+The ornamentation lattice of a graph with no path of length $2$ is a boolean lattice (see \eg \cref{fig:ornamentationsNI}\,(left) and \cref{fig:ornamentationsKT}).
 %In general, the ornamentation lattice~$\Orn(D \sqcup D')$ of the disjoint union of two directed graphs~$D$ and~$D'$ is the Cartesian product~$\Orn(D) \times \Orn(D')$ of the ornamentation lattices of~$D$ and~$D'$
 \end{example}
 
@@ -440,21 +442,21 @@ A few lattice properties of the ornamentation lattice~$\Orn(D)$:
 \end{remark}
 
 \begin{figure}[p]
-	\centerline{\includegraphics[scale=.8]{ornamentationsX}}
-	\caption{The ornamentation lattice~$\Orn(\Xgraph)$ of the directed graph~$\Xgraph$.}
+	\centerline{\includegraphics[scale=.7]{ornamentationsX}}
+	\caption{The ornamentation lattice~$\Orn(\Xgraph)$.}
 	\label{fig:ornamentationsX}
 \end{figure}
 
 \begin{figure}
-	\centerline{\includegraphics[scale=.8]{ornamentationsD}}
-	\caption{The ornamentation lattice~$\Orn(\Dgraph)$ of the directed graph~$\Dgraph$.}
+	\centerline{\includegraphics[scale=.7]{ornamentationsD}}
+	\caption{The ornamentation lattice~$\Orn(\Dgraph)$.}
 	\label{fig:ornamentationsD}
 \end{figure}
 
 \begin{figure}
-	\centerline{\includegraphics[scale=.8]{ornamentationsT}}
-	\caption{The ornamentation lattice~$\Orn(\Tgraph)$ of the directed graph~$\Tgraph$.}
-	\label{fig:ornamentationsT}
+	\centerline{\includegraphics[scale=.7,valign=c]{ornamentationsK}\qquad\includegraphics[scale=.7,valign=c]{ornamentationsT}}
+	\caption{The ornamentation lattices~$\Orn(\Kgraph)$ and~$\Orn(\Tgraph)$.}
+	\label{fig:ornamentationsKT}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -892,12 +894,12 @@ The lattice theory of acyclic reorientation posets was studied in details in~\ci
 For our purposes, we will only need the following characterizations.
 
 \begin{proposition}[{\cite[Thm.~1]{Pilaud-acyclicReorientationLattices}}]
-\label{prop:acyclicReorientationLattices}
+\label{prop:AReoriLat}
 The acyclic reorientation poset~$\AReori(E)$ is a lattice if and only if the transitive reduction of any induced subgraph of~$E$ is a forest.
 \end{proposition}
 
 \begin{proposition}[{\cite[Thm.~9]{Pilaud-acyclicReorientationLattices}}]
-\label{prop:acyclicReorientationLatticesJoinMeet}
+\label{prop:AReoriLatJoinMeet}
 When the acyclic reorientation poset~$\AReori(E)$ is a lattice, the meet and join of two acyclic reorientations~$R_1$ and~$R_2$ of~$E$ are given by
 \begin{align*}
 \rev(R_1 \join R_2) & = E \;\cap\; \tc \!\big( \rev(R_1) \cup \rev(R_2) \big) \\
@@ -949,10 +951,13 @@ In particular, the transitive closure of the graph of~$\simplex_\HH$, oriented i
 Note that the graph of~$\simplex_\HH$, oriented in the direction~$\b{\omega}$, is not always transitively reduced, hence not always isomorphic to the Hasse diagram of the acyclic sourcing poset~$\ASour(\HH)$.
 \end{remark}
 
+\begin{remark}
+\label{rem:ASourLat}
 Note that the acyclic sourcing poset of~$\HH$ is not always a lattice.
 Characterizing the hypergraphs whose acyclic sourcing poset is a lattice seems a difficult question in general.
-Such characterizations exist for specific families of hypergraphs, notably for graphs~\cite{Pilaud-acyclicReorientationLattices} (see \cref{prop:acyclicReorientationLattices}), interval hypergraphs~\cite{BergeronPilaud}, and (partially for) graph associahedra~\cite{BarnardMcConville}.
+Such characterizations exist for specific families of hypergraphs, notably for graphs~\cite{Pilaud-acyclicReorientationLattices} (see \cref{prop:AReoriLat}), interval hypergraphs~\cite{BergeronPilaud}, and (partially for) graph associahedra~\cite{BarnardMcConville}.
 We will further study this question for subhypergraphs of the path hypergraph of directed trees in \cref{sec:intreevalHypergraphicPosets}.
+\end{remark}
 
 We have observed in \cref{subsec:sourcings} that there is no natural surjection from all reorientations of~$\tc(D)$ to all sourcings of~$\PP(D)$.
 We now recall that there is such a surjection when focusing on acyclic reorientations and acyclic sourcings.
@@ -1150,29 +1155,48 @@ An ornamentation~$O$ of~$D$ is \defn{acyclic} if the equivalent conditions of \c
 The \defn{acyclic ornamentation poset}~$\AOrn(D)$ is the subposet of the ornamentation lattice~$\Orn(D)$ induced by acyclic ornamentations.
 \end{definition}
 
+\begin{remark}
+\label{rem:COrn}
+We will see in \cref{subsec:rootedTrees} that all the ornamentations of an unstarred tree are acyclic.
+This is false in general, even for directed trees.
+For instance, the cyclic ornamentations of the directed graphs of \cref{fig:ornamentationsX,fig:ornamentationsD,fig:ornamentationsKT} are
+\[
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationX1}\;\;
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationX2}\;\;
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1}
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD2}\;\;
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD3}
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD4}\;\;
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationK}\;\;
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationT1}\;\;
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationT2}
+\]
+since their fibers under~$R \mapsto \orn{R}$ are all singletons, containing the cyclic reorientations
+\[
+\includegraphics[scale=.8,valign=c]{cyclicReorientationX1}\;\;
+\includegraphics[scale=.8,valign=c]{cyclicReorientationX2}\;\;
+\includegraphics[scale=.8,valign=c]{cyclicReorientationD1}\;
+\includegraphics[scale=.8,valign=c]{cyclicReorientationD2}\;
+\includegraphics[scale=.8,valign=c]{cyclicReorientationD3}\;
+\includegraphics[scale=.8,valign=c]{cyclicReorientationD4}\;
+\includegraphics[scale=.8,valign=c]{cyclicReorientationK}\;\;
+\includegraphics[scale=.8,valign=c]{cyclicReorientationT1}\;\;
+\includegraphics[scale=.8,valign=c]{cyclicReorientationT2}
+\]
+\end{remark}
+
+\begin{remark}
+\label{rem:AOrnLat}
+We will see in \cref{subsec:rootedTrees} that the acyclic ornamentation poset of an unstarred tree  is a lattice.
+This is false in general, even for directed trees.
+For instance, the acyclic ornamentation posets of the directed graphs~$\Xgraph$ of \cref{fig:ornamentationsX}, $\Dgraph$ of \cref{fig:ornamentationsD}, and $\Tgraph$ of \cref{fig:ornamentationsKT} are not lattices.
+In contrast, the acyclic ornamentation poset of the directed graph~$\Kgraph$ of \cref{fig:ornamentationsKT} is a lattice.
+We do not have a characterization of the directed graphs whose acyclic ornamentation poset is a lattice.
+\end{remark}
+
 To keep our notations coherent, we denote by~$\aorn{R} \eqdef \orn{R}$ the acyclic ornamentation of~$D$ corresponding to an acyclic reorientation~$R$ of~$\tc(D)$, and by~$\aorn{S} \eqdef \orn{S}$ the acyclic ornamentation of~$D$ corresponding to an acyclic sourcing~$S$ of~$\PP(D)$.
 Conversely, for an acyclic ornamentation~$O$ of~$D$, we denote by~$\asour{O}$ the corresponding acyclic sourcing of~$\PP(D)$ (\cref{lem:ASour2AOrn1}), and we define an acyclic reorientation of~$\tc(D)$ by~$\areori{O} \eqdef \areori{\asour{O}}$.
 Be careful that~$\asour{O} \ne \sour{O}$ and~$\areori{O} \ne \reori{O}$ in general (as~$\sour{O}$ and~$\reori{O}$ might not be acyclic even if~$O$ is acyclic, see \cref{rem:Orn2Sour&Orn2ReoriIncompatibleAcyclicity}).
-
-\begin{remark}
-We will see in \cref{subsec:rootedTrees} that all ornamentations of a rooted tree~$T$ (with increasing edges all oriented toward the root) are acyclic.
-This is false in general, even for directed trees.
-For instance, the cyclic ornamentations of~$D$ in \cref{fig:ornamentationsX,fig:ornamentationsD,fig:ornamentationsT} are
-\[
-\includegraphics[scale=.8,valign=c]{cyclicOrnamentationX1}\;\includegraphics[scale=.8,valign=c]{cyclicOrnamentationX2}
-\;\;\text{and}\;\;
-\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1}\;\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD2}\;\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD3}\;\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD4}
-\;\;\text{and}\;\;
-\includegraphics[scale=.8,valign=c]{cyclicOrnamentationT1}\;\includegraphics[scale=.8,valign=c]{cyclicOrnamentationT2}\]
-since their fibers under~$R \mapsto \orn{R}$ are all singletons, containing the cyclic reorientations of~$\tc(D)$ given by
-\[
-\includegraphics[scale=.8,valign=c]{cyclicReorientationX1}\;\includegraphics[scale=.8,valign=c]{cyclicReorientationX2}
-\;\;\text{and}\;\;
-\includegraphics[scale=.8,valign=c]{cyclicReorientationD1}\;\includegraphics[scale=.8,valign=c]{cyclicReorientationD2}\;\includegraphics[scale=.8,valign=c]{cyclicReorientationD3}\;\includegraphics[scale=.8,valign=c]{cyclicReorientationD4}
-\;\;\text{and}\;\;
-\includegraphics[scale=.8,valign=c]{cyclicReorientationT1}\;\includegraphics[scale=.8,valign=c]{cyclicReorientationT2}
-\]
-\end{remark}
 
 \begin{proposition}
 \label{prop:ASour2AOrn}
@@ -1310,7 +1334,7 @@ We say that $a,b,d,e \in V$ are \defn{starred} in~$T$ if there is $c \in V$ such
 
 \begin{lemma}
 \label{lem:starred}
-For a directed tree~$T$, any induced alternating cycle in~$\tc(T)$ is of the form~$(a,c,b,d)$ where~$a,b,c,d$ are starred.
+For a directed tree~$T$, any induced alternating cycle in~$\tc(T)$ is of the form~$(a,d,b,e)$ where~$a,d,b,e$ are starred in~$T$.
 \end{lemma}
 
 \begin{proof}
@@ -1333,27 +1357,47 @@ By induction on the sum of the length of the paths between~$d_i$ and~$u_i$ in~$T
 
 \subsection{MacNeille completion}
 
+We now come back to the general case of directed trees.
+As already observed on the directed tree~$\Xgraph$ of \cref{fig:ornamentationsX},
+\begin{itemize}
+\item there might be some cyclic ornamentations (\cref{rem:COrn}),
+\item the acyclic ornamentation poset is not always a lattice (\cref{rem:AOrnLat}).
+\end{itemize}
+However, we now observe that for a directed tree~$T$, the ornamentation lattice~$\Orn(T)$ is precisely the MacNeille completion of the acyclic ornamentation lattice~$\AOrn(T)$.
+
 \begin{theorem}
 \label{thm:MacNeille}
 The ornamentation lattice~$\Orn(T)$ of a directed tree~$T$ has no strict subposet which forms a lattice and contains all acyclic ornamentations of~$T$.
-In other words, the ornamentation lattice~$\Orn(T)$ is the MacNeille completion of the acyclic ornamentation lattice~$\AOrn(T)$.
+%In other words, the ornamentation lattice~$\Orn(T)$ is the MacNeille completion of the acyclic ornamentation lattice~$\AOrn(T)$.
 \end{theorem}
 
 \begin{proof}%[Proof of \cref{thm:MacNeille}]
-We work by induction on the length of the smallest induced cycle.
-\vincent{todo}
+Consider a subposet~$L$ of~$\Orn(T)$ which forms a lattice, and containing all acyclic ornamentations of~$T$.
+We prove that all ornamentations~$O$ of~$T$ must be contained in~$L$ by induction on the number of induced cycles in~$\reori{O}$.
+
+If~$\reori{O}$ has no induced cycle, it is acyclic, hence~$O$ is acyclic and thus belongs to~$L$ by assumption.
+Assume now that all ornamentations~$O$ such that~$\reori{O}$ has at most~$k$ induced cycles belong to~$L$, and consider an ornamentation~$O'$ such that~$\reori{O'}$ has~$k+1$ induced cycles.
+By \cref{lem:Orn2ReoriT}, $C$ is an induced altermating cycle in~$\tc(T)$.
+By \cref{lem:starred}, $C$ is of the form~$(a,d,b,e)$ where~$a,b,d,e$ are starred in~$T$.
+\vincent{todoM I hqve q proble, in the induction here. The number of induced cycles does not always decrease...}
 \end{proof}
 
 \begin{remark}
 \label{rem:MacNeille}
 Note that~\cref{thm:MacNeille} fails beyond directed trees.
-For instance, for the directed graph of  \cref{fig:ornamentationsD}, the acyclic ornamentation poset is not a lattice, but adding the two cyclic ornamentations
+For instance,
+\begin{itemize}
+\item for the directed graph~$\Kgraph$ of \cref{fig:ornamentationsKT}, the acyclic ornamentations already form lattice, even if there is a cyclic ornamentation,
+\item for the directed graph~$\Dgraph$ of  \cref{fig:ornamentationsD}, the acyclic ornamentation poset is not a lattice, but adding the two cyclic ornamentations
 \[
 \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD3}
 \quad\text{and}\quad
 \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD4}
 \]
 suffices to make it a lattice.
+\end{itemize}
+In contrast, \cref{thm:MacNeille} still holds for the directed graph~$\Tgraph$ of \cref{fig:ornamentationsKT}.
+In general, we have no description of the MacNeille completion of the acyclic ornamentation lattice of an arbitrary directed graph.
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1415,7 +1459,7 @@ The proof for the acyclicity of~$\sour{O}$ is similar.
 %the transitive reduction $D$ of any induced subgraph of $\tc(T)$ is a (rooted) forest.
 %Indeed, any such $D$ is clearly acyclic and all the out-degrees of its vertices are at most one.
 %Otherwise, if $(u,v)$ and $(u,v')$ are edges in $D$, then both $v,v'$ are vertices in the unique path from $u$ to the root of $T$, and thus form an edge of $D$, contradicting that $D$ is transitively reduced.
-%It follows from \cref{prop:acyclicReorientationLattices} that $\AReori(\tc(T))$ is a lattice.
+%It follows from \cref{prop:AReoriLat} that $\AReori(\tc(T))$ is a lattice.
 %The other two claims in Part (1) follow from Part (2).
 \end{proof}
 
@@ -1429,7 +1473,7 @@ For an unstarred tree~$T$, the acyclic reorientation poset~$\AReori(\tc(T))$, th
 %Then the subgraph of~$\tc(T)$ induced by~$X$ is the transitive closure of~$T[X]$, so that its transitive reduction is a forest.
 Given any subset~$U \subset V$, the subgraph of~$\tc(T)$ induced by~$U$ contains no induced alternating cycle, hence no induced cycles of length at least~$4$.
 Hence, its transitive reduction contains no cycle.
-We conclude by~\cref{prop:acyclicReorientationLatticesJoinMeet} that~$\AReori(\tc(T))$ is a lattice.
+We conclude by~\cref{prop:AReoriLatJoinMeet} that~$\AReori(\tc(T))$ is a lattice.
 Finally, \cref{prop:rootedTrees1} ensures that~$\ASour(\PP(T))$ and~$\AOrn(T)$ are both isomorphic to~$\Orn(T)$, which is a lattice by~\cref{thm:OrnMeetJoin}.
 \end{proof}
 
@@ -1443,10 +1487,10 @@ The map is surjective by \cref{def:AOrn}.
 Consider two acyclic reorientations~$R_1$ and~$R_2$ of $\tc(T)$.
 We need to show that ${\orn{R_1 \meet R_2} = \orn{R_1} \meet \orn{R_2}}$ and~$\orn{R_1 \join R_2} = \orn{R_1} \join \orn{R_2}$.
 Since~$R \mapsto \orn{R}$ is order-preserving (\cref{lem:Reori2Orn2}) and~$R_1 \meet R_2 \le R_1 \le R_1 \join R_2$ and~$R_1 \meet R_2 \le R_2 \le R_1 \join R_2$, we have~$\orn{R_1 \meet R_2} \le \orn{R_1} \le \orn{R_1 \join R_2}$ and~$\orn{R_1 \meet R_2} \le \orn{R_2} \le \orn{R_1 \join R_2}$, hence~${\orn{R_1 \meet R_2} \le \orn{R_1} \meet \orn{R_2}}$ and~${\orn{R_1} \join \orn{R_2} \le \orn{R_1 \join R_2}}$.
-To prove the converse inequalities, remember the descriptions of~${O_1 \meet O_2}$ and~${O_1 \join O_2}$ from \cref{thm:OrnMeetJoin}, and of~$\rev(R_1 \meet R_2)$ and~$\rev(R_1 \join R_2)$ from~\cref{prop:acyclicReorientationLatticesJoinMeet}.
+To prove the converse inequalities, remember the descriptions of~${O_1 \meet O_2}$ and~${O_1 \join O_2}$ from \cref{thm:OrnMeetJoin}, and of~$\rev(R_1 \meet R_2)$ and~$\rev(R_1 \join R_2)$ from~\cref{prop:AReoriLatJoinMeet}.
 
 If~$u \notin \orn{R_1 \meet R_2}(v)$, then there is $u'$ along the path from~$u$ to~$v$ such that~$(u',v) \notin \rev(R_1 \meet R_2)$ by \cref{lem:Reori2OrnT}.
-Therefore, there is a path~$u' = w_0, \dots, w_k = v$ such that~$(w_{i-1}, w_i) \notin \rev(R_1) \cap \rev(R_2)$ by~\cref{prop:acyclicReorientationLatticesJoinMeet}.
+Therefore, there is a path~$u' = w_0, \dots, w_k = v$ such that~$(w_{i-1}, w_i) \notin \rev(R_1) \cap \rev(R_2)$ by~\cref{prop:AReoriLatJoinMeet}.
 As~$w_{k-1}$ is on the path from~$u$ to~$v$ and~$(w_{k-1},v) \notin \rev(R_1) \cap \rev(R_2)$, we conclude by \cref{lem:Reori2OrnT} that~$u \notin \orn{R_1}(v)$ or~$u \notin \orn{R_2}(v)$, hence~$u \notin \orn{R_1}(v) \cap \orn{R_2}(v) = (\orn{R_1} \meet \orn{R_2})(v)$ (by \cref{coro:meetOrnT}, since~$T$ is a directed tree).
 We conclude that~$(\orn{R_1} \meet \orn{R_2}) \le \orn{R_1 \meet R_2}$, hence that~$\orn{R_1 \meet R_2} = \orn{R_1} \meet \orn{R_2}$.
 
@@ -1666,7 +1710,7 @@ We conclude that~$B_2 = C^3 (1+y \, C)$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{intreeval hypergraphic lattices}
+\section{Intreeval hypergraphic lattices}
 \label{sec:intreevalHypergraphicPosets}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
