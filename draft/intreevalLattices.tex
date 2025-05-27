@@ -212,6 +212,20 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \section{Introduction}
 \label{sec:introduction}
 
+
+Answering a question opened in~\cite{DelfantSack}, we will prove the following statement in \cref{subsec:rootedTrees}.
+
+\begin{theorem}
+The Hasse diagram of the ornamentation lattice of a rooted tree is isomorphic to the skeleton of a polytope oriented in a linear direction. 
+\end{theorem}
+
+This question remains open beyond the case of rooted trees.
+We state it as a conjecture.
+
+\begin{conjecture}
+The Hasse diagram of the ornamentation lattice of any directed graph is isomorphic to the skeleton of a polytope oriented in a linear direction. 
+\end{conjecture}
+
 %\vincent{This is the introduction of the other paper. Needs to be updated...}
 %Fix an integer~$n \ge 1$ and denote by~$(\b{e}_i)_{i \in [n]}$ the standard basis of~$\R^n$.
 %The \defn{hypergraphic polytope} of a hypergraph~$\HH$ on~$[n]$ is the Minkowski sum
@@ -286,8 +300,30 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newpage
-\section{Ornamentation lattices}
-\label{sec:ornamentations}
+\section{Reorientations, sourcing, ornamentations}
+
+Throughout this section, we fix a directed graph~$D$ on a vertex set~$V$ and denote by~$\tc(D)$ its transitive closure and by~$\PP(D)$ its hypergraph of directed paths.
+It is a priori not required that~$D$ is directed acyclic, although it is the case that interest us most in this paper.
+In particular, in all our pictures, $V = [n]$ and the edges are increasing (so we do not need to explicitly indicate the orientation).
+%We will mostly work with a directed acyclic graph, and we represent it with edges going up in all pictures.
+We define the reorientation lattice~$\Reori(\tc(D))$ (\cref{subsec:reorientations}), the sourcing lattice~$\Sour(\PP(D))$ (\cref{subsec:sourcings}), and the ornamentation lattice~$\Orn(D)$ (\cref{subsec:ornamentations}), and define natural surjective maps:
+\[
+\begin{array}{rcl}
+	\Reori(\tc(D)) & \surjection & \Orn(D) \\
+	R & \longmapsto & \orn{R}
+\end{array}
+\qquad\text{and}\qquad
+\begin{array}{rcl}
+	\Sour(\PP(D)) & \surjection & \Orn(D) \\
+	S & \longmapsto & \orn{S}
+\end{array}
+.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Ornamentation lattices}
+\label{subsec:ornamentations}
 
 \begin{figure}
 	\centerline{\includegraphics[scale=.8]{ornamentationsN} \qquad \raisebox{.5cm}{\includegraphics[scale=.8]{ornamentationsI}}}
@@ -301,9 +337,6 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 	\label{fig:ornamentationsAY}
 \end{figure}
 
-Throughout this section, we fix a directed graph~$D$ on a vertex set~$V$.
-In all our pictures, $V = [n]$ and the edges are increasing (so we do not need to explicitly indicate the orientation).
-%We will mostly work with a directed acyclic graph, and we represent it with edges going up in all pictures.
 The following definition, first introduced for rooted trees in~\cite{} and extended to arbitrary directed graphs in~\cite{}, is illustrated in \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX,fig:ornamentationsD}
 
 \begin{definition}
@@ -424,25 +457,12 @@ A few lattice properties of the ornamentation lattice~$\Orn(D)$:
 	\label{fig:ornamentationsT}
 \end{figure}
 
-Answering a question opened in~\cite{DelfantSack}, we will prove the following statement in the next section.
-
-\begin{theorem}
-The Hasse diagram of the ornamentation lattice of a rooted tree is isomorphic to the skeleton of a polytope oriented in a linear direction. 
-\end{theorem}
-
-This question remains open beyond the case of rooted trees.
-We state it as a conjecture.
-
-\begin{conjecture}
-The Hasse diagram of the ornamentation lattice of any directed graph is isomorphic to the skeleton of a polytope oriented in a linear direction. 
-\end{conjecture}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{From reorientations to ornamentations}
-\label{sec:reorientations}
+\subsection{Reorientations}
+\label{subsec:reorientations}
+
+We now consider reorientations of graphs.
 
 \begin{definition}
 \label{def:Reori}
@@ -498,7 +518,7 @@ If~$O_1 \le O_2$, then $O_1(v) \subseteq O_2(v)$ for all~$v \in V$, thus~$\rev(\
 
 \begin{lemma}
 \label{lem:Orn2Reori2}
-For any ornamentation~$O$ of~$D$, we have~$\orn{\reori{O}} = O$. In other words, the map~$O \mapsto \reori{O}$ is a section of the map~$R \mapsto \orn{R}$.
+For any ornamentation~$O$ of~$D$, we have~$\orn{\reori{O}} = O$. In other words, the map~${O \mapsto \reori{O}}$ is a section of the map~$R \mapsto \orn{R}$.
 \end{lemma}
 
 \begin{proof}
@@ -527,49 +547,19 @@ For instance, the following three reorientations belong to the fiber of the orna
 \end{remark}
 
 \begin{remark}
-\label{rem:Reori2OrnIntervals}
+\label{rem:Reori2OrnIntervals1}
 The fibers of the surjection~$R \mapsto \orn{R}$ do not all admit a minimum nor a maximum.
 For instance, 
 \begin{itemize}
 \item the fiber of \raisebox{-.25cm}{\includegraphics[scale=.8]{ornamentationI5}} has two minima \!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI5}}\!\! and \!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI6}}\!\!\!\!,
 \item the fiber of \raisebox{-.25cm}{\includegraphics[scale=.8]{ornamentationI6}} has two maxima \!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI7}}\!\! and \!\!\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationI8}}\!\!\!\!.
 \end{itemize}
-Note that for the maximum, we had to consider a directed graph containing a cycle, due to \cref{prop:Reori2OrnMaxTree} below.
+We will see later in \cref{prop:Reori2OrnMaxTree} that the fibers always admit a maximum when~$D$ is a directed tree.
 \end{remark}
-
-\begin{definition}
-\label{def:Reori2OrnMaxTree}
-Consider an ornamentation~$O$ of a directed (but not necessarily rooted) tree~$T$.
-Let~$\maxreori{O}$ denote the reorientation of~$\tc(T)$ where for each path~$u \to u' \to \dots \to v$ in~$T$ (note that $u'$ might coincide with~$v$), the edge~$(u,v)$ is in~$\rev(\maxreori{O})$ if and only if there is no~$w \in V$ such that~$u \notin O(w)$ while~$u', v \in O(w)$.
-\end{definition}
-
-\begin{proposition}
-\label{prop:Reori2OrnMaxTree}
-For any ornamentation~$O$ of a directed tree~$T$, the reorientation~$\maxreori{O}$ is the maximum reorientation~$R$ of~$\tc(T)$ with~$\orn{R} = O$.
-\end{proposition}
-
-\begin{proof}
-We first prove that~$\orn{\maxreori{O}} = O$.
-Fix~$u,v \in V$.
-Observe first that~$u \in O(v)$ implies~$(u,v) \in \rev(\maxreori{O})$ since~$v \in O(w)$ implies~$u \in O(v) \subseteq O(w)$ for any~$w \in V$, so that~$u \in  \orn{\maxreori{O}}(v)$ by definition.
-Conversely, assume that~$u \notin O(v)$ and consider such an~$u$ which is closest to~$v$.
-Consider the path~$u \to u' \to \dots \to v$ in~$T$.
-For any~$v'$ between~$u'$ and~$v$, we have~$u \notin O(v)$ while~$u', v' \in O(v)$, which implies that~$(u,v') \notin \rev(\maxreori{O})$.
-Hence, there is no path from~$u$ to~$v$ in~$\rev(\maxreori{O})$, and thus~$u \notin \orn{\maxreori{O}}(v)$.
-We conclude that~$u \in O(v) \iff u \in \orn{\maxreori{O}}(v)$, that is~$O = \orn{\maxreori{O}}$.
-
-Consider now any reorientation~$R$ of~$\tc(T)$ such that~$\orn{R} = O$.
-Assume that there is~$u,v \in V$ such that~$(u,v) \in \rev(R) \ssm \rev(\maxreori{O})$.
-Consider the path~$u \to u' \to \dots \to v$ in~$T$, and let~$w \in V$ be such that~$u \notin O(w)$ while~$u', v \in O(w)$.
-Since~$\orn{R} = O$ and~$v \in O(w)$, there is a path from~$v$ to~$w$ in~$\rev(R)$, hence from~$u$ to~$v$ in~$\rev(R)$ since~$(u,v) \in \rev(R)$.
-Moreover, since~$(u,u') \in T$ and~$u' \in O(w)$, the set~$O(w) \cup \{u\}$ is an ornament of~$T$ at~$w$.
-Hence, $O(w) \cup \{u\}$ contradicts the maximality of~$\orn{R}(w)$.
-We conclude that if~$\orn{R} = O$, then~$\rev(R) \subseteq \rev(\maxreori{O})$, hence~$R \le \maxreori{O}$.
-\end{proof}
 
 \begin{remark}
 \label{rem:Reori2OrnSemilatticeMap}
-Even for directed trees, the surjection~$R \mapsto \orn{R}$ does not preserve neither the meet nor the join semilattice structure.
+The surjection~$R \mapsto \orn{R}$ does not preserve neither the meet nor the join semilattice structure.
 For instance,
 
 \centerline{
@@ -636,11 +626,17 @@ Hence~$(u,w) \in \rev(\reori{O})$.
 \end{proof}
 
 \begin{remark}
+\label{rem:notTransitivelyCoclosed}
 Note that~$\reori{O}$ is not always transitively coclosed.
-\vincent{todo}
+For instance,
+\[
+O = \!\!\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} \qquad \reori{O} = \!\!\includegraphics[scale=.8,valign=c]{cyclicReorientationD1}
+.
+\]
+We will see in \cref{lem:Orn2ReoriDT} that $\reori{O}$ is both transitively closed and coclosed when~$D$ is a directed tree.
 \end{remark}
 
-This surjection behaves much nicer with respect to \cref{rem:Orn2ReoriMiddle,rem:Reori2OrnIntervals,rem:Reori2OrnSemilatticeMap}.
+This surjection behaves much nicer with respect to \cref{rem:Orn2ReoriMiddle,rem:Reori2OrnIntervals1,rem:Reori2OrnSemilatticeMap}.
 
 \begin{proposition}
 \label{prop:Reori2OrnMinTC}
@@ -654,6 +650,12 @@ By definition of~$\orn{R}(v) = O(v)$, there is a directed path from~$u$ to~$v$ i
 As $R$ is transitively closed, this implies that~$(u,v) \in \rev(R)$.
 We conclude that~$\rev(\reori{O}) \subseteq \rev(R)$, so that~$\reori{O} \le R$.
 \end{proof}
+
+\begin{remark}
+\label{rem:Reori2OrnIntervals2}
+Note that the second example of \cref{rem:Reori2OrnIntervals1} shows that the set of transitively closed reorientations~$R$ of~$\tc(D)$ such that~$\orn{R} = O$ does not admit a maximum either.
+We will see in \cref{prop:ReoriTC2OrnIntervalTree} that it does if~$D$ is a directed tree.
+\end{remark}
 
 \begin{proposition}
 \label{prop:Reori2OrnMeetSemilaticeTC}
@@ -681,34 +683,20 @@ By \cref{thm:OrnMeetJoin}, $\{u = w_0, w_1, \dots, w_p = v\} \subseteq O_\meet(v
 Thus, we have shown that $O_\meet \geq \orn{R_1 \meet R_2}$.
 \end{proof}
 
-In contrast, the map~$R \mapsto \orn{R}$ is not necessarily a join semilattice morphism from the transitively closed reorientation lattice~$\Rcl(\tc(D))$ to the ornamentation lattice~$\Orn(D)$, as already illustrated in \cref{rem:Reori2OrnSemilatticeMap}.
-
-\begin{proposition}
-\label{prop:ReoriTC2OrnIntervalTree}
-For any ornamentation~$O$ of a directed tree~$T$, the reorientation~$\maxreori{O}$  of~\cref{def:Reori2OrnMaxTree} is transitively closed.
-Hence, the transitively closed reorientations~$R$ of~$\tc(T)$ with~${\orn{R} = O}$ form an interval of the transitively closed reorientation lattice~$\Rcl(\tc(T))$.
-\end{proposition}
-
-\begin{proof}
-Assume that there is a directed path~$u \to u' \to \dots \to v$ in~$T$ such that~$(u,v) \notin \rev(\maxreori{O})$.
-Let~$w \in V$ be such that $u \notin O(w)$ but~$u',v' \in O(w)$.
-Then, for any~$v'$ between~$u'$ and~$v$, we have~$v' \in O(w)$, hence~$(u,v') \not \in \rev(\maxreori{O})$.
-We thus obtained that~$(u,v'), (v',v) \in \rev(\maxreori{O})$ implies~$(u,v) \in \rev(\maxreori{O})$, that is, $\rev(\maxreori{O})$ is transitively closed.
-\vincent{not only it has a max, but it has a Tamari max....}
-We conclude that the fiber of~$O$ is an interval, since it has a minimum by \cref{prop:Reori2OrnMinTC} and a maximum by \cref{prop:Reori2OrnMaxTree}.
-\end{proof}
+\begin{remark}
+In contrast, the first example of \cref{rem:Reori2OrnSemilatticeMap} shows that the map~$R \mapsto \orn{R}$ is not necessarily a join semilattice morphism from the transitively closed reorientation lattice~$\Rcl(\tc(D))$ to the ornamentation lattice~$\Orn(D)$, even when~$D$ is a (rooted) tree.
+\end{remark}
 
 \vincent{Can we say similar things about the restriction of the map~$R \mapsto \orn{R}$ to transitively coclosed reorientations of~$\tc(D)$? If not, we should only define transitively closed reorientations...}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{From sourcings to ornamentations}
-\label{sec:sourcings}
+\subsection{Sourcings}
+\label{subsec:sourcings}
 
 We now assume that~$V$ is totally ordered, say that~$V = [n]$ with the natural order.
 %We now assume that~$D$ is an increasing graph on~$V = [n]$.
+We consider the following maps on hypergraphs (they are usually called orientations of hypergraphs, we have preferred the term sourcings of hypergraphs to avoid confusion with the reorientations of graphs).
 
 \begin{definition}
 \label{def:Sour}
@@ -868,15 +856,19 @@ In contrast, we will see in \cref{sec:acyclic} that~$S \mapsto \orn{S}$ is injec
 
 We now focus our attention on the acyclic situation.
 We assume here that~$D$ is an increasing graph on~$V = [n]$, meaning that $i < j$ for any arc~$(i,j)$ of~$D$, in particular~$D$ is acyclic.
-We then consider the acyclic reorientation poset~$\AReori(\tc(D))$, the acyclic sourcing poset~$\ASour(\PP(D))$, and the acyclic ornamentation poset~$\AOrn(D)$, and define natural surjective poset morphisms:
+We then consider the acyclic reorientation poset~$\AReori(\tc(D))$ (\cref{subsec:acyclicReorientations}), the acyclic sourcing poset~$\ASour(\PP(D))$ (\cref{subsec:acyclicSourcings}), and the acyclic ornamentation poset~$\AOrn(D)$ (\cref{subsec:acyclicOrnamentations}), and define natural surjective poset morphisms:
 \[
 \begin{array}{rcccccl}
 	\fS_n & \surjection & \AReori(\tc(D)) & \surjection & \ASour(\PP(D)) & \bijection & \AOrn(D) \\
 	\pi & \longmapsto & \areori{\pi} \qquad R & \longmapsto & \asour{R} \qquad S & \longmapsto & \aorn{S}
 \end{array}
+.
 \]
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Acyclic reorientations}
+\label{subsec:acyclicReorientations}
 
 Acyclic reorientations of directed acyclic graphs is a classical subject, see for instance~\cite{Pilaud-acyclicReorientationLattices}.
 
@@ -930,7 +922,10 @@ By definition, we have~$\rev(\areori{\pi}) = \inv(\pi) \cap \tc(D)$, hence~$\pi 
 It is surjective since the fiber of any reorientation~$R$ is the set of linear extensions of~$R$, which is non-empty when~$R$ is acyclic.
 \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Acyclic sourcings}
+\label{subsec:acyclicSourcings}
 
 Acyclic sourcings of hypergraphs were introduced in~\cite{BenedettiBergeronMachacek,BergeronPilaud} as combinatorial models for the vertex sets of hypergraphic polytopes.
 
@@ -958,7 +953,7 @@ Characterizing the hypergraphs whose acyclic sourcing poset is a lattice seems a
 Such characterizations exist for specific families of hypergraphs, notably for graphs~\cite{Pilaud-acyclicReorientationLattices} (see \cref{prop:acyclicReorientationLattices}), interval hypergraphs~\cite{BergeronPilaud}, and (partially for) graph associahedra~\cite{BarnardMcConville}.
 We will further study this question for subhypergraphs of the path hypergraph of directed trees in \cref{sec:intreevalHypergraphicPosets}.
 
-We have observed in \cref{sec:sourcings} that there is no natural surjection from all reorientations of~$\tc(D)$ to all sourcings of~$\PP(D)$.
+We have observed in \cref{subsec:sourcings} that there is no natural surjection from all reorientations of~$\tc(D)$ to all sourcings of~$\PP(D)$.
 We now recall that there is such a surjection when focusing on acyclic reorientations and acyclic sourcings.
 
 \begin{definition}
@@ -1068,7 +1063,10 @@ To sum up, we obtained the following statement.
 The map~$R \mapsto \asour{R}$ is an order-preserving surjection from the acyclic reorientation poset~$\AReori(\tc(D))$ to the acyclic sourcing poset~$\ASour(\PP(D))$.
 \end{proposition}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Acyclic ornamentations}
+\label{subsec:acyclicOrnamentations}
 
 Remember from \cref{def:Reori2Orn} (resp.~\cref{def:Sour2Orn}) that we have defined an ornamentation~$\orn{R}$ (resp.~$\orn{S}$) from any reorientation~$R$ of~$\tc(D)$ (resp.~sourcing~$S$ of~$\PP(D)$).
 We now observe that these maps behave well on acyclic reorientations of~$\tc(D)$ and acyclic sourcings of~$\PP(D)$, which enables us to define acyclic ornamentations of~$D$.
@@ -1156,7 +1154,7 @@ Conversely, for an acyclic ornamentation~$O$ of~$D$, we denote by~$\asour{O}$ th
 Be careful that~$\asour{O} \ne \sour{O}$ and~$\areori{O} \ne \reori{O}$ in general (as~$\sour{O}$ and~$\reori{O}$ might not be acyclic even if~$O$ is acyclic, see \cref{rem:Orn2Sour&Orn2ReoriIncompatibleAcyclicity}).
 
 \begin{remark}
-We will see in \cref{sec:rootedTrees} that all ornamentations of a rooted tree~$T$ (with increasing edges all oriented toward the root) are acyclic.
+We will see in \cref{subsec:rootedTrees} that all ornamentations of a rooted tree~$T$ (with increasing edges all oriented toward the root) are acyclic.
 This is false in general, even for directed trees.
 For instance, the cyclic ornamentations of~$D$ in \cref{fig:ornamentationsX,fig:ornamentationsD,fig:ornamentationsT} are
 \[
@@ -1194,10 +1192,15 @@ We conclude that~$S \mapsto \aorn{S}$ and~$O \mapsto \asour{O}$ are inverse isom
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Directed trees}
-\label{sec:directedTrees}
+\section{Trees}
+\label{sec:trees}
 
-In this section, we focus on the specific situation when the ground directed graph~$D$ is a directed tree~$T$ (but not necessarily a rooted tree), as for example in  in \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX}.
+In this section, we focus on the specific situation when the ground directed graph~$D$ is a directed tree~$T$ (but not necessarily a rooted tree), as for example in \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Basic observations}
+
 We start by a few observations.
 
 \begin{lemma}
@@ -1227,6 +1230,63 @@ Since~$R$ is acyclic, there is a directed path from~$u$ to~$v$ in~$\rev(R)$ if a
 By \cref{def:Reori2Orn}, $\orn{R}(v)$ is the maximal ornament of~$T$ at~$v$ contained in the subset of vertices~$u \in V$ with a directed path to~$v$ in $\rev(R)$.
 Hence, $u \in \orn{R}(v)$ if and only if~$u' \in \rev(R)$ for all~$u'$ along the path from~$u$ to~$v$ in~$T$.
 \end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Maximal reorientation}
+
+We now revisit \cref{rem:Reori2OrnIntervals1,rem:Reori2OrnIntervals2} for directed trees.
+
+\begin{definition}
+\label{def:Reori2OrnMaxTree}
+Consider an ornamentation~$O$ of a directed tree~$T$.
+Let~$\maxreori{O}$ denote the reorientation of~$\tc(T)$ where for each path~$u \to u' \to \dots \to v$ in~$T$ (note that $u'$ might coincide with~$v$), the edge~$(u,v)$ is in~$\rev(\maxreori{O})$ if and only if there is no~$w \in V$ such that~$u \notin O(w)$ while~$u', v \in O(w)$.
+\end{definition}
+
+\begin{proposition}
+\label{prop:Reori2OrnMaxTree}
+For any ornamentation~$O$ of a directed tree~$T$, the reorientation~$\maxreori{O}$ is the maximum reorientation~$R$ of~$\tc(T)$ with~$\orn{R} = O$.
+\end{proposition}
+
+\begin{proof}
+We first prove that~$\orn{\maxreori{O}} = O$.
+Fix~$u,v \in V$.
+Observe first that~$u \in O(v)$ implies~$(u,v) \in \rev(\maxreori{O})$ since~$v \in O(w)$ implies~$u \in O(v) \subseteq O(w)$ for any~$w \in V$, so that~$u \in  \orn{\maxreori{O}}(v)$ by definition.
+Conversely, assume that~$u \notin O(v)$ and consider such an~$u$ which is closest to~$v$.
+Consider the path~$u \to u' \to \dots \to v$ in~$T$.
+For any~$v'$ between~$u'$ and~$v$, we have~$u \notin O(v)$ while~$u', v' \in O(v)$, which implies that~$(u,v') \notin \rev(\maxreori{O})$.
+Hence, there is no path from~$u$ to~$v$ in~$\rev(\maxreori{O})$, and thus~$u \notin \orn{\maxreori{O}}(v)$.
+We conclude that~$u \in O(v) \iff u \in \orn{\maxreori{O}}(v)$, that is~$O = \orn{\maxreori{O}}$.
+
+Consider now any reorientation~$R$ of~$\tc(T)$ such that~$\orn{R} = O$.
+Assume that there is~$u,v \in V$ such that~$(u,v) \in \rev(R) \ssm \rev(\maxreori{O})$.
+Consider the path~$u \to u' \to \dots \to v$ in~$T$, and let~$w \in V$ be such that~$u \notin O(w)$ while~$u', v \in O(w)$.
+Since~$\orn{R} = O$ and~$v \in O(w)$, there is a path from~$v$ to~$w$ in~$\rev(R)$, hence from~$u$ to~$v$ in~$\rev(R)$ since~$(u,v) \in \rev(R)$.
+Moreover, since~$(u,u') \in T$ and~$u' \in O(w)$, the set~$O(w) \cup \{u\}$ is an ornament of~$T$ at~$w$.
+Hence, $O(w) \cup \{u\}$ contradicts the maximality of~$\orn{R}(w)$.
+We conclude that if~$\orn{R} = O$, then~$\rev(R) \subseteq \rev(\maxreori{O})$, hence~$R \le \maxreori{O}$.
+\end{proof}
+
+\begin{proposition}
+\label{prop:ReoriTC2OrnIntervalTree}
+For any ornamentation~$O$ of a directed tree~$T$, the reorientation~$\maxreori{O}$  of~\cref{def:Reori2OrnMaxTree} is transitively closed.
+Hence, the transitively closed reorientations~$R$ of~$\tc(T)$ with~${\orn{R} = O}$ form an interval of the transitively closed reorientation lattice~$\Rcl(\tc(T))$.
+\end{proposition}
+
+\begin{proof}
+Assume that there is a directed path~$u \to u' \to \dots \to v$ in~$T$ such that~$(u,v) \notin \rev(\maxreori{O})$.
+Let~$w \in V$ be such that $u \notin O(w)$ but~$u',v' \in O(w)$.
+Then, for any~$v'$ between~$u'$ and~$v$, we have~$v' \in O(w)$, hence~$(u,v') \not \in \rev(\maxreori{O})$.
+We thus obtained that~$(u,v'), (v',v) \in \rev(\maxreori{O})$ implies~$(u,v) \in \rev(\maxreori{O})$, that is, $\rev(\maxreori{O})$ is transitively closed.
+\vincent{not only it has a max, but it has a Tamari max....}
+We conclude that the fiber of~$O$ is an interval, since it has a minimum by \cref{prop:Reori2OrnMinTC} and a maximum by \cref{prop:Reori2OrnMaxTree}.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Coclosedness and induced cycles}
+
+We now revisit \cref{rem:notTransitivelyCoclosed} for directed trees.
 
 \begin{lemma}
 \label{lem:Orn2ReoriDT}
@@ -1267,6 +1327,10 @@ Since~$C$ is induced, we obtain again an induced alternating cycle by replacing 
 By induction on the sum of the length of the paths between~$d_i$ and~$u_i$ in~$T$, we obtain that~$k = 2$ there is~$v \in V$ such that~$(d_1, v)$, $(d_2,v)$, $(v,u_1)$, and~$(v,w)$ are in~$\tc(T)$, and as~$w$ is between~$d_1$ and~$u_2$, we also get~$(v,u_2) \in \tc(T)$.
 \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{MacNeille completion}
+
 \begin{theorem}
 \label{thm:MacNeille}
 The ornamentation lattice~$\Orn(T)$ of a directed tree~$T$ has no strict subposet which forms a lattice and contains all acyclic ornamentations of~$T$.
@@ -1275,6 +1339,7 @@ In other words, the ornamentation lattice~$\Orn(T)$ is the MacNeille completion 
 
 \begin{proof}%[Proof of \cref{thm:MacNeille}]
 We work by induction on the length of the smallest induced cycle.
+\vincent{todo}
 \end{proof}
 
 \begin{remark}
@@ -1290,11 +1355,9 @@ suffices to make it a lattice.
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Unstarred trees and rooted trees}
-\label{sec:rootedTrees}
+\subsection{Unstarred trees and rooted trees}
+\label{subsec:rootedTrees}
 
 In this section, we discuss the specific situation when the ground directed graph~$D$ is an unstarred tree~$T$, defined as follows
 
@@ -1348,6 +1411,7 @@ This would imply that~$T$ is starred by \cref{lem:starred}.
 %Otherwise, if $(u,v)$ and $(u,v')$ are edges in $D$, then both $v,v'$ are vertices in the unique path from $u$ to the root of $T$, and thus form an edge of $D$, contradicting that $D$ is transitively reduced.
 %It follows from \cref{prop:acyclicReorientationLattices} that $\AReori(\tc(T))$ is a lattice.
 %The other two claims in Part (1) follow from Part (2).
+\vincent{What about the sourcing~$\sour{O}$?}
 \end{proof}
 
 \begin{proposition}
@@ -1386,7 +1450,7 @@ If~$T$ is an unstarred tree, then the Hasse diagram of the ornamentation lattice
 
 \begin{remark}
 Lattice quotients of acyclic reorientation lattices were studied in detail in~\cite{Pilaud-acyclicReorientationLattices}.
-We can reformulate \cref{prop:rootedTrees} using the language of~\cite{Pilaud-acyclicReorientationLattices}: if~$T$ is an unstarred tree, then
+We can reformulate \cref{prop:rootedTrees1,prop:rootedTrees2,prop:rootedTrees3} using the language of~\cite{Pilaud-acyclicReorientationLattices}: if~$T$ is an unstarred tree, then
 \begin{enumerate}
 \item the transitive closure~$\tc(T)$ is skeletal, so that~$\AReori(\tc(T))$ is an acyclic reorientation lattice,
 \item the ornamentation lattice~$\AReori(\tc(T))$ is (isomorphic to) the Tamari lattice of~$\tc(T)$ defined by the $\tc(T)$-sylvester congruence,
@@ -1405,13 +1469,34 @@ is the set of permutations~$\{\}$ which is not even an interval of the weak orde
 
 \begin{example}
 Complete binary tree?
+\vincent{Is there something interesting to say. Number of ornamentations?}
 \end{example}
 
-\begin{example}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Brooms}
+
+We conclude our section on trees by a discussion on the number of ornamentations of a broom.
+
+\begin{definition}
 The \defn{$(m,n)$-broom} is the rooted tree obtained by attaching $m$ nodes (called \defn{bristles}) to an $n$-path (called \defn{handle}).
-We denote by~$B_{m,n}$ the number of (acyclic) ornamentations of the $(m,n)$-broom, by~$B(x,y) \eqdef \sum_{m \ge 0, n \ge 0} B_{m,n} \, x^m/m! \, y^n$ their generating function (exponential in~$x$ and ordinary in~$y$), and by~$B_m(y) \eqdef m! \, [x^m] \, B(x,y) = \sum_{n \ge 0} B_{m,n} \, y^n$ the coefficient of~$x^m$ in~$B(x,y)$.
+\end{definition}
+
+\begin{remark}
+The $(m,n)$-broom has~$2^{m+n-1}$ reorientations, of which $(n+1)^m \, n!$ are acyclic, and~$\prod_{k = 1}^{n+1} k^{m+n+1-k}$ sourcings.
+As the $(m,n)$-broom is a rooted tree, all its ornamentations are acyclic by \cref{prop:rootedTrees1}, so its numbers of acyclic sourcings, acyclic ornamentations and ornamentations are all equal.
+\end{remark}
+
+We denote by~$B_{m,n}$ the number of (acyclic) ornamentations of the $(m,n)$-broom, by
+\[
+B(x,y) \eqdef \sum_{m \ge 0, n \ge 0} B_{m,n} \, x^m/m! \, y^n
+\]
+their generating function (exponential in~$x$ and ordinary in~$y$), and by
+\[
+B_m(y) \eqdef m! \, [x^m] \, B(x,y) = \sum_{n \ge 0} B_{m,n} \, y^n
+\]
+the coefficient of~$x^m/m!$ in~$B(x,y)$.
 As~$B_{0,m} = B_{1,n-1}$ is the $n$th Catalan number~$C_n \eqdef \frac{1}{n+1}\binom{2n}{n}$, we have $B_0(y) = C(y)$ and~$B_1(y) = (C(y) - 1)/y$ where~$C(y) \eqdef \sum_{n \ge 0} C_n \, y^n = \frac{1-\sqrt{1-4y}}{2y}$.
-\end{example}
 
 \begin{proposition}
 \label{prop:brooms1}
@@ -1432,12 +1517,13 @@ The formula immediately follows.
 \begin{proposition}
 The generating function~$B(x,y) \eqdef m! \, [x^m] \, B(x,y) = \sum_{n \ge 0} B_{m,n} \, y^n$ is given~by
 \[
-B(x,y) = \frac{e^x}{1-e^x \cdot y \cdot C(y)}
+B(x,y) = \frac{e^x}{1-e^x \, y \, C(y)}
 \]
 where~$C(y) \eqdef \sum_{n \ge 0} C_n \, y^n = \frac{1-\sqrt{1-4y}}{2y}$.
 \end{proposition}
 
 \begin{proof}
+\vincent{Give the other argument here...}
 Recall that if
 \[
 U(x,y) = \sum_{m \ge 0, n \ge 0} U_{m,n} \, x^m/m! \, y^n
@@ -1458,7 +1544,7 @@ B(x,y) \, y \, e^x \, C(y) & = \sum_{m \ge 0, n \ge 1}  \left( \sum_{k = 0}^m \s
 \end{align*}
 from which we derive that
 \[
-B(x,y) = \frac{e^x}{1-e^x \cdot y \cdot C(y)}.
+B(x,y) = \frac{e^x}{1-e^x \, y \, C(y)}.
 \qedhere
 \]
 \end{proof}
