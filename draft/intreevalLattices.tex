@@ -133,8 +133,6 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\darkblue}{\color{darkblue}} % darkblue command
 \newcommand{\defn}[1]{\textsl{\darkblue #1}} % emphasis of a definition
 \usepackage{todonotes}
-\newcommand{\nantel}[1]{\todo[size=\tiny,color=red!30]{ #1 \\ \hfill --- N.}\,}
-\newcommand{\Nantel}[1]{\todo[inline,color=red!30]{#1 \\ \hfill --- N.}}
 \newcommand{\vincent}[1]{\todo[size=\tiny,color=blue!30]{ #1 \\ \hfill --- V.}\,}
 \newcommand{\Vincent}[1]{\todo[inline,color=blue!30]{#1 \\ \hfill --- V.}}
 \newcommand{\jose}[1]{\todo[size=\tiny,color=red!30]{ #1 \\ \hfill --- J.}\,}
@@ -1379,7 +1377,7 @@ If~$\reori{O}$ has no induced cycle, it is acyclic, hence~$O$ is acyclic and thu
 Assume now that all ornamentations~$O$ such that~$\reori{O}$ has at most~$k$ induced cycles belong to~$L$, and consider an ornamentation~$O'$ such that~$\reori{O'}$ has~$k+1$ induced cycles.
 By \cref{lem:Orn2ReoriT}, $C$ is an induced altermating cycle in~$\tc(T)$.
 By \cref{lem:starred}, $C$ is of the form~$(a,d,b,e)$ where~$a,b,d,e$ are starred in~$T$.
-\vincent{todoM I hqve q proble, in the induction here. The number of induced cycles does not always decrease...}
+\vincent{todo: I have a problem in the induction here. The number of induced cycles does not always decrease...}
 \end{proof}
 
 \begin{remark}
@@ -1712,6 +1710,175 @@ We conclude that~$B_2 = C^3 (1+y \, C)$.
 
 \section{Intreeval hypergraphic lattices}
 \label{sec:intreevalHypergraphicPosets}
+
+In this section, we characterize the subhypergraphs~$\II$ of the path interval~$\PP(T)$ of a directed tree~$T$ whose acyclic sourcing poset~$\ASour(\II)$ is a lattice.
+We actually consider increasing trees as it simplifies the definitions of the conditions and does not loose generality up to relabeling.
+\vincent{This section needs illustrations...}
+
+\begin{definition}
+An \defn{intreeval hypergraph} of an increasing tree~$T$ is a subhypergraph of~$\PP(T)$.
+\end{definition}
+
+\begin{definition}
+\label{def:pathIntersectionClose}
+We say that an intreeval hypergraph~$\II$ of an increasing tree~$T$ is \defn{path intersection closed} if for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) < \min(I\cap J)$ and  $\max J < \max (I\cap J)$, there exists an~$K \in \II$ such that $\min(K) \in J \cap [\min(I\cap J)]$ and $\max K \in I \ssm [\max(I\cap J)-1]$.
+\end{definition}
+
+\begin{definition}
+\label{def:pathStarSparse}
+Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
+Consider~$u,v \in T$ such that there is a directed path from~$u$ to~$v$, and let~$u_1, \dots, u_k$ (resp.~$v_1, \dots, v_\ell$) denote the incoming (resp.~outgoing) neighbors of~$u$ (resp.~$v$) in~$T$.
+We denote by~$X(T,u,v,\II)$ the graph on~$u_1, \dots, u_k, v_1, \dots, v_\ell$ with an edge joining~$u_i$ and~$v_j$ if and only if there is~$I \in \II$ containing both~$u_i$ and~$v_j$.
+We say that~$\II$ is \defn{path star sparse} if~$X(T,u,v,\II)$ is acyclic for all~$u,v$ connected by a directed path.
+\end{definition}
+
+The goal of this section is to show the following characterization.
+It will be a consequence of \cref{lem:pathIntersectionClosed,lem:pathStarSparse,prop:sufficientConditions}.
+
+\begin{theorem}
+\label{thm:intreevalLattices}
+Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
+The acyclic sourcing poset~$\ASour(\II)$ is a lattice if and only if $\II$ is path intersection closed (\cref{def:pathIntersectionClose}) and path star sparse (\cref{def:pathStarSparse}).
+\end{theorem}
+
+\begin{remark}
+When $T$ is a line, 
+\begin{itemize}
+\item the path intersection closed condition boils down to being closed under intersection (we can include singletons by default),
+\item the path star sparse condition is empty,
+\item the characterization of \cref{thm:intreevalLattices} was proved in~\cite[Thm.~A]{BergeronPilaud}.
+\end{itemize}
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Necessary condition}
+
+We first prove that the two conditions of \cref{thm:intreevalLattices} are necessary.
+
+\begin{lemma}
+\label{lem:pathIntersectionClosed}
+If~$\ASour(\II)$ is a lattice, then $\II$ is path intersection closed.
+\end{lemma}
+
+\begin{proof}
+The proof follows exactly the same lines as that of~\cite[Prop.~4.6]{BergeronPilaud}.
+Assume by means of contradiction that there are~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) < \min(I\cap J)$ and  $\max J < \max (I\cap J)$, and there is there no~$K \in \II$ such that $\min(K) \in J \cap [\min(I\cap J)]$ and $\max K \in I \ssm [\max(I\cap J)]$.
+
+Let~$b$ (resp.~$c$) be the bottom (resp.~top) endpoint of~$I \cap J$, and~$a$ (resp.~$d$) be its neighbor in~$I \ssm J$ (resp.~$J \ssm I$).
+Let~$Y$ be a word formed by~$(I \cup J) \ssm \{a,b,c,d\}$ in any order, and~$X$ be a word formed by~$V \ssm (I \cup J)$ in any order.
+Consider the permutations
+\[
+\pi_A \eqdef XbacdY
+\quad
+\pi_B \eqdef XacdbY
+\quad
+\pi_C \eqdef XdbacY
+\quad
+\pi_D \eqdef XcdbaY
+\quad
+\pi_E \eqdef XadcbY
+\quad
+\pi_F \eqdef XadbcY
+\]
+and let~$S_A \eqdef \asour{\pi_A}, \dots, S_F \eqdef \asour{\pi_F}$ denote the corresponding acyclic sourcings of~$T$ (where~${\pi \mapsto \aorn{\pi}}$ is the composition of $\pi \mapsto \areori{\pi}$ and $R \mapsto \asour{\pi}$).
+
+We claim that~$S_E = S_F$.
+Indeed, if~$K \in \II$ is such that~$S_E(K) \ne S_F(K)$, then~$K \supseteq \{b,c\}$ but~$K \cap (X \cup \{a,d\}) = \varnothing$.
+This would implies that~$\min(K) \in [b] \cap J$ while $\max(K) \in I \ssm [c-1]$, contradicting our assumption on~$I$ and~$J$.
+
+Observe now that
+\[
+\pi_A < \pi_C
+\qquad
+\pi_A < \pi_D
+\qquad
+\pi_B < \pi_D
+\qquad
+\pi_B < \pi_E
+\qquad
+\pi_F < \pi_C
+\]
+in weak order (note that~$\pi_B \not< \pi_C$ though).
+As~$\pi \mapsto \aorn{\pi}$ is order-preserving and~$S_E = S_F$, we conclude that
+\[
+S_A < S_C
+\qquad
+S_A < S_D
+\qquad
+S_B < S_E = S_F < S_C
+\qquad
+S_B < S_D.
+\]
+
+If~$\ASour(\II)$ were a lattice, we therefore must have an acyclic sourcing~$S_G$ of~$\II$ such that
+\[
+S_A < S_G
+\qquad
+S_B < S_D
+\qquad
+S_G < S_C
+\qquad
+S_G < S_D.
+\]
+Since~$S_G$ is acyclic and~$\pi \mapsto \asour{\pi}$ is surjective, there is a permutation~$\pi_G$ such that~$S_G = \asour{\pi}$.
+Let
+\[
+g \eqdef \pi(\min\set{i \in [n]}{\pi_G(i) \in I \cup J}).
+\]
+If~$g \in I \cap [b-1]$, then~$S_G(I) = g < b = S_A(I)$, contradicting that~$S_A < S_G$.
+If~$g \in J \cap [c-1]$, then~$S_G(J) = g < c = S_B(J)$, contradicting that~$S_B < S_G$.
+If~$g \in J \ssm [c]$, then~$S_G(J) = g > c = S_D(J)$, contradicting that~$S_G < S_D$.
+If~$g \in I \ssm [b]$, then~$S_G(I) = g > b = S_C(I)$, contradicting that~$S_G < S_C$.
+As these four cases are all excluded, we reached a contradiction.
+\end{proof}
+
+\begin{lemma}
+\label{lem:pathStarSparse}
+If~$\ASour(\II)$ is a lattice, then $\II$ is path star sparse.
+\end{lemma}
+
+\begin{proof}
+Assume by means of contradiction that there are~$u,v \in V$ connected by a directed path such that~$X(T,u,v,\II)$ contains a cycle~$u_1, v_1, u_2, v_2, \dots, u_p, v_p$, where~$p \ge 2$ and the indices are in~$\Z/p\Z$.
+Without loss of generality, we can assume that this cycle is induced.
+Note that~$u_i < v_j$ for all~$i,j \in [p]$ since we consider increasing trees, and that there is no~$I \in \II$ containing either two distinct~$u_i$'s or two distinct~$v_j$'s since they are incomparable in~$T$.
+
+Let~$W$ be a word formed by the other vertices~$V \ssm \{u_0, v_0, \dots, u_p, v_p\}$ in any order.
+For~$i \in [p]$, define the permutations
+\[
+\sigma^i \eqdef u_i v_i u_{i+1} v_{i+1} \dots u_{i+p-1} v_{i+p-1} W
+\qquad\text{and}\qquad
+\tau^i \eqdef v_i u_{i+1} v_{i+1} \dots u_{i+p-1} v_{i+p-1} u_i W
+\]
+and the acyclic sourcings~$S^i \eqdef \asour{\sigma^i}$ and~$T^i \eqdef \asour{\tau^i}$ of~$\II$.
+
+Let~$S$ denote the sourcing on~$\II$ defined by
+\[
+S(I) = 
+\begin{cases}
+	u_i & \text{if~$u_i \in I$ and~$v_{i-1} \notin I$} \\
+	v_i & \text{if~$v_i \in I$ and~$u_{i-1} \notin I$} \\
+	w & \text{in all other cases, where~$w$ is the first letter of~$W$ that appear in~$I$}.
+\end{cases}
+\]
+Note that~$S$ is cyclic since it contains the cycle~$u_1, v_1, u_2, v_2, \dots, u_p, v_p$ that we started from.
+Observe also that for any~$i \in [p]$ and any~$I \in \II$,
+\begin{itemize}
+\item $S^i(I) = S(I)$ except if~$\{u_i, v_{i-1}\} \subseteq I$ in which case we have~$S^i(I) = u_i < v_{i-1} = S(I)$,
+\item $T^i(I) = S(I)$ except if~$\{u_i, v_i\} \subseteq I$ in which case we have~$T^i(I) = v_i < u_i = S(I)$.
+\end{itemize}
+In particular, we obtain that~$S^i < S < T^i$ for all~$i \in [p]$.
+
+If~$\ASour(\II)$ were a lattice, we therefore must have an acyclic sourcing~$T$ of~$\II$ such that~$S^i \le T \le T^i$ for all~$i \in [p]$.
+For any~$I \in \II$, there is~$i \in [p]$ such that~$u_i \notin I$.
+For this~$i$, we have~$S(I) = S^i(I) \le T(I) \le T^i(I) = S(I)$, hence~$S(I) = T(I)$.
+We conclude that~$S = T$ contradicting the acyclicity of~$T$.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Sufficient condition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
