@@ -1744,7 +1744,7 @@ The acyclic sourcing poset~$\ASour(\II)$ is a lattice if and only if $\II$ is pa
 \begin{remark}
 When $T$ is a line, 
 \begin{itemize}
-\item the path intersection closed condition boils down to being closed under intersection (we can include singletons by default),
+\item the path intersection closed condition boils down to being closed under intersection (including singletons by default),
 \item the path star sparse condition is empty,
 \item the characterization of \cref{thm:intreevalLattices} was proved in~\cite[Thm.~A]{BergeronPilaud}.
 \end{itemize}
@@ -1878,7 +1878,50 @@ We conclude that~$S = T$ contradicting the acyclicity of~$T$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Sufficient condition}
+\subsection{Path star sparse implies no long cycles}
+
+In this section, we observe the following important property of the path star sparse intreeval hypergraphs.
+
+\begin{proposition}
+\label{prop:pathStarSparse}
+Let~$\II$ be a path star sparse intreeval hypergraph of an increasing tree~$T$.
+Then any minimal cycles in any sourcing of~$S$ has length~$2$.
+\end{proposition}
+
+\begin{proof}
+Assume by means of contradiction that there is a sourcing~$S$ of~$\II$ with a minimal cycle~$I_1, \dots, I_p$ where~$p \ge 3$ and the indices are in~$\Z/p\Z$, and let~$w_i \eqdef S(I_i)$ for all~$i \in [p]$.
+In other words, we have
+\begin{enumerate}[(a)]
+\item $w_i \in I_{i+1} \ssm \{w_{i+1}\}$ for all~$i \in [p]$ (because~$I_1, \dots, I_p$ form a cycle in~$S$), and
+\item $w_i \in I_j \iff j \in \{i,i+1\}$ for all~$i,j \in [p]$ (because this cycle is minimal).
+\end{enumerate}
+Moreover, we can assume that there is no sourcing~$S' < S$ with a a minimal cycle of length at least~$3$
+We also denote by~$w'_i$ the first vertex along the path joining~$w_i$ to~$w_{i+1}$ in~$T$.
+
+Since~$w_i$ and~$w_{i+1}$ both belong to the path~$I_{i+1}$, they form an edge in~$\tc(T)$.
+As~$I_{i+2} \cup I_{i+3} \cup \dots \cup I_{i-2} \cup I_{i-1}$ is connected by~(a) and contains both~$w_{i-1}$ and~$w_{i+1}$ but not~$w_i$ by~(b), the (not necessarily directed) path joining~$w_{i-1}$ to~$w_{i+1}$ in~$T$ cannot contain~$w_i$.
+Hence, the paths from~$w_i$ to~$w_{i-1}$ and to~$w_{i+1}$ respectively share their first vertex, which we denote by~$w'_i$.
+Consequently, the vertices~$w_1, \dots, w_p$ form an alternating cycle in~$\tc(T)$, and thus that~$p = 2q$.
+By symmetry, assume that~$w_i$ has two incoming (resp.~outgoing) arrows in this cycle if~$i$ is even (resp.~odd).
+
+Let~$j \in [q]$.
+If~$w'_{2j}$ is not in~$I_{2j+2}$, we can consider the sourcing~$S'$ of~$\II$ defined by~$S'(I_{2i} = w'_{2i}$ and~$S'(I) = S(I)$ for all~$I \in \II$.
+We have~$S' < S$ by definition, and~$I_1, \dots, I_p$ still form a minimal cycle in~$S'$, contradicting the minimality of~$S$.
+We conclude that~$w'_{2i}$ belongs to~$I_{2j+2}$, hence to the path from~$w_{2i+1}$ to~$w_{2i+2}$.
+This implies in particular that~$w'_{2i} \le w'_{2i+2}$.
+We thus obtain that~$w'_2 \le w'_4 \le \dots \le w'_{2q} \le w'_2$, and thus that they all coincide.
+We denote this vertex by~$v$.
+
+We obtained that~$I \eqdef \bigcap_{i \in [q]} I_i$ is a non-empty (as it contains~$v$) directed path (as intersection of directed paths in a tree~$T$).
+Its final vertex is~$v$ and we denote its initial vertex by~$u$.
+For~$j \in [q]$, we denote by~$u_j$ the neighbor of~$u$ in the path from~$w_{2j-1}$ to~$u$, and by~$v_j \eqdef w_{2j}$.
+We obtained that~$u_j \in I_{2j-1} \cap I_{2j}$, hence that~$u_1, v_1, \dots, u_p, v_p$ form a cycle in~$X(T, u, v, \II)$, showing that~$T$ is not sparse star.
+\end{proof}
+
+\begin{remark}
+\cref{prop:pathStarSparse} fails if the intreeval hypergraph~$\II$ is not path star sparse.
+\vincent{todo}
+\end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
