@@ -149,15 +149,17 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\less}{\vartriangleleft} % smaller WOIP
 \newcommand{\lesseq}{\trianglelefteq} % smaller WOIP
 \newcommand{\more}{\vartriangleright} % larger WOIP
-\newcommand{\contactLess}[1]{\less_{#1}} % smaller contact graph
-\newcommand{\contactMore}[1]{\more_{#1}} % larger contact graph
-\newcommand{\projDown}{\pi^\downarrow} % Down projection
-\newcommand{\projUp}{\pi^\uparrow} % Down projection
+%\newcommand{\contactLess}[1]{\less_{#1}} % smaller contact graph
+%\newcommand{\contactMore}[1]{\more_{#1}} % larger contact graph
+\newcommand{\projDown}[1]{\smash{\pi^\downarrow_{#1}}} % Down projection
+\newcommand{\projUp}[1]{\smash{\pi^\uparrow_{#1}}} % Down projection
 
 % Ornamentations, reorientations, orientations
 \newcommand{\mymap}[2]{\mathsf{#1}_{\hspace{-.7pt}#2}}
 \DeclareMathOperator{\Orn}{\c{O}}  % ornamentations
 \newcommand{\orn}[1]{\mymap{O}{#1}}  % ornamentation
+\newcommand{\minorn}[2]{\mymap{O}{#1}^{\downarrow#2}}  % ornamentation
+\newcommand{\maxorn}[2]{\mymap{O}{#1}^{\uparrow#2}}  % ornamentation
 \DeclareMathOperator{\AOrn}{\c{AO}}  % acyclic ornamentations
 \newcommand{\aorn}[1]{\mymap{AO}{#1}}  % acyclic ornamentation
 \DeclareMathOperator{\Reori}{\c{R}}  % reorientations
@@ -347,12 +349,13 @@ We denote by~$\Orn(v \in D)$ the set of ornaments at a vertex~$v$ of~$D$ and by~
 \end{definition}
 
 \begin{example}
+\label{exm:ornamentations}
 We can define ornamentations by
-\begin{itemize}
+\begin{enumerate}[(i)]
 \item sending each vertex~$v \in V$ to the singleton~$\{v\}$, 
-\item sending each vertex~$v \in V$ to the set~$U$ of vertices with a path to~$v$ in~$D$,
+\item sending each vertex~$v \in V$ to the set~$\triangle_T(v)$ of vertices with a path to~$v$ in~$D$,
 \item for any ornament~$U \in \Orn(v \in D)$, sending~$v$ to~$U$ and any other vertex~$u \in V \ssm \{v\}$ to the singleton~$\{u\}$.
-\end{itemize}
+\end{enumerate}
 \end{example}
 
 \begin{lemma}
@@ -424,7 +427,7 @@ The isomorphism is obtained trough tubings (or equivalently bracket vectors).
 \label{rem:posetPropertiesOrnamentations}
 A few poset properties of the ornamentations lattice~$\Orn(D)$:
 \begin{itemize}
-\item The minimal ornamentation sends each vertex~$v \in V$ to the singleton~$\{v\}$, and the maximal ornamentation sends each vertex~$v \in V$ to the set~$U$ of vertices with a path to~$v$ in~$D$.
+\item The minimal ornamentation sends each vertex~$v \in V$ to the singleton~$\{v\}$, and the maximal ornamentation sends each vertex~$v \in V$ to the set~$\triangle_D(v)$ of vertices with a path to~$v$ in~$D$.
 \item Two ornamentations~$O_1$ and~$O_2$ of~$D$ form a cover relation if and only if there is~$u, v \in V$ such that~$u \notin O_1(v)$ and~$O_2(v) = O_1(u) \cup O_1(v)$, while~$O_1(w) = O_2(w)$ for all~$w \in V \ssm \{v\}$.
 \item For any~$U \subseteq V$, the ornamentation lattice of the subgraph~$D_U$ of~$D$ induced by~$U$ is an interval of the ornamentation lattice of~$D$ (namely, the bottom interval below the ornamentation of~$D$ where~$O(u)$ is the set of vertices of~$U$ with a path to~$u$ in~$U$ for all~$u \in U$, while~$O(v)$ is the singleton~$\{v\}$ for all~$v \in V \ssm U$).
 \end{itemize}
@@ -433,7 +436,7 @@ A few poset properties of the ornamentations lattice~$\Orn(D)$:
 \begin{remark}
 A few lattice properties of the ornamentation lattice~$\Orn(D)$:
 \begin{itemize}
-\item The join irreducible ornamentations of~$D$ are precisely the ornamentations~$\Orn_P$ described in \cref{rem:posetPropertiesOrnamentations} for the directed paths~$P$ in~$D$ which admit no shortcut in~$D$. (The meet irreducible ornamentations are more complicated to describe.)
+\item The join irreducible ornamentations of~$D$ are precisely the ornamentations~$\Orn_P$ described in \cref{exm:ornamentations}\,(iii) for the directed paths~$P$ in~$D$ which admit no shortcut in~$D$. (The meet irreducible ornamentations are more complicated to describe.)
 \item $\Orn(D)$ is distributive if and only if~$D$ contains no path of length~$2$ (in which case, $\Orn(D)$ is actually a boolean lattice).
 \item $\Orn(D)$ is semidistributive if and only if~$D$ is a directed tree.
 \end{itemize}
@@ -1713,7 +1716,7 @@ We conclude that~$B_2 = C^3 (1+y \, C)$.
 
 In this section, we characterize the subhypergraphs~$\II$ of the path interval~$\PP(T)$ of a directed tree~$T$ whose acyclic sourcing poset~$\ASour(\II)$ is a lattice.
 We actually consider increasing trees as it simplifies the definitions of the conditions and does not loose generality up to relabeling.
-\vincent{This section needs illustrations...}
+\vincent{This section needs illustrations... I will do that later.}
 
 \begin{definition}
 An \defn{intreeval hypergraph} of an increasing tree~$T$ is a subhypergraph of~$\PP(T)$.
@@ -1721,7 +1724,7 @@ An \defn{intreeval hypergraph} of an increasing tree~$T$ is a subhypergraph of~$
 
 \begin{definition}
 \label{def:pathIntersectionClose}
-We say that an intreeval hypergraph~$\II$ of an increasing tree~$T$ is \defn{path intersection closed} if for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) < \min(I\cap J)$ and  $\max J < \max (I\cap J)$, there exists an~$K \in \II$ such that $\min(K) \in J \cap [\min(I\cap J)]$ and $\max K \in I \ssm [\max(I\cap J)-1]$.
+We say that an intreeval hypergraph~$\II$ of an increasing tree~$T$ is \defn{path intersection closed} if for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) < \min(I\cap J)$ and  $\max J > \max (I\cap J)$, there exists an~$K \in \II$ such that $\min(J) \le \min(K) \le \min(I\cap J)$ and $\max(I\cap J) \le \max K \le \max(I)$.
 \end{definition}
 
 \begin{definition}
@@ -1733,7 +1736,7 @@ We say that~$\II$ is \defn{path star sparse} if~$X(T,u,v,\II)$ is acyclic for al
 \end{definition}
 
 The goal of this section is to show the following characterization.
-It will be a consequence of \cref{lem:pathIntersectionClosed,lem:pathStarSparse,prop:sufficientConditions}.
+It will be a consequence of \cref{lem:pathIntersectionClosed,lem:pathStarSparse,prop:quasiLatticeMapIntreevalLattices}.
 
 \begin{theorem}
 \label{thm:intreevalLattices}
@@ -1758,12 +1761,13 @@ We first prove that the two conditions of \cref{thm:intreevalLattices} are neces
 
 \begin{lemma}
 \label{lem:pathIntersectionClosed}
-If~$\ASour(\II)$ is a lattice, then $\II$ is path intersection closed.
+Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
+If~$\ASour(\II)$ is a lattice, then $\II$ is path intersection closed (\cref{def:pathIntersectionClose}).
 \end{lemma}
 
 \begin{proof}
 The proof follows exactly the same lines as that of~\cite[Prop.~4.6]{BergeronPilaud}.
-Assume by means of contradiction that there are~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) < \min(I\cap J)$ and  $\max J < \max (I\cap J)$, and there is there no~$K \in \II$ such that $\min(K) \in J \cap [\min(I\cap J)]$ and $\max K \in I \ssm [\max(I\cap J)]$.
+Assume by means of contradiction that there are~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) < \min(I\cap J)$ and  $\max J < \max (I\cap J)$, and there is there no~$K \in \II$ such that $\min(J) \le \min(K) \le \min(I\cap J)$ and $\max(I\cap J) \le \max K \le \max(I)$.
 
 Let~$b$ (resp.~$c$) be the bottom (resp.~top) endpoint of~$I \cap J$, and~$a$ (resp.~$d$) be its neighbor in~$I \ssm J$ (resp.~$J \ssm I$).
 Let~$Y$ be a word formed by~$(I \cup J) \ssm \{a,b,c,d\}$ in any order, and~$X$ be a word formed by~$V \ssm (I \cup J)$ in any order.
@@ -1785,7 +1789,7 @@ and let~$S_A \eqdef \asour{\pi_A}, \dots, S_F \eqdef \asour{\pi_F}$ denote the c
 
 We claim that~$S_E = S_F$.
 Indeed, if~$K \in \II$ is such that~$S_E(K) \ne S_F(K)$, then~$K \supseteq \{b,c\}$ but~$K \cap (X \cup \{a,d\}) = \varnothing$.
-This would implies that~$\min(K) \in [b] \cap J$ while $\max(K) \in I \ssm [c-1]$, contradicting our assumption on~$I$ and~$J$.
+This would imply that~$\min(J) \le \min(K) \le b$ and $c \le \max K \le \max(I)$, contradicting our assumption on~$I$ and~$J$.
 
 Observe now that
 \[
@@ -1835,7 +1839,8 @@ As these four cases are all excluded, we reached a contradiction.
 
 \begin{lemma}
 \label{lem:pathStarSparse}
-If~$\ASour(\II)$ is a lattice, then $\II$ is path star sparse.
+Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
+If~$\ASour(\II)$ is a lattice, then $\II$ is path star sparse (\cref{def:pathStarSparse}).
 \end{lemma}
 
 \begin{proof}
@@ -1875,7 +1880,6 @@ For this~$i$, we have~$S(I) = S^i(I) \le T(I) \le T^i(I) = S(I)$, hence~$S(I) = 
 We conclude that~$S = T$ contradicting the acyclicity of~$T$.
 \end{proof}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Path star sparse implies no long cycles}
@@ -1884,7 +1888,7 @@ In this section, we observe the following important property of the path star sp
 
 \begin{proposition}
 \label{prop:pathStarSparse}
-Let~$\II$ be a path star sparse intreeval hypergraph of an increasing tree~$T$.
+Let~$\II$ be a path star sparse (\cref{def:pathStarSparse}) intreeval hypergraph of an increasing tree~$T$.
 Then any minimal cycles in any sourcing of~$S$ has length~$2$.
 \end{proposition}
 
@@ -1922,6 +1926,249 @@ We obtained that~$u_j \in I_{2j-1} \cap I_{2j}$ while~$v_j \in I_{2j} \cap I_{2j
 \cref{prop:pathStarSparse} fails if the intreeval hypergraph~$\II$ is not path star sparse.
 \vincent{todo}
 \end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Sufficient condition}
+
+To prove the reverse implication of \cref{thm:intreevalLattices}, we will use a quasi-lattice quotient as defined in~\cite[Rem.~4.14]{BergeronPilaud}.
+
+\begin{definition}
+\label{def:quasiLatticeMap}
+A \defn{quasi-lattice map} is a surjective order-preserving map~$f$ from a lattice~$L$ to a poset~$P$ such that
+\begin{itemize}
+\item the fiber of any~$p \in P$ is an interval~$f^{-1}(p) = [\projDown{p}, \projUp{p}]$ of~$L$,
+\item $\projDown{p} \le \projUp{q}$ for any~$p \le q$ in~$P$.
+\end{itemize}
+\end{definition}
+
+\begin{proposition}[{\cite[Rem.~4.14]{BergeronPilaud}}]
+\label{prop:quasiLatticeMap}
+If~$f : L \to P$ is a quasi-lattice map, then~$P$ is a lattice. 
+Moreover, for any~$p,q \in P$,
+\[
+p \join q = f(\projDown{p} \join \projDown{q})
+\qquad\text{and}\qquad
+p \meet q = f(\projUp{p} \meet \projUp{q}).
+\]
+\end{proposition}
+
+\begin{proof}
+We repeat the proof here for completeness.
+Let~$p,q,r,s \in P$ such that~$p, q \le r, s$.
+Then~$\projDown{p} , \projDown{q} \le \projUp{r},  \projUp{s}$.
+Hence~$\projDown{p}, \projDown{q} \le \projDown{p} \join \projDown{q} \le \projUp{r}, \projUp{s}$.
+Since~$f$ is order-preserving, we obtain that~$f(\projUp{p}) = p, f(\projUp{q}) = q \le f(\projDown{p} \join \projDown{q}) \le f(\projUp{r}) = r, f(\projUp{s}) = s$.
+This implies that~$p$ and~$q$ admit a join~$p \join q \le f(\projDown{p} \join \projDown{q})$.
+Moreover, as~$p, q \le p \join q$, we have~$\projDown{p}, \projDown{q} \le \projUp{p \join q}$, hence $\projDown{p} \join \projDown{q} \le \projUp{p \join q}$.
+Since~$f$ is order-[reserving, we obtain that~$f(\projDown{p} \join \projDown{q}) \le f(\projUp{p \join q}) = p \join q$.
+We conclude that~$p \join q = f(\projDown{p} \join \projDown{q})$.
+The proof for the meet is symmetric.
+\end{proof}
+
+\begin{remark}
+Lattice map.
+\vincent{todo}
+\end{remark}
+
+We now consider the following map from the ornamentation lattice~$\Orn(T)$ to the sourcing poset~$\Sour(\II)$.
+Note that $\sour{O}^\II$ is just the restriction to~$\II$ of the sourcing~$\sour{O}$ of~$\PP(T)$ defined in \cref{def:Orn2Sour}.
+
+\begin{definition}
+\label{def:Orn2SourIntreeval}
+Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
+For an ornamentation~$O$ of~$T$, we define a sourcing~$\sour{O}^\II$ of~$\II$ where the source~$\sour{O}^\II(I)$ for a path~$I \in \II$ from~$u$ to~$v$ in~$T$ is the maximal~$w \in I$ such that~$u \in O(w)$.
+\end{definition}
+
+\begin{lemma}
+\label{lem:Orn2SourIntreeval1}
+The map~$O \mapsto \sour{O}^\II$ is order-preserving.
+\end{lemma}
+
+\begin{proof}
+Follows from \cref{lem:Orn2Sour1} as $\sour{O}^\II$ is just the restriction to~$\II$ of the sourcing~$\sour{O}$ of~$\PP(T)$ defined in \cref{def:Orn2Sour}.
+\end{proof}
+
+\begin{lemma}
+\label{lem:Orn2SourIntreeval2}
+%Let~$T$ be a directed tree, $\II$ be an intreeval hypergraph of~$T$, and~$O$ be an ornamentation of~$T$.
+For any ornamentation~$O$ of~$T$, all cycles of the sourcing~$\sour{O}^\II$ have length at least~$3$.
+\end{lemma}
+
+\begin{proof}
+Let~$v_1 \eqdef \sour{O}^\II(I_1)$ and~$v_2 \eqdef \sour{O}^\II(I_2)$ for some~$I_1,I_2 \in \II$, and assume by symmetry that~${v_1 \le v_2}$.
+If~$v_1 \in I_2 \ssm \{v_2\}$, then~$v_1 \in O(v_2)$, hence~$O(v_1) \subseteq O(v_2)$.
+By definition of~$\sour{O}^\II$, we thus obtain that~$\min(I_1) \in O(v_1) \subseteq O(v_2)$.
+If~$v_2 \in I_1$, this implies~$v_1 = \sour{O}^\II(I_1) \ge v_2$, hence~${v_1 = v_2}$.
+\end{proof}
+
+\begin{corollary}
+\label{coro:Orn2SourIntreeval3}
+Let~$T$ be a directed tree, $\II$ be a path star sparse intreeval hypergraph of~$T$, and~$O$ be an ornamentation of~$T$.
+Then the sourcing~$\sour{O}^\II$ is acyclic.
+\end{corollary}
+
+\begin{proof}
+Follows from \cref{lem:Orn2SourIntreeval2,prop:pathStarSparse}.
+\end{proof}
+
+For a vertex~$v$ of~$T$, we denote by~$\triangle_T(v)$ the set of vertices with a directed path to~$v$ in~$T$.
+%Here, it is convenient to assume that the intreeval hypergraph~$\II$ contains all singletons~$\{v\}$ for~$v \in V$.
+
+\begin{definition}
+Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
+For an acyclic sourcing~$S$ of~$\II$ and any~$I \in \II$, we define two ornamentations~$\minorn{S}{I}$ and~$\maxorn{S}{I}$ of~$T$ by
+\[
+\minorn{S}{I}(v) \eqdef \begin{cases} I \cap [v] & \text{if } v = S(I) \\ \{v\} & \text{otherwise} \end{cases}
+\qquad\text{and}\qquad
+\maxorn{S}{I}(v) \eqdef  \begin{cases} \triangle_T(v) \ssm (I \cap [S(I)]) & \text{if } S(I) < v \in I \\ \triangle_T(v) & \text{otherwise} \end{cases}
+.
+\]
+Finally, we define two ornamentations~$\minorn{S}{\II}$ and~$\maxorn{S}{\II}$ of~$T$ by
+\[
+\minorn{S}{\II} \eqdef \bigJoin_{I \in \II} \minorn{S}{I}
+\qquad\text{and}\qquad
+\maxorn{S}{\II} \eqdef \bigMeet_{I \in \II} \maxorn{S}{I}
+.
+\]
+\end{definition}
+
+Note that~$\minorn{S}{I}$ and~$\maxorn{S}{I}$ are indeed ornamentations of~$T$ by \cref{exm:ornamentations}\,(iii), hence~$\minorn{S}{\II}$ and~$\maxorn{S}{\II}$ are also ornamentations of~$T$.
+
+\begin{lemma}
+\label{lem:Sour2OrnIntreeval1}
+For any acyclic sourcing~$S$ of~$\II$ and~$I, J \in \II$, we have~$\minorn{S}{I} \le \maxorn{S}{J}$.
+Hence~$\minorn{S}{\II} \le \maxorn{S}{\II}$.
+\end{lemma}
+
+\begin{proof}
+Let~$v \in V$.
+If~$v \ne S(I)$, then~$\minorn{S}{I}(v) = \{v\} \subseteq \maxorn{S}{J}(v)$.
+If~$v \notin J$ or~$S(J) \ge v$, then ${\minorn{S}{I}(v) \subseteq I \cap [v] \subseteq \triangle_T(v) = \maxorn{S}{J}(v)}$.
+Finally, assume that~$S(I) = v$ and~$S(J) < v \in J$.
+If~$S(J) \in I$, then~$S(J) \in I \ssm \{S(I)\}$ while~$S(I) \in J \ssm \{S(J)\}$ contradicting the acyclicity of~$S$.
+Hence we obtain~$(J \cap [S(J)]) \cap I = \varnothing$ and thus~$\minorn{S}{I}(v) = I \cap [v] \subseteq \triangle_T(v) \ssm (J \cap [S(J)])= \maxorn{S}{J}(v)$.
+We conclude that~$\minorn{S}{I}(v) \subseteq \maxorn{S}{J}(v)$ for any~$v \in V$, hence that~$\minorn{S}{I} \le \maxorn{S}{J}$.
+\end{proof}
+
+\begin{lemma}
+\label{lem:Sour2OrnIntreeval2}
+For any acyclic sourcing~$S$ of~$\II$, the ornamentations~$O$ of~$T$ such that~$\sour{O}^\II = S$ form an interval of the acyclic sourcing poset~$\ASour(\II)$ with minimal element~$\minorn{S}{\II}$ and maximal element~$\maxorn{S}{\II}$.
+\end{lemma}
+
+\begin{proof}
+Consider first an ornamentation~$O$ of~$T$ such that~$\sour{O}^\II = S$ and let~$v \in V$ and~$I \in \II$. Then
+\begin{itemize}
+\item If~$S(I) = v$, we have~$\min(I) \in O(v)$ by definition of~$\sour{O}^\II = S$, and thus~$I \cap [v] \subseteq O(v)$ since~$T$ is a tree.
+We thus obtain that~$\minorn{S}{I}(v) \subseteq O(v)$.
+\item If~$S(I) < v \in I$, we have~$\min(I) \in O(S(I)) \ssm O(v)$ by definition of~$\sour{O}^\II = S$, hence~$(I \cap [S(I)]) \cap O(v) = \varnothing$ since~$O$ is an ornamentation.
+We thus obtain that~$O(v) \subseteq \maxorn{S}{I}(v)$.
+\end{itemize}
+In all cases, $\minorn{S}{I}(v) \subseteq O(v) \le \maxorn{S}{I}(v)$ for any~$v \in V$ and~$I \in \II$.
+We conclude that~$\minorn{S}{\II} \subseteq O \le \maxorn{S}{\II}$.
+
+Conversely, consider an ornamentation~$O$ of~$T$ such that~$\minorn{S}{I} \subseteq O \le \maxorn{S}{I}$ and let~$I \in \II$ and~$v \eqdef S(I)$. Then
+\begin{itemize}
+\item As~$S(I) = v$, we have~$I \cap [v] \subseteq \minorn{S}{I}(v) \subseteq \minorn{S}{I} \subseteq O(v)$, hence~$v \le \sour{O}^\II(I)$ by definition~of~$\sour{O}^\II$.
+\item Conversely, for any~$v < w \in I$, we have~$S(I) = v < w \in I$ so that~$O(w) \subseteq \maxorn{S}{\II}(w) \subseteq \maxorn{S}{I}(w) \subseteq \triangle_T(w) \ssm (I \cap [v])$. Hence, $\min(I) \notin O(w)$, so that~$\sour{O}^\II(I) \ne w$. We thus obtain that~$\sour{O}^\II(I) \le v$
+\end{itemize}
+We conclude that~$\sour{O}^\II(I) = S(I)$ for all~$I \in \II$, hence that~$\sour{O}^\II = S$.
+\end{proof}
+
+\begin{lemma}
+\label{lem:Sour2OrnIntreeval3}
+Let~$\II$ be a path intersection closed (\cref{def:pathIntersectionClose}) intreeval hypergraph of an increasing tree~$T$.
+For any acyclic sourcings~$S_1$ and~$S_2$ of~$\II$, if~$S_1 \le S_2$ then~$\minorn{S_1}{\II} \le \minorn{S_2}{\II}$.
+\end{lemma}
+
+\begin{proof}
+Assume by means of contradiction that~$S_1 \le S_2$ and~$\minorn{S_1}{\II} \not\le \minorn{S_2}{\II}$.
+Since~$\minorn{S_1}{\II} \le \minorn{S_2}{\II}$, there exist~$I, J \in \II$ such that~$\minorn{S_1}{I} \not\le \minorn{S_2}{J}$.
+This implies~$\min(I) \le S_2(J) < S_1(I) \le \max(J)$.
+Hence, $S_1(I)$ and~$S_2(J)$ are distinct and both belong to~$I \cap J$.
+Moreover, as~$S_1 \le S_2$, we have~$S_1(J) \le S_2(J) < S_1(I) \le S_2(I)$.
+Since~$S_1$ and~$S_2$ are both acyclic, we deduce that~$\min(J) \le S_1(J) < \min(I \cap J)$ while~$\max(I) \ge S_2(I) > \max(I \cap J)$.
+As~$\II$ is path intersection closed, there exists~$K \in \II$ such that~$\min(I) \le \min(K) \le \min(I\cap J)$ and $\max(I\cap J) \le \max K \le \max(J)$.
+\vincent{todo: almost finished}
+\vincent{todo: change the role of $I$ and~$J$ in the definition of path intersection closed?}
+\end{proof}
+
+\begin{proposition}
+\label{prop:quasiLatticeMapIntreevalLattices}
+Let~$\II$ be a path intersection closed (\cref{def:pathIntersectionClose}) and path star sparse (\cref{def:pathStarSparse}) intreeval hypergraph of an increasing tree~$T$.
+Then the map~$O \mapsto \sour{O}^\II$ of \cref{def:Orn2SourIntreeval} is a quasi-lattice map.
+Hence, the acyclic sourcing poset~$\ASour(\II)$ is a lattice.
+\end{proposition}
+
+\begin{proof}
+The map~$O \mapsto \sour{O}^\II$ satisfies the conditions of \cref{def:quasiLatticeMap} by \cref{lem:Orn2SourIntreeval1}, \cref{coro:Orn2SourIntreeval3} and~\cref{lem:Sour2OrnIntreeval1,,lem:Sour2OrnIntreeval2,,lem:Sour2OrnIntreeval3}.
+The last statement thus follows from~\cref{prop:quasiLatticeMap}.
+\end{proof}
+
+%\begin{definition}
+%Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$, containing all singletons~$\{v\}$ for~$v \in V$.
+%For an acyclic sourcing~$S$ of~$\II$, we denote by~$\minorn{S}$ and~$\maxorn{S}$ the two maps on~$V$ defined by
+%\[
+%\minorn{S}(v) \eqdef \bigcup_{\substack{v \in I \in \II \\ S(I) = v}} I \cap [v]
+%\qquad\text{and}\qquad
+%\maxorn{S}(v) \eqdef \triangle_T(v) \ssm \bigcup_{\substack{v \in I \in \II \\ S(I) < v}} I \cap [S(I)].
+%\]
+%\end{definition}
+%
+%\begin{lemma}
+%For any acyclic sourcing~$S$ of~$\II$, the maps~$\minorn{S}$ and~$\maxorn{S}$ are both ornamentations~of~$T$.
+%\end{lemma}
+%
+%\begin{proof}
+%We have~$v \in \minorn{S}(v)$ (since~$v \in \{v\} \in \II$ and~$S(\{v\}) = v$).
+%Let~$u \in \minorn{S}(v)$.
+%Consider~$I \in \II$ such that~$\{u,v\} \subseteq I$ and~$S(I) = v$.
+%For any~$u \in J \in \II$ with~$S(J) = u$, consider the directed path~$K$ from~$\min(J)$ to~$v$.
+%If~$S(K) < u$, then~$S(K) \in J \ssm \{S(J)\}$ and~$S(J) \in K \ssm S(K)$.
+%If~$u \le S(K) < v$, then~$S(K) \in I \ssm \{S(I)\}$ and~$S(I) \in K \ssm S(K)$.
+%Since~$S$ is acyclic, we conclude that~$S(K) = v$, and thus that~$J \cap [u] \subseteq K \subseteq \minorn{S}(v)$.
+%We conclude that~$\minorn{S}(u) \subseteq \minorn{S}(v)$.
+%
+%We have~$v \in \maxorn{S}(v)$ (since~$v \in \triangle_T(v)$ and~$v \notin \triangle_T(u)$ for~$u < v$).
+%Let~$u \in \maxorn{S}(v)$
+%
+%\vincent{todo}
+%\end{proof}
+%
+%\begin{lemma}
+%For any acyclic sourcing~$S$ of~$\II$, we have~$\minorn{S} \le \maxorn{S}$.
+%\end{lemma}
+%
+%\begin{proof}
+%Let~$v \in I \in \II$ such that~$S(I) = v$.
+%Note that~$I \cap [v] \subseteq \triangle_T(v)$.
+%Moreover, for any~$v \in J \in \II$ such that~$S(J) < v$, we have~$S(J) \notin I$ by acyclicity of~$S$, thus~$I \cap (J \cap [S(J)]) = \varnothing$.
+%We conclude that~$I \subseteq \maxorn{S}(v)$.
+%Therefore~$\minorn{S}(v) \le \maxorn{S}(v)$ for any~$v \in V$, hence~$\minorn{S} \le \maxorn{S}$.
+%\end{proof}
+%
+%\begin{lemma}
+%For any acyclic sourcing~$S$ of~$\II$, the ornamentations~$O$ of~$T$ such that~$\sour{O}^\II = S$ form an interval of the acyclic sourcing poset~$\ASour(\II)$ with minimal element~$\minorn{S}$ and maximal element~$\maxorn{S}$.
+%\end{lemma}
+%
+%\begin{proof}
+%Consider first an ornamentation~$O$ of~$T$ such that~$\sour{O}^\II = S$ and~$v \in V$. Then
+%\begin{itemize}
+%\item For any~$v \in I \in \II$ such that~$S(I) = v$, we have~$\min(I) \in O(v)$ by definition of~$\sour{O}^\II = S$, and thus~$I \cap [v] \subseteq O(v)$ since~$T$ is a tree.
+%We thus obtain that~$\minorn{S}(v) \subseteq O(v)$.
+%\item For any~$v \in I \in \II$ such that~$S(I) < v$, we have~$\min(I) \in O(S(I)) \ssm O(v)$ by definition of~$\sour{O}^\II = S$, hence~$(I \cap [S(I)]) \cap O(v) = \varnothing$ since~$O$ is an ornamentation.
+%We thus obtain that~$O(v) \subseteq \maxorn{S}(v)$.
+%\end{itemize}
+%As~$\minorn{S}(v) \subseteq O(v) \le \maxorn{S}(v)$ for any~$v \in V$, we obtain that~$\minorn{S} \subseteq O \le \maxorn{S}$.
+%
+%Conversely, consider an ornamentation~$O$ of~$T$ such that~$\minorn{S} \subseteq O \le \maxorn{S}$ and let~$I \in \II$ and~$v \eqdef S(I)$. Then
+%\begin{itemize}
+%\item As~$v \in I \in \II$ and~$S(I) = v$, we have~$I \cap [v] \subseteq \minorn{S}(v) \subseteq O(v)$, hence~$v \le \sour{O}^\II(I)$ by definition~of~$\sour{O}^\II$.
+%\item Conversely, for any~$v < w \in I$, we have~$w \in I \in \II$ with~$S(I) = v < w$ so that~$O(w) \subseteq \maxorn{S}(w) \subseteq \triangle_T(w) \ssm (I \cap [v])$. Hence, $\min(I) \notin O(w)$, so that~$\sour{O}^\II(I) \ne w$. We thus obtain that~$\sour{O}^\II(I) \le v$
+%\end{itemize}
+%We conclude that~$\sour{O}^\II(I) = S(I)$ for all~$I \in \II$, hence that~$\sour{O}^\II = S$.
+%\end{proof}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
