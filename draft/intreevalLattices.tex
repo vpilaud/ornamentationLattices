@@ -306,7 +306,7 @@ The Hasse diagram of the ornamentation lattice of any directed graph is isomorph
 
 Throughout this section, we fix a directed graph~$D$ on a vertex set~$V$ and denote by~$\tc(D)$ its transitive closure and by~$\PP(D)$ its hypergraph of directed paths.
 It is a priori not required that~$D$ is directed acyclic, although it is the case that interest us most in this paper.
-In particular, in all our pictures, $V = [n]$ and the edges are increasing (so we do not need to explicitly indicate the orientation).
+In particular, in all our pictures, $V = [n]$ and the edges are increasing (so we can omit their orientations).
 %We will mostly work with a directed acyclic graph, and we represent it with edges going up in all pictures.
 We define the reorientation lattice~$\Reori(\tc(D))$ (\cref{subsec:reorientations}), the sourcing lattice~$\Sour(\PP(D))$ (\cref{subsec:sourcings}), and the ornamentation lattice~$\Orn(D)$ (\cref{subsec:ornamentations}), and define natural surjective maps:
 \[
@@ -339,7 +339,7 @@ We define the reorientation lattice~$\Reori(\tc(D))$ (\cref{subsec:reorientation
 	\label{fig:ornamentationsAY}
 \end{figure}
 
-The following definition, first introduced for rooted trees in~\cite{} and extended to arbitrary directed graphs in~\cite{}, is illustrated in \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX,fig:ornamentationsD}
+The following definition, first introduced for rooted trees in~\cite{} and extended to arbitrary directed graphs in~\cite{}, is illustrated in \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX,fig:ornamentationsD,fig:ornamentationsKT}
 
 \begin{definition}
 \label{def:Orn}
@@ -350,10 +350,10 @@ We denote by~$\Orn(v \in D)$ the set of ornaments at a vertex~$v$ of~$D$ and by~
 
 \begin{example}
 \label{exm:ornamentations}
-We can define ornamentations by
+We clearly define ornamentations by
 \begin{enumerate}[(i)]
 \item sending each vertex~$v \in V$ to the singleton~$\{v\}$, 
-\item sending each vertex~$v \in V$ to the set~$\triangle_T(v)$ of vertices with a path to~$v$ in~$D$,
+\item sending each vertex~$v \in V$ to the set~$\triangle_D(v)$ of vertices with a path to~$v$ in~$D$,
 \item for any ornament~$U \in \Orn(v \in D)$, sending~$v$ to~$U$ and any other vertex~$u \in V \ssm \{v\}$ to the singleton~$\{u\}$.
 \end{enumerate}
 \end{example}
@@ -414,28 +414,29 @@ Moreover, $O_\join$ is clearly the join of~$O_1$ and~$O_2$ in componentwise incl
 
 \begin{example}
 The ornamentation lattice of the graph with a single edge is a $2$-elements chain.
-The ornamentation lattice of a graph with no path of length $2$ is a boolean lattice (see \eg \cref{fig:ornamentationsNI}\,(left) and \cref{fig:ornamentationsKT}).
+The ornamentation lattice of a graph with no path of length $2$ is a boolean lattice (see \eg \cref{fig:ornamentationsNI}\,(left) and \ref{fig:ornamentationsKT}\,(right)).
 %In general, the ornamentation lattice~$\Orn(D \sqcup D')$ of the disjoint union of two directed graphs~$D$ and~$D'$ is the Cartesian product~$\Orn(D) \times \Orn(D')$ of the ornamentation lattices of~$D$ and~$D'$
 \end{example}
 
 \begin{example}
-The ornamentation lattice of a $n$-elements path is isomorphic to the Tamari lattice on binary trees with $n$ nodes (see \eg \cref{fig:ornamentationsNI}\,(right)).
-The isomorphism is obtained trough tubings (or equivalently bracket vectors).
+The ornamentation lattice of an $n$-elements path is isomorphic to the Tamari lattice on binary trees with $n$ nodes (see \eg \cref{fig:ornamentationsNI}\,(right)).
+The isomorphism is obtained through tubings (or equivalently bracket vectors).
 \end{example}
 
-\begin{remark}
-\label{rem:posetPropertiesOrnamentations}
-A few poset properties of the ornamentations lattice~$\Orn(D)$:
-\begin{itemize}
-\item The minimal ornamentation sends each vertex~$v \in V$ to the singleton~$\{v\}$, and the maximal ornamentation sends each vertex~$v \in V$ to the set~$\triangle_D(v)$ of vertices with a path to~$v$ in~$D$.
-\item Two ornamentations~$O_1$ and~$O_2$ of~$D$ form a cover relation if and only if there is~$u, v \in V$ such that~$u \notin O_1(v)$ and~$O_2(v) = O_1(u) \cup O_1(v)$, while~$O_1(w) = O_2(w)$ for all~$w \in V \ssm \{v\}$.
-\item For any~$U \subseteq V$, the ornamentation lattice of the subgraph~$D_U$ of~$D$ induced by~$U$ is an interval of the ornamentation lattice of~$D$ (namely, the bottom interval below the ornamentation of~$D$ where~$O(u)$ is the set of vertices of~$U$ with a path to~$u$ in~$U$ for all~$u \in U$, while~$O(v)$ is the singleton~$\{v\}$ for all~$v \in V \ssm U$).
-\end{itemize}
-\end{remark}
+%\begin{remark}
+%\label{rem:posetPropertiesOrnamentations}
+%A few poset properties of the ornamentations lattice~$\Orn(D)$:
+%\begin{itemize}
+%\item The minimal ornamentation sends each vertex~$v \in V$ to the singleton~$\{v\}$, and the maximal ornamentation sends each vertex~$v \in V$ to the set~$\triangle_D(v)$ of vertices with a path to~$v$ in~$D$.
+%\item Two ornamentations~$O_1$ and~$O_2$ of~$D$ form a cover relation~$O_1 \lessdot O_2$ if and only if there are~$u, v \in V$ such that~$u \notin O_1(v)$, $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$, and~$O_1(w) = O_1(u)$ for any~$w \in O_1(u)$ with an edge towards~$O_1(v)$.
+%\item For any~$U \subseteq V$, the ornamentation lattice of the subgraph~$D_U$ of~$D$ induced by~$U$ is an interval of the ornamentation lattice of~$D$ (namely, the bottom interval below the ornamentation of~$D$ where~$O(u)$ is the set of vertices of~$U$ with a path to~$u$ in~$U$ for all~$u \in U$, while~$O(v)$ is the singleton~$\{v\}$ for all~$v \in V \ssm U$).
+%\end{itemize}
+%\end{remark}
 
 \begin{remark}
-A few lattice properties of the ornamentation lattice~$\Orn(D)$:
+A few properties of the ornamentation lattice~$\Orn(D)$:
 \begin{itemize}
+\item The minimal (resp.~maximal) ornamentation of~$D$ sends each vertex~$v \in V$ to the singleton~$\{v\}$ (resp.~to the set~$\triangle_D(v)$ of vertices with a path to~$v$ in~$D$).
 \item The join irreducible ornamentations of~$D$ are precisely the ornamentations~$\Orn_P$ described in \cref{exm:ornamentations}\,(iii) for the directed paths~$P$ in~$D$ which admit no shortcut in~$D$. (The meet irreducible ornamentations are more complicated to describe.)
 \item $\Orn(D)$ is distributive if and only if~$D$ contains no path of length~$2$ (in which case, $\Orn(D)$ is actually a boolean lattice).
 \item $\Orn(D)$ is semidistributive if and only if~$D$ is a directed tree.
@@ -459,6 +460,66 @@ A few lattice properties of the ornamentation lattice~$\Orn(D)$:
 	\caption{The ornamentation lattices~$\Orn(\Kgraph)$ and~$\Orn(\Tgraph)$.}
 	\label{fig:ornamentationsKT}
 \end{figure}
+
+%\vincent{Maybe we should extend the previous two remarks to proper statements with proofs...}
+%
+%\begin{remark}
+%The minimal ornamentation of~$D$ sends each vertex~$v \in V$ to the singleton~$\{v\}$, and the maximal ornamentation sends each vertex~$v \in V$ to the set~$\triangle_D(v)$ of vertices with a path to~$v$ in~$D$.
+%\end{remark}
+%
+%\begin{lemma}
+%\label{lem:coverRelationsOrn}
+%Two ornamentations~$O_1$ and~$O_2$ of~$D$ form a cover relation~$O_1 \lessdot O_2$ if and only if there are~$u, v \in V$ such that~$u \notin O_1(v)$, $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$, and~$O_1(w) = O_1(u)$ for any~$w \in O_1(u)$ with an edge towards~$O_1(v)$.
+%\vincent{I am not sure this description is understandable...}
+%\end{lemma}
+%
+%\begin{proof}
+%Assume first that~$O_1$ and~$O_2$ are two ornamentations of~$D$ such that there are~$u, v \in V$ such that~$u \notin O_1(v)$, $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$, and~$O_1(w) = O_1(u)$ for any~$w \in O_1(u)$ with an edge towards~$O_1(v)$.
+%We have~$O_1 \le O_2$. Moreover, consider any ornamentation~$O$ of~$D$ such that~$O_1 \le O \le O_2$.
+%Then~$O_1(w) = O(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$ and~$O_1(v) \subseteq O(v) \subseteq O_2(v)$. If~$O_1 \ne O$, then there is~$x \in O(v) \ssm O_1(v)$ and let~$y$ be the last vertex not in~$O_1(v)$ along the path from~$x$ to~$v$ in~$O(v)$.
+%As~$y \in O(v) \ssm O_1(v) \subseteq O_2(v) \ssm O_1(v) \subseteq O_1(u)$ and~$y$ has an edge towards~$O_1(v)$, we have~$O_1(y) = O_1(u)$, and we thus obtain that~$O(v) \supseteq O_1(y) \cup O_1(v) = O_1(u) \cup O_1(v) = O_2(v)$, hence that~$O = O_2$.
+%
+%Conversely, assume that~$O_1$ and~$O_2$ are two ornamentations of~$D$ such that~$O_1 \lessdot O_2$ is a cover relation in~$\Orn(D)$.
+%Consider~$v \in V$ such that~$O_1(v) \ne O_2(v)$ and~$O_1(w) = O_2(w)$ for any~$w \in O_1(v)$.
+%Then the map~$O$ on~$V$ defined by $O(v) = O_1(v)$ and~$O(w) = O_2(w)$ for all~$w \ne v$ is an ornamentation of~$D$.
+%Moreover, $O_1 \le O < O_2$.
+%Hence, $O_1 = O$.
+%\vincent{todo}
+%\end{proof}
+%
+%We now describe the join irreducible ornamentations.
+%Note that the meet irreducible ornamentations are more complicated to describe in general.
+%We will describe them for directed trees in \cref{prop:meetIrreducibleOrnamentationsT}.
+%
+%\begin{proposition}
+%\label{prop:joinIrreducibleOrnamentations}
+%The join irreducible ornamentations of~$D$ are precisely the ornamentations~$\Orn_P$ described in \cref{exm:ornamentations}\,(iii) for the directed paths~$P$ in~$D$ which admit no shortcut in~$D$.
+%\end{proposition}
+%
+%\begin{proof}
+%\vincent{todo}
+%\end{proof}
+%
+%\begin{lemma}
+%For any~$U \subseteq V$, the ornamentation lattice of the subgraph~$D_U$ of~$D$ induced by~$U$ is an interval of the ornamentation lattice of~$D$ (namely, the bottom interval below the ornamentation of~$D$ where~$O(u)$ is the set of vertices of~$U$ with a path to~$u$ in~$U$ for all~$u \in U$, while~$O(v)$ is the singleton~$\{v\}$ for all~$v \in V \ssm U$).
+%\end{lemma}
+%
+%\begin{proposition}
+%\label{prop:distributiveOrnamentationLattices}
+%The ornamentation lattce~$\Orn(D)$ is distributive if and only if~$D$ contains no path of length~$2$ (in which case, $\Orn(D)$ is actually a boolean lattice).\end{proposition}
+%
+%\begin{proof}
+%\vincent{todo}
+%\end{proof}
+%
+%\begin{proposition}
+%\label{prop:semidistributiveOrnamentationLattices}
+%The ornamentation lattce~$\Orn(D)$ is semidistributive if and only if~$D$ is a directed tree.
+%\end{proposition}
+%
+%\begin{proof}
+%\vincent{todo}
+%\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -691,6 +752,13 @@ Thus, we have shown that $\orn{R_1} \meet \orn{R_2} \le \orn{R_1 \meet R_2}$, an
 In contrast, the first example of \cref{rem:Reori2OrnSemilatticeMap} shows that the map~$R \mapsto \orn{R}$ is not necessarily a join semilattice morphism from the transitively closed reorientation lattice~$\Rcl(\tc(D))$ to the ornamentation lattice~$\Orn(D)$, even when~$D$ is a (rooted) tree.
 \end{remark}
 
+\begin{remark}
+Note that the image of the transitively coclosed reorientations by the map~$R \mapsto \orn{R}$ does not cover all ornamentations of~$D$.
+Example the diamond. The two that are not needed in the MacNeille completion.
+\vincent{todo}
+\end{remark}
+
+
 \vincent{Can we say similar things about the restriction of the map~$R \mapsto \orn{R}$ to transitively coclosed reorientations of~$\tc(D)$? If not, we should only define transitively closed reorientations...}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -718,7 +786,7 @@ In other words, $\Sour(\HH)$ is the Cartesian product of the subchains of~$V$ in
 %The \defn{interval hypergraph} of~$D$ is the collection~$\II$(D) of non-empty intervals~$[u,v]$ for all~$u,v \in V$.
 %\end{definition}
 
-We now assume that~$D$ is an increasing graph on~$V = [n]$, and we consider sourcings of the path hypergraph of~$D$.
+We now assume that~$D$ is an increasing graph on~$V = [n]$, meaning that~$u < v$ for any arc~$(u,v)$ of~$D$, and we consider sourcings of the path hypergraph of~$D$.
 
 \begin{definition}
 \label{def:pathHypergraph}
@@ -859,7 +927,7 @@ In contrast, we will see in \cref{sec:acyclic} that~$S \mapsto \orn{S}$ is injec
 \label{sec:acyclic}
 
 We now focus our attention on the acyclic situation.
-We assume here that~$D$ is an increasing graph on~$V = [n]$, meaning that $i < j$ for any arc~$(i,j)$ of~$D$, in particular~$D$ is acyclic.
+We assume here that~$D$ is an increasing graph on~$V = [n]$, meaning that $u < v$ for any arc~$(u,v)$ of~$D$, in particular~$D$ is acyclic.
 We then consider the acyclic reorientation poset~$\AReori(\tc(D))$ (\cref{subsec:acyclicReorientations}), the acyclic sourcing poset~$\ASour(\PP(D))$ (\cref{subsec:acyclicSourcings}), and the acyclic ornamentation poset~$\AOrn(D)$ (\cref{subsec:acyclicOrnamentations}), and define natural surjective poset morphisms:
 \[
 \begin{array}{rcccccl}
@@ -892,7 +960,7 @@ In particular, the graph of~$\simplex_E$, oriented in the direction~$\b{\omega} 
 
 Note that the acyclic reorientation poset~$\AReori(E)$ is not always a lattice.
 The lattice theory of acyclic reorientation posets was studied in details in~\cite{Pilaud-acyclicReorientationLattices}.
-For our purposes, we will only need the following characterizations.
+For our purposes, we will only need the following statemtents.
 
 \begin{proposition}[{\cite[Thm.~1]{Pilaud-acyclicReorientationLattices}}]
 \label{prop:AReoriLat}
@@ -957,7 +1025,7 @@ Note that the graph of~$\simplex_\HH$, oriented in the direction~$\b{\omega}$, i
 Note that the acyclic sourcing poset of~$\HH$ is not always a lattice.
 Characterizing the hypergraphs whose acyclic sourcing poset is a lattice seems a difficult question in general.
 Such characterizations exist for specific families of hypergraphs, notably for graphs~\cite{Pilaud-acyclicReorientationLattices} (see \cref{prop:AReoriLat}), interval hypergraphs~\cite{BergeronPilaud}, and (partially for) graph associahedra~\cite{BarnardMcConville}.
-We will further study this question for subhypergraphs of the path hypergraph of directed trees in \cref{sec:intreevalHypergraphicPosets}.
+We will further study this question for subhypergraphs of the path hypergraph of increasing trees in \cref{sec:intreevalHypergraphicPosets}.
 \end{remark}
 
 We have observed in \cref{subsec:sourcings} that there is no natural surjection from all reorientations of~$\tc(D)$ to all sourcings of~$\PP(D)$.
@@ -974,7 +1042,7 @@ For any acyclic reorientation~$R$ of~$\tc(D)$, we have~$\rev(\asour{R}) \subsete
 \end{lemma}
 
 \begin{proof}
-Let~$u,v \in V$ be such that~$(u,v) \in \rev(\asour{R})$. 
+Let~$u,v \in [n[$ be such that~$(u,v) \in \rev(\asour{R})$. 
 Then~$u < v$ and there is a path~$P \in \PP(D)$ such that~$u \in P$ and~$v = \asour{R}(P)$.
 By definition, $v$ is the source of~$P$ in~$R$.
 Since~$P$ forms a clique in~$\tc(D)$, and $R$ is acyclic, we conclude that~$(u,v) \in \rev(R)$.
@@ -1018,7 +1086,7 @@ We thus need to define a section of the map~$R \mapsto \asour{R}$.
 \begin{definition}
 \label{def:ASour2AReori}
 Let~$S$ be an acyclic sourcing of~$\PP(D)$.
-We denote by $\arr(S)$ the pairs~$(u,v) \in V^2$ such that there is~$P \in \PP(D)$ with~$u \in P$ and~$v = S(P)$.
+We denote by $\arr(S)$ the pairs~$(u,v) \in [n]^2$ such that there is~$P \in \PP(D)$ with~$u \in P$ and~$v = S(P)$.
 \vincent{note that we can assume that~$P$ is a path from~$u$ to~$v$. But there might be more than one path since~$D$ is not a tree.}
 Let~$\areori{S}$ be the reorientation of~$\tc(D)$ defined by~$\rev(\areori{S}) = \tc(\arr(S)) \cap \tc(D)$.
 \end{definition}
@@ -1093,7 +1161,7 @@ Hence~$\orn{S_1} \ne \orn{S_2}$.
 
 \begin{lemma}
 \label{lem:acyclicSimplifiesDef}
-For any acyclic reorientation~$R$ of~$\tc(D)$ (resp.~acyclic sourcing~$S$ of~$\PP(D)$) and any~$u,v \in V$ such that~$u$ is in~$\orn{R}(v)$ (resp.~$u \in \orn{S}(v)$) the pair~$(u,v)$ is in~$\rev(R)$ (resp.~in~$\rev(S)$).
+For any acyclic reorientation~$R$ of~$\tc(D)$ (resp.~acyclic sourcing~$S$ of~$\PP(D)$) and any~$u,v \in [n]$ such that~$u$ is in~$\orn{R}(v)$ (resp.~$u \in \orn{S}(v)$) the pair~$(u,v)$ is in~$\rev(R)$ (resp.~in~$\rev(S)$).
 \end{lemma}
 
 \begin{proof}
@@ -1107,8 +1175,8 @@ For any acyclic reorientation~$R$ of~$\tc(D)$, we have~$\orn{R} = \orn{\asour{R}
 \end{lemma}
 
 \begin{proof}
-Since~$R$ is acyclic, we have~$\rev(\asour{R}) \subseteq \rev(R)$ by \cref{lem:AReori2ASour1}, hence~$\orn{\asour{R}}(v) \subseteq \orn{R}(v)$ for any~$v \in V$.
-Conversely, consider~$u,v \in V$ such that~$u \in \orn{R}(v)$.
+Since~$R$ is acyclic, we have~$\rev(\asour{R}) \subseteq \rev(R)$ by \cref{lem:AReori2ASour1}, hence~$\orn{\asour{R}}(v) \subseteq \orn{R}(v)$ for any~$v \in [n]$.
+Conversely, consider~$u,v \in [n]$ such that~$u \in \orn{R}(v)$.
 Let~$P$ be a path from~$u$ to~$v$ in~$\orn{R}(v)$.
 By \cref{lem:acyclicSimplifiesDef}, we have~$(w,v) \in \rev(R)$ for all~$w \in P$.
 Therefore, $v$ is the source of~$P$ in~$R$, that is, $v = \asour{R}(P)$.
@@ -1159,7 +1227,7 @@ The \defn{acyclic ornamentation poset}~$\AOrn(D)$ is the subposet of the ornamen
 \begin{remark}
 \label{rem:COrn}
 We will see in \cref{subsec:rootedTrees} that all the ornamentations of an unstarred tree are acyclic.
-This is false in general, even for directed trees.
+This is false in general, even for increasing trees.
 For instance, the cyclic ornamentations of the directed graphs of \cref{fig:ornamentationsX,fig:ornamentationsD,fig:ornamentationsKT} are
 \[
 \includegraphics[scale=.8,valign=c]{cyclicOrnamentationX1}\;\;
@@ -1189,7 +1257,7 @@ since their fibers under~$R \mapsto \orn{R}$ are all singletons, containing the 
 \begin{remark}
 \label{rem:AOrnLat}
 We will see in \cref{subsec:rootedTrees} that the acyclic ornamentation poset of an unstarred tree  is a lattice.
-This is false in general, even for directed trees.
+This is false in general, even for increasing trees.
 For instance, the acyclic ornamentation posets of the directed graphs~$\Xgraph$ of \cref{fig:ornamentationsX}, $\Dgraph$ of \cref{fig:ornamentationsD}, and $\Tgraph$ of \cref{fig:ornamentationsKT} are not lattices.
 In contrast, the acyclic ornamentation poset of the directed graph~$\Kgraph$ of \cref{fig:ornamentationsKT} is a lattice.
 We do not have a characterization of the directed graphs whose acyclic ornamentation poset is a lattice.
@@ -1221,12 +1289,16 @@ We conclude that~$S \mapsto \aorn{S}$ and~$O \mapsto \asour{O}$ are inverse isom
 \section{Trees}
 \label{sec:trees}
 
-In this section, we focus on the specific situation when the ground directed graph~$D$ is a directed tree~$T$ (but not necessarily a rooted tree), as for example in \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX}.
+In this section, we focus on the specific situation when the ground directed graph~$D$ is an directed tree~$T$ (but not necessarily a rooted tree), as for example in \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Basic observations}
 
+Let~$T$ be an directed tree on~$V$.
+For~$u,v \in V$, we write~$u \le_T v$ if there is a directed path from~$u$ to~$v$ in~$T$. %, and we write~$[u,v]_T$ for this path.
+We denote by~$\triangle_T(w) \eqdef \set{u \in V}{u \le_T v}$ the set of vertices which admit a directed path towards~$v$ in~$T$.
+\vincent{I decided quite late to introduce these notations. There are certainly some places where they could be used to simplify the phrasing. I will check that during proofreading.}
 We start by a few observations.
 
 \begin{lemma}
@@ -1246,9 +1318,22 @@ The meet of two ornamentations~$O_1$ and~$O_2$ of a directed tree~$T$ is given b
 \]
 \end{corollary}
 
+%\begin{lemma}
+%\label{lem:coverRelationsOrnT}
+%Two ornamentations~$O_1$ and~$O_2$ of a directed tree~$T$ form a cover relation~$O_1 \lessdot O_2$ if and only if there are~$u, v \in V$ such that~$u \notin O_1(v)$ and $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$.
+%\vincent{I am still not sure that we really want this statement.}
+%\end{lemma}
+%
+%\begin{proof}
+%This follows from \cref{lem:coverRelationsOrn}.
+%\vincent{Maybe we just want the proof here.}
+%\end{proof}
+
+%Finally, we will need the following convenient statement.
+
 \begin{lemma}
 \label{lem:Reori2OrnT}
-For a directed tree~$T$ and an acyclic reorientation~$R$ of~$\tc(T)$, we have~$u \in \orn{R}(v)$ if and only if~$(u',v) \in \rev(R)$ for all~$u'$ along the path from~$u$ to~$v$ in~$T$.
+For a directed tree~$T$ and an acyclic reorientation~$R$ of~$\tc(T)$, we have~$u \in \orn{R}(v)$ if and only if~$(u',v) \in \rev(R)$ for all~$u \le_T u' \le_T v$.
 \end{lemma}
 
 \begin{proof}
@@ -1257,6 +1342,155 @@ Since~$R$ is acyclic, there is a directed path from~$u$ to~$v$ in~$\rev(R)$ if a
 By \cref{def:Reori2Orn}, $\orn{R}(v)$ is the maximal ornament of~$T$ at~$v$ contained in the subset of vertices~$u \in V$ with a directed path to~$v$ in $\rev(R)$.
 Hence, $u \in \orn{R}(v)$ if and only if~$u' \in \rev(R)$ for all~$u'$ along the path from~$u$ to~$v$ in~$T$.
 \end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Join and meet irreducible ornamentations}
+
+We now describe the join and meet irreducible ornamentations of a directed tree~$T$.
+
+\begin{definition}
+\label{def:irreducibleOrnamentationsT}
+For a directed path~$P$ from~$u$ to~$v$ in a directed tree~$T$, we denote by~$J_P$ and~$M_P$ the two maps on~$V$ defined by
+\[
+J_P(w) \eqdef \begin{cases} P & \text{if } w = v \\ \{w\} & \text{otherwise} \end{cases}
+\qquad\text{and}\qquad
+M_P(w) \eqdef \begin{cases} \triangle_T(w) \ssm \triangle_T(u) & \text{if } u <_T w \le_T v \\ \triangle_T(w) & \text{otherwise} \end{cases}
+.
+\]
+\end{definition}
+
+\begin{lemma}
+For any~$P \in \PP(T)$, the maps~$J_P$ and~$M_P$ are both ornamentations of~$T$.
+\end{lemma}
+
+\begin{proof}
+It follows from \cref{exm:ornamentations}\,(iii) for~$J_P$.
+Consider now~$u', v' \in V$ such that~$u' \in M_P(v')$.
+If~$u <_T v' \le_T v$, then~$M_P(u') = \triangle_T(u') \ssm \triangle_T(u) \subseteq \triangle_T(v') \ssm \triangle_T(u) = M_P(v')$.
+Otherwise, $M_P(u') \subseteq \triangle_T(u') \subseteq \triangle_T(v') = M_P(v')$.
+\end{proof}
+
+\begin{lemma}
+\label{lem:irreduciblesAcyclicT}
+For any~$P \in \PP(T)$, the reorientations~$\reori{J_P}$ and~$\reori{M_P}$ of~$\tc(T)$ are both acyclic.
+\end{lemma}
+
+\begin{proof}
+Observe that~$\rev(J_P) = (P \ssm \{v\}) \times \{v\}$.
+Hence, any induced cycle in~$\reori{J_P}$ must consist in an edge~$(v,y)$ and a directed path from~$y$ to~$v$ in~$T$ for some~$u \le_T y \le_T v$.
+This is impossible as the last edge of this path would be in~$\rev(J_P)$.
+
+Observe that~$\tc(T) \ssm \rev(M_P) = \triangle_T(u) \times (P \ssm \{u\})$.
+Any cycle in~$\reori{M_P}$ should have an edge of $\tc(T) \ssm \rev(M_P)$, hence a vertex in~$\triangle_T(u)$ and a vertex in~$P \ssm \{u\}$.
+This is impossible as there is no edge of~$\reori{M_P}$ leaving~$P \ssm \{u\}$.
+\end{proof}
+
+\begin{proposition}
+\label{prop:irreducibleOrnamentationsT}
+Let~$T$ be a directed tree.
+The join (resp.~meet) irreducible ornamentations of~$T$ are precisely the ornamentations~$J_P$ (resp.~$M_P$) for all directed paths~$P$ in~$T$.
+\end{proposition}
+
+\begin{proof}
+%Denote by~$J_P^\star$ and~$M_P^\star$ the two ornamentations of~$T$ defined by
+%\[
+%J_P^\star(w) \eqdef \begin{cases} P \ssm \{u\} & \text{if } w = v \\ \{w\} & \text{otherwise} \end{cases}
+%\qquad\text{and}\qquad
+%M_P^\star(w) \eqdef \begin{cases} \big( \triangle_T(v) \ssm \triangle_T(u) \big) \cup \{u\} & \text{if } w = v \\ \triangle_T(w) & \text{otherwise.} \end{cases}
+%\]
+Observe first that~$J_P$ (resp.~$M_P$) is indeed join (resp.~meet) irreducible as it covers a unique ornamentation given by removing (resp.~adding)~$u$ to~$J_P(v)$ (resp.~to~$M_P(w)$ for all~$w \in P \ssm \{u\}$).
+
+Consider now a join irreducible ornamentation~$J$ of~$T$, and let~$J_\star$ be the unique ornamentation of~$T$ covered by~$J$.
+%If~$O(v) = \{v\}$ for all~$v \in V$, then~$O$ is the minimal ornamentation of~$T$.
+For any~$v \in V$ such that~$J(v) \ne \{v\}$, the map~$J^v$ defined by~$J^v(v) \eqdef \{v\}$ and~$J^v(w) \eqdef J(w)$ for~$w \ne v$ is an ornamentation of~$T$ with~$J^v < J$, hence~$J^v \le J_\star$.
+If~$v \ne v' \in V$ are such that~$J(v) \ne \{v\}$ and~$J(v') \ne \{v'\}$, then~$J^v \le J_\star < J$ and~$J^{v'} \le J_\star < J$, hence~$J^v(w) \cup J^{v'}(w) \subseteq J_\star(w) \subseteq J(w)$ for all~$w \in V$.
+Since~$J^v(w) = J(w)$ for~$w \ne v$ and~$J^{v'}(w) = J(w)$ for~$w \ne v'$, this yields~$J_\star = J$, a contradiction.
+Hence, there is a unique~$v \in V$ such that~$J(v) \ne \{v\}$.
+For any source~$u$ of~$J(v)$ in~$T$, the map~$J_u$ defined by~$J_u(v) \eqdef J(v) \ssm \{u\}$ and~$J_u(w) \eqdef J(u)$ for~$w \ne v$ is an ornamentation of~$T$ covered by~$J$.
+We conclude that~$J(v)$ has a unique source~$u$, and that~$J = J_P$ where~$P$ is the directed path from~$u$ to~$v$ in~$T$.
+
+Consider now a meet irreducible ornamentation~$M$ of~$T$, and let~$M^\star$ be the unique ornamentation of~$T$ covering~$M$.
+Let~$v \in V$ be such that~$M(v) \ne \triangle_T(v)$ and~$M(w) = \triangle_T(w)$ for any~$w \in V$ with~${v \in M(w)}$.
+Let~$u \in \triangle_T(v) \ssm M(v)$ and maximal in~$\le_T$ for this property.
+Then the map~$M_u^v$ defined by~$M_u^v(v) = M(v) \cup \triangle_T(u)$ and~$M_u^v(w) = M(w)$ for~$w \ne v$ is an ornamentation of~$T$ with~$M < M_u^v$.
+Moreover, if there are~$(u,v) \ne (u',v')$ satisfying the conditions for~$u$ and~$v$ above, then~$M < M^\star \le M_u^v$ and~$M < M^\star \le M_{u'}^{v'}$, hence~$M(w) \subseteq M^\star(w) \subseteq M_u^v(w) \cap M_{u'}^{v'}(w)$ for all~$w \in V$.
+If~$v \ne v'$, we get~$M = M^\star$ since~$M_u^v(w) = M(w)$ for~$w \ne v$ and~$M_{u'}^{v'}(w) = M(w)$ for~$w \ne v'$.
+If~$v = v'$ but~$u \ne u'$, we get~$M = M^\star$ since~$M_u^v(w) = M(w)$ for~$w \ne v$ and~$M_u^v(v) \cap M_{u'}^{v'}(v) = M(v)$.
+Hence, there is a unique~$v$ as above, and a unique~$u$ as above.
+%Denote by~$X_M$ the set of pairs~$(u,v) \in V^2$ such that
+%\begin{itemize}
+%\item $M(v) \ne \triangle_T(v)$ and~$M(w) = \triangle_T(w)$ for any~$w \in V$ with~${v \in M(w)}$,
+%\item $u \in \triangle_T(v) \ssm M(v)$ and~$u$ is maximal in~$\le_T$ for this property.
+%\end{itemize}
+%For~$(u,v) \in X_M$, the map~$M_u^v$ defined by~$M_u^v(v) = M(v) \cup \triangle_T(u)$ and~$M_u^v(w) = M(w)$ for~$w \ne v$ is an ornamentation of~$T$ with~$M < M_u^v$.
+%If~$(u,v) \ne (u',v') \in X_M$, then~$M < M^\star \le M_u^v$ and~$M < M^\star \le M_{u'}^{v'}$, hence~$M(w) \subseteq M^\star(w) \subseteq M_u^v(w) \cap M_{u'}^{v'}(w)$ for all~$w \in V$.
+%If~$v \ne v'$, we get~$M = M^\star$ since~$M_u^v(w) = M(w)$ for~$w \ne v$ and~$M_{u'}^{v'}(w) = M(w)$ for~$w \ne v'$.
+%If~$v = v'$ but~$u \ne u'$, we get~$M = M^\star$ since~$M_u^v(w) = M(w)$ for~$w \ne v$ and~$M_u^v(v) \cap M_{u'}^{v'}(v) = M(v)$.
+%Hence, there is a unique~$(u,v) \in X_M$.
+For any~$w \in V$ with~$M(w) \ne \triangle_T(w)$, we have
+\begin{itemize}
+\item $w \in M(v)$ as otherwise we would find~$v' \ne v$ satisfying the same condition as~$v$ above.
+\item $u <_T w \le_T v$ as otherwise we would find~$u' \ne u$ satisfying the same condition as~$u$ above.
+\item $M(w) = \triangle_T(w) \ssm \triangle_T(u)$. Otherwise, consider~$u <_T w \le_T v$ maximal such that~$M(w) \ne \triangle_T(w) \ssm \triangle_T(u)$. Then the map~$M_w$ defined by~$M_w(w) = \triangle_T(w) \ssm \triangle_T(u)$ and~$M_w(x) = M(x)$ for~$x \ne w$ is an ornamentation of~$T$ with~$M < M_w$. Hence, $M(x) \subseteq M^\star(x) \subseteq M_u^v(x) \cap M_w(x)$ for all~$x \in V$. Since~$M_u^v(x) = M(x)$ for~$x \ne v$ and~$M_w(x) = M(x)$ for~$x \ne w$, we get~$M = M^\star$, a contradiction.
+\end{itemize}
+We conclude that~$M = M_P$ where~$P$ is the directed path from~$u$ to~$v$ in~$T$.
+\end{proof}
+
+\begin{corollary}
+All join (resp.~meet) irreducible ornamentations of a directed tree~$T$ are acyclic.
+\end{corollary}
+
+\begin{proof}
+This follows from \cref{lem:irreduciblesAcyclicT,prop:irreducibleOrnamentationsT}.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{MacNeille completion}
+
+We now come back to the general case of directed trees.
+As already observed on the directed tree~$\Xgraph$ of \cref{fig:ornamentationsX},
+\begin{itemize}
+\item there might be some cyclic ornamentations (\cref{rem:COrn}),
+\item the acyclic ornamentation poset is not always a lattice (\cref{rem:AOrnLat}).
+\end{itemize}
+However, we now observe that for a directed tree~$T$, the ornamentation lattice~$\Orn(T)$ is precisely the MacNeille completion of the acyclic ornamentation lattice~$\AOrn(T)$.
+
+\begin{theorem}
+\label{thm:MacNeille}
+The ornamentation lattice~$\Orn(T)$ of a directed tree~$T$ has no strict subposet which forms a lattice and contains all acyclic ornamentations of~$T$.
+%In other words, the ornamentation lattice~$\Orn(T)$ is the MacNeille completion of the acyclic ornamentation lattice~$\AOrn(T)$.
+\end{theorem}
+
+\begin{proof}%[Proof of \cref{thm:MacNeille}]
+Consider a subposet~$L$ of~$\Orn(T)$ which forms a lattice, and containing all acyclic ornamentations of~$T$.
+We prove that all ornamentations~$O$ of~$T$ must be contained in~$L$ by induction on the number of induced cycles in~$\reori{O}$.
+
+If~$\reori{O}$ has no induced cycle, it is acyclic, hence~$O$ is acyclic and thus belongs to~$L$ by assumption.
+Assume now that all ornamentations~$O$ such that~$\reori{O}$ has at most~$k$ induced cycles belong to~$L$, and consider an ornamentation~$O'$ such that~$\reori{O'}$ has~$k+1$ induced cycles.
+By \cref{lem:Orn2ReoriT}, $C$ is an induced altermating cycle in~$\tc(T)$.
+By \cref{lem:starred}, $C$ is of the form~$(a,d,b,e)$ where~$a,b,d,e$ are starred in~$T$.
+\vincent{todo: I have a problem in the induction here. The number of induced cycles does not always decrease...}
+\end{proof}
+
+\begin{remark}
+\label{rem:MacNeille}
+Note that~\cref{thm:MacNeille} fails beyond directed trees.
+For instance,
+\begin{itemize}
+\item for the directed graph~$\Kgraph$ of \cref{fig:ornamentationsKT}, the acyclic ornamentations already form lattice, even if there is a cyclic ornamentation,
+\item for the directed graph~$\Dgraph$ of  \cref{fig:ornamentationsD}, the acyclic ornamentation poset is not a lattice, but adding the two cyclic ornamentations
+\[
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD3}
+\quad\text{and}\quad
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD4}
+\]
+suffices to make it a lattice.
+\end{itemize}
+In contrast, \cref{thm:MacNeille} still holds for the directed graph~$\Tgraph$ of \cref{fig:ornamentationsKT}.
+In general, we have no description of the MacNeille completion of the acyclic ornamentation lattice of an arbitrary directed graph.
+\end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1356,53 +1590,6 @@ By induction on the sum of the length of the paths between~$d_i$ and~$u_i$ in~$T
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{MacNeille completion}
-
-We now come back to the general case of directed trees.
-As already observed on the directed tree~$\Xgraph$ of \cref{fig:ornamentationsX},
-\begin{itemize}
-\item there might be some cyclic ornamentations (\cref{rem:COrn}),
-\item the acyclic ornamentation poset is not always a lattice (\cref{rem:AOrnLat}).
-\end{itemize}
-However, we now observe that for a directed tree~$T$, the ornamentation lattice~$\Orn(T)$ is precisely the MacNeille completion of the acyclic ornamentation lattice~$\AOrn(T)$.
-
-\begin{theorem}
-\label{thm:MacNeille}
-The ornamentation lattice~$\Orn(T)$ of a directed tree~$T$ has no strict subposet which forms a lattice and contains all acyclic ornamentations of~$T$.
-%In other words, the ornamentation lattice~$\Orn(T)$ is the MacNeille completion of the acyclic ornamentation lattice~$\AOrn(T)$.
-\end{theorem}
-
-\begin{proof}%[Proof of \cref{thm:MacNeille}]
-Consider a subposet~$L$ of~$\Orn(T)$ which forms a lattice, and containing all acyclic ornamentations of~$T$.
-We prove that all ornamentations~$O$ of~$T$ must be contained in~$L$ by induction on the number of induced cycles in~$\reori{O}$.
-
-If~$\reori{O}$ has no induced cycle, it is acyclic, hence~$O$ is acyclic and thus belongs to~$L$ by assumption.
-Assume now that all ornamentations~$O$ such that~$\reori{O}$ has at most~$k$ induced cycles belong to~$L$, and consider an ornamentation~$O'$ such that~$\reori{O'}$ has~$k+1$ induced cycles.
-By \cref{lem:Orn2ReoriT}, $C$ is an induced altermating cycle in~$\tc(T)$.
-By \cref{lem:starred}, $C$ is of the form~$(a,d,b,e)$ where~$a,b,d,e$ are starred in~$T$.
-\vincent{todo: I have a problem in the induction here. The number of induced cycles does not always decrease...}
-\end{proof}
-
-\begin{remark}
-\label{rem:MacNeille}
-Note that~\cref{thm:MacNeille} fails beyond directed trees.
-For instance,
-\begin{itemize}
-\item for the directed graph~$\Kgraph$ of \cref{fig:ornamentationsKT}, the acyclic ornamentations already form lattice, even if there is a cyclic ornamentation,
-\item for the directed graph~$\Dgraph$ of  \cref{fig:ornamentationsD}, the acyclic ornamentation poset is not a lattice, but adding the two cyclic ornamentations
-\[
-\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD3}
-\quad\text{and}\quad
-\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD4}
-\]
-suffices to make it a lattice.
-\end{itemize}
-In contrast, \cref{thm:MacNeille} still holds for the directed graph~$\Tgraph$ of \cref{fig:ornamentationsKT}.
-In general, we have no description of the MacNeille completion of the acyclic ornamentation lattice of an arbitrary directed graph.
-\end{remark}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \subsection{Unstarred trees and rooted trees}
 \label{subsec:rootedTrees}
 
@@ -1430,7 +1617,7 @@ The following conditions are equivalent for a directed tree~$T$ on~$V$:
 
 \begin{definition}
 \label{def:starredTree}
-We say that a directed free~$T$ is \defn{starred} if it satisfies the equivalent conditions of \cref{lem:starredFreeTrees} and \defn{unstarred} otherwise.
+We say that an increasing tree~$T$ on~$[n]$ is \defn{starred} if it satisfies the equivalent conditions of \cref{lem:starredFreeTrees} and \defn{unstarred} otherwise.
 Note that rooted trees (with increasing edges all oriented toward the root) are unstarred.
 \end{definition}
 
@@ -1472,7 +1659,7 @@ For an unstarred tree~$T$, the acyclic reorientation poset~$\AReori(\tc(T))$, th
 \begin{proof}
 %Given any subset~$X$ of vertices of~$T$, denote by~$T[X]$ the forest on~$X$ where the parent of~$x \in X$ is the vertex of~$X$ closest to~$x$ along the path from the root of~$T$ to~$x$.
 %Then the subgraph of~$\tc(T)$ induced by~$X$ is the transitive closure of~$T[X]$, so that its transitive reduction is a forest.
-Given any subset~$U \subset V$, the subgraph of~$\tc(T)$ induced by~$U$ contains no induced alternating cycle, hence no induced cycles of length at least~$4$.
+Given any subset~$U \subset [n]$, the subgraph of~$\tc(T)$ induced by~$U$ contains no induced alternating cycle, hence no induced cycles of length at least~$4$.
 Hence, its transitive reduction contains no cycle.
 We conclude by~\cref{prop:AReoriLatJoinMeet} that~$\AReori(\tc(T))$ is a lattice.
 Finally, \cref{prop:rootedTrees1} ensures that~$\ASour(\PP(T))$ and~$\AOrn(T)$ are both isomorphic to~$\Orn(T)$, which is a lattice by~\cref{thm:OrnMeetJoin}.
@@ -1509,7 +1696,7 @@ We conclude that~$\orn{R_1 \join R_2} \le \orn{R_1} \join \orn{R_2}$, hence that
 \end{proof}
 
 \begin{corollary}
-If~$T$ is an unstarred tree, then the Hasse diagram of the ornamentation lattice~$\Orn(T)$ is isomorphic to the graph of the path hypergraphic polytope~$\simplex_{\PP(D)} \eqdef \sum_{u \le_T v} \simplex_{[u,v]_T}$ oriented in the direction~$\omega$.
+If~$T$ is an unstarred tree, then the Hasse diagram of the ornamentation lattice~$\Orn(T)$ is isomorphic to the graph of the path hypergraphic polytope~$\simplex_{\PP(D)} \eqdef \sum_{P \in \PP(T)} \simplex_P$ oriented in the direction~$\omega$.
 \end{corollary}
 
 \vincent{This is not completely proved here since I have not proved that the graph is transitively reduced...}
@@ -1714,23 +1901,23 @@ We conclude that~$B_2 = C^3 (1+y \, C)$.
 \section{Intreeval hypergraphic lattices}
 \label{sec:intreevalHypergraphicPosets}
 
-In this section, we characterize the subhypergraphs~$\II$ of the path interval~$\PP(T)$ of a directed tree~$T$ whose acyclic sourcing poset~$\ASour(\II)$ is a lattice.
-We actually consider increasing trees as it simplifies the definitions of the conditions and does not loose generality up to relabeling.
+In this section, we characterize the subhypergraphs~$\II$ of the path interval~$\PP(T)$ of an increasing tree~$T$ whose acyclic sourcing poset~$\ASour(\II)$ is a lattice.
+%We actually consider increasing trees as it simplifies the definitions of the conditions and does not loose generality up to relabeling.
 \vincent{This section needs illustrations... I will do that later.}
 
 \begin{definition}
 An \defn{intreeval hypergraph} of an increasing tree~$T$ is a subhypergraph of~$\PP(T)$.
 \end{definition}
 
-\begin{definition}
+\begin{definition} 
 \label{def:pathIntersectionClose}
-We say that an intreeval hypergraph~$\II$ of an increasing tree~$T$ is \defn{path intersection closed} if for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) < \min(I\cap J)$ and  $\max J > \max (I\cap J)$, there exists an~$K \in \II$ such that $\min(J) \le \min(K) \le \min(I\cap J)$ and $\max(I\cap J) \le \max K \le \max(I)$.
+We say that an intreeval hypergraph~$\II$ of an increasing tree~$T$ is \defn{path intersection closed} if for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max J >_T \max (I\cap J)$, there exists an~$K \in \II$ such that $\min(J) \le_T \min(K) \le_T \min(I\cap J)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$.
 \end{definition}
 
 \begin{definition}
 \label{def:pathStarSparse}
 Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
-Consider~$u,v \in T$ such that there is a directed path from~$u$ to~$v$, and let~$u_1, \dots, u_k$ (resp.~$v_1, \dots, v_\ell$) denote the incoming (resp.~outgoing) neighbors of~$u$ (resp.~$v$) in~$T$.
+Consider~$u \le_T v$, and let~$u_1, \dots, u_k$ (resp.~$v_1, \dots, v_\ell$) denote the incoming (resp.~outgoing) neighbors of~$u$ (resp.~$v$) in~$T$.
 We denote by~$X(T,u,v,\II)$ the graph on~$u_1, \dots, u_k, v_1, \dots, v_\ell$ with an edge joining~$u_i$ and~$v_j$ if and only if there is~$I \in \II$ containing both~$u_i$ and~$v_j$.
 We say that~$\II$ is \defn{path star sparse} if~$X(T,u,v,\II)$ is acyclic for all~$u,v$ connected by a directed path.
 \end{definition}
@@ -1745,12 +1932,23 @@ The acyclic sourcing poset~$\ASour(\II)$ is a lattice if and only if $\II$ is pa
 \end{theorem}
 
 \begin{remark}
-When $T$ is a line, 
+When~$T$ is a line, 
 \begin{itemize}
 \item the path intersection closed condition boils down to being closed under intersection (including singletons by default),
 \item the path star sparse condition is empty,
 \item the characterization of \cref{thm:intreevalLattices} was proved in~\cite[Thm.~A]{BergeronPilaud}.
 \end{itemize}
+\end{remark}
+
+\begin{remark}
+When~$T$ is a rooted tree
+\vincent{todo}
+\end{remark}
+
+
+\begin{remark}
+There is an explicit formula for the meet and join.
+\vincent{todo}
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1767,10 +1965,10 @@ If~$\ASour(\II)$ is a lattice, then $\II$ is path intersection closed (\cref{def
 
 \begin{proof}
 The proof follows exactly the same lines as that of~\cite[Prop.~4.6]{BergeronPilaud}.
-Assume by means of contradiction that there are~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) < \min(I\cap J)$ and  $\max J < \max (I\cap J)$, and there is there no~$K \in \II$ such that $\min(J) \le \min(K) \le \min(I\cap J)$ and $\max(I\cap J) \le \max K \le \max(I)$.
+Assume by means of contradiction that there are~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max J <_T \max (I\cap J)$, and there is there no~$K \in \II$ such that $\min(J) \le_T \min(K) \le_T \min(I\cap J)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$.
 
 Let~$b$ (resp.~$c$) be the bottom (resp.~top) endpoint of~$I \cap J$, and~$a$ (resp.~$d$) be its neighbor in~$I \ssm J$ (resp.~$J \ssm I$).
-Let~$Y$ be a word formed by~$(I \cup J) \ssm \{a,b,c,d\}$ in any order, and~$X$ be a word formed by~$V \ssm (I \cup J)$ in any order.
+Let~$Y$ be a word formed by~$(I \cup J) \ssm \{a,b,c,d\}$ in any order, and~$X$ be a word formed by~$[n] \ssm (I \cup J)$ in any order.
 Consider the permutations
 \[
 \pi_A \eqdef XbacdY
@@ -1789,7 +1987,7 @@ and let~$S_A \eqdef \asour{\pi_A}, \dots, S_F \eqdef \asour{\pi_F}$ denote the c
 
 We claim that~$S_E = S_F$.
 Indeed, if~$K \in \II$ is such that~$S_E(K) \ne S_F(K)$, then~$K \supseteq \{b,c\}$ but~$K \cap (X \cup \{a,d\}) = \varnothing$.
-This would imply that~$\min(J) \le \min(K) \le b$ and $c \le \max K \le \max(I)$, contradicting our assumption on~$I$ and~$J$.
+This would imply that~$\min(J) \le_T \min(K) \le_T b$ and $c \le_T \max(K) \le_T \max(I)$, contradicting our assumption on~$I$ and~$J$.
 
 Observe now that
 \[
@@ -1828,12 +2026,12 @@ S_G < S_D.
 Since~$S_G$ is acyclic and~$\pi \mapsto \asour{\pi}$ is surjective, there is a permutation~$\pi_G$ such that~$S_G = \asour{\pi}$.
 Let
 \[
-g \eqdef \pi(\min\set{i \in [n]}{\pi_G(i) \in I \cup J}).
+g \eqdef \pi_G(\min\set{i \in [n]}{\pi_G(i) \in I \cup J}).
 \]
-If~$g \in I \cap [b-1]$, then~$S_G(I) = g < b = S_A(I)$, contradicting that~$S_A < S_G$.
-If~$g \in J \cap [c-1]$, then~$S_G(J) = g < c = S_B(J)$, contradicting that~$S_B < S_G$.
-If~$g \in J \ssm [c]$, then~$S_G(J) = g > c = S_D(J)$, contradicting that~$S_G < S_D$.
-If~$g \in I \ssm [b]$, then~$S_G(I) = g > b = S_C(I)$, contradicting that~$S_G < S_C$.
+If~$\min(I) \le_T g <_T b$, then~$S_G(I) = g < b = S_A(I)$, contradicting that~$S_A < S_G$.
+If~$\min(J) \le_T g <_T c$, then~$S_G(J) = g < c = S_B(J)$, contradicting that~$S_B < S_G$.
+If~$c <_T g \le \max(J)$, then~$S_G(J) = g > c = S_D(J)$, contradicting that~$S_G < S_D$.
+If~$b <_T g \le_T \max(I)$, then~$S_G(I) = g > b = S_C(I)$, contradicting that~$S_G < S_C$.
 As these four cases are all excluded, we reached a contradiction.
 \end{proof}
 
@@ -1844,11 +2042,11 @@ If~$\ASour(\II)$ is a lattice, then $\II$ is path star sparse (\cref{def:pathSta
 \end{lemma}
 
 \begin{proof}
-Assume by means of contradiction that there are~$u,v \in V$ connected by a directed path such that~$X(T,u,v,\II)$ contains a cycle~$u_1, v_1, u_2, v_2, \dots, u_p, v_p$, where~$p \ge 2$ (the indices are understood modulo~$p$).
+Assume by means of contradiction that there are~$u \le_T v$ such that~$X(T,u,v,\II)$ contains a cycle~$u_1, v_1, u_2, v_2, \dots, u_p, v_p$, where~$p \ge 2$ (the indices are understood modulo~$p$).
 Without loss of generality, we can assume that this cycle is induced.
 Note that~$u_i < v_j$ for all~$i,j \in [p]$ since we consider increasing trees, and that there is no~$I \in \II$ containing either two distinct~$u_i$'s or two distinct~$v_j$'s since they are incomparable in~$T$.
 
-Let~$W$ be a word formed by the other vertices~$V \ssm \{u_0, v_0, \dots, u_p, v_p\}$ in any order.
+Let~$W$ be a word formed by the other vertices~$[n] \ssm \{u_0, v_0, \dots, u_p, v_p\}$ in any order.
 For~$i \in [p]$, define the permutations
 \[
 \sigma^i \eqdef u_i v_i u_{i+1} v_{i+1} \dots u_{i+p-1} v_{i+p-1} W
@@ -2004,7 +2202,7 @@ If~$v_2 \in I_1$, this implies~$v_1 = \sour{O}^\II(I_1) \ge v_2$, hence~${v_1 = 
 
 \begin{corollary}
 \label{coro:Orn2SourIntreeval3}
-Let~$T$ be a directed tree, $\II$ be a path star sparse intreeval hypergraph of~$T$, and~$O$ be an ornamentation of~$T$.
+Let~$T$ be an increasing tree, $\II$ be a path star sparse intreeval hypergraph of~$T$, and~$O$ be an ornamentation of~$T$.
 Then the sourcing~$\sour{O}^\II$ is acyclic.
 \end{corollary}
 
@@ -2012,8 +2210,8 @@ Then the sourcing~$\sour{O}^\II$ is acyclic.
 Follows from \cref{lem:Orn2SourIntreeval2,prop:pathStarSparse}.
 \end{proof}
 
-For a vertex~$v$ of~$T$, we denote by~$\triangle_T(v)$ the set of vertices with a directed path to~$v$ in~$T$.
-%Here, it is convenient to assume that the intreeval hypergraph~$\II$ contains all singletons~$\{v\}$ for~$v \in V$.
+%For a vertex~$v$ of~$T$, we denote by~$\triangle_T(v)$ the set of vertices with a directed path to~$v$ in~$T$.
+%Here, it is convenient to assume that the intreeval hypergraph~$\II$ contains all singletons~$\{v\}$ for~$v \in [n]$.
 
 \begin{definition}
 Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
@@ -2042,13 +2240,13 @@ Hence~$\minorn{S}{\II} \le \maxorn{S}{\II}$.
 \end{lemma}
 
 \begin{proof}
-Let~$v \in V$.
+Let~$v \in [n]$.
 If~$v \ne S(I)$, then~$\minorn{S}{I}(v) = \{v\} \subseteq \maxorn{S}{J}(v)$.
 If~$v \notin J$ or~$S(J) \ge v$, then ${\minorn{S}{I}(v) \subseteq I \cap [v] \subseteq \triangle_T(v) = \maxorn{S}{J}(v)}$.
 Finally, assume that~$S(I) = v$ and~$S(J) < v \in J$.
 If~$S(J) \in I$, then~$S(J) \in I \ssm \{S(I)\}$ while~$S(I) \in J \ssm \{S(J)\}$ contradicting the acyclicity of~$S$.
 Hence we obtain~$(J \cap [S(J)]) \cap I = \varnothing$ and thus~$\minorn{S}{I}(v) = I \cap [v] \subseteq \triangle_T(v) \ssm (J \cap [S(J)])= \maxorn{S}{J}(v)$.
-We conclude that~$\minorn{S}{I}(v) \subseteq \maxorn{S}{J}(v)$ for any~$v \in V$, hence that~$\minorn{S}{I} \le \maxorn{S}{J}$.
+We conclude that~$\minorn{S}{I}(v) \subseteq \maxorn{S}{J}(v)$ for any~$v \in [n]$, hence that~$\minorn{S}{I} \le \maxorn{S}{J}$.
 \end{proof}
 
 \begin{lemma}
@@ -2057,14 +2255,14 @@ For any acyclic sourcing~$S$ of~$\II$, the ornamentations~$O$ of~$T$ such that~$
 \end{lemma}
 
 \begin{proof}
-Consider first an ornamentation~$O$ of~$T$ such that~$\sour{O}^\II = S$ and let~$v \in V$ and~$I \in \II$. Then
+Consider first an ornamentation~$O$ of~$T$ such that~$\sour{O}^\II = S$ and let~$v \in [n]$ and~$I \in \II$. Then
 \begin{itemize}
 \item If~$S(I) = v$, we have~$\min(I) \in O(v)$ by definition of~$\sour{O}^\II = S$, and thus~$I \cap [v] \subseteq O(v)$ since~$T$ is a tree.
 We thus obtain that~$\minorn{S}{I}(v) \subseteq O(v)$.
 \item If~$S(I) < v \in I$, we have~$\min(I) \in O(S(I)) \ssm O(v)$ by definition of~$\sour{O}^\II = S$, hence~$(I \cap [S(I)]) \cap O(v) = \varnothing$ since~$O$ is an ornamentation.
 We thus obtain that~$O(v) \subseteq \maxorn{S}{I}(v)$.
 \end{itemize}
-In all cases, $\minorn{S}{I}(v) \subseteq O(v) \le \maxorn{S}{I}(v)$ for any~$v \in V$ and~$I \in \II$.
+In all cases, $\minorn{S}{I}(v) \subseteq O(v) \le \maxorn{S}{I}(v)$ for any~$v \in [n]$ and~$I \in \II$.
 We conclude that~$\minorn{S}{\II} \subseteq O \le \maxorn{S}{\II}$.
 
 Conversely, consider an ornamentation~$O$ of~$T$ such that~$\minorn{S}{I} \subseteq O \le \maxorn{S}{I}$ and let~$I \in \II$ and~$v \eqdef S(I)$. Then
@@ -2078,19 +2276,18 @@ We conclude that~$\sour{O}^\II(I) = S(I)$ for all~$I \in \II$, hence that~$\sour
 \begin{lemma}
 \label{lem:Sour2OrnIntreeval3}
 Let~$\II$ be a path intersection closed (\cref{def:pathIntersectionClose}) intreeval hypergraph of an increasing tree~$T$.
-For any acyclic sourcings~$S_1$ and~$S_2$ of~$\II$, if~$S_1 \le S_2$ then~$\minorn{S_1}{\II} \le \minorn{S_2}{\II}$.
+For any acyclic sourcings~$S_1$ and~$S_2$ of~$\II$, if~$S_1 \le S_2$ then~$\minorn{S_1}{\II} \le \maxorn{S_2}{\II}$.
 \end{lemma}
 
 \begin{proof}
-Assume by means of contradiction that~$S_1 \le S_2$ and~$\minorn{S_1}{\II} \not\le \minorn{S_2}{\II}$.
-Since~$\minorn{S_1}{\II} \le \minorn{S_2}{\II}$, there exist~$I, J \in \II$ such that~$\minorn{S_1}{I} \not\le \minorn{S_2}{J}$.
+Assume by means of contradiction that~$S_1 \le S_2$ and~$\minorn{S_1}{\II} \not\le \maxorn{S_2}{\II}$.
+Since~$\minorn{S_1}{\II} \le \maxorn{S_2}{\II}$, there exist~$I, J \in \II$ such that~$\minorn{S_1}{I} \not\le \maxorn{S_2}{J}$.
 This implies~$\min(I) \le S_2(J) < S_1(I) \le \max(J)$.
 Hence, $S_1(I)$ and~$S_2(J)$ are distinct and both belong to~$I \cap J$.
 Moreover, as~$S_1 \le S_2$, we have~$S_1(J) \le S_2(J) < S_1(I) \le S_2(I)$.
 Since~$S_1$ and~$S_2$ are both acyclic, we deduce that~$\min(J) \le S_1(J) < \min(I \cap J)$ while~$\max(I) \ge S_2(I) > \max(I \cap J)$.
-As~$\II$ is path intersection closed, there exists~$K \in \II$ such that~$\min(I) \le \min(K) \le \min(I\cap J)$ and $\max(I\cap J) \le \max K \le \max(J)$.
-\vincent{todo: almost finished}
-\vincent{todo: change the role of $I$ and~$J$ in the definition of path intersection closed?}
+As~$\II$ is path intersection closed, there exists~$K \in \II$ such that~$\min(I) \le_T \min(K) \le_T \min(I\cap J)$ and $\max(I\cap J) \le_T \max K \le_T \max(J)$.
+As~$S_1(I)$ and~$S_2(J)$ both belong to~$I \cap J \subseteq K$, and~$S_1$ and~$S_2$ are both acyclic, we obtain that~$S_2(K) \le S_2(J) < S_1(I) \le S_1(K)$, which contradicts~$S_1 \le S_2$.
 \end{proof}
 
 \begin{proposition}
@@ -2104,71 +2301,6 @@ Hence, the acyclic sourcing poset~$\ASour(\II)$ is a lattice.
 The map~$O \mapsto \sour{O}^\II$ satisfies the conditions of \cref{def:quasiLatticeMap} by \cref{lem:Orn2SourIntreeval1}, \cref{coro:Orn2SourIntreeval3} and~\cref{lem:Sour2OrnIntreeval1,,lem:Sour2OrnIntreeval2,,lem:Sour2OrnIntreeval3}.
 The last statement thus follows from~\cref{prop:quasiLatticeMap}.
 \end{proof}
-
-%\begin{definition}
-%Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$, containing all singletons~$\{v\}$ for~$v \in V$.
-%For an acyclic sourcing~$S$ of~$\II$, we denote by~$\minorn{S}$ and~$\maxorn{S}$ the two maps on~$V$ defined by
-%\[
-%\minorn{S}(v) \eqdef \bigcup_{\substack{v \in I \in \II \\ S(I) = v}} I \cap [v]
-%\qquad\text{and}\qquad
-%\maxorn{S}(v) \eqdef \triangle_T(v) \ssm \bigcup_{\substack{v \in I \in \II \\ S(I) < v}} I \cap [S(I)].
-%\]
-%\end{definition}
-%
-%\begin{lemma}
-%For any acyclic sourcing~$S$ of~$\II$, the maps~$\minorn{S}$ and~$\maxorn{S}$ are both ornamentations~of~$T$.
-%\end{lemma}
-%
-%\begin{proof}
-%We have~$v \in \minorn{S}(v)$ (since~$v \in \{v\} \in \II$ and~$S(\{v\}) = v$).
-%Let~$u \in \minorn{S}(v)$.
-%Consider~$I \in \II$ such that~$\{u,v\} \subseteq I$ and~$S(I) = v$.
-%For any~$u \in J \in \II$ with~$S(J) = u$, consider the directed path~$K$ from~$\min(J)$ to~$v$.
-%If~$S(K) < u$, then~$S(K) \in J \ssm \{S(J)\}$ and~$S(J) \in K \ssm S(K)$.
-%If~$u \le S(K) < v$, then~$S(K) \in I \ssm \{S(I)\}$ and~$S(I) \in K \ssm S(K)$.
-%Since~$S$ is acyclic, we conclude that~$S(K) = v$, and thus that~$J \cap [u] \subseteq K \subseteq \minorn{S}(v)$.
-%We conclude that~$\minorn{S}(u) \subseteq \minorn{S}(v)$.
-%
-%We have~$v \in \maxorn{S}(v)$ (since~$v \in \triangle_T(v)$ and~$v \notin \triangle_T(u)$ for~$u < v$).
-%Let~$u \in \maxorn{S}(v)$
-%
-%\vincent{todo}
-%\end{proof}
-%
-%\begin{lemma}
-%For any acyclic sourcing~$S$ of~$\II$, we have~$\minorn{S} \le \maxorn{S}$.
-%\end{lemma}
-%
-%\begin{proof}
-%Let~$v \in I \in \II$ such that~$S(I) = v$.
-%Note that~$I \cap [v] \subseteq \triangle_T(v)$.
-%Moreover, for any~$v \in J \in \II$ such that~$S(J) < v$, we have~$S(J) \notin I$ by acyclicity of~$S$, thus~$I \cap (J \cap [S(J)]) = \varnothing$.
-%We conclude that~$I \subseteq \maxorn{S}(v)$.
-%Therefore~$\minorn{S}(v) \le \maxorn{S}(v)$ for any~$v \in V$, hence~$\minorn{S} \le \maxorn{S}$.
-%\end{proof}
-%
-%\begin{lemma}
-%For any acyclic sourcing~$S$ of~$\II$, the ornamentations~$O$ of~$T$ such that~$\sour{O}^\II = S$ form an interval of the acyclic sourcing poset~$\ASour(\II)$ with minimal element~$\minorn{S}$ and maximal element~$\maxorn{S}$.
-%\end{lemma}
-%
-%\begin{proof}
-%Consider first an ornamentation~$O$ of~$T$ such that~$\sour{O}^\II = S$ and~$v \in V$. Then
-%\begin{itemize}
-%\item For any~$v \in I \in \II$ such that~$S(I) = v$, we have~$\min(I) \in O(v)$ by definition of~$\sour{O}^\II = S$, and thus~$I \cap [v] \subseteq O(v)$ since~$T$ is a tree.
-%We thus obtain that~$\minorn{S}(v) \subseteq O(v)$.
-%\item For any~$v \in I \in \II$ such that~$S(I) < v$, we have~$\min(I) \in O(S(I)) \ssm O(v)$ by definition of~$\sour{O}^\II = S$, hence~$(I \cap [S(I)]) \cap O(v) = \varnothing$ since~$O$ is an ornamentation.
-%We thus obtain that~$O(v) \subseteq \maxorn{S}(v)$.
-%\end{itemize}
-%As~$\minorn{S}(v) \subseteq O(v) \le \maxorn{S}(v)$ for any~$v \in V$, we obtain that~$\minorn{S} \subseteq O \le \maxorn{S}$.
-%
-%Conversely, consider an ornamentation~$O$ of~$T$ such that~$\minorn{S} \subseteq O \le \maxorn{S}$ and let~$I \in \II$ and~$v \eqdef S(I)$. Then
-%\begin{itemize}
-%\item As~$v \in I \in \II$ and~$S(I) = v$, we have~$I \cap [v] \subseteq \minorn{S}(v) \subseteq O(v)$, hence~$v \le \sour{O}^\II(I)$ by definition~of~$\sour{O}^\II$.
-%\item Conversely, for any~$v < w \in I$, we have~$w \in I \in \II$ with~$S(I) = v < w$ so that~$O(w) \subseteq \maxorn{S}(w) \subseteq \triangle_T(w) \ssm (I \cap [v])$. Hence, $\min(I) \notin O(w)$, so that~$\sour{O}^\II(I) \ne w$. We thus obtain that~$\sour{O}^\II(I) \le v$
-%\end{itemize}
-%We conclude that~$\sour{O}^\II(I) = S(I)$ for all~$I \in \II$, hence that~$\sour{O}^\II = S$.
-%\end{proof}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
