@@ -1371,21 +1371,6 @@ If~$u <_T v' \le_T v$, then~$M_P(u') = \triangle_T(u') \ssm \triangle_T(u) \subs
 Otherwise, $M_P(u') \subseteq \triangle_T(u') \subseteq \triangle_T(v') = M_P(v')$.
 \end{proof}
 
-\begin{lemma}
-\label{lem:irreduciblesAcyclicT}
-For any~$P \in \PP(T)$, the reorientations~$\reori{J_P}$ and~$\reori{M_P}$ of~$\tc(T)$ are both acyclic.
-\end{lemma}
-
-\begin{proof}
-Observe that~$\rev(J_P) = (P \ssm \{v\}) \times \{v\}$.
-Hence, any induced cycle in~$\reori{J_P}$ must consist in an edge~$(v,y)$ and a directed path from~$y$ to~$v$ in~$T$ for some~$u \le_T y \le_T v$.
-This is impossible as the last edge of this path would be in~$\rev(J_P)$.
-
-Observe that~$\tc(T) \ssm \rev(M_P) = \triangle_T(u) \times (P \ssm \{u\})$.
-Any cycle in~$\reori{M_P}$ should have an edge of $\tc(T) \ssm \rev(M_P)$, hence a vertex in~$\triangle_T(u)$ and a vertex in~$P \ssm \{u\}$.
-This is impossible as there is no edge of~$\reori{M_P}$ leaving~$P \ssm \{u\}$.
-\end{proof}
-
 \begin{proposition}
 \label{prop:irreducibleOrnamentationsT}
 Let~$T$ be a directed tree.
@@ -1437,6 +1422,21 @@ For any~$w \in V$ with~$M(w) \ne \triangle_T(w)$, we have
 We conclude that~$M = M_P$ where~$P$ is the directed path from~$u$ to~$v$ in~$T$.
 \end{proof}
 
+\begin{lemma}
+\label{lem:irreduciblesAcyclicT}
+For any~$P \in \PP(T)$, the reorientations~$\reori{J_P}$ and~$\reori{M_P}$ of~$\tc(T)$ are both acyclic.
+\end{lemma}
+
+\begin{proof}
+Observe that~$\rev(J_P) = (P \ssm \{v\}) \times \{v\}$.
+Hence, any induced cycle in~$\reori{J_P}$ must consist in an edge~$(v,y)$ and a directed path from~$y$ to~$v$ in~$T$ for some~$u \le_T y \le_T v$.
+This is impossible as the last edge of this path would be in~$\rev(J_P)$.
+
+Observe that~$\tc(T) \ssm \rev(M_P) = \triangle_T(u) \times (P \ssm \{u\})$.
+Any cycle in~$\reori{M_P}$ should have an edge of $\tc(T) \ssm \rev(M_P)$, hence a vertex in~$\triangle_T(u)$ and a vertex in~$P \ssm \{u\}$.
+This is impossible as there is no edge of~$\reori{M_P}$ leaving~$P \ssm \{u\}$.
+\end{proof}
+
 \begin{corollary}
 All join (resp.~meet) irreducible ornamentations of a directed tree~$T$ are acyclic.
 \end{corollary}
@@ -1456,6 +1456,7 @@ As already observed on the directed tree~$\Xgraph$ of \cref{fig:ornamentationsX}
 \item the acyclic ornamentation poset is not always a lattice (\cref{rem:AOrnLat}).
 \end{itemize}
 However, we now observe that for a directed tree~$T$, the ornamentation lattice~$\Orn(T)$ is precisely the MacNeille completion of the acyclic ornamentation lattice~$\AOrn(T)$.
+\vincent{This section must be cleaned...}
 
 \begin{theorem}
 \label{thm:MacNeille}
