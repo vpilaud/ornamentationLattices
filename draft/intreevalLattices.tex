@@ -419,7 +419,7 @@ The ornamentation lattice of a graph with no path of length $2$ is a boolean lat
 \end{example}
 
 \begin{example}
-The ornamentation lattice of an $n$-elements path is isomorphic to the Tamari lattice on binary trees with $n$ nodes (see \eg \cref{fig:ornamentationsNI}\,(right)).
+The ornamentation lattice of an $n$-element path is isomorphic to the Tamari lattice on binary trees with $n$ nodes (see \eg \cref{fig:ornamentationsNI}\,(right)).
 The isomorphism is obtained through tubings (or equivalently bracket vectors).
 \end{example}
 
@@ -535,7 +535,7 @@ The \defn{reorientation lattice}~$\Reori(E)$ of~$E$ is the boolean lattice of re
 \end{definition}
 
 In this paper, we actually need to consider the reorientation lattice~$\Reori(\tc(D))$ of the transitive closure~$\tc(D)$ of the directed graph~$D$.
-Recall that, for all~$u,v \in V$, the transitive closure~$\tc(D)$ has an arc~$(u,v)$ if and only if~$D$ has a directed path from~$u$ to~$v$.
+Recall that, for all~$u,v \in V$, the transitive closure~$\tc(D)$ has an edge~$(u,v)$ if and only if~$D$ has a directed path from~$u$ to~$v$.
 There is a natural surjection from the reorientation lattice~$\Reori(\tc(D))$ to the ornamentation lattice~$\Orn(D)$.
 
 \begin{definition}
@@ -717,7 +717,7 @@ We conclude that~$\rev(\reori{O}) \subseteq \rev(R)$, so that~$\reori{O} \le R$.
 
 \begin{remark}
 \label{rem:Reori2OrnIntervals2}
-Note that the second example of \cref{rem:Reori2OrnIntervals1} shows that the set of transitively closed reorientations~$R$ of~$\tc(D)$ such that~$\orn{R} = O$ does not admit a maximum either.
+Note that the second example of \cref{rem:Reori2OrnIntervals1} shows that the set of transitively closed reorientations~$R$ of~$\tc(D)$ such that~$\orn{R} = O$ does not admit a maximum in general.
 We will see in \cref{prop:ReoriTC2OrnIntervalT} that it does if~$D$ is a directed tree.
 \end{remark}
 
@@ -786,7 +786,7 @@ In other words, $\Sour(\HH)$ is the Cartesian product of the subchains of~$V$ in
 %The \defn{interval hypergraph} of~$D$ is the collection~$\II$(D) of non-empty intervals~$[u,v]$ for all~$u,v \in V$.
 %\end{definition}
 
-We now assume that~$D$ is an increasing graph on~$V = [n]$, meaning that~$u < v$ for any arc~$(u,v)$ of~$D$, and we consider sourcings of the path hypergraph of~$D$.
+We now assume that~$D$ is an increasing graph on~$V = [n]$, meaning that~$u < v$ for any edge~$(u,v)$ of~$D$, and we consider sourcings of the path hypergraph of~$D$.
 
 \begin{definition}
 \label{def:pathHypergraph}
@@ -927,7 +927,7 @@ In contrast, we will see in \cref{sec:acyclic} that~$S \mapsto \orn{S}$ is injec
 \label{sec:acyclic}
 
 We now focus our attention on the acyclic situation.
-We assume here that~$D$ is an increasing graph on~$V = [n]$, meaning that $u < v$ for any arc~$(u,v)$ of~$D$, in particular~$D$ is acyclic.
+We assume here that~$D$ is an increasing graph on~$V = [n]$, meaning that $u < v$ for any edge~$(u,v)$ of~$D$. In particular, $D$ is acyclic.
 We then consider the acyclic reorientation poset~$\AReori(\tc(D))$ (\cref{subsec:acyclicReorientations}), the acyclic sourcing poset~$\ASour(\PP(D))$ (\cref{subsec:acyclicSourcings}), and the acyclic ornamentation poset~$\AOrn(D)$ (\cref{subsec:acyclicOrnamentations}), and define natural surjective poset morphisms:
 \[
 \begin{array}{rcccccl}
@@ -959,7 +959,7 @@ In particular, the graph of~$\simplex_E$, oriented in the direction~$\b{\omega} 
 \end{remark}
 
 Note that the acyclic reorientation poset~$\AReori(E)$ is not always a lattice.
-The lattice theory of acyclic reorientation posets was studied in details in~\cite{Pilaud-acyclicReorientationLattices}.
+The lattice theory of acyclic reorientation posets was studied in detail in~\cite{Pilaud-acyclicReorientationLattices}.
 For our purposes, we will only need the following statemtents.
 
 \begin{proposition}[{\cite[Thm.~1]{Pilaud-acyclicReorientationLattices}}]
@@ -1161,12 +1161,12 @@ Hence~$\orn{S_1} \ne \orn{S_2}$.
 
 \begin{lemma}
 \label{lem:acyclicSimplifiesDef}
-For any acyclic reorientation~$R$ of~$\tc(D)$ (resp.~acyclic sourcing~$S$ of~$\PP(D)$) and any~$u,v \in [n]$ such that~$u$ is in~$\orn{R}(v)$ (resp.~$u \in \orn{S}(v)$) the pair~$(u,v)$ is in~$\rev(R)$ (resp.~in~$\rev(S)$).
+For any acyclic reorientation~$R$ of~$\tc(D)$ (resp.~acyclic sourcing~$S$ of~$\PP(D)$) and any~$u,v \in [n]$ such that~$u$ is in~$\orn{R}(v)$ (resp.~in $\orn{S}(v)$) the pair~$(u,v)$ is in~$\rev(R)$ (resp.~in~$\rev(S)$).
 \end{lemma}
 
 \begin{proof}
 Since~$R$ (resp.~$S$) is acyclic, $\rev(R)$ (resp.~$\rev(S)$) is transitive.
-The statement thus follows directly from the definition of~$\orn{R}(v)$ (resp.~$u \in \orn{S}(v)$).
+The statement thus follows directly from the definition of~$\orn{R}(v)$ (resp.~$\orn{S}(v)$).
 \end{proof}
 
 \begin{lemma}
@@ -1289,17 +1289,17 @@ We conclude that~$S \mapsto \aorn{S}$ and~$O \mapsto \asour{O}$ are inverse isom
 \section{Trees}
 \label{sec:trees}
 
-In this section, we focus on the specific situation when the ground directed graph~$D$ is an directed tree~$T$ (but not necessarily a rooted tree), as for example in \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX}.
+In this section, we focus on the specific situation when the ground directed graph~$D$ is a directed tree~$T$ (but not necessarily a rooted tree), as for example in \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Basic observations}
 
-Let~$T$ be an directed tree on~$V$.
+Let~$T$ be a directed tree on~$V$.
 For~$u,v \in V$, we write~$u \le_T v$ if there is a directed path from~$u$ to~$v$ in~$T$. %, and we write~$[u,v]_T$ for this path.
 We denote by~$\triangle_T(w) \eqdef \set{u \in V}{u \le_T v}$ the set of vertices which admit a directed path towards~$v$ in~$T$.
 \vincent{I decided quite late to introduce these notations. There are certainly some places where they could be used to simplify the phrasing. I will check that during proofreading.}
-We start by a few observations.
+We begin with a few observations.
 
 \begin{lemma}
 \label{lem:meetOrnT}
@@ -1384,7 +1384,10 @@ The join (resp.~meet) irreducible ornamentations of~$T$ are precisely the orname
 %\qquad\text{and}\qquad
 %M_P^\star(w) \eqdef \begin{cases} \big( \triangle_T(v) \ssm \triangle_T(u) \big) \cup \{u\} & \text{if } w = v \\ \triangle_T(w) & \text{otherwise.} \end{cases}
 %\]
-Observe first that~$J_P$ (resp.~$M_P$) is indeed join (resp.~meet) irreducible as it covers a unique ornamentation given by removing (resp.~adding)~$u$ to~$J_P(v)$ (resp.~to~$M_P(w)$ for all~$w \in P \ssm \{u\}$).
+Observe first that~$J_P$ (resp.~$M_P$) is indeed join (resp.~meet) irreducible as it covers (resp. is covered by) a unique ornamentation given by
+%removing (resp.~adding)~$u$ from~$J_P(v)$ (resp.~to~$M_P(w)$ for all~$w \in P \ssm \{u\}$).
+removing~$u$ from~$J_P(v)$ (resp.adding!$\Delta_T(u)$ to $M_P(v)$).
+\jose{I made a change (Previous version commented). I think otherwise we'd break the ornamentation property. I also seems consistent to the second paragraph below (construction of $M_u^v$)}
 
 Consider now a join irreducible ornamentation~$J$ of~$T$, and let~$J_\star$ be the unique ornamentation of~$T$ covered by~$J$.
 %If~$O(v) = \{v\}$ for all~$v \in V$, then~$O$ is the minimal ornamentation of~$T$.
@@ -1472,7 +1475,7 @@ If~$\reori{O}$ has no induced cycle, it is acyclic, hence~$O$ is acyclic and thu
 Assume now that all ornamentations~$O$ such that~$\reori{O}$ has at most~$k$ induced cycles belong to~$L$, and consider an ornamentation~$O'$ such that~$\reori{O'}$ has~$k+1$ induced cycles.
 By \cref{lem:Orn2ReoriT}, $C$ is an induced altermating cycle in~$\tc(T)$.
 By \cref{lem:starred}, $C$ is of the form~$(a,d,b,e)$ where~$a,b,d,e$ are starred in~$T$.
-\vincent{todo: I have a problem in the induction here. The number of induced cycles does not always decrease...}
+\vincent{todo: I have a problem in the induction here. The number of induced cycles does not always decrease...}
 \end{proof}
 
 \begin{remark}
