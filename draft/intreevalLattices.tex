@@ -771,8 +771,28 @@ The proof for~$\Rco(\tc(D))$ is symmetric.
 \end{proof}
 
 \begin{remark}
-Observe however that~$\Rcl(\tc(D)) \cap \Rco(\tc(D))$ may be neither a meet nor a join subsemilattice of~$\Reori(\tc(D))$.
-\vincent{todo if we indeed keep the definition of the transitively coclosed reorientations.}
+Observe however that~$\Rcl(\tc(D)) \cap \Rco(\tc(D))$ may fail to be a lattice. \vincent{even when~$D$ is a directed path?}
+For instance, consider the following four transitively closed and coclosed reorientations:
+%\[
+%\begin{array}{cccc}
+%\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationD1}} &
+%\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationD2}} &
+%\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationD3}} &
+%\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationD4}}
+%\\
+%R_1 & R_2 & R_3 & R_4
+%\end{array}
+%\]
+\[
+R_1 = \!\! \includegraphics[scale=.8,valign=c]{reorientationD1}
+\qquad
+R_2 = \!\! \includegraphics[scale=.8,valign=c]{reorientationD2}
+\qquad
+R_3 = \!\! \includegraphics[scale=.8,valign=c]{reorientationD3}
+\qquad
+R_4 = \!\! \includegraphics[scale=.8,valign=c]{reorientationD4}
+\]
+Then~$R_1, R_2 < R_3, R_4$ and there is no transitively closed and coclosed reorientation~$R$ such that~$R_1, R_2 < R < R_3, R_4$.
 \end{remark}
 
 \begin{proposition}
@@ -852,12 +872,20 @@ In contrast, the first example of \cref{rem:Reori2OrnSemilatticeMap} shows that 
 
 \begin{remark}
 Note that the image of the transitively coclosed reorientations by the map~$R \mapsto \orn{R}$ does not cover all ornamentations of~$D$.
-Example the diamond. The two that are not needed in the MacNeille completion.
-\vincent{todo}
+For instance, for the graph~$\Dgraph$ of \cref{fig:ornamentationsD}, the fibers under~$R \mapsto \orn{R}$ of the two ornamentations
+\[
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1}
+\qquad
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD2}
+\]
+are both singletons, containing the reorientations
+\[
+\includegraphics[scale=.8,valign=c]{cyclicReorientationD1}
+\qquad
+\includegraphics[scale=.8,valign=c]{cyclicReorientationD2}
+\]
+which are not transitively coclosed.
 \end{remark}
-
-
-\vincent{Can we say similar things about the restriction of the map~$R \mapsto \orn{R}$ to transitively coclosed reorientations of~$\tc(D)$? If not, we should only define transitively closed reorientations...}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1014,8 +1042,9 @@ For instance, $\orn{S}$ is the maximal ornamentation of~$D$ for any sourcing~$S$
 In contrast, we will see in \cref{sec:acyclic} that~$S \mapsto \orn{S}$ is injective on acyclic sourcings of~$\PP(D)$.
 \end{remark}
 
+\begin{remark}
 \vincent{We can play the same game with transitively closed sourcings~$S$, meaning for which $\rev(S)$ is transitively closed... Maybe just a remark about it is enough...}
-
+\end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
