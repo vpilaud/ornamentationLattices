@@ -203,10 +203,10 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 
 \begin{abstract}
 Given a directed graph~$D$ with transitive closure~$\tc(D)$ and path hypergraph~$\PP(D)$, we study the connections between the (acyclic) reorientation poset of~$\tc(D)$, the (acyclic) sourcing poset of~$\PP(D)$, and the (acyclic) ornamentation poset of~$D$.
-When~$D$ is a rooted increasing tree (or even any unstarred tree), we show that the acyclic sourcing poset is isomorphic to the ornamentation lattice, and they form a lattice quotient of the acyclic reorientation poset.
+When~$D$ is a rooted (or even unstarred) increasing tree, we show that the acyclic sourcing poset of~$\PP(D)$ is isomorphic to the ornamentation lattice of~$D$, and that they form a lattice quotient of the acyclic reorientation poset of~$\tc(D)$.
 As a consequence, we obtain a polytopal realization of the ornamentation lattices of rooted (or even unstarred) increasing trees, answering an open question of C.~Defant and A.~Sack.
-When~$D$ is an increasing tree, we show that the ornamentation lattice is the MacNeille completion of the acyclic sourcing poset.
-Finally, still when~$D$ is an increasing tree, we use the ornamentation lattice to characterize the subhypergraphs of the path hypergraph~$\PP(D)$ whose acyclic sourcing poset is a lattice.
+When~$D$ is an increasing tree, we show that the ornamentation lattice of~$D$ is the MacNeille completion of the acyclic sourcing poset of~$\PP(D)$.
+Finally, still when~$D$ is an increasing tree, we use the ornamentation lattice of~$D$ to characterize the subhypergraphs of the path hypergraph~$\PP(D)$ whose acyclic sourcing poset is a lattice.
 \end{abstract}
 
 \vspace*{-1cm}
@@ -241,11 +241,11 @@ The objective of this paper is to study the interconnections between natural ext
 Consider a hypergraph~$\HH$ on~$[n]$.
 A \defn{sourcing} of~$\HH$ is a map~$S$ associating to each hyperedge~$H \in \HH$ a source~$S(H) \in H$.
 Note that sourcings of~$\HH$ are often called orientations of~$\HH$, we changed the name to avoid confusion with reorientations of directed graphs also manipulated in this paper.
-A sourcing~$S$ of~$\HH$ is \defn{acyclic} if there is no directed cycle in the directed graph with edges~$\set{(h,S(H))}{h \in H \in \HH}$.
+A sourcing~$S$ of~$\HH$ is \defn{acyclic} if there is no directed cycle in the directed graph with edges~$(h,S(H))$ for all~$h \in H \in \HH$.
 The \defn{(acyclic) sourcing poset} of~$\HH$ is the poset of (acyclic) sourcings of~$\HH$ ordered by componentwise comparison, meaning~$S(H) \le S'(H)$ for all~$H \in \HH$.
 While the sourcing poset~$\Sour(\HH)$ is clearly a lattice (as a product intervals), the acyclic sourcing poset~$\ASour(\HH)$ is not always a lattice.
 %When~$\HH$ is the hypergraph of all intervals of~$[n]$, the acyclic sourcing poset~$\Sour(\HH)$ is the Tamari lattice.
-The question to characterize the hypergraphs~$\HH$ whose acyclic sourcing posets~$\ASour(\HH)$ are lattices has been studied for specific families of hypergraphs, notably for graphs~\cite{Pilaud-acyclicReorientationLattices}, interval hypergraphs~\cite{BergeronPilaud}, and (partially for) graph associahedra~\cite{BarnardMcConville}.
+The question to characterize the hypergraphs~$\HH$ whose acyclic sourcing posets~$\ASour(\HH)$ are lattices has been studied for specific families of hypergraphs, notably for graphs~\cite{Pilaud-acyclicReorientationLattices}, for interval hypergraphs~\cite{BergeronPilaud}, and (partially for) graph associahedra~\cite{BarnardMcConville}.
 In this paper, we will consider the family of hypergraphs arising as the collection of paths in a directed graph, and study their acyclic sourcing posets from a lattice theoretic perspective.
 
 Let~$(\b{e}_v)_{v \in [n]}$ denote the standard basis of~$\R^n$.
@@ -255,8 +255,8 @@ In particular, it turns out that the acyclic sourcing poset~$\ASour(\HH)$ is the
 
 For instance, 
 \begin{itemize}
-\item if~$\HH = \binom{[n]}{2}$ is the complete graph (or any hypergraph containing it), then~$\simplex_\HH$ is the \defn{permutahedron} and $\ASour(\HH)$ is the \defn{weak order on permutations},
-\item if~$\HH = \set{[i,j]}{1 \le i \le j \le n}$ is the complete interval hypergraph, then~$\simplex_\HH$ is \mbox{J.-L.~Loday's} \defn{associahedron}~\cite{ShniderSternberg,Loday} and~$\ASour(\HH)$ is the \defn{Tamari lattice on binary trees}~\cite{Tamari}.
+\item if~$\HH = \binom{[n]}{2}$ is the complete graph, $\simplex_\HH$ is the permutahedron and $\ASour(\HH)$ is the weak order. % on permutations,
+\item if~$\HH = \set{[i,j]}{1 \le i \le j \le n}$ is the complete interval hypergraph, $\simplex_\HH$ is the associahedron of~\cite{ShniderSternberg,Loday} and~$\ASour(\HH)$ is the Tamari lattice~\cite{Tamari}.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -277,27 +277,27 @@ They have been largely investigated in~\cite{Pilaud-acyclicReorientationLattices
 Among all these congruences, the \defn{sylvester congruence} yields the \defn{Tamari lattice} of~$E$, which is isomorphic to the transitive closure of the graph of the \defn{associahedron} of~$E$ oriented in the direction~$\b{w}$.
 The later is obtained by deleting inequalities in the facet description of the graphical zonotope of~$E$.
 
-For instance, when~$E$ is the complete graph,
+For instance, when~$E = K_n$ is the complete graph,
 \begin{itemize}
-\item $\simplex_E$ is the permutahedron and~$\AReori(E)$ is the weak order on permutations,
-\item the associahedron of~$E$ is Loday's associahedron and the Tamari lattice of~$E$ is the Tamari lattice.
+\item $\simplex_E$ is the permutahedron and~$\AReori(E)$ is the weak order,
+\item the associahedron of~$E$ is the associahedron of~\cite{ShniderSternberg,Loday} and the Tamari lattice of~$E$ is the Tamari lattice.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \para{Ornamentation lattices.}
-Consider a directed graph~$D$ on~$V$ and a vertex~$v$ of~$D$.
+Consider a directed graph~$D$ on~$V$ and a vertex~$v \in V$.
 An \defn{ornament} of~$D$ at~$v$ is a subset~$U$ of~$V$ such that any vertex of~$U$ admits a directed path to~$v$ in~$U$.
 An \defn{ornamentation} of~$D$ is an assignment~$O$ of ornaments at each vertex of~$V$ with the nesting condition that $u \in O(v)$ implies~$O(u) \subseteq O(v)$.
-An ornamentation~$O$ of~$D$ is \defn{acyclic} if a certain reorientation of the transitive closure~$\tc(D)$ of~$D$ constructed from~$O$ is acyclic (see precise definition later).
 Note that ornamentations were introduced and studied in~\cite{DefantSack} for rooted trees and extended in~\cite{Sack} for directed graphs and beyond.
-The \defn{(acyclic) ornamentation poset} of~$D$ is the poset of (acyclic) ornamentations of~$D$ ordered by componentwise inclusion, meaning~$O(v) \subseteq O'(v)$ for all~$v \in V$.
-The ornamentation poset~$\Orn(D)$ is always a lattice, but that the acyclic ornamentation poset~$\Orn(D)$ is not always a lattice.
+An ornamentation~$O$ of~$D$ is \defn{acyclic} if a certain reorientation of the transitive closure~$\tc(D)$ of~$D$ constructed from~$O$ is acyclic (see precise definition later).
+The \defn{(acyclic) ornamentation poset} of~$D$ is the poset of (acyclic) ornamentations of~$D$ ordered by componentwise inclusion, meaning~${O(v) \subseteq O'(v)}$ for all~$v \in V$.
+The ornamentation poset~$\Orn(D)$ is always a lattice, but the acyclic ornamentation poset~$\Orn(D)$ is not always a lattice.
 Interestingly, we will see that all ornamentations turn out to be acyclic when~$D$ is a rooted tree, and the ornamentation lattice is the MacNeille completion of the acyclic ornamentation lattice when~$D$ is a directed tree.
 
 The geometry of ornamentation lattices is not that clear.
 One of the open questions in~\cite{DefantSack} was to find polytopal realizations of ornamentation lattices.
-We will answer this question for rooted trees and discuss it for arbitrary directed graphs.
+We will answer this question for rooted (or even unstarred) trees and discuss it for arbitrary directed graphs.
 
 For instance, when~$D$ is a path, the (acyclic) ornamentation lattice~$\Orn(D)$ is the Tamari lattice which is indeed realized by the associahedron, and the ornamentations can be seen as bracket vectors of binary trees.
 
@@ -361,7 +361,7 @@ For these trees, the acyclic sourcing poset and ornamentation lattice are even c
 For an unstarred increasing tree~$T$,
 \begin{enumerate}
 \item the acyclic reorientation poset~$\AReori(\tc(T))$, the acyclic sourcing poset~$\ASour(\PP(T))$, and the acyclic ornamentation poset~$\AOrn(T)$ are all lattices,
-\item all ornamentations of~$T$ are in fact acyclic, so that~$\ASour(\PP(T)) \sim \AOrn(T) = \Orn(T)$,
+\item all ornamentations of~$T$ are in fact acyclic, so that~$\ASour(\PP(T)) \simeq \AOrn(T) = \Orn(T)$,
 \item the map~$R \mapsto \orn{R}$ is a surjective lattice map so that the ornamentation lattice~$\Orn(T)$ is a lattice quotient of the acyclic reorientation lattice~$\AReori(\tc(T))$,
 \item the ornamentation lattice~$\orn(T)$ is isomorphic to the transitive closure of the graph of the path hypergraphic polytope~$\simplex_{\PP(T)}$ oriented in the direction~$\b{w}$. \label{item:polytopalRealization}
 \end{enumerate}
@@ -379,7 +379,7 @@ Finally, in \cref{sec:intreevalHypergraphicPosets}, we exploit the connection be
 Our results largely extend the characterization of~\cite{BergeronPilaud} for interval hypergraphic lattices.
 
 An \defn{interval hypergraph} is an hypergraph whose hyperedges all are intervals of~$[n]$.
-For an interval hypergraph~$\II$ containing all singletons, it was proved in~\cite[Thm~A]{BergeronPilaud} that the acyclic sourcing poset~$\ASour(I)$ is a lattice if and only if~$\II$ is closed under intersection, meaning that~$I,J \in \II$ implies~$I \cap J \in \II$.
+For an interval hypergraph~$\II$ containing all singletons, it was proved in~\cite[Thm.~A]{BergeronPilaud} that the acyclic sourcing poset~$\ASour(I)$ is a lattice if and only if~$\II$ is closed under intersection, meaning that~$I,J \in \II$ implies~$I \cap J \in \II$.
 (As adding or removing singletons to~$\II$ preserve~$\ASour(\II)$, we impose~$\II$ to contain all singletons just to simplify the expression of intersection closedness.)
 The approach of~\cite{BergeronPilaud} is to show that the map~$\pi \mapsto \sour{\pi}$ sending a permutation of~$[n]$ to an acyclic sourcing of~$\II$ is a \defn{quasi-lattice map}, meaning that the fiber of each acyclic sourcing~$S$ of~$\II$ forms an interval~$[\projDown{S}, \projUp{S}]$ of the weak order and that~$S \le S'$ in~$\ASour(I)$ implies that~$\projDown{S} \le \projUp{S'}$.
 While much weaker than the lattice map condition (which requires instead that~$S \le S'$ implies~$\projDown{S} \le \projDown{S'}$ and~$\projUp{S} \le \projUp{S'}$), the quasi-lattice map condition still ensures that the image forms a lattice.
@@ -387,8 +387,8 @@ While much weaker than the lattice map condition (which requires instead that~$S
 In \cref{sec:intreevalHypergraphicPosets}, we extend this characterization to intreeval hypergraphs.
 For an increasing tree~$T$ on~$[n]$, we call \defn{intreeval hypergraph} of~$T$ any subhypergraph~$\II$ of the path hypergraph~$\PP(T)$, meaning any collection of (vertex sets of) directed paths in~$T$.
 Unfortunately, the map~$\pi \mapsto \asour{\pi}$ from permutations of~$[n]$ to acyclic sourcings of~$\II$ is not a quasi-lattice map anymore (its fibers are not intervals in general).
-Moreover, we can neither use the map~$R \mapsto \asour{R}$ from acyclic reorientations of~$\tc(T)$ to acyclic sourcings of~$\II$ as the acyclic reorientation poset~$\AReori(\tc(T))$ is not a lattice in general, in contrast to~\cref{thm:main2}.
-We use instead a natural quasi-lattice map from the ornamentation lattice~$\Orn(T)$ to the acyclic sourcing poset~$\ASour(\II)$ to obtain a characterization.
+Moreover, we can neither use the map~$R \mapsto \asour{R}$ from acyclic reorientations of~$\tc(T)$ to acyclic sourcings of~$\II$ as the acyclic reorientation poset~$\AReori(\tc(T))$ is not a lattice in general, in contrast to the situation of~\cref{thm:main2}.
+We use instead a natural quasi-lattice map from the ornamentation lattice~$\Orn(T)$ to the acyclic sourcing poset~$\ASour(\II)$ to obtain the following characterization.
 
 \begin{theorem}
 \label{thm:main3}
@@ -1143,7 +1143,7 @@ Note that the graph of~$\simplex_\HH$, oriented in the direction~$\b{\omega}$, i
 \label{rem:ASourLat}
 Note that the acyclic sourcing poset of~$\HH$ is not always a lattice.
 Characterizing the hypergraphs whose acyclic sourcing poset is a lattice seems a difficult question in general.
-Such characterizations exist for specific families of hypergraphs, notably for graphs~\cite{Pilaud-acyclicReorientationLattices} (see \cref{prop:AReoriLat}), interval hypergraphs~\cite{BergeronPilaud}, and (partially for) graph associahedra~\cite{BarnardMcConville}.
+Such characterizations exist for specific families of hypergraphs, notably for graphs~\cite{Pilaud-acyclicReorientationLattices} (see \cref{prop:AReoriLat}), for interval hypergraphs~\cite{BergeronPilaud}, and (partially for) graph associahedra~\cite{BarnardMcConville}.
 We will further study this question for subhypergraphs of the path hypergraph of increasing trees in \cref{sec:intreevalHypergraphicPosets}.
 \end{remark}
 
@@ -1594,7 +1594,7 @@ Hence, $u \in \orn{R}(v)$ if and only if~$u' \in \rev(R)$ for all~$u'$ along the
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Semidistributivity and canonical join decompositions}
+\subsection{Semidistributivity and canonical join representations}
 
 Let us start with a quick recollection on semidistributivity.
 We consider a finite lattice~$(L, \le, \meet, \join)$.
@@ -1719,7 +1719,7 @@ A \defn{completion} of a finite poset~$P$ is a lattice~$L$ such that there is an
 The MacNeille completion~$C(P)$ of~$P$ is the smallest completion of~$P$, meaning that for any completion~$L$ of~$P$, there exists an order-embedding from~$C(P)$ to~$L$.
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}[{\cite[Thm.~7.42]{DaveyPriestley}}]
 \label{prop:MacNeilleCompletion}
 Any finite lattice~$L$ is the MacNeille completion of its subposet induced by~$\JI \cup \MI$.
 \end{proposition}
