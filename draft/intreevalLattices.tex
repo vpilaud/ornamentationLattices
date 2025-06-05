@@ -203,7 +203,7 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 
 \begin{abstract}
 Given a directed graph~$D$ with transitive closure~$\tc(D)$ and path hypergraph~$\PP(D)$, we study the connections between the (acyclic) reorientation poset of~$\tc(D)$, the (acyclic) sourcing poset of~$\PP(D)$, and the (acyclic) ornamentation poset of~$D$.
-When~$D$ is a rooted (or even unstarred) increasing tree, we show that the acyclic sourcing poset of~$\PP(D)$ is isomorphic to the ornamentation lattice of~$D$, and that they form a lattice quotient of the acyclic reorientation poset of~$\tc(D)$.
+When~$D$ is a rooted (or even unstarred) increasing tree, we show that the acyclic sourcing poset of~$\PP(D)$ is isomorphic to the ornamentation lattice of~$D$, and that they form a lattice quotient of the acyclic reorientation lattice of~$\tc(D)$.
 As a consequence, we obtain a polytopal realization of the ornamentation lattices of rooted (or even unstarred) increasing trees, answering an open question of C.~Defant and A.~Sack.
 When~$D$ is an increasing tree, we show that the ornamentation lattice of~$D$ is the MacNeille completion of the acyclic sourcing poset of~$\PP(D)$.
 Finally, still when~$D$ is an increasing tree, we use the ornamentation lattice of~$D$ to characterize the subhypergraphs of the path hypergraph~$\PP(D)$ whose acyclic sourcing poset is a lattice.
@@ -1605,7 +1605,7 @@ We denote by $\JI$ (resp.~$\MI$) the subposet of~$L$ induced by the set of join 
 \end{definition}
 
 \begin{definition}
-Let~$(L, \le, \meet, \join)$ be a finite lattice.
+%Let~$(L, \le, \meet, \join)$ be a finite lattice.
 A \defn{join representation} of~$x \in L$ is a subset~${J \subseteq L}$ such that~$x = \bigJoin J$.
 Such a representation is \defn{irredundant} if~$x \ne \bigJoin J'$ for any strict subset~$J' \subsetneq J$.
 The irredundant join representations in~$L$ are antichains of~$L$, and are ordered by containement of the lower sets of their elements (\ie~$J \le J'$ if and only if for any~$y \in J$ there exists~$y' \in J'$ such that~$y \le y'$ in~$L$).
@@ -1664,8 +1664,8 @@ Otherwise, $M_P(u') \subseteq \triangle_T(u') \subseteq \triangle_T(v') = M_P(v'
 
 \begin{lemma}
 \label{lem:semidistributive}
-Let~$O_1, O_2$ be two ornamentations of a directed tree~$T$ which form a cover relation~$O_1 \lessdot O_2$, let~$u,v \in V$ such that~$u \notin O_1(v)$ and $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$ (by \cref{lem:coverRelationsOrnT}), and let~$P$ denote the directed path from~$u$ to~$v$ in~$T$.
-Then~$J_P$ (resp.~$M_P$) is the unique minimal element of~$\set{O \in \Orn(T)}{O \not\le O_1 \text{ but } O \le O_2}$ (resp.~of~$\set{O \in \Orn(T)}{O_1 \le O \text{ but } O_2 \not\le O}$).
+Let~$O_1, O_2$ be two ornamentations of a directed tree~$T$ which form a cover relation~$O_1 \lessdot O_2$, let~$u,v \in V$ such that~$u \notin O_1(v)$ and $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$ (see \cref{lem:coverRelationsOrnT}), and let~$P$ denote the directed path from~$u$ to~$v$ in~$T$.
+Then~$J_P$ (resp.~$M_P$) is the unique minimal element of~$\set{O \in \Orn(T)}{O \not\le O_1 \text{ but } O \le O_2}$ (resp.~maximal element of~$\set{O \in \Orn(T)}{O_1 \le O \text{ but } O_2 \not\le O}$).
 \end{lemma}
 
 \begin{proof}
@@ -1694,7 +1694,7 @@ For a directed tree~$T$,
 \begin{itemize}
 \item the ornamentation lattice~$\Orn(T)$ is semidistributive,
 \item the join (resp.~meet) irreducible ornamentations of~$T$ are precisely the ornamentations~$J_P$ (resp.~$M_P$) for all directed paths~$P$ in~$T$,
-\item the canonical join (resp.~meet) representation of an ornamentation~$O$ is~$O = \bigJoin J_P$ (resp.~$O = \bigMeet M_P$) where~$P$ ranges over ??? \vincent{todo} 
+\item the canonical join (resp.~meet) representation of an ornamentation~$O$ is~$O = \bigJoin_P J_P$ (resp.~$O = \bigMeet_P M_P$) where the join (resp.~meet) ranges over all paths~$P = [u,v]$ described in \cref{lem:coverRelationsOrnT} for the cover relations~$O' \lessdot O$ (resp.~$O \lessdot O'$), \vincent{is there a better description} 
 \item we have~$\kappa_\join(M_P) = J_P$ and~$\kappa_\meet(J_P) = M_P$ for any~$P \in \PP(T)$.
 \end{itemize}
 \end{theorem}
@@ -1704,7 +1704,18 @@ This directly follows from \cref{prop:semidistributive,lem:semidistributive}.
 \end{proof}
 
 \begin{remark}
-Observe that the ornamentation lattice~$\Orn(\Dgraph)$ of the diamond graph~$\Dgraph$ represented in \cref{fig:ornamentationsD} is not semidistributive.
+Observe that the ornamentation lattice~$\Orn(\Dgraph)$ of the diamond graph~$\Dgraph$ represented in \cref{fig:ornamentationsD} is neither join nor meet semidistributive, since
+\begin{multline*}
+\includegraphics[scale=.8,valign=c]{ornamentationD1} \join \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} = \includegraphics[scale=.8,valign=c]{ornamentationD1} \join \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD2} = \includegraphics[scale=.8,valign=c]{ornamentationD2}
+\\
+ \ne \includegraphics[scale=.8,valign=c]{ornamentationD1} = \includegraphics[scale=.8,valign=c]{ornamentationD1} \join \includegraphics[scale=.8,valign=c]{ornamentationD3} = \includegraphics[scale=.8,valign=c]{ornamentationD1} \join \Big( \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} \meet  \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD2} \Big)
+\end{multline*}
+and
+\begin{multline*}
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} \meet \includegraphics[scale=.8,valign=c]{ornamentationD1} = \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} \meet \includegraphics[scale=.8,valign=c]{ornamentationD4} = \includegraphics[scale=.8,valign=c]{ornamentationD5}
+\\
+ \ne \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} = \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} \meet \includegraphics[scale=.8,valign=c]{ornamentationD6} = \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} \meet \Big( \includegraphics[scale=.8,valign=c]{ornamentationD1} \join  \includegraphics[scale=.8,valign=c]{ornamentationD4} \Big)
+\end{multline*}
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1881,6 +1892,7 @@ We conclude that~$C$ was not induced.
 Therefore, there is~$w \in V$ such that~$(d_1,w)$ and~$(w,u_k)$ are in~$\tc(T)$.
 Since~$C$ is induced, we obtain again an induced alternating cycle by replacing either~$d_1$ or~$u_k$ by~$x$ in~$C$, say~$u_k$ by symmetry.
 By induction on the sum of the length of the paths between~$d_i$ and~$u_i$ in~$T$, we obtain that~$k = 2$ there is~$v \in V$ such that~$(d_1, v)$, $(d_2,v)$, $(v,u_1)$, and~$(v,w)$ are in~$\tc(T)$, and as~$w$ is between~$d_1$ and~$u_2$, we also get~$(v,u_2) \in \tc(T)$.
+\vincent{Move this to next Lemma...}
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1898,6 +1910,9 @@ Finally, we discuss enumeration properties of ornamentations of brooms in \cref{
 
 \subsection{Unstarred trees}
 \label{subsec:unstarredTrees}
+
+
+We first define the following family of trees.
 
 \begin{lemma}
 \label{lem:starredFreeTrees}
