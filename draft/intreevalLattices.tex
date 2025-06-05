@@ -1800,9 +1800,9 @@ In general, we have no description of the MacNeille completion of the acyclic or
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Maximal reorientation}
+\subsection{Maximal reorientation and coclosedness}
 
-We now revisit \cref{rem:Reori2OrnIntervals1,rem:Reori2OrnIntervals2} for directed trees.
+We first revisit \cref{rem:Reori2OrnIntervals1,rem:Reori2OrnIntervals2} for directed trees.
 
 \begin{definition}
 \label{def:Reori2OrnMaxT}
@@ -1851,14 +1851,14 @@ We conclude that the fiber of~$O$ is an interval, since it has a minimum by \cre
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Coclosedness and induced cycles}
+%\subsection{Coclosedness and induced cycles}
 
-We now revisit \cref{rem:notTransitivelyCoclosed} for directed trees.
+We finally revisit \cref{rem:notTransitivelyCoclosed} for directed trees.
 
 \begin{lemma}
 \label{lem:Orn2ReoriT}
 For an ornamentation~$O$ of a directed tree~$T$, the reorientation~$\reori{O}$ is transitively closed and coclosed.
-Hence, any induced oriented cycle in~$\reori{O}$ is an induced alternating cycle in~$\tc(T)$ (meaning taking alternatively forward and backward arrows).
+%Hence, any induced oriented cycle in~$\reori{O}$ is an induced alternating cycle in~$\tc(T)$ (meaning taking alternatively forward and backward arrows).
 \end{lemma}
 
 \begin{proof}
@@ -1868,32 +1868,31 @@ Let~$u, v, w \in V$ be such that~$(u,v)$ and~$(v,w)$ are in~$\tc(T)$,
 %Then~$u \in O(v)$ and~$v \in O(w)$, hence~$u \in O(w)$ since~$O$ is an ornamentation, thus ${(u,w) \in \rev(\reori{O})}$.
 and that~$(u,w) \in \rev(\reori{O})$. Then~$u \in O(w)$. As~$T$ is a tree, the complete path from~$u$ to~$w$ is in~$O(w)$, hence~$v \in O(w)$ and thus $(v,w) \in \rev(\reori{O})$.
 We conclude that~$\reori{O}$ is transitively coclosed.
-The last statement immediately follows as an induced cycle cannot chain two consecutive forward arrows, nor two consecutive backwards arrows.
+%The last statement immediately follows as an induced cycle cannot chain two consecutive forward arrows, nor two consecutive backwards arrows.
 \end{proof}
 
-We say that $a,b,d,e \in V$ are \defn{starred} in~$T$ if there is $c \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$ and~$(c,e)$ are all in~$\tc(T)$.
-
-\begin{lemma}
-\label{lem:starred}
-For a directed tree~$T$, any induced alternating cycle in~$\tc(T)$ is of the form~$(a,d,b,e)$ where~$a,d,b,e$ are starred in~$T$.
-\end{lemma}
-
-\begin{proof}
-Let~$C$ be an induced alternating cycle in~$\tc(T)$.
-We can write~$C = (d_1, u_1, d_2, u_2, \dots, d_k, u_k)$ where~$(d_i, u_i)$ and~$(u_i, d_{i+1})$ are in~$\tc(T)$ for all~$i \in [k]$.
-
-Assume first that~$(d_1,u_k)$ is an edge of~$T$.
-Let~$D$ and~$U$ denote the connected components of~$T \ssm \{(d_1,u_k)\}$ containing~$d_1$ and~$u_k$ respectively.
-Let~$i \in [k]$ be maximal such that~$d_i \in D$.
-Since~$d_{i+1} \in U$ and~$d_{i+1} \to u_i$ in~$\tc(T)$, we have~$u_i \in U$.
-Hence, the edge~$(d_1,u_k)$ is an edge of the path from~$d_i$ to~$u_i$ in~$T$.
-We conclude that~$C$ was not induced.
-
-Therefore, there is~$w \in V$ such that~$(d_1,w)$ and~$(w,u_k)$ are in~$\tc(T)$.
-Since~$C$ is induced, we obtain again an induced alternating cycle by replacing either~$d_1$ or~$u_k$ by~$x$ in~$C$, say~$u_k$ by symmetry.
-By induction on the sum of the length of the paths between~$d_i$ and~$u_i$ in~$T$, we obtain that~$k = 2$ there is~$v \in V$ such that~$(d_1, v)$, $(d_2,v)$, $(v,u_1)$, and~$(v,w)$ are in~$\tc(T)$, and as~$w$ is between~$d_1$ and~$u_2$, we also get~$(v,u_2) \in \tc(T)$.
-\vincent{Move this to next Lemma...}
-\end{proof}
+%We say that $a,b,d,e \in V$ are \defn{starred} in~$T$ if there is $c \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$ and~$(c,e)$ are all in~$\tc(T)$.
+%
+%\begin{lemma}
+%\label{lem:starred}
+%For a directed tree~$T$, any induced alternating cycle in~$\tc(T)$ is of the form~$(a,d,b,e)$ where~$a,d,b,e$ are starred in~$T$.
+%\end{lemma}
+%
+%\begin{proof}
+%Let~$C$ be an induced alternating cycle in~$\tc(T)$.
+%We can write~$C = (d_1, u_1, d_2, u_2, \dots, d_k, u_k)$ where~$(d_i, u_i)$ and~$(u_i, d_{i+1})$ are in~$\tc(T)$ for all~$i \in [k]$.
+%
+%Assume first that~$(d_1,u_k)$ is an edge of~$T$.
+%Let~$D$ and~$U$ denote the connected components of~$T \ssm \{(d_1,u_k)\}$ containing~$d_1$ and~$u_k$ respectively.
+%Let~$i \in [k]$ be maximal such that~$d_i \in D$.
+%Since~$d_{i+1} \in U$ and~$d_{i+1} \to u_i$ in~$\tc(T)$, we have~$u_i \in U$.
+%Hence, the edge~$(d_1,u_k)$ is an edge of the path from~$d_i$ to~$u_i$ in~$T$.
+%We conclude that~$C$ was not induced.
+%
+%Therefore, there is~$w \in V$ such that~$(d_1,w)$ and~$(w,u_k)$ are in~$\tc(T)$.
+%Since~$C$ is induced, we obtain again an induced alternating cycle by replacing either~$d_1$ or~$u_k$ by~$x$ in~$C$, say~$u_k$ by symmetry.
+%By induction on the sum of the length of the paths between~$d_i$ and~$u_i$ in~$T$, we obtain that~$k = 2$ there is~$v \in V$ such that~$(d_1, v)$, $(d_2,v)$, $(v,u_1)$, and~$(v,w)$ are in~$\tc(T)$, and as~$w$ is between~$d_1$ and~$u_2$, we also get~$(v,u_2) \in \tc(T)$.
+%\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1912,7 +1911,7 @@ Finally, we discuss enumeration properties of ornamentations of brooms in \cref{
 \label{subsec:unstarredTrees}
 
 
-We first define the following family of trees.
+We first define the family of unstarred trees by the following equivalent conditions.
 
 \begin{lemma}
 \label{lem:starredFreeTrees}
@@ -1925,7 +1924,20 @@ The following conditions are equivalent for a directed tree~$T$ on~$V$:
 \end{lemma}
 
 \begin{proof}
-(i) $\Rightarrow$ (ii). This is \cref{lem:starred}.
+(i) $\Rightarrow$ (ii). %This is \cref{lem:starred}.
+Let~$C$ be an induced alternating cycle in~$\tc(T)$.
+Write~$C = (d_1, u_1, \dots, d_k, u_k)$ where~$(d_i, u_i)$ and~$(u_i, d_{i+1})$ are in~$\tc(T)$ for all~$i \in [k]$.
+
+Assume first that~$(d_1,u_k)$ is an edge of~$T$.
+Let~$D$ and~$U$ denote the connected components of~$T \ssm \{(d_1,u_k)\}$ containing~$d_1$ and~$u_k$ respectively.
+Let~$i \in [k]$ be maximal such that~$d_i \in D$.
+Since~$d_{i+1} \in U$ and~$d_{i+1} \to u_i$ in~$\tc(T)$, we have~$u_i \in U$.
+Hence, the edge~$(d_1,u_k)$ is an edge of the path from~$d_i$ to~$u_i$ in~$T$.
+We conclude that~$C$ was not induced.
+
+Therefore, there is~$w \in V$ such that~$(d_1,w)$ and~$(w,u_k)$ are in~$\tc(T)$.
+Since~$C$ is induced, we obtain again an induced alternating cycle by replacing either~$d_1$ or~$u_k$ by~$x$ in~$C$, say~$u_k$ by symmetry.
+By induction on the sum of the length of the paths between~$d_i$ and~$u_i$ in~$T$, we obtain that~$k = 2$ there is~$v \in V$ such that~$(d_1, v)$, $(d_2,v)$, $(v,u_1)$, and~$(v,w)$ are in~$\tc(T)$, and as~$w$ is between~$d_1$ and~$u_2$, we also get~$(v,u_2) \in \tc(T)$.
 
 (ii) $\Rightarrow$ (i). Let~$a,b,c,d,e$ as in~(ii). Then~$(a,d,b,e)$ forms an induced alternating cycle in~$\tc(T)$.
 
@@ -1937,9 +1949,9 @@ The following conditions are equivalent for a directed tree~$T$ on~$V$:
 \begin{definition}
 \label{def:starredTree}
 We say that an increasing tree~$T$ on~$[n]$ is \defn{starred} if it satisfies the equivalent conditions of \cref{lem:starredFreeTrees} and \defn{unstarred} otherwise.
-Note that rooted trees (with increasing edges all oriented toward the root) are unstarred.
 \end{definition}
 
+Note that rooted trees (with increasing edges all oriented toward the root) are unstarred.
 For instance, the tree of \cref{fig:ornamentationsX} is starred (it is the smallest starred tree), while that of \cref{fig:ornamentationsNI,fig:ornamentationsAY} are all unstarred.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2039,15 +2051,11 @@ We can reformulate \cref{prop:rootedTrees1,prop:rootedTrees2,prop:rootedTrees3} 
 It might seem more natural to use the map~$\fS_n \to \ASour(\PP(T))$ defined by~$\pi \mapsto \asour{\areori{\pi}}$ instead of the map~$\AReori(\tc(T)) \to \ASour(\PP(T))$ defined by~$R \mapsto \asour{R}$.
 However, the former is not always a lattice map, while the latter is.
 For instance, the fiber of the ornamentation
-...
-is the set of permutations~$\{\}$ which is not even an interval of the weak order.
-\vincent{todo}
+\[
+\includegraphics[scale=.8,valign=c]{ornamentationV}
+\]
+is the set of permutations~$\{41325, 43125, 14325, 14235, 12435, 12453, 14253, 41253, 41235\}$ which is not even an interval of the weak order as it has two maximal elements~$43125$ and~$41253$.
 \end{remark}
-
-\begin{example}
-Complete binary tree?
-\vincent{Is there something interesting to say. Number of ornamentations?}
-\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2220,6 +2228,36 @@ We conclude that~$B_2 = C^3 (1+y \, C)$.
 %[429, 1573, 6435, 28873, 139659, 717673]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Combs}
+\label{subsec:combs}
+
+\begin{conjecture}
+The number of ornamentations of a comb is given by 1, 4, 26, 226, 2426, 30826, 451586, 7489426, 138722426, 2839238026, 63654973826, 1551919194226, 40888965122426, 1157981114051626, 35083865696279426, 1132449247218851026, 38800104353355372026, 1406432065083818193226, which is https://oeis.org/A105616.
+\end{conjecture}
+
+
+%sage: for n in range(10): 
+%....:     D = DiGraph([[i,i+n] for i in range(1,n)] + [[i,i+1] for i in range(n,2*n-1)]) 
+%....:     print(n, len(digraph_ornamentation_lattice(D))) 
+%....:                                                                                                                                                                                                     
+%0 1
+%1 1
+%2 4
+%3 26
+%4 226
+
+
+\vincent{Can we get the generating function?}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Complete binary trees}
+\label{subsec:CompleteBinaryTrees}
+
+\vincent{Is there something interesting to say. Number of ornamentations?}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2248,7 +2286,18 @@ We say that~$\II$ is \defn{path star sparse} if~$X(T,u,v,\II)$ is acyclic for al
 \end{definition}
 
 \begin{example}
-\vincent{todo}
+Among the $7$ intreeval hypergraphs of \cref{fig:intreevalHypergraphs},
+\begin{itemize}
+\item the first two are both path intersection closed and path star sparse,
+\item the next four are not path intersection closed but path star sparse,
+\item the last one is path intersection closed but not path star sparse.
+\end{itemize}
+
+\begin{figure}
+	\centerline{\includegraphics[scale=.8]{intreevalHypergraphs}}
+	\caption{Some intreeval hypergraphs.}
+	\label{fig:intreevalHypergraphs}
+\end{figure}
 \end{example}
 
 The goal of this section is to show the following characterization.
@@ -2367,6 +2416,11 @@ If~$b <_T g \le_T \max(I)$, then~$S_G(I) = g > b = S_C(I)$, contradicting that~$
 As these four cases are all excluded, we reached a contradiction.
 \end{proof}
 
+\begin{example}
+We illustrate the construction of the proof of \cref{lem:pathIntersectionClosed} the third intreeval hypergraph of \cref{fig:intreevalHypergraphs}.
+\vincent{todo}
+\end{example}
+
 \begin{lemma}
 \label{lem:pathStarSparse}
 Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
@@ -2409,6 +2463,11 @@ For any~$I \in \II$, there is~$i \in [p]$ such that~$u_i \notin I$.
 For this~$i$, we have~$S(I) = S^i(I) \le T(I) \le T^i(I) = S(I)$, hence~$S(I) = T(I)$.
 We conclude that~$S = T$ contradicting the acyclicity of~$T$.
 \end{proof}
+
+\begin{example}
+We illustrate the construction of the proof of \cref{lem:pathStarSparse} the last intreeval hypergraph of \cref{fig:intreevalHypergraphs}.
+\vincent{todo}
+\end{example}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
