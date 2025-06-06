@@ -1554,7 +1554,7 @@ Hence, $u \in \orn{R}(v)$ if and only if~$u' \in \rev(R)$ for all~$u'$ along the
 %%\qquad\text{and}\qquad
 %%M_P^\star(w) \eqdef \begin{cases} \big( \triangle_T(v) \ssm \triangle_T(u) \big) \cup \{u\} & \text{if } w = v \\ \triangle_T(w) & \text{otherwise.} \end{cases}
 %%\]
-%Observe first that~$J_P$ (resp.~$M_P$) is indeed join (resp.~meet) irreducible as it covers (resp. is covered by) a unique ornamentation given by removing~$u$ from~$J_P(v)$ (resp.~adding~$\Delta_T(u)$ to $M_P(v)$).
+%Observe first that~$J_P$ (resp.~$M_P$) is indeed join (resp.~meet) irreducible as it covers (resp.~is covered by) a unique ornamentation given by removing~$u$ from~$J_P(v)$ (resp.~adding~$\Delta_T(u)$ to $M_P(v)$).
 %
 %Consider now a join irreducible ornamentation~$J$ of~$T$, and let~$J_\star$ be the unique ornamentation of~$T$ covered by~$J$.
 %%If~$O(v) = \{v\}$ for all~$v \in V$, then~$O$ is the minimal ornamentation of~$T$.
@@ -1995,7 +1995,7 @@ By induction on the sum of the length of the paths between~$d_i$ and~$u_i$ in~$T
 
 (ii) $\Rightarrow$ (i). Let~$a,b,c,d,e$ as in~(ii). Then~$(a,d,b,e)$ forms an induced alternating cycle in~$\tc(T)$.
 
-(ii) $\Rightarrow$ (iii). Let~$a,b,c,d,e$ as in~(ii). Let $u$ (resp.~$v$) be the first (resp. last) common vertex of the paths from~$a$ and~$b$ to~$c$ (resp. from~$c$ to~$d$ and~$e$). Then~$u$ (resp.~$v$) has at least two incoming (resp.~outgoing) arrows, and there is a path from~$u$ to~$v$ passing through~$c$.
+(ii) $\Rightarrow$ (iii). Let~$a,b,c,d,e$ as in~(ii). Let $u$ (resp.~$v$) be the first (resp.~last) common vertex of the paths from~$a$ and~$b$ to~$c$ (resp.~from~$c$ to~$d$ and~$e$). Then~$u$ (resp.~$v$) has at least two incoming (resp.~outgoing) arrows, and there is a path from~$u$ to~$v$ passing through~$c$.
 
 (iii) $\Rightarrow$ (ii). Let~$u,v$ as in~(iii). Let~$a,b$ be two incoming neighbors of~$u$, let~$d,e$ be two outgoinng neighbors of~$v$, and let~$c$ be any vertex along the path from~$u$ to~$v$. Then~$a,b,c,d,e$ are as in~(ii).
 \end{proof}
@@ -2017,14 +2017,22 @@ This section is devoted to the proof of \cref{thm:main2}, which we cut into piec
 
 \begin{proposition}
 \label{prop:AReoriLatticeUT}
-For an unstarred tree~$T$, the acyclic reorientation lattice~$\AReori(\tc(T))$ is a lattice.
+For an unstarred tree~$T$, all transitively biclosed reorientations of~$\tc(T)$ are acyclic.
+In particular, the acyclic reorientation lattice~$\AReori(\tc(T))$ is a lattice.
 \end{proposition}
 
 \begin{proof}
-Given any subset~$U \subset [n]$, the subgraph of~$\tc(T)$ induced by~$U$ contains no induced alternating cycle, hence no induced cycles of length at least~$4$.
-Hence, its transitive reduction contains no cycle.
-We conclude by~\cref{prop:AReoriLatJoinMeet} that~$\AReori(\tc(T))$ is a lattice.
+Assume that there is a transitively biclosed and cyclic reorientation~$R$ of~$\tc(T)$.
+As~$R$ contains a cycle, it contains an induced oriented cycle~$C$ (any chord can be used to make the cycle shorter).
+Since~$R$ is transitively biclosed, $C$ is an induced alternating cycle in~$\tc(T)$.
+This imply that~$T$ is starred by \cref{def:starredTree}.
 \end{proof}
+
+\begin{remark}
+Note that it is also straightforward to check that an unstarred tree~$T$ satisfies the condition of~\cref{prop:AReoriLatJoinMeet}.
+Indeed, given any subset~$U \subset [n]$, the subgraph of~$\tc(T)$ induced by~$U$ contains no induced alternating cycle, hence no induced cycles of length at least~$4$.
+Hence, its transitive reduction contains no cycle.
+\end{remark}
 
 \begin{proposition}
 \label{prop:AOrnLatticeUT}
@@ -2033,25 +2041,8 @@ In particular, all ornamentations of~$T$ are acyclic and~$\ASour(\PP(T)) \simeq 
 \end{proposition}
 
 \begin{proof}
-If~$\reori{O}$ is cyclic, it contains an induced oriented cycle (any chord can be used to make the cycle shorter).
-An induced oriented cycle in~$\reori{O}$ is an induced alternating cycle in~$\tc(T)$ by~\cref{lem:Orn2ReoriT}.
-This would imply that~$T$ is starred by \cref{def:starredTree}.
+The orientation~$R_O$ is transitively biclosed by~\cref{lem:Orn2ReoriT}, hence acyclic by \cref{prop:AReoriLatticeUT}.
 The proof for the acyclicity of~$\sour{O}$ is similar.
-%Assume that~$\reori{O}$ contains an oriented cycle~$C$, and assume that~$C$ is minimal.
-%Let~$u$ be the vertex of~$C$ closest to the root of~$T$.
-%Let~$v$ be the last vertex along~$C$ such that the path from~$u$ to~$v$ in~$C$ moves away from~$u$ at each step.
-%Finally, let~$w$ be the vertex just after~$v$ along~$C$.
-%Since~$(v,w) \in \tc(T)$, the vertex~$w$ is along the path from~$v$ to the root of~$T$, hence between~$u$ and~$v$.
-%Since the edges of~$C$ between~$u$ and~$v$ are in~$\rev(\reori{O})$, we obtain that~$v \in O(u)$, hence~$w \in O(u)$ since~$w$ lies along the path from~$u$ to~$v$ in~$T$.
-%We conclude that~$(u,w) \in \rev(\reori{O})$, contradicting the minimality of the cycle~$C$.
-%The proof for the acyclicity of~$\sour{O}$ is similar.
-%
-%For Part (1),
-%the transitive reduction $D$ of any induced subgraph of $\tc(T)$ is a (rooted) forest.
-%Indeed, any such $D$ is clearly acyclic and all the out-degrees of its vertices are at most one.
-%Otherwise, if $(u,v)$ and $(u,v')$ are edges in $D$, then both $v,v'$ are vertices in the unique path from $u$ to the root of $T$, and thus form an edge of $D$, contradicting that $D$ is transitively reduced.
-%It follows from \cref{prop:AReoriLat} that $\AReori(\tc(T))$ is a lattice.
-%The other two claims in Part (1) follow from Part (2).
 \end{proof}
 
 \begin{proposition}
@@ -2061,6 +2052,7 @@ Hence, neither the acyclic reorientation poset~$\AReori(\tc(T))$ nor the acyclic
 
 \begin{proof}
 \vincent{todo}
+We conclude by~\cref{thm:MacNeille} that~$\AReori(\tc(T))$ and~$\ASour(\PP(T)) \simeq \AOrn(T)$ are not lattices.
 \end{proof}
 
 To sum up, we proved the following statement.
