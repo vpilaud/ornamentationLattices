@@ -25,19 +25,19 @@
 \title[Ornamentation lattices and intreeval hypergraphic lattices]{Ornamentation lattices and \\ intreeval hypergraphic lattices}
 
 \author{Antoine Abram}
-\address[A.~Abram]{}
+\address[A.~Abram]{LACIM, Université du Québec à Montréal, Montréal}
 \email{}
 \urladdr{}
 
 \author{Jose Bastidas}
-\address[J.~Bastidas]{}
-\email{}
-\urladdr{}
+\address[J.~Bastidas]{LACIM, Université du Québec à Montréal, Montréal}
+\email{bastidas.math@proton.me}
+\urladdr{https://sites.google.com/view/bastidas/}
 
-\author{Félix Gélinas}
-\address[F.~Gélinas]{}
-\email{}
-\urladdr{}
+\author{F\'elix G\'elinas}
+\address[F.~G\'elinas]{Department of Mathematics and Statistics, York University, Toronto}
+\email{felixgel@yorku.ca}
+\urladdr{https://sites.google.com/view/felixgelinas}
 
 \author{Vincent Pilaud}
 \address[V.~Pilaud]{Universitat de Barcelona \& Centre de Recerca Matemàtica, Barcelona}
@@ -358,7 +358,7 @@ For any increasing tree~$T$ on~$[n]$, the ornamentation lattice~$\Orn(T)$ is the
 \end{theorem}
 
 We then consider a special class of increasing trees, containing in particular all rooted trees.
-A tree~$T$ is \defn{unstarred} if there are no vertices~$u,v$ of~$T$ such that~$u$ has at least two incoming edges in~$T$, $v$ has at least two outgoing edges in~$T$, and $T$ has a directed path from~$u$ to~$v$
+A tree~$T$ is \defn{unstarred} if there are no vertices~$u,v$ of~$T$ such that~$u$ has at least two incoming edges in~$T$, $v$ has at least two outgoing edges in~$T$, and $T$ has a directed path from~$u$ to~$v$.
 For these trees, the acyclic sourcing poset and ornamentation lattice are even closer.
 
 \begin{theorem}
@@ -368,7 +368,7 @@ For an unstarred increasing tree~$T$,
 \item the acyclic reorientation poset~$\AReori(\tc(T))$, the acyclic sourcing poset~$\ASour(\PP(T))$, and the acyclic ornamentation poset~$\AOrn(T)$ are all lattices,
 \item all ornamentations of~$T$ are in fact acyclic, so that~$\ASour(\PP(T)) \simeq \AOrn(T) = \Orn(T)$,
 \item the map~$R \mapsto \orn{R}$ is a surjective lattice map so that the ornamentation lattice~$\Orn(T)$ is a lattice quotient of the acyclic reorientation lattice~$\AReori(\tc(T))$,
-\item the ornamentation lattice~$\orn(T)$ is isomorphic to the transitive closure of the graph of the path hypergraphic polytope~$\simplex_{\PP(T)}$ oriented in the direction~$\b{w}$. \label{item:polytopalRealization}
+\item the ornamentation lattice~$\Orn(T)$ is isomorphic to the transitive closure of the graph of the path hypergraphic polytope~$\simplex_{\PP(T)}$ oriented in the direction~$\b{w}$. \label{item:polytopalRealization}
 \end{enumerate}
 \end{theorem}
 
@@ -1972,7 +1972,7 @@ We will see further equivalent conditions in \cref{subsec:OrnUT}, see \cref{coro
 The following conditions are equivalent for a directed tree~$T$ on~$V$:
 \begin{enumerate}[(i)]
 \item $\tc(T)$ contains an induced alternating cycle.
-\item there are $a,b,c,d,e \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$, and~$(c,e)$ are all in~$\tc(T)$,
+\item there are distinct $a,b,c,d,e \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$, and~$(c,e)$ are all in~$\tc(T)$,
 \item there are~$u,v \in V$ such that~$u$ has at least two incoming edges in~$T$, $v$ has at least two outgoing edges in~$T$, and $T$ has a directed path from~$u$ to~$v$,
 \end{enumerate}
 \end{lemma}
@@ -1995,7 +1995,7 @@ By induction on the sum of the length of the paths between~$d_i$ and~$u_i$ in~$T
 
 (ii) $\Rightarrow$ (i). Let~$a,b,c,d,e$ as in~(ii). Then~$(a,d,b,e)$ forms an induced alternating cycle in~$\tc(T)$.
 
-(ii) $\Rightarrow$ (iii). Let~$a,b,c,d,e$ as in~(ii). Let $u$ (resp.~$v$) be the first common vertex of the paths from~$a$ and~$b$ to~$c$ (from~$c$ to~$d$ and~$e$). Then~$u$ (resp.~$v$) has at least two incoming (resp.~outgoing) arrows, and there is a path from~$u$ to~$v$ passing through~$c$.
+(ii) $\Rightarrow$ (iii). Let~$a,b,c,d,e$ as in~(ii). Let $u$ (resp.~$v$) be the first (resp. last) common vertex of the paths from~$a$ and~$b$ to~$c$ (resp. from~$c$ to~$d$ and~$e$). Then~$u$ (resp.~$v$) has at least two incoming (resp.~outgoing) arrows, and there is a path from~$u$ to~$v$ passing through~$c$.
 
 (iii) $\Rightarrow$ (ii). Let~$u,v$ as in~(iii). Let~$a,b$ be two incoming neighbors of~$u$, let~$d,e$ be two outgoinng neighbors of~$v$, and let~$c$ be any vertex along the path from~$u$ to~$v$. Then~$a,b,c,d,e$ are as in~(ii).
 \end{proof}
