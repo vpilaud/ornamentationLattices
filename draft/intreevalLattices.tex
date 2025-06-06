@@ -173,6 +173,7 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\areori}[1]{\mymap{AR}{#1}}  % acyclic reorientation
 \DeclareMathOperator{\Rcl}{\c{R}^{cl}}  % transitively closed reorientations
 \DeclareMathOperator{\Rco}{\c{R}^{co}}  % transitively coclosed reorientations
+\DeclareMathOperator{\Rbi}{\c{R}^{bi}}  % transitively biclosed reorientations
 \DeclareMathOperator{\rev}{rev} % reversed arrows
 \DeclareMathOperator{\Sour}{\mathcal{S}}  % sourcings
 \newcommand{\sour}[1]{\mymap{S}{#1}}  % sourcing
@@ -252,6 +253,7 @@ Let~$(\b{e}_v)_{v \in [n]}$ denote the standard basis of~$\R^n$.
 The \defn{hypergraphic polytope} of~$\HH$ is the Minkowski sum~$\simplex_\HH \eqdef \sum_{H \in \HH} \simplex_H$, where~$\simplex_H \eqdef \conv\set{\b{e}_h}{h \in H}$ denotes the face of the standard simplex indexed by the hyperedge~$H$.
 The face lattice of~$\simplex_\HH$ was described combinatorially in terms of acyclic orientations of~$\HH$ in~\cite{BenedettiBergeronMachacek}.
 In particular, it turns out that the acyclic sourcing poset~$\ASour(\HH)$ is the transitive closure of the graph of the hypergraphic polytope~$\simplex_\HH$, oriented in the standard direction~$\b{\omega} \eqdef (n-1, n-3, \dots, 3-n, 1-n)$.
+\vincent{Cite Felix}
 
 For instance, 
 \begin{itemize}
@@ -327,6 +329,8 @@ There are natural order-preserving surjections
 Moreover, $R \mapsto \orn{R}$ (resp.~$S \to \orn{S}$) restricts to a meet semilattice morphism from the transitively closed reorientation lattice of~$\tc(D)$ (resp.~sourcing lattice of~$\PP(D)$) to the ornamentation lattice~of~$D$.
 \end{proposition}
 
+\vincent{I need to speak about transitively closed, coclosed, biclosed here}
+
 In \cref{sec:acyclic}, we focus on acyclicity.
 We consider the acyclic reorientation poset~$\AReori(E)$, the acyclic sourcing poset~$\ASour(\HH)$, and define the acyclic ornamentation poset~$\AOrn(D)$, and we connect them as follows.
 
@@ -346,6 +350,7 @@ These connections become particularly interesting when the ground directed graph
 In \cref{sec:trees}, we first consider a directed tree.
 We describe the join irreducible ornamentations of~$T$ and meet irreducible ornamentations of~$T$, and prove that the ornamentation lattice~$\Orn(T)$ is semidistributive.
 Observing that all join or meet irreducible ornamentations of~$T$ are acyclic, we obtain the following strong connection between the acyclic sourcing poset~$\ASour(\PP(T))$ and the ornamentation lattice~$\Orn(T)$.
+\vincent{I need to add reorientation in this paragraph and statement...}
 
 \begin{theorem}
 \label{thm:main1}
@@ -745,14 +750,31 @@ To correct this default, we can restrict our attention to transitively closed re
 
 \begin{definition}
 \label{def:transitivelyClosed}
-A reorientation~$R$ of~$\tc(D)$ is \defn{transitively closed} if~$\rev(R)$ is transitively closed %, that is~$(u,v), (v,w) \in \rev(R)$ implies $(u,w) \in \rev(R)$.
-and \defn{transitively coclosed} if the complement~$\tc(D) \ssm \rev(R)$ is transitively closed.
-We denote by~$\Rcl(\tc(D))$ and $\Rco(\tc(D))$ the sets of transitively closed and transitively coclosed reorientations of $\tc(D)$ respectively.
+A reorientation~$R$ of~$\tc(D)$ is 
+\begin{itemize}
+\item \defn{transitively closed} if~$(u,v), (v,w) \in \rev(R)$ implies $(u,w) \in \rev(R)$,
+\item \defn{transitively coclosed} if~$(u,v), (v,w) \notin \rev(R)$ implies $(u,w) \notin \rev(R)$,
+\item \defn{transitively biclosed} if it is both transitively closed and transitively coclosed. 
+\end{itemize}
+We denote by~$\Rcl(\tc(D))$, $\Rco(\tc(D))$, and~$\Rbi(\tc(D))$ the sets of transitively closed, transitively coclosed, and transitively biclosed reorientations of $\tc(D)$ respectively.
 \end{definition}
+
+\begin{remark}
+\label{rem:biclosedCyclic}
+There are some transitively biclosed reorientations of~$\tc(D)$ which are not acyclic, even when~$D$ is a tree.
+For instance,
+\[
+\includegraphics[scale=.8,valign=c]{cyclicReorientationX1}
+\qquad\text{and}\qquad
+\includegraphics[scale=.8,valign=c]{cyclicReorientationX2}
+\]
+We will see that all transitively biclosed reorientations are acyclic when~$T$ is an unstarred tree.
+\vincent{ref}
+\end{remark}
 
 \begin{lemma}
 \label{lem:rcl-subsemilattice}
-$\Rcl(\tc(D))$ (resp.~$\Rco(\tc(D))$) induces a meet (resp.~join) subsemilattice of~$\Reori(\tc(D))$, which is a lattice.
+The set~$\Rcl(\tc(D))$ (resp.~$\Rco(\tc(D))$) of transitively closed (resp.~coclosed) reorientations induces a meet (resp.~join) subsemilattice of~$\Reori(\tc(D))$, which is a lattice.
 \end{lemma}
 
 \begin{proof}
@@ -762,8 +784,9 @@ The proof for~$\Rco(\tc(D))$ is symmetric.
 \end{proof}
 
 \begin{remark}
-Observe however that~$\Rcl(\tc(D)) \cap \Rco(\tc(D))$ may fail to be a lattice when~$D$ is not a tree.
-For instance, consider the following four transitively closed and coclosed reorientations:
+\label{rem:biclosedNotLattice}
+Observe however that~$\Rbi(\tc(D))$ may fail to be a lattice when~$D$ is not a tree.
+For instance, consider the following four transitively biclosed reorientations:
 %\[
 %\begin{array}{cccc}
 %\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationD1}} &
@@ -783,8 +806,8 @@ R_3 = \!\! \includegraphics[scale=.8,valign=c]{reorientationD3}
 \qquad
 R_4 = \!\! \includegraphics[scale=.8,valign=c]{reorientationD4}
 \]
-Then~$R_1, R_2 < R_3, R_4$ and there is no transitively closed and coclosed reorientation~$R$ such that~$R_1, R_2 < R < R_3, R_4$.
-\vincent{$\Rcl(\tc(D)) \cap \Rco(\tc(D))$ is a lattice when~$D$ is a directed tree. Not sure where to place that.}
+Then~$R_1 < R_3$, $R_1 < R_4$, $R_2 < R_3$, and~$R_2 < R_4$ and there is no transitively biclosed reorientation~$R$ such that~$R_1 < R$, $R_2 < R$, $R < R_3$, and~$R < R_4$.
+We will see in \cref{prop:biclosedLatticeT} that~$\Rbi(\tc(T))$ is a lattice when~$T$ is a tree.
 \end{remark}
 
 \begin{proposition}
@@ -800,14 +823,14 @@ Hence~$(u,w) \in \rev(\reori{O})$.
 \end{proof}
 
 \begin{remark}
-\label{rem:notTransitivelyCoclosed}
+\label{rem:Orn2ReoriNotTransitivelyCoclosed}
 Note that~$\reori{O}$ is not always transitively coclosed.
 For instance,
 \[
 O = \!\!\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} \qquad \reori{O} = \!\!\includegraphics[scale=.8,valign=c]{cyclicReorientationD1}
 .
 \]
-We will see in \cref{lem:Orn2ReoriT} that $\reori{O}$ is both transitively closed and coclosed when~$D$ is a directed tree.
+We will see in \cref{lem:Orn2ReoriT} that $\reori{O}$ is transitively biclosed when~$D$ is a directed tree.
 \end{remark}
 
 This surjection behaves much nicer with respect to \cref{rem:Orn2ReoriMiddle,rem:Reori2OrnIntervals1,rem:Reori2OrnSemilatticeMap}.
@@ -1137,6 +1160,7 @@ where $\simplex_H$ is the simplex given by the convex hull of the points $\b{e}_
 The face lattice of~$\simplex_\HH$ was described combinatorially in terms of acyclic orientations of~$\HH$ in~\cite{BenedettiBergeronMachacek}.
 In particular, the transitive closure of the graph of~$\simplex_\HH$, oriented in the direction~$\b{\omega}$, is isomorphic to the acyclic sourcing poset~$\ASour(\HH)$.
 Note that the graph of~$\simplex_\HH$, oriented in the direction~$\b{\omega}$, is not always transitively reduced, hence not always isomorphic to the Hasse diagram of the acyclic sourcing poset~$\ASour(\HH)$.
+\vincent{Cite Felix}
 \end{remark}
 
 \begin{remark}
@@ -1594,7 +1618,7 @@ Hence, $u \in \orn{R}(v)$ if and only if~$u' \in \rev(R)$ for all~$u'$ along the
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Semidistributivity and canonical join representations}
+\subsection{Semidistributivity and canonical join representations in the ornamentation lattice}
 
 Let us start with a quick recollection on semidistributivity.
 We consider a finite lattice~$(L, \le, \meet, \join)$.
@@ -1707,102 +1731,22 @@ This directly follows from \cref{prop:semidistributive,lem:semidistributive}.
 Observe that the ornamentation lattice~$\Orn(\Dgraph)$ of the diamond graph~$\Dgraph$ represented in \cref{fig:ornamentationsD} is neither join nor meet semidistributive, since
 \begin{multline*}
 \includegraphics[scale=.8,valign=c]{ornamentationD1} \join \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} = \includegraphics[scale=.8,valign=c]{ornamentationD1} \join \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD2} = \includegraphics[scale=.8,valign=c]{ornamentationD2}
-\\
+\\[-.2cm]
  \ne \includegraphics[scale=.8,valign=c]{ornamentationD1} = \includegraphics[scale=.8,valign=c]{ornamentationD1} \join \includegraphics[scale=.8,valign=c]{ornamentationD3} = \includegraphics[scale=.8,valign=c]{ornamentationD1} \join \Big( \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} \meet  \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD2} \Big)
 \end{multline*}
 and
 \begin{multline*}
 \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} \meet \includegraphics[scale=.8,valign=c]{ornamentationD1} = \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} \meet \includegraphics[scale=.8,valign=c]{ornamentationD4} = \includegraphics[scale=.8,valign=c]{ornamentationD5}
-\\
+\\[-.2cm]
  \ne \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} = \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} \meet \includegraphics[scale=.8,valign=c]{ornamentationD6} = \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} \meet \Big( \includegraphics[scale=.8,valign=c]{ornamentationD1} \join  \includegraphics[scale=.8,valign=c]{ornamentationD4} \Big)
 \end{multline*}
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{MacNeille completion}
+\subsection{Maximal reorientation}
 
-We first briefly recall the definition of the MacNeille completion of a poset.
-
-\begin{definition}
-\label{def:MacNeilleCompletion}
-A \defn{completion} of a finite poset~$P$ is a lattice~$L$ such that there is an order-embedding~$f : P \to L$ (meaning that~$x \le_P y$ if and only if~$f(x) \le_L f(y)$).
-The MacNeille completion~$C(P)$ of~$P$ is the smallest completion of~$P$, meaning that for any completion~$L$ of~$P$, there exists an order-embedding from~$C(P)$ to~$L$.
-\end{definition}
-
-\begin{proposition}[{\cite[Thm.~7.42]{DaveyPriestley}}]
-\label{prop:MacNeilleCompletion}
-Any finite lattice~$L$ is the MacNeille completion of its subposet induced by~$\JI \cup \MI$.
-\end{proposition}
-
-We now come back to ornamentation lattices.
-As already observed on the directed tree~$\Xgraph$ of \cref{fig:ornamentationsX},
-\begin{itemize}
-\item there might be some cyclic ornamentations (\cref{rem:COrn}),
-\item the acyclic ornamentation poset is not always a lattice (\cref{rem:AOrnLat}).
-\end{itemize}
-However, we now observe that for a directed tree~$T$, the ornamentation lattice~$\Orn(T)$ is precisely the MacNeille completion of the acyclic ornamentation lattice~$\AOrn(T)$.
-For this, we need the following lemma.
-
-\begin{lemma}
-\label{lem:irreduciblesAcyclicT}
-For any~$P \in \PP(T)$, the reorientations~$\reori{J_P}$ and~$\reori{M_P}$ of~$\tc(T)$ are both acyclic.
-\end{lemma}
-
-\begin{proof}
-Observe that~$\rev(J_P) = (P \ssm \{v\}) \times \{v\}$.
-Hence, any induced cycle in~$\reori{J_P}$ must consist in an edge~$(v,y)$ and a directed path from~$y$ to~$v$ in~$T$ for some~$u \le_T y \le_T v$.
-This is impossible as the last edge of this path would be in~$\rev(J_P)$.
-
-Observe that~$\tc(T) \ssm \rev(M_P) = \triangle_T(u) \times (P \ssm \{u\})$.
-Any cycle in~$\reori{M_P}$ should have an edge of $\tc(T) \ssm \rev(M_P)$, hence a vertex in~$\triangle_T(u)$ and a vertex in~$P \ssm \{u\}$.
-This is impossible as there is no edge of~$\reori{M_P}$ leaving~$P \ssm \{u\}$.
-\end{proof}
-
-\begin{corollary}
-\label{coro:irreduciblesAcyclicT}
-All join (resp.~meet) irreducible ornamentations of a directed tree~$T$ are acyclic.
-\end{corollary}
-
-\begin{proof}
-This follows from \cref{lem:irreduciblesAcyclicT,thm:OrnSemidistributiveT}.
-\end{proof}
-
-We conclude with the main statement of this section.
-
-\begin{theorem}
-\label{thm:MacNeille}
-%The ornamentation lattice~$\Orn(T)$ of a directed tree~$T$ has no strict subposet which forms a lattice and contains all acyclic ornamentations of~$T$.
-For a directed tree~$T$, the ornamentation lattice~$\Orn(T)$ is the MacNeille completion of the acyclic ornamentation poset~$\AOrn(T)$ (or equivalently of the acyclic sourcing poset~$\ASour(\PP(T))$).
-\end{theorem}
-
-\begin{proof}
-This follows from \cref{prop:MacNeilleCompletion,coro:irreduciblesAcyclicT}.
-\end{proof}
-
-\begin{remark}
-\label{rem:MacNeille}
-Note that~\cref{thm:MacNeille} fails beyond directed trees.
-For instance,
-\begin{itemize}
-\item for the directed graph~$\Kgraph$ of \cref{fig:ornamentationsKT}, the acyclic ornamentations already form lattice, even if there is a cyclic ornamentation,
-\item for the directed graph~$\Dgraph$ of  \cref{fig:ornamentationsD}, the acyclic ornamentation poset is not a lattice, but adding the two cyclic ornamentations
-\[
-\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD3}
-\quad\text{and}\quad
-\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD4}
-\]
-suffices to make it a lattice.
-\end{itemize}
-In contrast, \cref{thm:MacNeille} still holds for the directed graph~$\Tgraph$ of \cref{fig:ornamentationsKT}.
-In general, we have no description of the MacNeille completion of the acyclic ornamentation lattice of an arbitrary directed graph.
-\end{remark}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Maximal reorientation and coclosedness}
-
-We first revisit \cref{rem:Reori2OrnIntervals1,rem:Reori2OrnIntervals2} for directed trees.
+We now revisit \cref{rem:Reori2OrnIntervals1,rem:Reori2OrnIntervals2} for directed trees.
 
 \begin{definition}
 \label{def:Reori2OrnMaxT}
@@ -1851,13 +1795,22 @@ We conclude that the fiber of~$O$ is an interval, since it has a minimum by \cre
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\subsection{Coclosedness and induced cycles}
+\subsection{Closed, coclosed, biclosed reorientations}
 
-We finally revisit \cref{rem:notTransitivelyCoclosed} for directed trees.
+We now revisit \cref{rem:biclosedNotLattice,rem:Orn2ReoriNotTransitivelyCoclosed} for directed trees.
+
+\begin{proposition}
+\label{prop:biclosedLatticeT}
+The set~$\Rcl(\tc(D))$ (resp.~$\Rco(\tc(D))$) of transitively closed (resp.~coclosed) reorientations induces a meet (resp.~join) subsemilattice of~$\Reori(\tc(D))$, which is a lattice.
+\end{proposition}
+
+\begin{proof}
+\vincent{todo}
+\end{proof}
 
 \begin{lemma}
 \label{lem:Orn2ReoriT}
-For an ornamentation~$O$ of a directed tree~$T$, the reorientation~$\reori{O}$ is transitively closed and coclosed.
+For an ornamentation~$O$ of a directed tree~$T$, the reorientation~$\reori{O}$ is transitively biclosed.
 %Hence, any induced oriented cycle in~$\reori{O}$ is an induced alternating cycle in~$\tc(T)$ (meaning taking alternatively forward and backward arrows).
 \end{lemma}
 
@@ -1895,6 +1848,106 @@ We conclude that~$\reori{O}$ is transitively coclosed.
 %\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{MacNeille completions}
+
+We first briefly recall the definition of the MacNeille completion of a poset.
+
+\begin{definition}
+\label{def:MacNeilleCompletion}
+A \defn{completion} of a finite poset~$P$ is a lattice~$L$ such that there is an order-embedding~$f : P \to L$ (meaning that~$x \le_P y$ if and only if~$f(x) \le_L f(y)$).
+The MacNeille completion~$C(P)$ of~$P$ is the smallest completion of~$P$, meaning that for any completion~$L$ of~$P$, there exists an order-embedding from~$C(P)$ to~$L$.
+\end{definition}
+
+\begin{proposition}[{\cite[Thm.~7.42]{DaveyPriestley}}]
+\label{prop:MacNeilleCompletion}
+Any finite lattice~$L$ is the MacNeille completion of its subposet induced by~$\JI \cup \MI$.
+\end{proposition}
+
+We now come back to ornamentation lattices.
+As already observed on the directed tree~$\Xgraph$ of \cref{fig:ornamentationsX},
+\begin{itemize}
+\item there might be some transitively biclosed but cyclic reorientations of~$\tc(T)$ (\cref{rem:biclosedCyclic}),
+\item the acyclic reorientation poset~$\AReori(\tc(T))$ is not always a lattice (\cref{prop:AReoriLat}),
+\item there might be some cyclic ornamentations of~$T$ (\cref{rem:COrn}),
+\item the acyclic ornamentation poset~$\AOrn(T)$ is not always a lattice (\cref{rem:AOrnLat}).
+\end{itemize}
+However, we now observe that for a directed tree~$T$, the transitively biclosed reorientation lattice~$\Rbi(\tc(T))$ (resp.~the ornamentation lattice~$\Orn(T)$) is precisely the MacNeille completion of the acyclic reorientation poset~$\AReori(\tc(T))$ (resp.~of the acyclic ornamentation lattice~$\AOrn(T)$).
+For this, we need the following lemmas.
+
+\begin{lemma}
+\label{lem:irreduciblesReorientationsAcyclicT}
+If~$R$ is a biclosed and cyclic reorientation of~$\tc(T)$, then it covers at least two biclosed reorientations.
+\end{lemma}
+
+\begin{proof}
+\vincent{todo}
+\end{proof}
+
+\begin{lemma}
+\label{lem:irreduciblesOrnamentationsAcyclicT}
+For any~$P \in \PP(T)$, the reorientations~$\reori{J_P}$ and~$\reori{M_P}$ of~$\tc(T)$ are both acyclic.
+\end{lemma}
+
+\begin{proof}
+Observe that~$\rev(J_P) = (P \ssm \{v\}) \times \{v\}$.
+Hence, any induced cycle in~$\reori{J_P}$ must consist in an edge~$(v,y)$ and a directed path from~$y$ to~$v$ in~$T$ for some~$u \le_T y \le_T v$.
+This is impossible as the last edge of this path would be in~$\rev(J_P)$.
+
+Observe that~$\tc(T) \ssm \rev(M_P) = \triangle_T(u) \times (P \ssm \{u\})$.
+Any cycle in~$\reori{M_P}$ should have an edge of $\tc(T) \ssm \rev(M_P)$, hence a vertex in~$\triangle_T(u)$ and a vertex in~$P \ssm \{u\}$.
+This is impossible as there is no edge of~$\reori{M_P}$ leaving~$P \ssm \{u\}$.
+\end{proof}
+
+\begin{corollary}
+\label{coro:irreduciblesAcyclicT}
+For a directed tree~$T$, 
+\begin{itemize}
+\item all join (resp.~meet) irreducible transitively biclosed reorientations of~$\tc(T)$ are acyclic,
+\item all join (resp.~meet) irreducible ornamentations of~$T$ are acyclic.
+\end{itemize}
+\end{corollary}
+
+\begin{proof}
+It follows from \cref{lem:irreduciblesReorientationsAcyclicT} for transtively biclosed reorientations, and from \cref{lem:irreduciblesOrnamentationsAcyclicT,thm:OrnSemidistributiveT} for ornamentations.
+\end{proof}
+
+We conclude with the main statement of this section.
+
+\begin{theorem}
+\label{thm:MacNeille}
+%The ornamentation lattice~$\Orn(T)$ of a directed tree~$T$ has no strict subposet which forms a lattice and contains all acyclic ornamentations of~$T$.
+For a directed tree~$T$, 
+\begin{itemize}
+\item the transitively biclosed reorientation lattice~$\Rbi(\tc(T))$ is the MacNeille completion of the acyclic reorientation poset~$\AReori(\tc(T))$,
+\item the ornamentation lattice~$\Orn(T)$ is the MacNeille completion of the acyclic ornamentation poset~$\AOrn(T)$ (or equivalently of the acyclic sourcing poset~$\ASour(\PP(T))$).
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+This follows from \cref{prop:MacNeilleCompletion,coro:irreduciblesAcyclicT}.
+\end{proof}
+
+\begin{remark}
+\label{rem:MacNeille}
+Note that~\cref{thm:MacNeille} fails beyond directed trees.
+\vincent{I need to update this example...}
+For instance,
+\begin{itemize}
+\item for the directed graph~$\Kgraph$ of \cref{fig:ornamentationsKT}, the acyclic ornamentations already form lattice, even if there is a cyclic ornamentation,
+\item for the directed graph~$\Dgraph$ of  \cref{fig:ornamentationsD}, the acyclic ornamentation poset is not a lattice, but adding the two cyclic ornamentations
+\[
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD3}
+\quad\text{and}\quad
+\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD4}
+\]
+suffices to make it a lattice.
+\end{itemize}
+In contrast, \cref{thm:MacNeille} still holds for the directed graph~$\Tgraph$ of \cref{fig:ornamentationsKT}.
+In general, we have no description of the MacNeille completion of the acyclic ornamentation lattice of an arbitrary directed graph.
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1911,10 +1964,11 @@ Finally, we discuss enumeration properties of ornamentations of brooms in \cref{
 \label{subsec:unstarredTrees}
 
 
-We first define the family of unstarred trees by the following equivalent conditions.
+We first define the family of unstarred trees by the following equivalent conditions on~$\tc(T)$.
+We will see further equivalent conditions in \cref{subsec:OrnUT}, see \cref{coro:starredCharacterizations} for a summary.
 
 \begin{lemma}
-\label{lem:starredFreeTrees}
+\label{lem:starredCharacterization}
 The following conditions are equivalent for a directed tree~$T$ on~$V$:
 \begin{enumerate}[(i)]
 \item $\tc(T)$ contains an induced alternating cycle.
@@ -1948,7 +2002,7 @@ By induction on the sum of the length of the paths between~$d_i$ and~$u_i$ in~$T
 
 \begin{definition}
 \label{def:starredTree}
-We say that an increasing tree~$T$ on~$[n]$ is \defn{starred} if it satisfies the equivalent conditions of \cref{lem:starredFreeTrees} and \defn{unstarred} otherwise.
+We say that an increasing tree~$T$ on~$[n]$ is \defn{starred} if it satisfies the equivalent conditions of \cref{lem:starredCharacterization} and \defn{unstarred} otherwise.
 \end{definition}
 
 Note that rooted trees (with increasing edges all oriented toward the root) are unstarred.
@@ -1962,8 +2016,19 @@ For instance, the tree of \cref{fig:ornamentationsX} is starred (it is the small
 This section is devoted to the proof of \cref{thm:main2}, which we cut into pieces.
 
 \begin{proposition}
-\label{prop:rootedTrees1}
-For any ornamentation~$O$ of an unstared tree~$T$, the reorientation~$\reori{O}$ of~$\tc(T)$ and the sourcing~$\sour{O}$ of~$\PP(T)$ are both acyclic.
+\label{prop:AReoriLatticeUT}
+For an unstarred tree~$T$, the acyclic reorientation lattice~$\AReori(\tc(T))$ is a lattice.
+\end{proposition}
+
+\begin{proof}
+Given any subset~$U \subset [n]$, the subgraph of~$\tc(T)$ induced by~$U$ contains no induced alternating cycle, hence no induced cycles of length at least~$4$.
+Hence, its transitive reduction contains no cycle.
+We conclude by~\cref{prop:AReoriLatJoinMeet} that~$\AReori(\tc(T))$ is a lattice.
+\end{proof}
+
+\begin{proposition}
+\label{prop:AOrnLatticeUT}
+For any ornamentation~$O$ of an unstarred tree~$T$, the reorientation~$\reori{O}$ of~$\tc(T)$ and the sourcing~$\sour{O}$ of~$\PP(T)$ are both acyclic.
 In particular, all ornamentations of~$T$ are acyclic and~$\ASour(\PP(T)) \simeq \AOrn(T) = \Orn(T)$.
 \end{proposition}
 
@@ -1990,21 +2055,35 @@ The proof for the acyclicity of~$\sour{O}$ is similar.
 \end{proof}
 
 \begin{proposition}
-\label{prop:rootedTrees2}
-For an unstarred tree~$T$, the acyclic reorientation poset~$\AReori(\tc(T))$, the acyclic sourcing poset~$\ASour(\PP(T))$, and the acyclic ornamentation poset~$\AOrn(T)$ are all lattices.
+For a starred tree~$T$, there exists a transitively biclosed and cyclic reorientation of~$\tc(T)$ and a cyclic reorientation.
+Hence, neither the acyclic reorientation poset~$\AReori(\tc(T))$ nor the acyclic sourcing poset~$\ASour(\PP(T))$, nor the acyclic ornamentation poset~$\AOrn(T)$ are lattices.
 \end{proposition}
 
 \begin{proof}
-%Given any subset~$X$ of vertices of~$T$, denote by~$T[X]$ the forest on~$X$ where the parent of~$x \in X$ is the vertex of~$X$ closest to~$x$ along the path from the root of~$T$ to~$x$.
-%Then the subgraph of~$\tc(T)$ induced by~$X$ is the transitive closure of~$T[X]$, so that its transitive reduction is a forest.
-Given any subset~$U \subset [n]$, the subgraph of~$\tc(T)$ induced by~$U$ contains no induced alternating cycle, hence no induced cycles of length at least~$4$.
-Hence, its transitive reduction contains no cycle.
-We conclude by~\cref{prop:AReoriLatJoinMeet} that~$\AReori(\tc(T))$ is a lattice.
-Finally, \cref{prop:rootedTrees1} ensures that~$\ASour(\PP(T))$ and~$\AOrn(T)$ are both isomorphic to~$\Orn(T)$, which is a lattice by~\cref{thm:OrnMeetJoin}.
+\vincent{todo}
 \end{proof}
 
+To sum up, we proved the following statement.
+
+\begin{corollary}
+\label{coro:starredCharacterizations}
+The following conditions are equivalent for a directed tree~$T$ on~$V$:
+\begin{enumerate}[(i)]
+\item $\tc(T)$ contains an induced alternating cycle.
+\item there are $a,b,c,d,e \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$, and~$(c,e)$ are all in~$\tc(T)$,
+\item there are~$u,v \in V$ such that~$u$ has at least two incoming edges in~$T$, $v$ has at least two outgoing edges in~$T$, and $T$ has a directed path from~$u$ to~$v$,
+\item there exists a transitively biclosed and cyclic reorientation of~$\tc(T)$,
+\item there exists a cyclic ornamentation of~$T$,
+\item the acyclic reorientation poset of~$\tc(T)$ is not a lattice,
+\item the acyclic sourcing poset of~$\PP(T)$ is not a lattice,
+\item the acyclic ornamentation poset of~$T$ is not a lattice.
+\end{enumerate}
+\end{corollary}
+
+We now prove that the ornamentation map is a lattice map when~$T$ is unstarred.
+
 \begin{proposition}
-\label{prop:rootedTrees3}
+\label{prop:AReori2AOrnLatticeMapUT}
 For an unstarred tree~$T$, the map $R \mapsto \aorn{R}$ is a surjective lattice map, hence the lattices~$\ASour(\PP(T)) \simeq \AOrn(T) = \Orn(T)$ are lattice quotients~of~$\AReori(\tc(T))$.
 \end{proposition}
 
@@ -2039,7 +2118,7 @@ If~$T$ is an unstarred tree, then the ornamentation lattice~$\Orn(T)$ is isomorp
 
 \begin{remark}
 Lattice quotients of acyclic reorientation lattices were studied in detail in~\cite{Pilaud-acyclicReorientationLattices}.
-We can reformulate \cref{prop:rootedTrees1,prop:rootedTrees2,prop:rootedTrees3} using the language of~\cite{Pilaud-acyclicReorientationLattices}: if~$T$ is an unstarred tree, then
+We can reformulate \cref{prop:AReoriLatticeUT,prop:AOrnLatticeUT,prop:AReori2AOrnLatticeMapUT} using the language of~\cite{Pilaud-acyclicReorientationLattices}: if~$T$ is an unstarred tree, then
 \begin{enumerate}
 \item the transitive closure~$\tc(T)$ is skeletal, so that~$\AReori(\tc(T))$ is an acyclic reorientation lattice,
 \item the ornamentation lattice~$\AReori(\tc(T))$ is (isomorphic to) the Tamari lattice of~$\tc(T)$ defined by the $\tc(T)$-sylvester congruence,
@@ -2070,7 +2149,7 @@ The \defn{$(m,n)$-broom} is the rooted tree obtained by attaching $m$ nodes (cal
 
 \begin{remark}
 The $(m,n)$-broom has~$2^{m+n-1}$ reorientations, of which $(n+1)^m \, n!$ are acyclic, and~$\prod_{k = 1}^{n+1} k^{m+n+1-k}$ sourcings.
-As the $(m,n)$-broom is a rooted tree, all its ornamentations are acyclic by \cref{prop:rootedTrees1}, so its numbers of acyclic sourcings, acyclic ornamentations and ornamentations are all equal.
+As the $(m,n)$-broom is a rooted tree, all its ornamentations are acyclic by \cref{prop:AOrnLatticeUT}, so its numbers of acyclic sourcings, acyclic ornamentations and ornamentations are all equal.
 \end{remark}
 
 We denote by~$B_{m,n}$ the number of (acyclic) ornamentations of the $(m,n)$-broom, by
