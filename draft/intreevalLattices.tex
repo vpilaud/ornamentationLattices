@@ -2076,9 +2076,17 @@ Hence, neither the acyclic reorientation poset~$\AReori(\tc(T))$ nor the acyclic
 \end{proposition}
 
 \begin{proof}
-Consider~$u,v$ as in \cref{lem:starredCharacterization}, and let~$a,b$ be two incoming neighbors of~$u$ and~$c,d$ be two outgoing neighbors of~$v$.
-Let~$R$ be the reorientation of~$\tc(T)$ defined by~$\rev(R) = \{(a,d), (b,c), (v,c), (c,d)\}$, and let~$O = O_R$.
-\vincent{todo}
+Consider a a starred tree~$T$, and let~$a,b,c,d,e$ be vertices of~$T$ as in \cref{lem:starredCharacterization}\,(ii).
+
+The reorientation~$R$ of~$\tc(T)$ defined by~$\rev(R) = \set{(w,d)}{a \le_T w <_T d} \cup \set{(w,e)}{b \le_T w < e}$ is transitively closed because~$d \not<_T e$ and~$e \not<_T d$, transitively coclosed because~$(u,w) \in \rev(R)$ implies~$(v,w) \in \rev(R)$ for any~$u <_T v <_T w$, and cyclic because~$a, d, b, c$ forms a directed cycle.
+
+The ornamentation~$O = O_R$ of~$T$ with~$O(c) = \set{w}{a \le_T w <_T d}$, $O(e) = \set{w}{b \le_T w < e}$, and~$O(w) = \{w\}$ for all~$w \in V \ssm \{d,e\}$ is cyclic.
+Indeed, consider any reorientation~$R'$ of~$\tc(T)$ such that~$O = O_{R'}$.
+We have~$(w,d) \in \rev(R')$ for all~$a \le_T w <_T d$ (because $w \in O(d)$) and similarly~$(w,e) \in \rev(R')$ for all~$b \le_T w <_T e$.
+Therefore~$(a,e) \notin \rev(R')$ (because~${a \notin O(e)}$ while~$(w,e) \in \rev(R')$ for all~$a <_T w <_T e$) and similarly~$(b,d) \notin \rev(R')$.
+We conclude that~$a, d, b, c$ forms a directed cycle in~$R'$ as well.
+Hence, $O$ is cyclic.
+
 We conclude by~\cref{thm:MacNeille} that~$\AReori(\tc(T))$ and~$\ASour(\PP(T)) \simeq \AOrn(T)$ are not lattices.
 \end{proof}
 
