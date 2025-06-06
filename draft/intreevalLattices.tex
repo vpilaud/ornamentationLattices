@@ -252,8 +252,7 @@ In this paper, we will consider the family of hypergraphs arising as the collect
 Let~$(\b{e}_v)_{v \in [n]}$ denote the standard basis of~$\R^n$.
 The \defn{hypergraphic polytope} of~$\HH$ is the Minkowski sum~$\simplex_\HH \eqdef \sum_{H \in \HH} \simplex_H$, where~$\simplex_H \eqdef \conv\set{\b{e}_h}{h \in H}$ denotes the face of the standard simplex indexed by the hyperedge~$H$.
 The face lattice of~$\simplex_\HH$ was described combinatorially in terms of acyclic orientations of~$\HH$ in~\cite{BenedettiBergeronMachacek}.
-In particular, it turns out that the acyclic sourcing poset~$\ASour(\HH)$ is the transitive closure of the graph of the hypergraphic polytope~$\simplex_\HH$, oriented in the standard direction~$\b{\omega} \eqdef (n-1, n-3, \dots, 3-n, 1-n)$.
-\vincent{Cite Felix}
+In particular, it is proved in~\cite{Gelinas} that the acyclic sourcing poset~$\ASour(\HH)$ is the transitive closure of the graph of the hypergraphic polytope~$\simplex_\HH$, oriented in the standard direction~$\b{\omega} \eqdef (n-1, n-3, \dots, 3-n, 1-n)$.
 
 For instance, 
 \begin{itemize}
@@ -329,8 +328,6 @@ There are natural order-preserving surjections
 Moreover, $R \mapsto \orn{R}$ (resp.~$S \to \orn{S}$) restricts to a meet semilattice morphism from the transitively closed reorientation lattice of~$\tc(D)$ (resp.~sourcing lattice of~$\PP(D)$) to the ornamentation lattice~of~$D$.
 \end{proposition}
 
-\vincent{I need to speak about transitively closed, coclosed, biclosed here}
-
 In \cref{sec:acyclic}, we focus on acyclicity.
 We consider the acyclic reorientation poset~$\AReori(E)$, the acyclic sourcing poset~$\ASour(\HH)$, and define the acyclic ornamentation poset~$\AOrn(D)$, and we connect them as follows.
 
@@ -349,12 +346,15 @@ In particular, the acyclic sourcing poset~$\ASour(\PP(D))$ can be seen as a subp
 These connections become particularly interesting when the ground directed graph~$D$ is an increasing tree~$T$, and even more if it is rooted (or unstarred, see below).
 In \cref{sec:trees}, we first consider a directed tree.
 We describe the join irreducible ornamentations of~$T$ and meet irreducible ornamentations of~$T$, and prove that the ornamentation lattice~$\Orn(T)$ is semidistributive.
-Observing that all join or meet irreducible ornamentations of~$T$ are acyclic, we obtain the following strong connection between the acyclic sourcing poset~$\ASour(\PP(T))$ and the ornamentation lattice~$\Orn(T)$.
-\vincent{I need to add reorientation in this paragraph and statement...}
+Observing that all join or meet irreducible ornamentations of~$T$ (resp.~transitively biclosed reorientations of~$\tc(T)$) are acyclic, we obtain the following statement.
 
 \begin{theorem}
 \label{thm:main1}
-For any increasing tree~$T$ on~$[n]$, the ornamentation lattice~$\Orn(T)$ is the MacNeille completion of the acyclic sourcing poset~$\ASour(\PP(T))$.
+For any increasing tree~$T$ on~$[n]$, 
+\begin{itemize}
+\item the transitively biclosed reorientation lattice~$\Rbi(\tc(T))$ is precisely the MacNeille completion of the acyclic reorientation poset~$\AReori(\tc(T))$,
+\item the ornamentation lattice~$\Orn(T)$ is precisely the MacNeille completion of the acyclic sourcing poset~$\ASour(\PP(T))$.
+\end{itemize}
 \end{theorem}
 
 We then consider a special class of increasing trees, containing in particular all rooted trees.
@@ -717,7 +717,7 @@ We will see later in \cref{prop:Reori2OrnMaxTree} that the fibers always admit a
 
 \begin{remark}
 \label{rem:Reori2OrnSemilatticeMap}
-The surjection~$R \mapsto \orn{R}$ does not preserve neither the meet nor the join semilattice structure.
+The surjection~$R \mapsto \orn{R}$ does not preserve neither the meet nor the join semilattice structure, even when~$D$ is a path.
 For instance,
 
 \centerline{
@@ -753,7 +753,7 @@ To correct this default, we can restrict our attention to transitively closed re
 A reorientation~$R$ of~$\tc(D)$ is 
 \begin{itemize}
 \item \defn{transitively closed} if~$(u,v), (v,w) \in \rev(R)$ implies $(u,w) \in \rev(R)$,
-\item \defn{transitively coclosed} if~$(u,v), (v,w) \notin \rev(R)$ implies $(u,w) \notin \rev(R)$,
+\item \defn{transitively coclosed} if~$(u,v), (v,w) \in \tc(T) \ssm \rev(R)$ implies $(u,w) \in \tc(T) \ssm \rev(R)$,
 \item \defn{transitively biclosed} if it is both transitively closed and transitively coclosed. 
 \end{itemize}
 We denote by~$\Rcl(\tc(D))$, $\Rco(\tc(D))$, and~$\Rbi(\tc(D))$ the sets of transitively closed, transitively coclosed, and transitively biclosed reorientations of $\tc(D)$ respectively.
@@ -761,15 +761,14 @@ We denote by~$\Rcl(\tc(D))$, $\Rco(\tc(D))$, and~$\Rbi(\tc(D))$ the sets of tran
 
 \begin{remark}
 \label{rem:biclosedCyclic}
-There are some transitively biclosed reorientations of~$\tc(D)$ which are not acyclic, even when~$D$ is a tree.
+A transitively biclosed reorientation of~$\tc(D)$ is not necessarily acyclic, even when~$D$ is a tree.
 For instance,
 \[
 \includegraphics[scale=.8,valign=c]{cyclicReorientationX1}
 \qquad\text{and}\qquad
 \includegraphics[scale=.8,valign=c]{cyclicReorientationX2}
 \]
-We will see that all transitively biclosed reorientations are acyclic when~$T$ is an unstarred tree.
-\vincent{ref}
+We will see in \cref{prop:AReoriLatticeUT} that all transitively biclosed reorientations are acyclic when~$T$ is an unstarred tree.
 \end{remark}
 
 \begin{lemma}
@@ -785,7 +784,7 @@ The proof for~$\Rco(\tc(D))$ is symmetric.
 
 \begin{remark}
 \label{rem:biclosedNotLattice}
-Observe however that~$\Rbi(\tc(D))$ may fail to be a lattice when~$D$ is not a tree.
+Observe however that the subposet of~$\Reori(\tc(D))$ induced by the set~$\Rbi(\tc(D))$ of transitively biclosed reorientations may fail to be a lattice.
 For instance, consider the following four transitively biclosed reorientations:
 %\[
 %\begin{array}{cccc}
@@ -807,7 +806,7 @@ R_3 = \!\! \includegraphics[scale=.8,valign=c]{reorientationD3}
 R_4 = \!\! \includegraphics[scale=.8,valign=c]{reorientationD4}
 \]
 Then~$R_1 < R_3$, $R_1 < R_4$, $R_2 < R_3$, and~$R_2 < R_4$ and there is no transitively biclosed reorientation~$R$ such that~$R_1 < R$, $R_2 < R$, $R < R_3$, and~$R < R_4$.
-We will see in \cref{prop:biclosedLatticeT} that~$\Rbi(\tc(T))$ is a lattice when~$T$ is a tree.
+We will see in \cref{prop:biclosedLatticeT} that~$\Rbi(\tc(T))$ is a lattice when~$T$ is a directed tree.
 \end{remark}
 
 \begin{proposition}
@@ -1158,9 +1157,8 @@ The \defn{hypergraphic polytope} of~$\HH$ is the Minkowski sum
 \)
 where $\simplex_H$ is the simplex given by the convex hull of the points $\b{e}_h$ for~$h \in H$.
 The face lattice of~$\simplex_\HH$ was described combinatorially in terms of acyclic orientations of~$\HH$ in~\cite{BenedettiBergeronMachacek}.
-In particular, the transitive closure of the graph of~$\simplex_\HH$, oriented in the direction~$\b{\omega}$, is isomorphic to the acyclic sourcing poset~$\ASour(\HH)$.
+In particular, it is proved in~\cite{Gelinas} that the transitive closure of the graph of~$\simplex_\HH$, oriented in the direction~$\b{\omega}$, is isomorphic to the acyclic sourcing poset~$\ASour(\HH)$.
 Note that the graph of~$\simplex_\HH$, oriented in the direction~$\b{\omega}$, is not always transitively reduced, hence not always isomorphic to the Hasse diagram of the acyclic sourcing poset~$\ASour(\HH)$.
-\vincent{Cite Felix}
 \end{remark}
 
 \begin{remark}
@@ -1429,7 +1427,6 @@ We conclude that~$S \mapsto \aorn{S}$ and~$O \mapsto \asour{O}$ are inverse isom
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\pagebreak
 \section{Directed trees}
 \label{sec:trees}
 
@@ -1795,17 +1792,29 @@ We conclude that the fiber of~$O$ is an interval, since it has a minimum by \cre
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Closed, coclosed, biclosed reorientations}
+\subsection{Transitively biclosed reorientations}
 
 We now revisit \cref{rem:biclosedNotLattice,rem:Orn2ReoriNotTransitivelyCoclosed} for directed trees.
 
 \begin{proposition}
 \label{prop:biclosedLatticeT}
-The set~$\Rcl(\tc(D))$ (resp.~$\Rco(\tc(D))$) of transitively closed (resp.~coclosed) reorientations induces a meet (resp.~join) subsemilattice of~$\Reori(\tc(D))$, which is a lattice.
+For a directed tree~$T$, the subposet of~$\Reori(\tc(T))$ induced by the set~$\Rbi(\tc(T))$ of transitively biclosed reorientations of~$T$ is a lattice.
 \end{proposition}
 
 \begin{proof}
-\vincent{todo}
+Consider two transitively biclosed reorientations~$R_1$ and~$R_2$ of~$\tc(T)$.
+Let~$R$ be the reorientation of~$\tc(T)$ defined by~$\rev(R) = \tc(\rev(R_1) \cup \rev(R_2))$.
+
+The reorientation~$R$ is closed by definition, and we claim that it is also coclosed.
+Indeed, consider~$u,v,w \in V$ such that~$(u,v), (v,w) \in \tc(T)$ and~$(u,w) \in \rev(R)$.
+By definition of~$\rev(R)$, there is a path~$u = u_0, \dots, u_k = w$ such that~$(u_{i-1}, u_i) \in \rev(R_1) \cup \rev(R_2)$ for all~$i \in [k]$.
+As~$(u,v), (v,w) \in \tc(T)$ and~$T$ is a tree, there is~$i \in [k]$ such that~$(u_{i-1}, v)$ and~$(v, u_i)$ are in~$\tc(T)$.
+Assume by symmetry that~$(u_{i-1}, u_i) \in \rev(R_1)$.
+Since~$R_1$ is coclosed, either~$(u_{i-1}, v) \in \rev(R_1)$ or~$(v, u_i) \in \rev(R_1)$.
+We thus obtain that either~$(u,v) \in \rev(R)$ or~$(v,w) \in \rev(R)$, hence that~$R$ is indeed coclosed.
+
+Since any transitively closed reorientation~$R'$ such that~$R' > R_1$ and~$R' > R_2$ clearly satisfies~$R' > R$, we conclude that~$R$ is the join of~$R_1$ and~$R_2$ among transitively biclosed reoriorientations.
+Hence, $\Rbi(\tc(T))$ is a finite bounded join semilattice, hence a lattice.
 \end{proof}
 
 \begin{lemma}
@@ -1877,11 +1886,27 @@ For this, we need the following lemmas.
 
 \begin{lemma}
 \label{lem:irreduciblesReorientationsAcyclicT}
-If~$R$ is a biclosed and cyclic reorientation of~$\tc(T)$, then it covers at least two biclosed reorientations.
+If~$R$ is a transitively biclosed and cyclic reorientation of~$\tc(T)$, then it covers (resp.~is covered by) at least two biclosed reorientations of~$\tc(T)$.
 \end{lemma}
 
 \begin{proof}
-\vincent{todo}
+As~$R$ contains a cycle, it contains an induced oriented cycle~$C$ (any chord can be used to make the cycle shorter).
+Since~$R$ is transitively biclosed, $C$ is an induced alternating cycle in~$\tc(T)$.
+Write~$C = (d_1, u_1, \dots, d_k, u_k)$ where~$(d_i, u_i)$ and~$(u_i, d_{i+1})$ are in~$\tc(T)$ for all~$i \in [k]$.
+We can moreover assume without loss of generality that for~$i \in [k]$ and any incoming neighbor~$u'$ of~$u_i$  (resp.~outgoing neighbor~$d'$ of~$d_i$) in~$R$, replacing~$u_i$ by~$u'$ (resp.~$d_i$ by~$d'$) in~$C$ does not yield an induced oriented cycle in~$R$.
+%We can assume moreover without loss of generality that~$C$ is of maximal amplitude, meaning that we cannot replace some~$d_i$ by~$d'$ for some~$(d',d_i) \in \tc(T)$ nor some~$u_i$ by~$u'$ for some~$(u_i,u') \in \tc(T)$ and still obtain an induced alternating cycle in~$R$.
+%In particular, there is no~$u' \in V$ such that~$(u_i, u') \in \rev(R)$ and~$(d_i,u') \notin \rev(R)$ for some~$i \in [k]$ and no~$d' \in V$ such that~$(d',d_i) \in \rev(R)$ and~$(d',u_i) \notin \rev(R)$ for some~$i \in [k]$.
+%Otherwise, we can replace~$u_i$ by~$u'$ (resp.~$d_i$ by~$d'$) in~$C$ to obtain an induced alternating cycle with a larger amplitude.
+For~$i \in [k]$, consider the reorientation~$R_i$ of~$\tc(T)$ obtained by reversing the edge~$(d_i,u_i)$, meaning that~$\rev(R_i) = \rev(R) \cup \{(d_i,u_i)\}$.
+The reorientation~$R_i$ clearly covers~$R$, and we claimed that is still biclosed.
+Indeed,
+\begin{itemize}
+\item If~$R_i$ where not closed, we would have~$u' \in V$ with~$(u_i, u') \in \rev(R)$ and~$(d_i,u') \notin \rev(R)$ or~$d' \in V$ with~$(d',d_i) \in \rev(R)$ and~$(d',u_i) \notin \rev(R)$. We could then replace~$u_i$ by~$u'$ or~$d_i$ by~$d'$ in~$C$ and obtained another induced oriented cycle in~$R$.
+\item If~$R_i$ where not coclosed, we would have~$d' \in V$ with~$(d_i,d') \in \tc(T) \ssm \rev(R)$ and~$(d',u_i) \in \tc(T) \ssm \rev(R)$. We could then replace~$d_i$ by~$d'$ in~$C$ and obtained another induced oriented cycle in~$R$.
+\end{itemize}
+In both cases, this contradicts our assumption on~$C$.
+Hence, we obtained~$k$ biclosed reorientations of~$\tc(T)$ covering~$R$.
+Symmetrically, we can construct a biclosed reorientations~$R_i$ of~$\tc(T)$ covered by~$R$ by reversing the arrow~$(d_{i+1}, u_i)$ for any~$i \in [k]$.
 \end{proof}
 
 \begin{lemma}
@@ -1931,9 +1956,9 @@ This follows from \cref{prop:MacNeilleCompletion,coro:irreduciblesAcyclicT}.
 \begin{remark}
 \label{rem:MacNeille}
 Note that~\cref{thm:MacNeille} fails beyond directed trees.
-\vincent{I need to update this example...}
 For instance,
 \begin{itemize}
+\item for the directed graph~$\Dgraph$ of  \cref{fig:ornamentationsD}, the transitively biclosed reorientation poset is not even a lattice as observed in \cref{rem:biclosedNotLattice}, \vincent{What is the MacNeille completion of~$\AReori(\tc(\Dgraph))$ then?? This should be fairly easy to compute...}
 \item for the directed graph~$\Kgraph$ of \cref{fig:ornamentationsKT}, the acyclic ornamentations already form lattice, even if there is a cyclic ornamentation,
 \item for the directed graph~$\Dgraph$ of  \cref{fig:ornamentationsD}, the acyclic ornamentation poset is not a lattice, but adding the two cyclic ornamentations
 \[
@@ -2018,7 +2043,7 @@ This section is devoted to the proof of \cref{thm:main2}, which we cut into piec
 \begin{proposition}
 \label{prop:AReoriLatticeUT}
 For an unstarred tree~$T$, all transitively biclosed reorientations of~$\tc(T)$ are acyclic.
-In particular, the acyclic reorientation lattice~$\AReori(\tc(T))$ is a lattice.
+In particular, the acyclic reorientation poset~$\AReori(\tc(T))$ is a lattice.
 \end{proposition}
 
 \begin{proof}
@@ -2029,7 +2054,7 @@ This imply that~$T$ is starred by \cref{def:starredTree}.
 \end{proof}
 
 \begin{remark}
-Note that it is also straightforward to check that an unstarred tree~$T$ satisfies the condition of~\cref{prop:AReoriLatJoinMeet}.
+Note that it is also straightforward to check that an unstarred tree~$T$ satisfies the condition of~\cref{prop:AReoriLat}.
 Indeed, given any subset~$U \subset [n]$, the subgraph of~$\tc(T)$ induced by~$U$ contains no induced alternating cycle, hence no induced cycles of length at least~$4$.
 Hence, its transitive reduction contains no cycle.
 \end{remark}
@@ -2046,11 +2071,13 @@ The proof for the acyclicity of~$\sour{O}$ is similar.
 \end{proof}
 
 \begin{proposition}
-For a starred tree~$T$, there exists a transitively biclosed and cyclic reorientation of~$\tc(T)$ and a cyclic reorientation.
+For a starred tree~$T$, there exists a transitively biclosed and cyclic reorientation of~$\tc(T)$ and a cyclic ornamentation of~$T$.
 Hence, neither the acyclic reorientation poset~$\AReori(\tc(T))$ nor the acyclic sourcing poset~$\ASour(\PP(T))$, nor the acyclic ornamentation poset~$\AOrn(T)$ are lattices.
 \end{proposition}
 
 \begin{proof}
+Consider~$u,v$ as in \cref{lem:starredCharacterization}, and let~$a,b$ be two incoming neighbors of~$u$ and~$c,d$ be two outgoing neighbors of~$v$.
+Let~$R$ be the reorientation of~$\tc(T)$ defined by~$\rev(R) = \{(a,d), (b,c), (v,c), (c,d)\}$, and let~$O = O_R$.
 \vincent{todo}
 We conclude by~\cref{thm:MacNeille} that~$\AReori(\tc(T))$ and~$\ASour(\PP(T)) \simeq \AOrn(T)$ are not lattices.
 \end{proof}
