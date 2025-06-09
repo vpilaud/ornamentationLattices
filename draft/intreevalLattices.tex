@@ -213,7 +213,7 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \begin{abstract}
 Given a directed graph~$D$ with transitive closure~$\tc(D)$ and path hypergraph~$\PP(D)$, we study the connections between the (acyclic) reorientation poset of~$\tc(D)$, the (acyclic) sourcing poset of~$\PP(D)$, and the (acyclic) ornamentation poset of~$D$.
 When~$D$ is a rooted (or even unstarred) increasing tree, we show that the acyclic sourcing poset of~$\PP(D)$ is isomorphic to the ornamentation lattice of~$D$, and that they form a lattice quotient of the acyclic reorientation lattice of~$\tc(D)$.
-As a consequence, we obtain a polytopal realization of the ornamentation lattices of rooted (or even unstarred) increasing trees, answering an open question of C.~Defant and A.~Sack.
+As a consequence, we obtain polytopal realizations of the ornamentation lattices of rooted (or even unstarred) increasing trees, answering an open question of C.~Defant and A.~Sack.
 When~$D$ is an increasing tree, we show that the ornamentation lattice of~$D$ is the MacNeille completion of the acyclic sourcing poset of~$\PP(D)$.
 Finally, still when~$D$ is an increasing tree, we use the ornamentation lattice of~$D$ to characterize the subhypergraphs of the path hypergraph~$\PP(D)$ whose acyclic sourcing poset is a lattice.
 \end{abstract}
@@ -355,6 +355,7 @@ These connections become particularly interesting when the ground directed graph
 In \cref{sec:trees}, we first consider a directed tree.
 We describe the join irreducible ornamentations of~$T$ and meet irreducible ornamentations of~$T$, and prove that the ornamentation lattice~$\Orn(T)$ is semidistributive.
 Observing that all join or meet irreducible ornamentations of~$T$ (resp.~transitively biclosed reorientations of~$\tc(T)$) are acyclic, we obtain the following statement.
+Recall that the MacNeille completion of a poset~$P$ is the smallest lattice which admits an embedding of~$P$.
 
 \begin{theorem}
 \label{thm:main1}
@@ -1425,6 +1426,7 @@ since their fibers under~$R \mapsto \orn{R}$ are all singletons, containing the 
 \includegraphics[scale=.8,valign=c]{cyclicReorientationT1}\;\;
 \includegraphics[scale=.8,valign=c]{cyclicReorientationT2}
 \]
+The acyclic ornamentations are shaded in gray in \cref{fig:ornamentationsX,fig:ornamentationsD,fig:ornamentationsKT}.
 \end{remark}
 
 \begin{remark}
@@ -2005,13 +2007,13 @@ In general, we have no description of the MacNeille completion of the acyclic or
 %
 \begin{figure}
 	\centerline{\includegraphics[scale=.68]{MacNeilleAcyclicReorientationsD}}
-	\caption{The MacNeille completion of the acyclic reorientation poset~$\AReori(\Dgraph)$ of \cref{fig:acyclicReorientationsD}.}
+	\caption{The MacNeille completion of the acyclic reorientation poset~$\AReori(\Dgraph)$ of \cref{fig:acyclicReorientationsD}. (Gray = added element).}
 	\label{fig:MacNeilleAcyclicReorientationsD}
 \end{figure}
 %
 \begin{figure}
 	\centerline{\includegraphics[scale=.68]{MacNeilleAcyclicOrnamentationsD}}
-	\caption{The MacNeille completion of the acyclic ornamentation poset~$\AOrn(\Dgraph)$ of \cref{fig:ornamentationsD}.}
+	\caption{The MacNeille completion of the acyclic ornamentation poset~$\AOrn(\Dgraph)$ of \cref{fig:ornamentationsD}. (Gray = added element).}
 	\label{fig:MacNeilleAcyclicOrnamentationsD}
 \end{figure}
 \end{remark}
