@@ -2418,7 +2418,6 @@ The number of ornamentations of a comb is given by 1, 4, 26, 226, 2426, 30826, 4
 
 In this section, we characterize the subhypergraphs~$\II$ of the path interval~$\PP(T)$ of an increasing tree~$T$ whose acyclic sourcing poset~$\ASour(\II)$ is a lattice.
 %We actually consider increasing trees as it simplifies the definitions of the conditions and does not loose generality up to relabeling.
-\vincent{This section needs illustrations... I will do that later.}
 
 \begin{definition}
 An \defn{intreeval hypergraph} of an increasing tree~$T$ is a subhypergraph of~$\PP(T)$.
@@ -2429,6 +2428,16 @@ An \defn{intreeval hypergraph} of an increasing tree~$T$ is a subhypergraph of~$
 We say that an intreeval hypergraph~$\II$ of an increasing tree~$T$ is \defn{path intersection closed} if for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max J >_T \max (I\cap J)$, there exists~$K \in \II$ such that $\min(J) \le_T \min(K) \le_T \min(I\cap J)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$.
 \end{definition}
 
+\begin{remark}
+Note that
+\begin{itemize}
+\item if~$I \cap J \in \II$ and~$I \cap J > 1$ implies~$I \cap J \in \II$, then~$\II$ is path intersection closed,
+\item if~$\II$ is path intersection closed, then ~$I,J \in \II$ and~$I \cap J > 1$ implies that there is~$K \in \II$ with~$I \cap J \subseteq K$.
+\end{itemize}
+However, the reverse of these two implications are both wrong.
+See \cref{exm:intreevalHypergraphs,fig:intreevalHypergraphs}.
+\end{remark}
+
 \begin{definition}
 \label{def:pathStarSparse}
 Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
@@ -2438,6 +2447,7 @@ We say that~$\II$ is \defn{path star sparse} if~$X(T,u,v,\II)$ is acyclic for al
 \end{definition}
 
 \begin{example}
+\label{exm:intreevalHypergraphs}
 Among the $7$ intreeval hypergraphs of \cref{fig:intreevalHypergraphs},
 \begin{itemize}
 \item the first two are both path intersection closed and path star sparse,
@@ -2477,14 +2487,6 @@ When~$T$ is a rooted tree,
 \item the path star sparse condition is empty.
 \end{itemize}
 \end{remark}
-
-\begin{proposition}
-For an intreeval hypergraph~$\II$ of an increasing tree~$T$ and~$O_1, \dots, O_q$ some acyclic sourcings of~$\II$, we have
-\[
-...
-\]
-\vincent{todo}
-\end{proposition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2898,6 +2900,44 @@ Hence, the acyclic sourcing poset~$\ASour(\II)$ is a lattice.
 \begin{proof}
 The map~$O \mapsto \sour{O}^\II$ satisfies the conditions of \cref{def:quasiLatticeMap} by \cref{lem:Orn2SourIntreeval1}, \cref{coro:Orn2SourIntreeval3} and~\cref{lem:Sour2OrnIntreeval1,,lem:Sour2OrnIntreeval2,,lem:Sour2OrnIntreeval3}.
 The last statement thus follows from~\cref{prop:quasiLatticeMap}.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Expression for the meet and join}
+
+Finally, when~$\ASour(\II)$ is a lattice, we can obtain the following formula to compute its joins, mimicking the formula of~\cite[Prop.~4.15]{BergeronPilaud} when~$T$ is a path.
+A similar formula holds for meets by symmetry.
+
+\begin{proposition}
+\label{prop:expressionJoin}
+For a path intersection closed and path star sparse intreeval hypergraph~$\II$ of an increasing tree~$T$, and for any acyclic sourcings~$S_1, \dots, S_q$ of~$\II$ and any~$I \in \II$, we have
+\[
+\bigg( \bigJoin_{p \in [q]} S_p \bigg)(I) = \min \bigg( I \ssm \Big( \bigcup_{p \in [q]} \bigcup_{\substack{J \in \II \\ S_p(J) \in I}} \set{v \in J}{v < S_p(J)} \Big) \bigg).
+\]
+\end{proposition}
+
+\begin{proof}
+Let~$S$ be the sourcing defined by the formula of the statement.
+Assume by means of contradiction that~$S$ is cyclic.
+By \cref{prop:pathStarSparse}, there is~$I,J \in \II$ such that~$S(I) \in J \ssm \{S(J)\}$ and~$S(J) \in I \ssm \{S(I)\}$.
+Assume by symmetry that~$S(I) < S(J)$.
+As~$S(I) \in J$ and~$S(I) < S(J)$, there exists~$p \in [q]$ and~$K \in \II$ such that~$S_p(K) \in J$ and~$S(I) \in K$ and~$S(I) < S_p(K) \le S(J)$.
+As~$I$ is a path containing~$S(I)$ and~$S(J)$, it contains also~$S_p(K)$.
+We obtain that~$S_p(K) \in I$, $S(I) \in K$ and~$S(I) < S_p(K)$ contradicting our definition of~$S$.
+We conclude that~$S$ is acyclic.
+
+For any~$p \in [q]$, we have~$S_p(I) \in I$ so that~$S(I) \ge S_p(I)$ for all~$I \in \II$, hence~$S \ge S_p$.
+Consider now an acyclic sourcing~$S'$ of~$\II$ such that~$S' \ge S_p$ for all~$p \in [q]$.
+Assume that there are~$I,J \in \II$ and~$p \in [q]$ such that~$S_p(J) \in I$.
+Then~$S_p(J) \in I \cap J$.
+If~$|I \cap J| = 1$, we obviously have~$S'(I) \notin \set{v \in J}{v < S_p(J)}$.
+Otherwise, as~$\II$ is path intersection closed, there is~$K \in \II$ such that~$\min(J) \le_T \min(K) \le_T \min(I \cap J)$ and~$\max(I \cap J) \le_T \max(K) \le_T \max(I)$.
+As~$S_p(J) \in I \cap J$, the acyclicity of~$S_p$ ensures that~$S_p(K) \ge S_p(J)$.
+Since~$S' \ge S_p$, we thus obtain~$S'(K) \ge S_p(J)$.
+By acyclicity of~$S'$, we thus have~$S'(I) \ge [\min(I \cap J), S_p(J)[$, hence~$S'(I) \notin \set{v \in J}{v < S_p(J)}$.
+We obtain that~$S(I) \le S'(I)$, so that~$S \le S'$.
+We conclude that~$S$ is indeed~$\bigJoin_{p \in [q]} S_p$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
