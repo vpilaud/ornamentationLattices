@@ -376,7 +376,7 @@ For an unstarred increasing tree~$T$,
 \begin{enumerate}
 \item the acyclic reorientation poset~$\AReori(\tc(T))$, the acyclic sourcing poset~$\ASour(\PP(T))$, and the acyclic ornamentation poset~$\AOrn(T)$ are all lattices,
 \item all ornamentations of~$T$ are in fact acyclic, so that~$\ASour(\PP(T)) \simeq \AOrn(T) = \Orn(T)$,
-\item the map~$R \mapsto \orn{R}$ is a surjective lattice map so that the ornamentation lattice~$\Orn(T)$ is a lattice quotient of the acyclic reorientation lattice~$\AReori(\tc(T))$,
+\item the map~$R \mapsto \orn{R}$ is a surjective lattice map, so that the ornamentation lattice~$\Orn(T)$ is a lattice quotient of the acyclic reorientation lattice~$\AReori(\tc(T))$,
 \item the ornamentation lattice~$\Orn(T)$ is isomorphic to the transitive closure of the graph of the path hypergraphic polytope~$\simplex_{\PP(T)}$ oriented in the direction~$\b{w}$. \label{item:polytopalRealization}
 \end{enumerate}
 \end{theorem}
@@ -783,6 +783,7 @@ For instance,
 \qquad\text{and}\qquad
 \includegraphics[scale=.8,valign=c]{cyclicReorientationX2}
 \]
+are cyclic biclosed reorientations of $\tc(\Xgraph)$.
 We will see in \cref{prop:AReoriLatticeUT} that all transitively biclosed reorientations are acyclic when~$T$ is an unstarred tree.
 \end{remark}
 
@@ -1855,7 +1856,7 @@ Since~$R_1$ is coclosed, either~$(u_{i-1}, v) \in \rev(R_1)$ or~$(v, u_i) \in \r
 We thus obtain that either~$(u,v) \in \rev(R)$ or~$(v,w) \in \rev(R)$, hence that~$R$ is indeed coclosed.
 
 Since any transitively closed reorientation~$R'$ such that~$R' > R_1$ and~$R' > R_2$ clearly satisfies~$R' > R$, we conclude that~$R$ is the join of~$R_1$ and~$R_2$ among transitively biclosed reoriorientations.
-Hence, $\Rbi(\tc(T))$ is a finite bounded join semilattice, hence a lattice.
+Thus, $\Rbi(\tc(T))$ is a finite bounded join semilattice, hence a lattice.
 \end{proof}
 
 \begin{lemma}
@@ -1942,8 +1943,8 @@ For~$i \in [k]$, consider the reorientation~$R_i$ of~$\tc(T)$ obtained by revers
 The reorientation~$R_i$ clearly covers~$R$, and we claimed that is still biclosed.
 Indeed,
 \begin{itemize}
-\item If~$R_i$ where not closed, we would have~$u' \in V$ with~$(u_i, u') \in \rev(R)$ and~$(d_i,u') \notin \rev(R)$ or~$d' \in V$ with~$(d',d_i) \in \rev(R)$ and~$(d',u_i) \notin \rev(R)$. We could then replace~$u_i$ by~$u'$ or~$d_i$ by~$d'$ in~$C$ and obtained another induced oriented cycle in~$R$.
-\item If~$R_i$ where not coclosed, we would have~$d' \in V$ with~$(d_i,d') \in \tc(T) \ssm \rev(R)$ and~$(d',u_i) \in \tc(T) \ssm \rev(R)$. We could then replace~$d_i$ by~$d'$ in~$C$ and obtained another induced oriented cycle in~$R$.
+\item If~$R_i$ were not closed, we would have~$u' \in V$ with~$(u_i, u') \in \rev(R)$ and~$(d_i,u') \notin \rev(R)$ or~$d' \in V$ with~$(d',d_i) \in \rev(R)$ and~$(d',u_i) \notin \rev(R)$. We could then replace~$u_i$ by~$u'$ or~$d_i$ by~$d'$ in~$C$ and obtained another induced oriented cycle in~$R$.
+\item If~$R_i$ were not coclosed, we would have~$d' \in V$ with~$(d_i,d') \in \tc(T) \ssm \rev(R)$ and~$(d',u_i) \in \tc(T) \ssm \rev(R)$. We could then replace~$d_i$ by~$d'$ in~$C$ and obtained another induced oriented cycle in~$R$.
 \end{itemize}
 In both cases, this contradicts our assumption on~$C$.
 Hence, we obtained~$k$ biclosed reorientations of~$\tc(T)$ covering~$R$.
@@ -2129,7 +2130,7 @@ Hence, neither the acyclic reorientation poset~$\AReori(\tc(T))$ nor the acyclic
 \end{proposition}
 
 \begin{proof}
-Consider a a starred tree~$T$, and let~$a,b,c,d,e$ be vertices of~$T$ as in \cref{lem:starredCharacterization}\,(ii).
+Consider a starred tree~$T$, and let~$a,b,c,d,e$ be vertices of~$T$ as in \cref{lem:starredCharacterization}\,(ii).
 
 The reorientation~$R$ of~$\tc(T)$ defined by~$\rev(R) = \set{(w,d)}{a \le_T w <_T d} \cup \set{(w,e)}{b \le_T w < e}$ is transitively closed because~$d \not<_T e$ and~$e \not<_T d$, transitively coclosed because~$(u,w) \in \rev(R)$ implies~$(v,w) \in \rev(R)$ for any~$u <_T v <_T w$, and cyclic because~$a, d, b, c$ forms a directed cycle.
 
@@ -2261,7 +2262,7 @@ The formula immediately follows.
 
 \begin{proposition}
 \label{prop:brooms2}
-The generating function~$B(x,y) \eqdef m! \, [x^m] \, B(x,y) = \sum_{n \ge 0} B_{m,n} \, y^n$ is given~by
+The generating function~$B_m(x,y) \eqdef \sum_{m \ge 0, n \ge 0} B_{m,n} \, x^m/m! \, y^n$ is given~by
 \[
 B(x,y) = \frac{e^x}{1-e^x \, y \, C(y)}
 \]
