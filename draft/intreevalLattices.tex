@@ -2421,11 +2421,11 @@ We conclude that~$B_2 = C^3 (1+y \, C)$.
 This short section is dedicated to the enumeration of ornamentations of the following specific family of trees.
 
 \begin{definition}
-The \defn{$n$-comb} is the rooted tree obtained by attaching a node (called \defn{teeth}) to each node of a path with $n$ nodes (called \defn{handle}).
+The \defn{$n$-comb} is the rooted tree obtained by attaching a node (called \defn{tooth}) to each node of a path with $n$ nodes (called \defn{handle}).
 \end{definition}
 
-%To fix a convention, let us denote by~$1, \dots, n$ the teeths and by~$n+1, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+n$ if~$1 \le i \le n$ and~$i+1$ if~$n < i < 2n$ (the node~$2n$ is the root).
-To fix a convention, let us denote by~$1, \dots, 2n-1$ the teeths and by~$2, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+1$ if~$i$ is odd and~$i+n$ if~$i$ is even (except the node~$2n$ which is the root).
+%To fix a convention, let us denote by~$1, \dots, n$ the teeth and by~$n+1, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+n$ if~$1 \le i \le n$ and~$i+1$ if~$n < i < 2n$ (the node~$2n$ is the root).
+To fix a convention, let us denote by~$1, \dots, 2n-1$ the teeth and by~$2, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+1$ if~$i$ is odd and~$i+n$ if~$i$ is even (except the node~$2n$ which is the root).
 See \cref{fig:comb}.
 
 \begin{remark}
@@ -2499,7 +2499,6 @@ The number of ornamentations of the $n$-comb minus its bottommost node is the se
 The sequences \OEIS{A000698} and \OEIS{A105616} are the first two columns of the table \OEIS{A105615} in~\cite{OEIS}.
 We have no explanation for this fact, nor candidates for families of directed trees whose numbers of ornamentations would give the other columns of this table.
 \end{remark}
-
 
 %sage: for n in range(10): 
 %....:     D = DiGraph([[i,i+n] for i in range(1,n)] + [[i,i+1] for i in range(n,2*n-1)]) 
