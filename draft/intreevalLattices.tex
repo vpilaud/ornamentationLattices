@@ -2491,9 +2491,14 @@ The conditions on the labels clearly ensure that we obtain a perfect matching.
 It is indecomposable since we never exhaust the free points until the very last point that we add.
 \end{proof}
 
-\begin{conjecture}
-The number of ornamentations of a complete comb is given by 1, 4, 26, 226, 2426, 30826, 451586, 7489426, 138722426, 2839238026, 63654973826, 1551919194226, 40888965122426, 1157981114051626, 35083865696279426, 1132449247218851026, 38800104353355372026, 1406432065083818193226, which is https://oeis.org/A105616.
-\end{conjecture}
+\begin{remark}
+The number of ornamentations of the $n$-comb minus its bottommost node is the sequence \OEIS{A105616} in~\cite{OEIS}, whose first few values are
+\[
+1, 4, 26, 226, 2426, 30826, 451586, 7489426, 138722426, 2839238026, 63654973826, 1551919194226, \dots % 40888965122426, 1157981114051626, 35083865696279426, 1132449247218851026, 38800104353355372026, 1406432065083818193226
+\]
+The sequences \OEIS{A000698} and \OEIS{A105616} are the first two columns of the table \OEIS{A105615} in~\cite{OEIS}.
+We have no explanation for this fact, nor candidates for families of directed trees whose numbers of ornamentations would give the other columns of this table.
+\end{remark}
 
 
 %sage: for n in range(10): 
