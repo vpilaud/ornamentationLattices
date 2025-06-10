@@ -2472,21 +2472,21 @@ where~$\displaystyle(2k-1)!! = \frac{(2k)!}{2^k \, k!} = (2k-1) \cdot (2k-3) \cd
 \end{proposition}
 
 \begin{proof}
-The bijections  below are illustrated in \cref{fig:comb}.
+We only sketch the ideas of the bijections, which are illustrated in \cref{fig:comb}.
 
 \medskip\noindent
 \uline{\textsl{Ornamentations versus labeled Dyck paths:}}
 The restriction of an ornamentation~$O$ to the handle gives an ornamentation of the $n$-path, hence a Dyck path~$D$ of semilength~$n$.
-The height of the top endpoint of the $i$th down step of~$D$ is the number of ornaments of~$O$ containing the node $2i$ (that is, the $i$th node of the handle of the $n$-comb).
-The label of this $i$th down step thus tells us how many ornaments of~$O$ contain the teeth $2i-1$ (that is, the $i$th teeth of the $n$-comb).
+The height of the top endpoint of the $i$th down step of~$D$ is the number of ornaments of~$O$ containing the node $2i$ (\ie, the $i$th node of the handle) of the $n$-comb.
+The label of this $i$th down step records how many ornaments of~$O$ contain the node~$2i-1$ (\ie, the $i$th teeth) of the $n$-comb.
 
 \medskip\noindent
 \uline{\textsl{Labeled Dyck paths versus indecomposable perfect matchings:}}
-Given a labeled Dyck path~$D$ of semilength~$n$, we construct a perfect matching~$M$ as follows.
+Reading a labeled Dyck path~$D$ of semilength~$n$, we construct a perfect matching~$M$ iteratively as follows.
 We start with a free point.
-If we read an up path, we add a free point to the right of~$M$.
-If we read a down path labeled by~$\ell$, we add a point and connect it to the $(\ell+1)$st free point from the left.
-Finally, when we have read the complete Dyck path, we add a last point and connect it to the only remaining free point.
+If we read an up step, we add a free point to the right of~$M$.
+If we read a down step labeled by~$\ell$, we add a point to the right of~$M$ and connect it to the $(\ell+1)$st free point starting from the right.
+Finally, when we finished to read the Dyck path~$D$, we add a last point to the right of~$M$ and connect it to the only remaining free point.
 The conditions on the labels clearly ensure that we obtain a perfect matching.
 It is indecomposable since we never exhaust the free points until the very last point that we add.
 \end{proof}
