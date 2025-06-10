@@ -2421,11 +2421,11 @@ We conclude that~$B_2 = C^3 (1+y \, C)$.
 This short section is dedicated to the enumeration of ornamentations of the following specific family of trees.
 
 \begin{definition}
-The \defn{$n$-comb} is the rooted tree obtained by attaching a node (called \defn{teeth}) to each node of a path with $n$ nodes (called \defn{handle}).
+The \defn{$n$-comb} is the rooted tree obtained by attaching a node (called \defn{tooth}) to each node of a path with $n$ nodes (called \defn{handle}).
 \end{definition}
 
-%To fix a convention, let us denote by~$1, \dots, n$ the teeths and by~$n+1, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+n$ if~$1 \le i \le n$ and~$i+1$ if~$n < i < 2n$ (the node~$2n$ is the root).
-To fix a convention, let us denote by~$1, \dots, 2n-1$ the teeths and by~$2, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+1$ if~$i$ is odd and~$i+n$ if~$i$ is even (except the node~$2n$ which is the root).
+%To fix a convention, let us denote by~$1, \dots, n$ the teeth and by~$n+1, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+n$ if~$1 \le i \le n$ and~$i+1$ if~$n < i < 2n$ (the node~$2n$ is the root).
+To fix a convention, let us denote by~$1, \dots, 2n-1$ the teeth and by~$2, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+1$ if~$i$ is odd and~$i+n$ if~$i$ is even (except the node~$2n$ which is the root).
 See \cref{fig:comb}.
 
 \begin{remark}
@@ -2478,7 +2478,7 @@ The bijections  below are illustrated in \cref{fig:comb}.
 \uline{\textsl{Ornamentations versus labeled Dyck paths:}}
 The restriction of an ornamentation~$O$ to the handle gives an ornamentation of the $n$-path, hence a Dyck path~$D$ of semilength~$n$.
 The height of the top endpoint of the $i$th down step of~$D$ is the number of ornaments of~$O$ containing the node $2i$ (that is, the $i$th node of the handle of the $n$-comb).
-The label of this $i$th down step thus tells us how many ornaments of~$O$ contain the teeth $2i-1$ (that is, the $i$th teeth of the $n$-comb).
+The label of this $i$th down step thus tells us how many ornaments of~$O$ contain the tooth $2i-1$ (that is, the $i$th tooth of the $n$-comb).
 
 \medskip\noindent
 \uline{\textsl{Labeled Dyck paths versus indecomposable perfect matchings:}}
@@ -2491,9 +2491,9 @@ The conditions on the labels clearly ensure that we obtain a perfect matching.
 It is indecomposable since we never exhaust the free points until the very last point that we add.
 \end{proof}
 
-\begin{conjecture}
-The number of ornamentations of a complete comb is given by 1, 4, 26, 226, 2426, 30826, 451586, 7489426, 138722426, 2839238026, 63654973826, 1551919194226, 40888965122426, 1157981114051626, 35083865696279426, 1132449247218851026, 38800104353355372026, 1406432065083818193226, which is https://oeis.org/A105616.
-\end{conjecture}
+%\begin{conjecture}
+%The number of ornamentations of a complete comb is given by 1, 4, 26, 226, 2426, 30826, 451586, 7489426, 138722426, 2839238026, 63654973826, 1551919194226, 40888965122426, 1157981114051626, 35083865696279426, 1132449247218851026, 38800104353355372026, 1406432065083818193226, which is https://oeis.org/A105616.
+%\end{conjecture}
 
 
 %sage: for n in range(10): 
