@@ -140,6 +140,7 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\purple}[1]{{\color{purple} #1}} % purple command
 \newcommand{\darkblue}{\color{darkblue}} % darkblue command
 \newcommand{\defn}[1]{\textsl{\darkblue #1}} % emphasis of a definition
+\newcommand{\OEIS}[1]{{\rm \href{http://oeis.org/#1}{\texttt{#1}}}}
 \usepackage{todonotes}
 \newcommand{\vincent}[1]{\todo[size=\tiny,color=blue!30]{ #1 \\ \hfill --- V.}\,}
 \newcommand{\Vincent}[1]{\todo[inline,color=blue!30]{#1 \\ \hfill --- V.}}
@@ -1165,7 +1166,7 @@ It is surjective since the fiber of any reorientation~$R$ is the set of linear e
 
 \begin{figure}
 	\centerline{\includegraphics[scale=.68]{acyclicReorientationsD}}
-	\caption{The acyclic reorientation poset~$\AReori(\Dgraph)$.}
+	\caption{The acyclic reorientation poset~$\AReori(\Dgraph)$. (Not a lattice, see \cref{fig:MacNeilleAcyclicReorientationsD}.)}
 	\label{fig:acyclicReorientationsD}
 \end{figure}
 
@@ -2014,13 +2015,13 @@ In general, we have no description of the MacNeille completion of the acyclic or
 %
 \begin{figure}
 	\centerline{\includegraphics[scale=.68]{MacNeilleAcyclicReorientationsD}}
-	\caption{The MacNeille completion of the acyclic reorientation poset~$\AReori(\Dgraph)$ of \cref{fig:acyclicReorientationsD}. (Gray = added element).}
+	\caption{The MacNeille completion of the acyclic reorientation poset~$\AReori(\Dgraph)$ of \cref{fig:acyclicReorientationsD}. (Gray = added element). See \cref{rem:MacNeille}.}
 	\label{fig:MacNeilleAcyclicReorientationsD}
 \end{figure}
 %
 \begin{figure}
 	\centerline{\includegraphics[scale=.68]{MacNeilleAcyclicOrnamentationsD}}
-	\caption{The MacNeille completion of the acyclic ornamentation poset~$\AOrn(\Dgraph)$ of \cref{fig:ornamentationsD}. (Gray = added element).}
+	\caption{The MacNeille completion of the acyclic ornamentation poset~$\AOrn(\Dgraph)$ of \cref{fig:ornamentationsD}. (Gray = added element). See \cref{rem:MacNeille}.}
 	\label{fig:MacNeilleAcyclicOrnamentationsD}
 \end{figure}
 \end{remark}
@@ -2034,7 +2035,7 @@ In general, we have no description of the MacNeille completion of the acyclic or
 
 In this section, we discuss the specific situation when the ground directed graph~$D$ is an unstarred tree~$T$ defined in \cref{subsec:unstarredTrees}.
 We show \cref{thm:main2} in \cref{subsec:OrnUT}.
-Finally, we discuss enumeration properties of ornamentations of brooms in \cref{subsec:brooms}.
+Finally, we discuss enumeration properties of ornamentations of brooms (\cref{subsec:brooms}) and combs (\cref{subsec:combs}).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2221,27 +2222,52 @@ is the set of permutations~$\{41325, 43125, 14325, 14235, 12435, 12453, 14253, 4
 \subsection{Brooms}
 \label{subsec:brooms}
 
-We conclude our section on trees by a discussion on the number of ornamentations of a broom.
+This short section is dedicated to the enumeration of ornamentations of the following specific family of trees.
 
 \begin{definition}
-The \defn{$(m,n)$-broom} is the rooted tree obtained by attaching $m$ nodes (called \defn{bristles}) to an $n$-path (called \defn{handle}).
+The \defn{$(m,n)$-broom} is the rooted tree obtained by attaching $m$ nodes (called \defn{bristles}) to the initial vertex of a path with $n$ nodes (called \defn{handle}).
 \end{definition}
 
 \begin{remark}
-The $(m,n)$-broom has~$2^{m+n-1}$ reorientations, of which $(n+1)^m \, n!$ are acyclic, and~$\prod_{k = 1}^{n+1} k^{m+n+1-k}$ sourcings.
-As the $(m,n)$-broom is a rooted tree, all its ornamentations are acyclic by \cref{prop:AOrnLatticeUT}, so its numbers of acyclic sourcings, acyclic ornamentations and ornamentations are all equal.
+The transitive closure of the $(m,n)$-broom has~$2^{n(2m+n-1)/2}$ reorientations, of which $n! \, (n+1)^m$ are acyclic, and~$(n+1)!^m \prod_{k = 1}^n k^{n+1-k}$ sourcings.
+As the $(m,n)$-broom is a rooted tree, all its ornamentations are acyclic by \cref{prop:AOrnLatticeUT}, so its numbers of acyclic sourcings, acyclic ornamentations and ornamentations all coincide, and we compute them below.
 \end{remark}
 
-We denote by~$B_{m,n}$ the number of (acyclic) ornamentations of the $(m,n)$-broom, by
+We denote by~$B_{m,n}$ the number of (acyclic) ornamentations of the $(m,n)$-broom.
+The first few values are gathered in \cref{tab:broom}.
+In~\cite{OEIS}, the first three rows of \cref{tab:broom} are the sequences \OEIS{A000108}, \OEIS{A000108}, and \OEIS{A070031} respectively, while the first three columns of \cref{tab:broom} are the sequences \OEIS{A000012}, \OEIS{A000079}, and \OEIS{A007689} respectively.
+We denote by
 \[
-B(x,y) \eqdef \sum_{m \ge 0, n \ge 0} B_{m,n} \, x^m/m! \, y^n
+B(x,y) \eqdef \sum_{m \ge 0, \, n \ge 0} B_{m,n} \, \frac{x^m}{m!} \, y^n
 \]
 their generating function (exponential in~$x$ and ordinary in~$y$), and by
 \[
 B_m(y) \eqdef m! \, [x^m] \, B(x,y) = \sum_{n \ge 0} B_{m,n} \, y^n
 \]
 the coefficient of~$x^m/m!$ in~$B(x,y)$.
-As~$B_{0,m} = B_{1,n-1}$ is the $n$th Catalan number~$C_n \eqdef \frac{1}{n+1}\binom{2n}{n}$, we have $B_0(y) = C(y)$ and~$B_1(y) = (C(y) - 1)/y$ where~$C(y) \eqdef \sum_{n \ge 0} C_n \, y^n = \frac{1-\sqrt{1-4y}}{2y}$.
+As~$B_{0,n} = B_{1,n-1}$ is the $n$th Catalan number~$C_n \eqdef \frac{1}{n+1}\binom{2n}{n}$, we have $B_0(y) = C(y)$ and~$B_1(y) = (C(y) - 1)/y$ where~$C(y) \eqdef \sum_{n \ge 0} C_n \, y^n = \frac{1-\sqrt{1-4y}}{2y}$.
+
+\begin{table}
+	\[
+	\begin{array}{c|ccccccccccc}
+	m \backslash n & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & \cdots \\
+	\hline
+	0 & 1 & 1 & 2 & 5 & 14 & 42 & 132 & 429 & 1430 & \cdots \\ % \OEIS{A000108}
+	1 & 1 & 2 & 5 & 14 & 42 & 132 & 429 & 1430 & 4862 & \cdots \\ % \OEIS{A000108}
+	2 & 1 & 4 & 13 & 42 & 138 & 462 & 1573 & 5434 & 19006 & \cdots \\ % \OEIS{A070031}
+	3 & 1 & 8 & 35 & 134 & 492 & 1782 & 6435 & 23270 & 84422 & \cdots \\ % ?
+	4 & 1 & 16 & 97 & 450 & 1878 & 7458 & 28873 & 110266 & 418030 & \cdots \\
+	5 & 1 & 32 & 275 & 1574 & 7572 & 33342 & 139659 & 567590 & 2263142 & \cdots \\
+	6 & 1 & 64 & 793 & 5682 & 31878 & 157122 & 717673 & 3124474 & 13177006 & \cdots \\
+	7 & 1 & 128 & 2315 & 21014 & 138852 & 772302 & 3872955 & 18167270 & 81443702 & \cdots \\
+	8 & 1 & 256 & 6817 & 79170 & 621318 & 3927378 & 21752953 & 110506426 & 528949870 & \cdots \\ 
+	\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots \\
+%	\cite{OEIS} & \OEIS{A000012} & \OEIS{A000079} & \OEIS{A007689} & ?
+	\end{array}
+	\]
+	\caption{The number $B_{m,n}$ of (acyclic) ornamentations of the $(m,n)$-broom.}
+	\label{tab:broom}
+\end{table}
 
 \begin{proposition}
 \label{prop:brooms1}
@@ -2261,7 +2287,7 @@ The formula immediately follows.
 
 \begin{proposition}
 \label{prop:brooms2}
-The generating function~$B(x,y) \eqdef m! \, [x^m] \, B(x,y) = \sum_{n \ge 0} B_{m,n} \, y^n$ is given~by
+The generating function~$\displaystyle B(x,y) \eqdef \sum_{m \ge 0, \, n \ge 0} B_{m,n} \, \frac{x^m}{m!} \, y^n$ is given~by
 \[
 B(x,y) = \frac{e^x}{1-e^x \, y \, C(y)}
 \]
@@ -2278,20 +2304,20 @@ Using classical generatingfunctionology~\cite{FlajoletSedgewick}, this immediate
 \begin{proof}[Second proof of \cref{prop:brooms2}]
 Recall that if
 \[
-U(x,y) = \sum_{m \ge 0, n \ge 0} U_{m,n} \, x^m/m! \, y^n
+U(x,y) = \sum_{m \ge 0, \, n \ge 0} U_{m,n} \, \frac{x^m}{m!} \, y^n
 \qquad\text{and}\qquad
-V(x,y) = \sum_{m \ge 0, n \ge 0} V_{m,n} \, x^m/m! \, y^n
+V(x,y) = \sum_{m \ge 0, \, n \ge 0} V_{m,n} \, \frac{x^m}{m!} \, y^n
 \]
 are two generating functions exponential in~$x$ and ordinary in~$y$, then
 \[
-U(x,y) \cdot V(x,y) = \sum_{m \ge 0, n \ge 0} W_{m,n}  \, x^m/m! \, y^n
+U(x,y) \cdot V(x,y) = \sum_{m \ge 0, \, n \ge 0} W_{m,n}  \, \frac{x^m}{m!} \, y^n
 \qquad\text{where}\qquad
 W_{m,n} = \sum_{k = 0}^m \sum_{\ell = 0}^n \binom{m}{k} \, U_{k,\ell} \, V_{n-k,n-\ell}.
 \]
 Consider~$U(x,y) \eqdef B(x,y) \, y$ and~$V(x,y) \eqdef e^x \, C(y)$, we obtain
 \begin{align*}
-B(x,y) \, y \, e^x \, C(y) & = \sum_{m \ge 0, n \ge 1}  \left( \sum_{k = 0}^m \sum_{\ell = 1}^n \binom{m}{k} \, B_{k,\ell-1} \, C_{n-\ell} \right) \, x^m/m! \, y^n \\
-& = \sum_{m \ge 0, n \ge 1} B_{m,n} \, x^m/m! \, y^n \\
+B(x,y) \, y \, e^x \, C(y) & = \sum_{m \ge 0, \, n \ge 1}  \left( \sum_{k = 0}^m \sum_{\ell = 1}^n \binom{m}{k} \, B_{k,\ell-1} \, C_{n-\ell} \right) \, \frac{x^m}{m!} \, y^n \\
+& = \sum_{m \ge 0, \, n \ge 1} B_{m,n} \, \frac{x^m}{m!} \, y^n \\
 & = B(x,y) - e^x
 \end{align*}
 from which we derive that
@@ -2391,8 +2417,81 @@ We conclude that~$B_2 = C^3 (1+y \, C)$.
 \subsection{Combs}
 \label{subsec:combs}
 
+This short section is dedicated to the enumeration of ornamentations of the following specific family of trees.
+
+\begin{definition}
+The \defn{$n$-comb} is the rooted tree obtained by attaching a node (called \defn{teeth}) to each node of a path with $n$ nodes (called \defn{handle}).
+\end{definition}
+
+%To fix a convention, let us denote by~$1, \dots, n$ the teeths and by~$n+1, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+n$ if~$1 \le i \le n$ and~$i+1$ if~$n < i < 2n$ (the node~$2n$ is the root).
+To fix a convention, let us denote by~$1, \dots, 2n-1$ the teeths and by~$2, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+1$ if~$i$ is odd and~$i+n$ if~$i$ is even (except the node~$2n$ which is the root).
+See \cref{fig:comb}.
+
+\begin{remark}
+The transitive closure of the $n$-comb has~$2^{n^2}$ reorientations, of which $n! \, (n+1)!$ are acyclic, and~$\prod_{k = 1}^n k^{n+1-k} \, (k+1)!$ sourcings.
+As the $n$-comb is a rooted tree, all its ornamentations are acyclic by \cref{prop:AOrnLatticeUT}, so its numbers of acyclic sourcings, acyclic ornamentations and ornamentations all coincide, and we compute them below.
+\end{remark}
+
+We denote by~$E_n$ the number of (acyclic) ornamentations of the $n$-comb.
+It is the sequence \OEIS{A000698} in \cite{OEIS}, and its first few values are
+\[
+1, 2, 10, 74, 706, 8162, 110410, 1708394, 29752066, 576037442, 12277827850, 285764591114, \dots
+\]
+In order to give a formula for~$E_n$, we introduce the following two families of combinatorial objects, illustrated in \cref{fig:comb}.
+
+\begin{figure}
+	\centerline{\includegraphics[scale=.68]{comb}}
+	\caption{The bijections of \cref{prop:comb} between (acyclic) ornamentations of the $n$-comb (top), labeled Dyck paths of semilength~$n$ (middle) and indecomposable perfect matchings of~$[2n+2]$ (bottom), for~$n = 2$.}
+	\label{fig:comb}
+\end{figure}
+
+\begin{definition}
+A \defn{Dyck path} of semilength~$n$ is a path with up steps~$(1,1)$ and down steps~$(1,-1)$ starting at~$(0,0)$, ending at~$(n,n)$, and never passing strictly below the horizontal axis.
+A \defn{labeled Dyck path} is a Dyck path where each down step is labeled by an integer in~$[0,h]$ where $h$ is the height of its top endpoint.
+\end{definition}
+
+\begin{definition}
+A \defn{perfect matching} of~$[2n]$ is a partition~$\pi$ of~$[2n]$ into $n$ pairs.
+It is \defn{decomposable} if there is~$k \in [n]$ such that any pair of~$\pi$ is contained either in~$[2k]$ or in its complement~$[2n] \ssm [2k]$.
+\end{definition}
+
+\begin{proposition}
+\label{prop:comb}
+The following sets of combinatorial objects are in bijection:
+\begin{enumerate}[(i)]
+\item the (acyclic) ornamentations of the $n$-comb,
+\item the labeled Dyck paths of semilength $n$,
+\item the indecomposable perfect matchings of~$[2n+2]$.
+\end{enumerate}
+Hence, the number~$E_n$ of (acyclic) ornamentations of the $n$-comb satisfies
+\[
+E_n = (2n+1)!! - \sum_{k = 1}^n (2k-1)!! \, E_{n-k}
+\]
+where~$\displaystyle(2k-1)!! = \frac{(2k)!}{2^k \, k!} = (2k-1) \cdot (2k-3) \cdots 5 \cdot 3 \cdot 1$.
+\end{proposition}
+
+\begin{proof}
+The bijections  below are illustrated in \cref{fig:comb}.
+
+\medskip\noindent
+\uline{\textsl{Ornamentations versus labeled Dyck paths:}}
+The restriction of an ornamentation~$O$ to the handle gives an ornamentation of the $n$-path, hence a Dyck path~$D$ of semilength~$n$.
+The height of the top endpoint of the $i$th down step of~$D$ is the number of ornaments of~$O$ containing the node $2i$ (that is, the $i$th node of the handle of the $n$-comb).
+The label of this $i$th down step thus tells us how many ornaments of~$O$ contain the teeth $2i-1$ (that is, the $i$th teeth of the $n$-comb).
+
+\medskip\noindent
+\uline{\textsl{Labeled Dyck paths versus indecomposable perfect matchings:}}
+Given a labeled Dyck path~$D$ of semilength~$n$, we construct a perfect matching~$M$ as follows.
+We start with a free point.
+If we read an up path, we add a free point to the right of~$M$.
+If we read a down path labeled by~$\ell$, we add a point and connect it to the $(\ell+1)$st free point from the left.
+Finally, when we have read the complete Dyck path, we add a last point and connect it to the only remaining free point.
+The conditions on the labels clearly ensure that we obtain a perfect matching.
+It is indecomposable since we never exhaust the free points until the very last point that we add.
+\end{proof}
+
 \begin{conjecture}
-The number of ornamentations of a comb is given by 1, 4, 26, 226, 2426, 30826, 451586, 7489426, 138722426, 2839238026, 63654973826, 1551919194226, 40888965122426, 1157981114051626, 35083865696279426, 1132449247218851026, 38800104353355372026, 1406432065083818193226, which is https://oeis.org/A105616.
+The number of ornamentations of a complete comb is given by 1, 4, 26, 226, 2426, 30826, 451586, 7489426, 138722426, 2839238026, 63654973826, 1551919194226, 40888965122426, 1157981114051626, 35083865696279426, 1132449247218851026, 38800104353355372026, 1406432065083818193226, which is https://oeis.org/A105616.
 \end{conjecture}
 
 
@@ -2405,9 +2504,6 @@ The number of ornamentations of a comb is given by 1, 4, 26, 226, 2426, 30826, 4
 %2 4
 %3 26
 %4 226
-
-
-\vincent{Can we get the generating function?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2464,7 +2560,7 @@ Among the $7$ intreeval hypergraphs of \cref{fig:intreevalHypergraphs},
 
 \begin{figure}
 	\centerline{\includegraphics[scale=.8]{intreevalHypergraphs}}
-	\caption{Some intreeval hypergraphs.}
+	\caption{Some intreeval hypergraphs. See \cref{exm:intreevalHypergraphs}.}
 	\label{fig:intreevalHypergraphs}
 \end{figure}
 \end{example}
