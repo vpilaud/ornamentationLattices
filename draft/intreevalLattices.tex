@@ -678,7 +678,7 @@ If~$R_1 \le R_2$, then $\rev(R_1) \subseteq \rev(R_2)$, hence any path in~$\rev(
 \begin{definition}
 \label{def:Orn2Reori}
 For an ornamentation~$O$ of~$D$, we define a reorientation~$\reori{O}$ of~$\tc(D)$ where for each~$(u,v) \in \tc(D)$, we have~$(u,v) \in \rev(\reori{O})$ if and only if~$u \in O(v)$.
-\vincent{This map is not compatible with acyclicity later... But I don't see how to fix that.}
+%\vincent{This map is not compatible with acyclicity later... But I don't see how to fix that.}
 \end{definition}
 
 \begin{lemma}
@@ -894,7 +894,7 @@ Thus, we have shown that $\orn{R_1} \meet \orn{R_2} \le \orn{R_1 \meet R_2}$, an
 %showing that this same path is contained in both $\orn{R_1}(v)$ and $\orn{R_2}(v)$.
 %By \cref{thm:OrnMeetJoin}, $\{u = w_0, w_1, \dots, w_p = v\} \subseteq O_\meet(v)$.
 %Thus, we have shown that $O_\meet \geq \orn{R_1 \meet R_2}$.
-\vincent{I removed the second part of the argument as it immediately follows from the order preserving condition.}
+%\vincent{I removed the second part of the argument as it immediately follows from the order preserving condition.}
 \end{proof}
 
 \begin{remark}
@@ -955,7 +955,7 @@ We first observe that any sourcing~$S$ of~$\PP(D)$ can be lifted to a reorientat
 \begin{definition}
 \label{def:Sour2Reori}
 For a sourcing~$S$ of~$\PP(D)$, we denote by~$\reori{S}$ the reorientation of~$\tc(D)$ defined by~$\rev(\reori{S}) = \rev(S)$.
-\vincent{This map is not compatible with acyclicity later... But I don't see how to fix that.}
+%\vincent{This map is not compatible with acyclicity later... But I don't see how to fix that.}
 \end{definition}
 
 \begin{lemma}
@@ -1009,7 +1009,7 @@ Follows from~\cref{lem:Reori2Orn2,lem:Sour2Reori,lem:Sour2Orn1}.
 \begin{definition}
 \label{def:Orn2Sour}
 For an ornamentation~$O$ of~$D$, we define a sourcing~$\sour{O}$ of~$\PP(D)$ where the source~$\sour{O}(P)$ for a path~$P$ from~$u$ to~$v$ in~$D$ is the maximal~$w \in P$ such that~$u \in O(w)$.
-\vincent{This map is not compatible with acyclicity later... But I don't see how to fix that.}
+%\vincent{This map is not compatible with acyclicity later... But I don't see how to fix that.}
 \end{definition}
 
 \begin{lemma}
@@ -1270,7 +1270,7 @@ We thus need to define a section of the map~$R \mapsto \asour{R}$.
 \label{def:ASour2AReori}
 Let~$S$ be an acyclic sourcing of~$\PP(D)$.
 We denote by $\arr(S)$ the pairs~$(u,v) \in [n]^2$ such that there is~$P \in \PP(D)$ with~$u \in P$ and~$v = S(P)$.
-\vincent{note that we can assume that~$P$ is a path from~$u$ to~$v$. But there might be more than one path since~$D$ is not a tree.}
+%\vincent{note that we can assume that~$P$ is a path from~$u$ to~$v$. But there might be more than one path since~$D$ is not a tree.}
 Let~$\areori{S}$ be the reorientation of~$\tc(D)$ defined by~$\rev(\areori{S}) = \tc(\arr(S)) \cap \tc(D)$.
 \end{definition}
 
@@ -1482,7 +1482,6 @@ In this section, we focus on the specific situation when the ground directed gra
 Let~$T$ be a directed tree on~$V$.
 For~$u,v \in V$, we write~$u \le_T v$ if there is a directed path from~$u$ to~$v$ in~$T$. %, and we write~$[u,v]_T$ for this path.
 We denote by~$\triangle_T(w) \eqdef \set{u \in V}{u \le_T v}$ the set of vertices which admit a directed path towards~$v$ in~$T$.
-\vincent{I decided quite late to introduce these notations. There are certainly some places where they could be used to simplify the phrasing. I will check that during proofreading.}
 We begin with a few observations.
 
 \begin{lemma}
@@ -1758,7 +1757,7 @@ For a directed tree~$T$,
 \begin{itemize}
 \item the ornamentation lattice~$\Orn(T)$ is semidistributive,
 \item the join (resp.~meet) irreducible ornamentations of~$T$ are precisely the ornamentations~$J_P$ (resp.~$M_P$) for all directed paths~$P$ in~$T$,
-\item the canonical join (resp.~meet) representation of an ornamentation~$O$ is~$O = \bigJoin_P J_P$ (resp.~$O = \bigMeet_P M_P$) where the join (resp.~meet) ranges over all paths~$P = [u,v]$ described in \cref{lem:coverRelationsOrnT} for the cover relations~$O' \lessdot O$ (resp.~$O \lessdot O'$), \vincent{is there a better description} 
+\item the canonical join (resp.~meet) representation of an ornamentation~$O$ is~$O = \bigJoin_P J_P$ (resp.~$O = \bigMeet_P M_P$) where the join (resp.~meet) ranges over all paths~$P = [u,v]$ described in \cref{lem:coverRelationsOrnT} for the cover relations~$O' \lessdot O$ (resp.~$O \lessdot O'$), %\vincent{is there a better description} 
 \item we have~$\kappa_\join(M_P) = J_P$ and~$\kappa_\meet(J_P) = M_P$ for any~$P \in \PP(T)$.
 \end{itemize}
 \end{theorem}
@@ -1829,7 +1828,7 @@ Assume that there is a directed path~$u \to u' \to \dots \to v$ in~$T$ such that
 Let~$w \in V$ be such that $u \notin O(w)$ but~$u',v' \in O(w)$.
 Then, for any~$v'$ between~$u'$ and~$v$, we have~$v' \in O(w)$, hence~$(u,v') \not \in \rev(\maxreori{O})$.
 We thus obtained that~$(u,v'), (v',v) \in \rev(\maxreori{O})$ implies~$(u,v) \in \rev(\maxreori{O})$, that is, $\rev(\maxreori{O})$ is transitively closed.
-\vincent{not only it has a max, but it has a Tamari max....}
+%\vincent{not only it has a max, but it has a Tamari max....}
 We conclude that the fiber of~$O$ is an interval, since it has a minimum by \cref{prop:Reori2OrnMinTC} and a maximum by \cref{prop:Reori2OrnMaxTree}.
 \end{proof}
 
@@ -2512,10 +2511,10 @@ We have no explanation for this fact, nor candidates for families of directed tr
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Complete binary trees}
-\label{subsec:CompleteBinaryTrees}
-
-\vincent{Is there something interesting to say. Number of ornamentations?}
+%\subsection{Complete binary trees}
+%\label{subsec:CompleteBinaryTrees}
+%
+%\vincent{Is there something interesting to say. Number of ornamentations?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
