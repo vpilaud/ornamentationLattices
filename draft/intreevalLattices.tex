@@ -252,8 +252,8 @@ Consider a hypergraph~$\HH$ on~$[n]$.
 A \defn{sourcing} of~$\HH$ is a map~$S$ associating to each hyperedge~$H \in \HH$ a source~$S(H) \in H$.
 Note that sourcings of~$\HH$ are often called orientations of~$\HH$, we changed the name to avoid confusion with reorientations of directed graphs also manipulated in this paper.
 A sourcing~$S$ of~$\HH$ is \defn{acyclic} if there is no directed cycle in the directed graph with edges~$(h,S(H))$ for all~$h \in H \in \HH$.
-The \defn{(acyclic) sourcing poset} of~$\HH$ is the poset of (acyclic) sourcings of~$\HH$ ordered by componentwise comparison, meaning~$S(H) \le S'(H)$ for all~$H \in \HH$.
-While the sourcing poset~$\Sour(\HH)$ is clearly a lattice (as a product intervals), the acyclic sourcing poset~$\ASour(\HH)$ is not always a lattice.
+The \defn{(acyclic) sourcing poset} of~$\HH$ is the poset of (acyclic) sourcings of~$\HH$ ordered by componentwise comparison, meaning~$S \le S'$ if~$S(H) \le S'(H)$ for all~$H \in \HH$.
+While the sourcing poset~$\Sour(\HH)$ is clearly a lattice (as a product of intervals), the acyclic sourcing poset~$\ASour(\HH)$ is not always a lattice.
 %When~$\HH$ is the hypergraph of all intervals of~$[n]$, the acyclic sourcing poset~$\Sour(\HH)$ is the Tamari lattice.
 The question to characterize the hypergraphs~$\HH$ whose acyclic sourcing posets~$\ASour(\HH)$ are lattices has been studied for specific families of hypergraphs, notably for graphs~\cite{Pilaud-acyclicReorientationLattices}, for interval hypergraphs~\cite{BergeronPilaud}, and (partially for) graph associahedra~\cite{BarnardMcConville}.
 In this paper, we will consider the family of hypergraphs arising as the collection of paths in a directed graph, and study their acyclic sourcing posets from a lattice theoretic perspective.
@@ -275,7 +275,7 @@ For instance,
 Consider a directed graph~$E$ on~$[n]$.
 A \defn{reorientation} of~$E$ is a directed graph~$R$ obtained from~$E$ by reversing a subset~$\rev(R)$ of edges of~$E$.
 A reorientation~$R$ of~$E$ is \defn{acyclic} if it contains no directed cycle.
-The \defn{(acyclic) reorientation poset} of~$E$ is the set of (acyclic) reorientations of~$E$ ordered by inclusion of reversion sets, meaning~$\rev(R) \subseteq \rev(R')$.
+The \defn{(acyclic) reorientation poset} of~$E$ is the set of (acyclic) reorientations of~$E$ ordered by inclusion of reversion sets, meaning~$R \le R'$ if~$\rev(R) \subseteq \rev(R')$.
 While the reorientation poset~$\Reori(E)$ is clearly a boolean lattice, the acyclic reorientation poset~$\AReori(E)$ is not always a lattice.
 
 The \defn{graphical zonotope} of~$E$ is the Minkowski sum~$\simplex_E \eqdef \sum_{(u,v) \in E} \simplex_{uv}$, where~$\simplex_{uv}$ is the segment with endpoints~$\b{e}_u$ and~$\b{e}_v$.
@@ -301,7 +301,7 @@ An \defn{ornament} of~$D$ at~$v$ is a subset~$U$ of~$V$ such that any vertex of~
 An \defn{ornamentation} of~$D$ is an assignment~$O$ of ornaments at each vertex of~$V$ with the nesting condition that $u \in O(v)$ implies~$O(u) \subseteq O(v)$.
 Note that ornamentations were introduced and studied in~\cite{DefantSack} for rooted trees and extended in~\cite{Sack} for directed graphs and beyond.
 An ornamentation~$O$ of~$D$ is \defn{acyclic} if a certain reorientation of the transitive closure~$\tc(D)$ of~$D$ constructed from~$O$ is acyclic (see precise definition later).
-The \defn{(acyclic) ornamentation poset} of~$D$ is the poset of (acyclic) ornamentations of~$D$ ordered by componentwise inclusion, meaning~${O(v) \subseteq O'(v)}$ for all~$v \in V$.
+The \defn{(acyclic) ornamentation poset} of~$D$ is the poset of (acyclic) ornamentations of~$D$ ordered by componentwise inclusion, meaning~$O \le O'$ if~${O(v) \subseteq O'(v)}$ for all~$v \in V$.
 The ornamentation poset~$\Orn(D)$ is always a lattice, but the acyclic ornamentation poset~$\Orn(D)$ is not always a lattice.
 Interestingly, we will see that all ornamentations turn out to be acyclic when~$D$ is a rooted tree, and the ornamentation lattice is the MacNeille completion of the acyclic ornamentation lattice when~$D$ is a directed tree.
 
@@ -541,7 +541,7 @@ The minimal ornamentation of~$D$ sends each vertex~$v \in V$ to the singleton~$\
 The ornamentation lattice of the graph with a single edge is a $2$-elements chain.
 The ornamentation lattice of a graph with no path of length $2$ is a boolean lattice (see \eg \cref{fig:ornamentationsNI}\,(left) and \ref{fig:ornamentationsKT}\,(right)).
 %In general, the ornamentation lattice~$\Orn(D \sqcup D')$ of the disjoint union of two directed graphs~$D$ and~$D'$ is the Cartesian product~$\Orn(D) \times \Orn(D')$ of the ornamentation lattices of~$D$ and~$D'$
-In fact, boolean lattices are the only distributive ornamentation lattices.
+In fact, the boolean lattices are the only distributive ornamentation lattices.
 \end{example}
 
 \begin{example}
@@ -661,10 +661,10 @@ For any reorientation~$R$ of~$\tc(D)$, the map~$\orn{R}$ is an ornamentation of~
 
 \begin{proof}
 By definition, $\orn{R}(v) \in \Orn(v \in D)$ for all~$v \in V$.
-Consider now~$u,v \in V$ such that~$u \in \orn{R}(v)$.
-Since~$\orn{R}(u) \in \Orn(u \in D)$ and~$\orn{R}(v) \in \Orn(v \in D)$ with~${u \in \orn{R}(v)}$, \cref{lem:unionOrnaments} gives~$\orn{R}(u) \cup \orn{R}(v) \in \Orn(v \in D)$.
+Consider now~$u,v \in V$ such that~${u \in \orn{R}(v)}$.
+Since~$\orn{R}(u) \in \Orn(u \in D)$ and~$\orn{R}(v) \in \Orn(v \in D)$ with~${u \in \orn{R}(v)}$, \cref{lem:unionOrnaments} ensures that $\orn{R}(u) \cup \orn{R}(v) \in \Orn(v \in D)$.
 Moreover, by path concatenation, there is a path from any vertex of~$\orn{R}(u) \cup \orn{R}(v)$ to~$v$ in~$\rev(R)$.
-By maximality of~$\orn{R}(v)$, we conclude that~$\orn{R}(u) \subseteq \orn{R}(v)$, so that~$\orn{R}(u) \subseteq \orn{R}(v)$.
+By maximality of~$\orn{R}(v)$, we conclude that~$\orn{R}(u) \cup \orn{R}(v) \subseteq \orn{R}(v)$, so that~${\orn{R}(u) \subseteq \orn{R}(v)}$.
 \end{proof}
 
 \begin{lemma}
@@ -795,7 +795,7 @@ The set~$\Rcl(\tc(D))$ (resp.~$\Rco(\tc(D))$) of transitively closed (resp.~cocl
 \end{lemma}
 
 \begin{proof}
-As the intersection of two transitively closed relations is transitively closed, $R_1, R_2 \in \Rcl(\tc(D))$ implies $R_1 \meet R_2 \in \Rcl(\tc(D))$.
+As the intersection of transitively closed relations is transitively closed, $R_1, R_2 \in \Rcl(\tc(D))$ implies $R_1 \meet R_2 \in \Rcl(\tc(D))$.
 As~$\tc(D)$ is transitively closed, the maximal reorientation of~$\tc(D)$ is transitively closed, so that $\Rcl(\tc(D))$ is a bounded meet semilattice, hence a lattice.
 The proof for~$\Rco(\tc(D))$ is symmetric.
 \end{proof}
@@ -962,6 +962,7 @@ For a sourcing~$S$ of~$\PP(D)$, we denote by~$\reori{S}$ the reorientation of~$\
 \begin{lemma}
 \label{lem:Sour2Reori}
 The map~$S \mapsto \reori{S}$ is order-preserving.
+\vincent{I actually believe that it is a lattice embedding.}
 \end{lemma}
 
 \begin{proof}
@@ -970,7 +971,7 @@ If~$S_1 \le S_2$, then $\rev(S_1) \subseteq \rev(S_2)$, hence $\rev(\reori{S_1})
 
 In contrast, not all reorientations of~$\tc(D)$ can be projected to a sourcing of~$\PP(D)$, because reorientations might have cycles inside paths of~$D$.
 We will fix this problem by restricting to acyclic reorientations and acyclic sourcings in \cref{sec:acyclic}.
-At the moment, we thus need define a map from all sourcings of~$\PP(D)$ to all ornamentations of~$D$.
+At the moment, we thus need to define a map from all sourcings of~$\PP(D)$ to all ornamentations of~$D$.
 
 \begin{definition}
 \label{def:Sour2Orn}
@@ -1033,8 +1034,8 @@ For any ornamentation~$O$ of~$D$, we have~$\orn{\sour{O}} = O$. In other words, 
 \begin{proof}
 Let~$u,v \in V$.
 If~$u \in O(v)$, then there is a path~$P$ from~$u$ to~$v$ in~$O(v)$, hence~$(u,v) \in \rev(\sour{O})$.
-Assume that there is a path from~$u$ to~$v$ in~$\rev(\sour{O})$.
-Let~$u = w_0 \le w_1 \le \dots \le w_p = v$ denote the vertices along this path.
+Conversely, assume that there is a path from~$u$ to~$v$ in~$\rev(\sour{O})$.
+Let~$u = w_0, w_1, \dots, w_p = v$ denote the vertices along this path.
 For each $1 \le i \le p$, there is a path~$P_i$ in~$D$ such that~$w_{i-1} \in P_i$ and~$w_i = \sour{O}(P_i)$, hence~$w_{i-1} \in O(w_i)$.
 Since~$O$ is an ornamentation, an immediate induction shows that~$w_i \in O(v)$ for all~$0 \le i \le p$.
 We conclude that $u \in O(v)$ if and only if there is a path from~$u$ to~$v$ in~$\rev(\sour{O})$.
@@ -1101,7 +1102,7 @@ We then consider the acyclic reorientation poset~$\AReori(\tc(D))$ (\cref{subsec
 \subsection{Acyclic reorientations}
 \label{subsec:acyclicReorientations}
 
-Acyclic reorientations of directed acyclic graphs is a classical subject, see for instance~\cite{Pilaud-acyclicReorientationLattices} and \cref{fig:acyclicReorientationsAY,fig:acyclicReorientationsD,fig:acyclicReorientationsKT} for illustrations.
+Acyclic reorientations of directed acyclic graphs is a classical subject, see for instance~\cite{Greene,GreeneZaslavsky,Pilaud-acyclicReorientationLattices} and \cref{fig:acyclicReorientationsAY,fig:acyclicReorientationsD,fig:acyclicReorientationsKT} for illustrations.
 
 \begin{definition}
 \label{def:AReori}
@@ -1144,7 +1145,7 @@ For a permutation~$\pi$ of~$[n]$, we denote by~$\areori{\pi}$ the reorientation 
 
 \begin{proposition}
 \label{prop:Perm2AReori}
-The map~$\pi \mapsto \areori{\pi}$ is an order-preserving surjection from the weak order~$\fS_n$ to the acyclic reorientation poset~$\AReori(\tc(D))$.
+The map~$\pi \mapsto \areori{\pi}$ is an order-preserving surjection from the weak order on~$\fS_n$ to the acyclic reorientation poset~$\AReori(\tc(D))$.
 \end{proposition}
 
 \begin{proof}
@@ -1397,7 +1398,7 @@ O_2 = \! \includegraphics[scale=.8,valign=c]{acyclicOrnamentationD}
 Note that~$O_1 = \orn{\reori{34251}}$ and~$O_2 = \orn{\reori{3412}}$ so that they both fulfill the conditions of \cref{lem:AOrn2}.
 However,
 \begin{itemize}
-\item the reorientation~$\reori{O_1}$ is cyclic since it contains the cycle~$1 \to 4 \to 3 \to 5 \to 1$,
+\item the reorientation~$\reori{O_1}$ is cyclic since it contains the cycle~$1, 4, 2, 5, 1$,
 \item the sourcing~$\sour{O_2}$ is cyclic since~$\sour{O_2}(\{3,4\}) = 3$ and~$\sour{O_2}(\{1,3,4\}) = 4$.
 \end{itemize}
 \end{remark}
@@ -1475,10 +1476,16 @@ We conclude that~$S \mapsto \aorn{S}$ and~$O \mapsto \asour{O}$ are inverse isom
 \label{sec:trees}
 
 In this section, we focus on the specific situation when the ground directed graph~$D$ is a directed tree~$T$ (but not necessarily a rooted tree), as for example in \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX}.
+We start with a few basic observations (\cref{subsec:basicObservationsT}).
+We then describe the join and meet irreducible ornamentations of~$T$ and prove that the ornamentation lattice~$\Orn(T)$ is semidistributive (\cref{subsec:semidistributivityT}).
+We then revisit some strutural properties of the reorientations of~$\tc(T)$ (\cref{subsec:maximalReorientationT,subsec:transitivelyBiclosedReorientationsT}).
+Finally, we describe the MacNeille completions of the acyclic reorientation poset~$\AReori(\tc(T))$ and of the acyclic sourcing poset~$\ASour(\PP(T))$ (\cref{subsec:MacNeilleT}).
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Basic observations}
+\label{subsec:basicObservationsT}
 
 Let~$T$ be a directed tree on~$V$.
 For~$u,v \in V$, we write~$u \le_T v$ if there is a directed path from~$u$ to~$v$ in~$T$. %, and we write~$[u,v]_T$ for this path.
@@ -1659,6 +1666,7 @@ Hence, $u \in \orn{R}(v)$ if and only if~$u' \in \rev(R)$ for all~$u'$ along the
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Semidistributivity and canonical join representations in the ornamentation lattice}
+\label{subsec:semidistributivityT}
 
 Let us start with a quick recollection on semidistributivity.
 We consider a finite lattice~$(L, \le, \meet, \join)$.
@@ -1703,6 +1711,7 @@ In this case, the maps~$\kappa_\join$ and~$\kappa_\meet$ define inverse bijectio
 \medskip
 We now consider semidistributivity in ornamentation lattices.
 We first describe the join and meet irreducible ornamentations of a directed tree~$T$.
+Recall that for~$v \in V$, we denote by $\triangle_T(w) \eqdef \set{u \in V}{u \le_T v}$ the set of vertices which admit a directed path towards~$v$ in~$T$.
 
 \begin{definition}
 \label{def:irreducibleOrnamentationsT}
@@ -1785,13 +1794,14 @@ and
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Maximal reorientation}
+\label{subsec:maximalReorientationT}
 
 We now revisit \cref{rem:Reori2OrnIntervals1,rem:Reori2OrnIntervals2} for directed trees.
 
 \begin{definition}
 \label{def:Reori2OrnMaxT}
 Consider an ornamentation~$O$ of a directed tree~$T$.
-Let~$\maxreori{O}$ denote the reorientation of~$\tc(T)$ where for each path~$u \to u' \to \dots \to v$ in~$T$ (note that $u'$ might coincide with~$v$), the edge~$(u,v)$ is in~$\rev(\maxreori{O})$ if and only if there is no~$w \in V$ such that~$u \notin O(w)$ while~$u', v \in O(w)$.
+Let~$\maxreori{O}$ denote the reorientation of~$\tc(T)$ where for each path~$u, u', \dots, v$ in~$T$ (note that $u'$ might coincide with~$v$), the edge~$(u,v)$ is in~$\rev(\maxreori{O})$ if and only if there is no~$w \in V$ such that~$u \notin O(w)$ while~$u', v \in O(w)$.
 \end{definition}
 
 \begin{proposition}
@@ -1804,14 +1814,14 @@ We first prove that~$\orn{\maxreori{O}} = O$.
 Fix~$u,v \in V$.
 Observe first that~$u \in O(v)$ implies~$(u,v) \in \rev(\maxreori{O})$ since~$v \in O(w)$ implies~$u \in O(v) \subseteq O(w)$ for any~$w \in V$, so that~$u \in  \orn{\maxreori{O}}(v)$ by definition.
 Conversely, assume that~$u \notin O(v)$ and consider such an~$u$ which is closest to~$v$.
-Consider the path~$u \to u' \to \dots \to v$ in~$T$.
+Consider the path~$u, u', \dots, v$ in~$T$.
 For any~$v'$ between~$u'$ and~$v$, we have~$u \notin O(v)$ while~$u', v' \in O(v)$, which implies that~$(u,v') \notin \rev(\maxreori{O})$.
 Hence, there is no path from~$u$ to~$v$ in~$\rev(\maxreori{O})$, and thus~$u \notin \orn{\maxreori{O}}(v)$.
 We conclude that~$u \in O(v) \iff u \in \orn{\maxreori{O}}(v)$, that is~$O = \orn{\maxreori{O}}$.
 
 Consider now any reorientation~$R$ of~$\tc(T)$ such that~$\orn{R} = O$.
 Assume that there is~$u,v \in V$ such that~$(u,v) \in \rev(R) \ssm \rev(\maxreori{O})$.
-Consider the path~$u \to u' \to \dots \to v$ in~$T$, and let~$w \in V$ be such that~$u \notin O(w)$ while~$u', v \in O(w)$.
+Consider the path~$u, u', \dots, v$ in~$T$, and let~$w \in V$ be such that~$u \notin O(w)$ while~$u', v \in O(w)$.
 Since~$\orn{R} = O$ and~$v \in O(w)$, there is a path from~$v$ to~$w$ in~$\rev(R)$, hence from~$u$ to~$v$ in~$\rev(R)$ since~$(u,v) \in \rev(R)$.
 Moreover, since~$(u,u') \in T$ and~$u' \in O(w)$, the set~$O(w) \cup \{u\}$ is an ornament of~$T$ at~$w$.
 Hence, $O(w) \cup \{u\}$ contradicts the maximality of~$\orn{R}(w)$.
@@ -1825,7 +1835,7 @@ Hence, the transitively closed reorientations~$R$ of~$\tc(T)$ with~${\orn{R} = O
 \end{proposition}
 
 \begin{proof}
-Assume that there is a directed path~$u \to u' \to \dots \to v$ in~$T$ such that~$(u,v) \notin \rev(\maxreori{O})$.
+Assume that there is a directed path~$u, u', \dots, v$ in~$T$ such that~$(u,v) \notin \rev(\maxreori{O})$.
 Let~$w \in V$ be such that $u \notin O(w)$ but~$u',v' \in O(w)$.
 Then, for any~$v'$ between~$u'$ and~$v$, we have~$v' \in O(w)$, hence~$(u,v') \not \in \rev(\maxreori{O})$.
 We thus obtained that~$(u,v'), (v',v) \in \rev(\maxreori{O})$ implies~$(u,v) \in \rev(\maxreori{O})$, that is, $\rev(\maxreori{O})$ is transitively closed.
@@ -1836,6 +1846,7 @@ We conclude that the fiber of~$O$ is an interval, since it has a minimum by \cre
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Transitively biclosed reorientations}
+\label{subsec:transitivelyBiclosedReorientationsT}
 
 We now revisit \cref{rem:biclosedNotLattice,rem:Orn2ReoriNotTransitivelyCoclosed} for directed trees.
 
@@ -1902,6 +1913,7 @@ We conclude that~$\reori{O}$ is transitively coclosed.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{MacNeille completions}
+\label{subsec:MacNeilleT}
 
 We first briefly recall the definition of the MacNeille completion of a poset.
 
@@ -2034,8 +2046,8 @@ In general, we have no description of the MacNeille completion of the acyclic or
 \section{Unstarred trees and rooted trees}
 \label{sec:unstarredTrees}
 
-In this section, we discuss the specific situation when the ground directed graph~$D$ is an unstarred tree~$T$ defined in \cref{subsec:unstarredTrees}.
-We show \cref{thm:main2} in \cref{subsec:OrnUT}.
+In this section, we discuss the specific situation when the ground directed graph~$D$ is an unstarred tree~$T$ (defined in \cref{subsec:unstarredTrees}).
+The main result is the proof of \cref{thm:main2} (\cref{subsec:OrnUT}).
 Finally, we discuss enumeration properties of ornamentations of brooms (\cref{subsec:brooms}) and combs (\cref{subsec:combs}).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2045,39 +2057,44 @@ Finally, we discuss enumeration properties of ornamentations of brooms (\cref{su
 
 
 We first define the family of unstarred trees by the following equivalent conditions on~$\tc(T)$.
-We will see further equivalent conditions in \cref{subsec:OrnUT}, see \cref{coro:starredCharacterizations} for a summary.
+We will see further equivalent conditions in terms of the posets~$\AReori(\tc(T))$, $\ASour(\PP(T))$ and~$\AOrn(T)$ in \cref{subsec:OrnUT}.
+See \cref{coro:starredCharacterizations} for a summary.
 
 \begin{lemma}
 \label{lem:starredCharacterization}
 The following conditions are equivalent for a directed tree~$T$ on~$V$:
 \begin{enumerate}[(i)]
-\item $\tc(T)$ contains an induced alternating cycle.
+\item $\tc(T)$ contains an induced alternating cycle,
 \item there are distinct $a,b,c,d,e \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$, and~$(c,e)$ are all in~$\tc(T)$,
 \item there are~$u,v \in V$ such that~$u$ has at least two incoming edges in~$T$, $v$ has at least two outgoing edges in~$T$, and $T$ has a directed path from~$u$ to~$v$,
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-(i) $\Rightarrow$ (ii). %This is \cref{lem:starred}.
+\uline{\textsl{(i) $\Rightarrow$ (ii):}}
 Let~$C$ be an induced alternating cycle in~$\tc(T)$.
 Write~$C = (d_1, u_1, \dots, d_k, u_k)$ where~$(d_i, u_i)$ and~$(u_i, d_{i+1})$ are in~$\tc(T)$ for all~$i \in [k]$.
 
 Assume first that~$(d_1,u_k)$ is an edge of~$T$.
 Let~$D$ and~$U$ denote the connected components of~$T \ssm \{(d_1,u_k)\}$ containing~$d_1$ and~$u_k$ respectively.
 Let~$i \in [k]$ be maximal such that~$d_i \in D$.
-Since~$d_{i+1} \in U$ and~$d_{i+1} \to u_i$ in~$\tc(T)$, we have~$u_i \in U$.
+Since~$d_{i+1} \in U$ and~$(d_{i+1}, u_i) \in \tc(T)$, we have~$u_i \in U$.
 Hence, the edge~$(d_1,u_k)$ is an edge of the path from~$d_i$ to~$u_i$ in~$T$.
 We conclude that~$C$ was not induced.
 
 Therefore, there is~$w \in V$ such that~$(d_1,w)$ and~$(w,u_k)$ are in~$\tc(T)$.
-Since~$C$ is induced, we obtain again an induced alternating cycle by replacing either~$d_1$ or~$u_k$ by~$x$ in~$C$, say~$u_k$ by symmetry.
-By induction on the sum of the length of the paths between~$d_i$ and~$u_i$ in~$T$, we obtain that~$k = 2$ there is~$v \in V$ such that~$(d_1, v)$, $(d_2,v)$, $(v,u_1)$, and~$(v,w)$ are in~$\tc(T)$, and as~$w$ is between~$d_1$ and~$u_2$, we also get~$(v,u_2) \in \tc(T)$.
+Since~$C$ is induced, we obtain again an induced alternating cycle by replacing either~$d_1$ or~$u_k$ by~$w$ in~$C$, say~$u_k$ by symmetry.
+By induction on the sum of the length of the paths between~$d_i$ and~$u_i$ in~$T$, we obtain that~$k = 2$ and that there is~$v \in V$ such that~$(d_1, v)$, $(d_2,v)$, $(v,u_1)$, and~$(v,w)$ are in~$\tc(T)$.
+As~$w$ is between~$d_1$ and~$u_2$, we also get~$(v,u_2) \in \tc(T)$.
 
-(ii) $\Rightarrow$ (i). Let~$a,b,c,d,e$ as in~(ii). Then~$(a,d,b,e)$ forms an induced alternating cycle in~$\tc(T)$.
+\medskip\noindent
+\uline{\textsl{(ii) $\Rightarrow$ (i):}} Let~$a,b,c,d,e$ as in~(ii). Then~$(a,d,b,e)$ forms an induced alternating cycle in~$\tc(T)$.
 
-(ii) $\Rightarrow$ (iii). Let~$a,b,c,d,e$ as in~(ii). Let $u$ (resp.~$v$) be the first (resp.~last) common vertex of the paths from~$a$ and~$b$ to~$c$ (resp.~from~$c$ to~$d$ and~$e$). Then~$u$ (resp.~$v$) has at least two incoming (resp.~outgoing) arrows, and there is a path from~$u$ to~$v$ passing through~$c$.
+\medskip\noindent
+\uline{\textsl{(ii) $\Rightarrow$ (iii):}} Let~$a,b,c,d,e$ as in~(ii). Let $u$ (resp.~$v$) be the first (resp.~last) common vertex of the paths from~$a$ and~$b$ to~$c$ (resp.~from~$c$ to~$d$ and~$e$). Then~$u$ (resp.~$v$) has at least two incoming (resp.~outgoing) arrows, and there is a path from~$u$ to~$v$ passing through~$c$.
 
-(iii) $\Rightarrow$ (ii). Let~$u,v$ as in~(iii). Let~$a,b$ be two incoming neighbors of~$u$, let~$d,e$ be two outgoinng neighbors of~$v$, and let~$c$ be any vertex along the path from~$u$ to~$v$. Then~$a,b,c,d,e$ are as in~(ii).
+\medskip\noindent
+\uline{\textsl{(iii) $\Rightarrow$ (ii):}} Let~$u,v$ as in~(iii). Let~$a,b$ be two incoming neighbors of~$u$, let~$d,e$ be two outgoinng neighbors of~$v$, and let~$c$ be any vertex along the path from~$u$ to~$v$. Then~$a,b,c,d,e$ are as in~(ii).
 \end{proof}
 
 \begin{definition}
@@ -2151,14 +2168,14 @@ To sum up, we proved the following statement.
 \label{coro:starredCharacterizations}
 The following conditions are equivalent for a directed tree~$T$ on~$V$:
 \begin{enumerate}[(i)]
-\item $\tc(T)$ contains an induced alternating cycle.
+\item $\tc(T)$ contains an induced alternating cycle,
 \item there are $a,b,c,d,e \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$, and~$(c,e)$ are all in~$\tc(T)$,
 \item there are~$u,v \in V$ such that~$u$ has at least two incoming edges in~$T$, $v$ has at least two outgoing edges in~$T$, and $T$ has a directed path from~$u$ to~$v$,
 \item there exists a transitively biclosed and cyclic reorientation of~$\tc(T)$,
 \item there exists a cyclic ornamentation of~$T$,
-\item the acyclic reorientation poset of~$\tc(T)$ is not a lattice,
-\item the acyclic sourcing poset of~$\PP(T)$ is not a lattice,
-\item the acyclic ornamentation poset of~$T$ is not a lattice.
+\item the acyclic reorientation poset~$\AReori(\tc(T))$ is not a lattice,
+\item the acyclic sourcing poset~$\ASour(\PP(T))$ is not a lattice,
+\item the acyclic ornamentation poset~$\AOrn(T)$ is not a lattice.
 \end{enumerate}
 \end{corollary}
 
@@ -2226,6 +2243,7 @@ is the set of permutations~$\{41325, 43125, 14325, 14235, 12435, 12453, 14253, 4
 This short section is dedicated to the enumeration of ornamentations of the following specific family of trees.
 
 \begin{definition}
+Let~$m,n \ge 0$.
 The \defn{$(m,n)$-broom} is the rooted tree obtained by attaching $m$ nodes (called \defn{bristles}) to the initial vertex of a path with $n$ nodes (called \defn{handle}).
 \end{definition}
 
@@ -2315,7 +2333,7 @@ U(x,y) \cdot V(x,y) = \sum_{m \ge 0, \, n \ge 0} W_{m,n}  \, \frac{x^m}{m!} \, y
 \qquad\text{where}\qquad
 W_{m,n} = \sum_{k = 0}^m \sum_{\ell = 0}^n \binom{m}{k} \, U_{k,\ell} \, V_{n-k,n-\ell}.
 \]
-Consider~$U(x,y) \eqdef B(x,y) \, y$ and~$V(x,y) \eqdef e^x \, C(y)$, we obtain
+Considering~$U(x,y) \eqdef B(x,y) \, y$ and~$V(x,y) \eqdef e^x \, C(y)$, we obtain by \cref{prop:brooms1}
 \begin{align*}
 B(x,y) \, y \, e^x \, C(y) & = \sum_{m \ge 0, \, n \ge 1}  \left( \sum_{k = 0}^m \sum_{\ell = 1}^n \binom{m}{k} \, B_{k,\ell-1} \, C_{n-\ell} \right) \, \frac{x^m}{m!} \, y^n \\
 & = \sum_{m \ge 0, \, n \ge 1} B_{m,n} \, \frac{x^m}{m!} \, y^n \\
@@ -2421,11 +2439,12 @@ We conclude that~$B_2 = C^3 (1+y \, C)$.
 This short section is dedicated to the enumeration of ornamentations of the following specific family of trees.
 
 \begin{definition}
+Let~$n \ge 0$.
 The \defn{$n$-comb} is the rooted tree obtained by attaching a node (called \defn{tooth}) to each node of a path with $n$ nodes (called \defn{handle}).
 \end{definition}
 
 %To fix a convention, let us denote by~$1, \dots, n$ the teeth and by~$n+1, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+n$ if~$1 \le i \le n$ and~$i+1$ if~$n < i < 2n$ (the node~$2n$ is the root).
-To fix a convention, let us denote by~$1, \dots, 2n-1$ the tooth and by~$2, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+1$ if~$i$ is odd and~$i+n$ if~$i$ is even (except the node~$2n$ which is the root).
+To fix a convention, let us denote by~$1, \dots, 2n-1$ the teeth and by~$2, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+1$ if~$i$ is odd and~$i+n$ if~$i$ is even (except the node~$2n$ which is the root).
 See \cref{fig:comb}.
 
 \begin{remark}
@@ -2477,8 +2496,8 @@ We only sketch the ideas of the bijections, which are illustrated in \cref{fig:c
 \medskip\noindent
 \uline{\textsl{Ornamentations versus labeled Dyck paths:}}
 The restriction of an ornamentation~$O$ to the handle gives an ornamentation of the $n$-path, hence a Dyck path~$D$ of semilength~$n$.
-The height of the top endpoint of the $i$th down step of~$D$ is the number of ornaments of~$O$ containing the node $2i$ (\ie, the $i$th node of the handle) of the $n$-comb.
-The label of this $i$th down step records how many ornaments of~$O$ contain the node~$2i-1$ (\ie, the $i$th tooth) of the $n$-comb.
+The height of the top endpoint of the $i$th down step of~$D$ is the number of ornaments of~$O$ containing the node $2i$ (\ie the $i$th node of the handle) of the $n$-comb.
+The label of this $i$th down step records how many ornaments of~$O$ contain the node~$2i-1$ (\ie the $i$th tooth) of the $n$-comb.
 
 \medskip\noindent
 \uline{\textsl{Labeled Dyck paths versus indecomposable perfect matchings:}}
@@ -2526,6 +2545,12 @@ We have no explanation for this fact, nor candidates for families of directed tr
 
 In this section, we characterize the subhypergraphs~$\II$ of the path interval~$\PP(T)$ of an increasing tree~$T$ whose acyclic sourcing poset~$\ASour(\II)$ is a lattice.
 %We actually consider increasing trees as it simplifies the definitions of the conditions and does not loose generality up to relabeling.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Characterization}
+
+We first present a few definitions needed to state our characterization in \cref{thm:intreevalLattices}.
 
 \begin{definition}
 An \defn{intreeval hypergraph} of an increasing tree~$T$ is a subhypergraph of~$\PP(T)$.
