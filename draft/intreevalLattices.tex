@@ -315,7 +315,7 @@ For instance, when~$D$ is a path, the (acyclic) ornamentation lattice~$\Orn(D)$ 
 
 \medskip
 \para{Main results and overview.}
-The general purpose of the present paper is to connect these three extensions, in particular for directed trees.
+The general purpose of the present paper is to connect these three extensions of the Tamari lattice and associahedron, in particular for directed trees.
 
 In \cref{sec:general}, we first present in more details the reorientation lattice~$\Reori(E)$, the sourcing lattice~$\Sour(\HH)$, and the ornamentation lattice~$\Orn(D)$ mentioned above, and we connect them as follows.
 
@@ -394,9 +394,9 @@ Finally, in \cref{sec:intreevalHypergraphicPosets}, we exploit the connection be
 Our results largely extend the characterization of~\cite{BergeronPilaud} for interval hypergraphic lattices.
 
 An \defn{interval hypergraph} is an hypergraph whose hyperedges all are intervals of~$[n]$.
-For an interval hypergraph~$\II$ containing all singletons, it was proved in~\cite[Thm.~A]{BergeronPilaud} that the acyclic sourcing poset~$\ASour(I)$ is a lattice if and only if~$\II$ is closed under intersection, meaning that~$I,J \in \II$ implies~$I \cap J \in \II$.
+For an interval hypergraph~$\II$ containing all singletons, it was proved in~\cite[Thm.~A]{BergeronPilaud} that the acyclic sourcing poset~$\ASour(\II)$ is a lattice if and only if~$\II$ is closed under intersection, meaning that~$I,J \in \II$ implies~$I \cap J \in \II$.
 (As adding or removing singletons to~$\II$ preserve~$\ASour(\II)$, we impose~$\II$ to contain all singletons just to simplify the expression of intersection closedness.)
-The approach of~\cite{BergeronPilaud} is to show that the map~$\pi \mapsto \sour{\pi}$ sending a permutation of~$[n]$ to an acyclic sourcing of~$\II$ is a \defn{quasi-lattice map}, meaning that the fiber of each acyclic sourcing~$S$ of~$\II$ forms an interval~$[\projDown{S}, \projUp{S}]$ of the weak order and that~$S \le S'$ in~$\ASour(I)$ implies that~$\projDown{S} \le \projUp{S'}$.
+The approach of~\cite{BergeronPilaud} is to show that the map~$\pi \mapsto \sour{\pi}$ sending a permutation of~$[n]$ to an acyclic sourcing of~$\II$ is a \defn{quasi-lattice map}, meaning that the fiber of each acyclic sourcing~$S$ of~$\II$ forms an interval~$[\projDown{S}, \projUp{S}]$ of the weak order and that~$S \le S'$ in~$\ASour(\II)$ implies that~$\projDown{S} \le \projUp{S'}$.
 While much weaker than the lattice map condition (which requires instead that~$S \le S'$ implies~$\projDown{S} \le \projDown{S'}$ and~$\projUp{S} \le \projUp{S'}$), the quasi-lattice map condition still ensures that the image forms a lattice.
 
 In \cref{sec:intreevalHypergraphicPosets}, we extend this characterization to intreeval hypergraphs.
@@ -461,6 +461,7 @@ The following definition, first introduced for rooted trees in~\cite{DefantSack}
 
 \begin{definition}
 \label{def:Orn}
+Let~$D$ be a directed graph on~$V$.
 An \defn{ornament} at a vertex $v$ of~$D$ is a subset~$U \subseteq V$ such that there is a directed path from any $u \in U$ to~$v$ in the subgraph of~$D$ induced by~$U$.
 An \defn{ornamentation} of~$D$ is a map $O$ on $V$ which assigns an ornament~$O(v)$ at each vertex~$v \in V$ such that~$u \in O(v) \implies O(u) \subseteq O(v)$ for all~$u,v \in V$.
 We denote by~$\Orn(v \in D)$ the set of ornaments at a vertex~$v$ of~$D$ and by~$\Orn(D)$ the set of ornamentations of~$D$.
@@ -472,7 +473,7 @@ We clearly define ornamentations by
 \begin{enumerate}[(i)]
 \item sending each vertex~$v \in V$ to the singleton~$\{v\}$, 
 \item sending each vertex~$v \in V$ to the set~$\triangle_D(v)$ of vertices with a path to~$v$ in~$D$,
-\item for any ornament~$U \in \Orn(v \in D)$, sending~$v$ to~$U$ and any other vertex~$u \in V \ssm \{v\}$ to the singleton~$\{u\}$.
+\item for any vertex~$v \in V$ and ornament~$U \in \Orn(v \in D)$, sending~$v$ to~$U$ and any other vertex~${u \in V \ssm \{v\}}$ to the singleton~$\{u\}$.
 \end{enumerate}
 \end{example}
 
@@ -517,8 +518,8 @@ Given two ornamentations~$O_1$ and~$O_2$ of~$D$, consider the map~$O_\meet$ on~$
 Note that $O_\meet(v)$ is well defined by \cref{lem:unionOrnaments}, and that~$O_\meet(v) \in \Orn(v \in D)$ for any~$v \in V$ by definition.
 Consider now~$u,v \in V$ such that~$u \in O_\meet(v)$.
 Since~$O_\meet(u) \in \Orn(u \in D)$ and~$O_\meet(v) \in \Orn(v \in D)$ with~${u \in O_\meet(v)}$, \cref{lem:unionOrnaments} gives~$O_\meet(u) \cup O_\meet(v) \in \Orn(v \in D)$.
-As~$u \in O_\meet(v) \subseteq O_1(v) \cap O_2(v)$ and~$O_1$ and~$O_2$ are ornamentations of~$D$, we have~$O_1(u) \subseteq O_1(v)$ and~$O_2(u) \subseteq O_2(v)$, so that~$O_\meet(u) \subseteq O_1(u) \cap O_2(u) \subseteq O_1(v) \cap O_2(v)$, hence~$O_\meet(u) \cup O_\meet(v) \subseteq O_1(v) \cap O_2(v)$.
-By maximality of~$O_\meet(v)$, we conclude that $O_\meet(u) \cup O_\meet(v) \subseteq O_\meet(v)$, so that~$O_\meet(u) \subseteq O_\meet(v)$.
+As~$u \in O_\meet(v) \subseteq O_1(v) \cap O_2(v)$ and~$O_1$ and~$O_2$ are ornamentations of~$D$, we have~$O_1(u) \subseteq O_1(v)$ and~$O_2(u) \subseteq O_2(v)$, so that~${O_\meet(u) \subseteq O_1(u) \cap O_2(u) \subseteq O_1(v) \cap O_2(v)}$, hence~$O_\meet(u) \cup O_\meet(v) \subseteq O_1(v) \cap O_2(v)$.
+By maximality of~$O_\meet(v)$, we conclude that ${O_\meet(u) \cup O_\meet(v) \subseteq O_\meet(v)}$, so that~$O_\meet(u) \subseteq O_\meet(v)$.
 We conclude that~$O_\meet$ is an ornamentation of~$D$.
 Moreover, $O_\meet$ is clearly the meet of~$O_1$ and~$O_2$ in componentwise inclusion.
 
@@ -540,7 +541,7 @@ The minimal ornamentation of~$D$ sends each vertex~$v \in V$ to the singleton~$\
 The ornamentation lattice of the graph with a single edge is a $2$-elements chain.
 The ornamentation lattice of a graph with no path of length $2$ is a boolean lattice (see \eg \cref{fig:ornamentationsNI}\,(left) and \ref{fig:ornamentationsKT}\,(right)).
 %In general, the ornamentation lattice~$\Orn(D \sqcup D')$ of the disjoint union of two directed graphs~$D$ and~$D'$ is the Cartesian product~$\Orn(D) \times \Orn(D')$ of the ornamentation lattices of~$D$ and~$D'$
-In fact, these boolean lattices are the only distributive ornamentation lattices.
+In fact, boolean lattices are the only distributive ornamentation lattices.
 \end{example}
 
 \begin{example}
