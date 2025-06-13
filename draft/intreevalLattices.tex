@@ -144,7 +144,8 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \usepackage{todonotes}
 \newcommand{\vincent}[1]{\todo[size=\tiny,color=blue!30]{ #1 \\ \hfill --- V.}\,}
 \newcommand{\Vincent}[1]{\todo[inline,color=blue!30]{#1 \\ \hfill --- V.}}
-\newcommand{\jose}[1]{\todo[size=\tiny,color=red!30]{ #1 \\ \hfill --- J.}\,}
+\newcommand{\jose}[1]{{\color{red}#1}}
+\newcommand{\Jose}[1]{\todo[size=\tiny,color=blue!30]{ #1 \\ \hfill --- J.}\,}
 
 % permutations
 \newcommand{\fS}{\mathfrak{S}} % symmetric group
@@ -280,7 +281,7 @@ While the reorientation poset~$\Reori(E)$ is clearly a boolean lattice, the acyc
 
 The \defn{graphical zonotope} of~$E$ is the Minkowski sum~$\simplex_E \eqdef \sum_{(u,v) \in E} \simplex_{uv}$, where~$\simplex_{uv}$ is the segment with endpoints~$\b{e}_u$ and~$\b{e}_v$.
 The face lattice of~$\simplex_E$ is described by ordered partitions of~$E$.
-In particular, it turns out that the acyclic reorientation poset~$\AReori(E)$ is isomorphic to the transitive closure of the graph of~$\simplex_E$, oriented in the direction~$\b{\omega}$.
+In particular, \jose{whenever the edges of $E$ are increasing,} it turns out that the acyclic reorientation poset~$\AReori(E)$ is isomorphic to the transitive closure of the graph of~$\simplex_E$, oriented in the direction~$\b{\omega}$.\Jose{So that inclusion of reversed arrows agrees with the direction $\b{\omega}$}
 
 When~$\AReori(E)$ is a lattice, one can consider its lattice congruences and quotients.
 They have been largely investigated in~\cite{Pilaud-acyclicReorientationLattices}.
@@ -298,7 +299,7 @@ For instance, when~$E = K_n$ is the complete graph,
 \para{Ornamentation lattices.}
 Consider a directed graph~$D$ on~$V$ and a vertex~$v \in V$.
 An \defn{ornament} of~$D$ at~$v$ is a subset~$U$ of~$V$ such that any vertex of~$U$ admits a directed path to~$v$ in~$U$.
-An \defn{ornamentation} of~$D$ is an assignment~$O$ of ornaments at each vertex of~$V$ with the nesting condition that $u \in O(v)$ implies~$O(u) \subseteq O(v)$.
+An \defn{ornamentation} of~$D$ is an assignment~$O$ of \jose{one} ornament\jose{\sout{s}} at each vertex of~$V$ with the nesting condition that $u \in O(v)$ implies~$O(u) \subseteq O(v)$.
 Note that ornamentations were introduced and studied in~\cite{DefantSack} for rooted trees and extended in~\cite{Sack} for directed graphs and beyond.
 An ornamentation~$O$ of~$D$ is \defn{acyclic} if a certain reorientation of the transitive closure~$\tc(D)$ of~$D$ constructed from~$O$ is acyclic (see precise definition later).
 The \defn{(acyclic) ornamentation poset} of~$D$ is the poset of (acyclic) ornamentations of~$D$ ordered by componentwise inclusion, meaning~$O \le O'$ if~${O(v) \subseteq O'(v)}$ for all~$v \in V$.
@@ -317,7 +318,7 @@ For instance, when~$D$ is a path, the (acyclic) ornamentation lattice~$\Orn(D)$ 
 \para{Main results and overview.}
 The general purpose of the present paper is to connect these three extensions of the Tamari lattice and associahedron, in particular for directed trees.
 
-In \cref{sec:general}, we first present in more details the reorientation lattice~$\Reori(E)$, the sourcing lattice~$\Sour(\HH)$, and the ornamentation lattice~$\Orn(D)$ mentioned above, and we connect them as follows.
+In \cref{sec:general}, we first present in more detail the reorientation lattice~$\Reori(E)$, the sourcing lattice~$\Sour(\HH)$, and the ornamentation lattice~$\Orn(D)$ mentioned above, and we connect them as follows.
 
 \begin{proposition}
 Given a directed graph~$D$, denote by~$\tc(D)$ its transitive closure and by~$\PP(D)$ its path hypergraph, whose hyperedges are the (vertex sets of the) directed paths in~$D$.
@@ -349,10 +350,10 @@ For a directed graph~$D$, there are natural order-preserving surjections
 \end{array}
 .
 \]
-In particular, the acyclic sourcing poset~$\ASour(\PP(D))$ can be seen as a subposet of the ornamentation poset~$\Orn(D)$.
+In particular, the acyclic sourcing poset~$\ASour(\PP(D))$ can be seen as a subposet of the ornamentation \jose{\sout{poset} lattice}~$\Orn(D)$.
 \end{proposition}
 
-These connections become particularly interesting when the ground directed graph~$D$ is an increasing tree~$T$, and even more if it is rooted (or unstarred, see below).
+These connections become particularly interesting when the \jose{\sout{ground} underlying} directed graph~$D$ is an increasing tree~$T$, and even more if it is rooted (or unstarred, see below).
 In \cref{sec:trees}, we first consider a directed tree.
 We describe the join irreducible ornamentations of~$T$ and meet irreducible ornamentations of~$T$, and prove that the ornamentation lattice~$\Orn(T)$ is semidistributive.
 Observing that all join or meet irreducible ornamentations of~$T$ (resp.~transitively biclosed reorientations of~$\tc(T)$) are acyclic, we obtain the following statement.
@@ -367,7 +368,7 @@ For any increasing tree~$T$ on~$[n]$,
 \end{itemize}
 \end{theorem}
 
-We then consider, in \ref{sec:unstarredTrees}, a special class of increasing trees containing, in particular all rooted trees.
+We then consider, in \cref{sec:unstarredTrees}, a special class of increasing trees containing, in particular, all rooted trees.
 A tree~$T$ is \defn{unstarred} if there are no vertices~$u,v$ of~$T$ such that~$u$ has at least two incoming edges in~$T$, $v$ has at least two outgoing edges in~$T$, and $T$ has a directed path from~$u$ to~$v$.
 For these trees, the acyclic sourcing poset and ornamentation lattice are even closer.
 
@@ -401,9 +402,9 @@ While much weaker than the lattice map condition (which requires instead that~$S
 
 In \cref{sec:intreevalHypergraphicPosets}, we extend this characterization to intreeval hypergraphs.
 For an increasing tree~$T$ on~$[n]$, we call \defn{intreeval hypergraph} of~$T$ any subhypergraph~$\II$ of the path hypergraph~$\PP(T)$, meaning any collection of (vertex sets of) directed paths in~$T$.
-Unfortunately, the map~$\pi \mapsto \asour{\pi}$ from permutations of~$[n]$ to acyclic sourcings of~$\II$ is not a quasi-lattice map anymore (its fibers are not intervals in general).
+Unfortunately, \jose{even when $\ASour(\II)$ is a lattice,} the map~$\pi \mapsto \asour{\pi}$\Jose{In the previous paragraph we used $\pi \mapsto \sour{\pi}$ instead of $\asour{\pi}$, which one should we keep?} from permutations of~$[n]$ to acyclic sourcings of~$\II$ is not \jose{necessarily} a quasi-lattice map anymore (its fibers are not intervals in general).
 Moreover, we can neither use the map~$R \mapsto \asour{R}$ from acyclic reorientations of~$\tc(T)$ to acyclic sourcings of~$\II$ as the acyclic reorientation poset~$\AReori(\tc(T))$ is not a lattice in general, in contrast to the situation of~\cref{thm:main2}.
-We use instead a natural quasi-lattice map from the ornamentation lattice~$\Orn(T)$ to the acyclic sourcing poset~$\ASour(\II)$ to obtain the following characterization.
+We use instead a natural quasi-lattice map from the ornamentation lattice~$\Orn(T)$ to the acyclic sourcing poset~$\ASour(\II)$ to obtain the following \jose{complete} characterization.
 
 \begin{theorem}
 \label{thm:main3}
@@ -411,14 +412,15 @@ Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
 The acyclic sourcing poset~$\ASour(\II)$ is a lattice if and only if $\II$ is path intersection closed (\cref{def:pathIntersectionClose}) and path star sparse (\cref{def:pathStarSparse}).
 \end{theorem}
 
-The path intersection closed and path star sparse conditions are slightly technical conditions whose details are deferred to \cref{sec:intreevalHypergraphicPosets}.
-Let us just mention that they clearly specialize to that of~\cite{BergeronPilaud} when~$T$ is a path, as the path intersection closedness boils down to intersection closedness when~$T$ is a path, and the path star sparseness always holds when~$T$ is a path.
+The path intersection closed and path star sparse conditions are slightly technical\jose{, we defer the details  \sout{conditions whose details are deferred}} to \cref{sec:intreevalHypergraphicPosets}.
+Let us just mention that they clearly specialize to that of~\cite{BergeronPilaud} when~$T$ is a path, as\jose{, in this case, \sout{the}} path intersection closedness boils down to intersection closedness \jose{\sout{when~$T$ is a path}}, and \jose{\sout{the}} path star sparseness always holds \jose{\sout{when~$T$ is a path}}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pagebreak
+
 \section{Reorientations, sourcing, ornamentations}
 \label{sec:general}
 
