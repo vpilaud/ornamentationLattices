@@ -46,8 +46,8 @@
 
 \author{Andrew Sack}
 \address[A.~Sack]{}
-\email{}
-\urladdr{}
+\email{asack@umich.edu}
+\urladdr{https://andrewsack.com/}
 
 \thanks{
 VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/AEI/10.13039/501100011033 / FEDER, UE, by the Spanish--German project COMPOTE (AEI PCI2024-155081-2 \& DFG 541393733), by the Severo Ochoa and María de Maeztu Program for Centers and Units of Excellence in R\&D (CEX2020-001084-M), by the Departament de Recerca i Universitats de la Generalitat de Catalunya (2021 SGR 00697), and by the French--Austrian project PAGCAP (ANR-21-CE48-0020 \& FWF I 5788).
@@ -146,6 +146,8 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\Vincent}[1]{\todo[inline,color=blue!30]{#1 \\ \hfill --- V.}}
 \newcommand{\jose}[1]{{\color{red}#1}}
 \newcommand{\Jose}[2][]{\todo[size=\tiny,color=red!30,#1]{ #2 \\ \hfill --- J.}\,}
+\newcommand{\andrew}[1]{{\color{purple}#1}}
+\newcommand{\Andrew}[2][]{\todo[size=\tiny,color=purple,#1]{ #2 \\ \hfill --- A.}\,}
 
 % permutations
 \newcommand{\fS}{\mathfrak{S}} % symmetric group
@@ -240,7 +242,7 @@ Finally, still when~$D$ is an increasing tree, we use the ornamentation lattice 
 
 Tamari lattices and associahedra are classical objects of algebraic and geometric combinatorics with various applications to topology, algebra, statistical physics, etc.
 We refer to~\cite{TamariFestschrift, CeballosSantosZiegler, PilaudSantosZiegler} and the references therein for an overview of the myriad of  perspectives on these objects, and we focus here on three specific aspects.
-First, the Hasse diagram of the Tamari lattice is isomorphic to a linear orientation of the graph of the associahedron of~\cite{ShniderSternberg, Loday}, which is a Minkowski sum of faces of the standard simplex~\cite{Postnikov}.
+First, the Hasse diagram of the Tamari lattice is isomorphic to a linear orientation of the graph of the associahedron of~\cite{ShniderSternberg, Loday}, which is a Minkowski sum of faces of the standard simplex~\cite{Postnikov}.\Andrew{Does it make more sense to just say ``A Minkowski sum of standard simplices''?} 
 Second, the Tamari lattice (on binary trees) is a lattice quotient of the weak order (on permutations)~\cite{Tonks, Reading-latticeCongruences}, and the associahedron is obtained by deleting inequalities in the facet description of the permutahedron~\cite{ShniderSternberg, Loday}.
 Third, the Tamari lattice is realized by componentwise comparisons of the bracket vectors of binary trees~\cite{HuangTamari}.
 The objective of this paper is to study the interconnections between natural extensions of these three perspectives, already considered separately in the literature.
@@ -300,7 +302,7 @@ For instance, when~$E = K_n$ is the complete graph,
 Consider a directed graph~$D$ on~$V$ and a vertex~$v \in V$.
 An \defn{ornament} of~$D$ at~$v$ is a subset~$U$ of~$V$ such that any vertex of~$U$ admits a directed path to~$v$ in~$U$.
 An \defn{ornamentation} of~$D$ is an assignment~$O$ of ornaments at each vertex of~$V$ with the nesting condition that $u \in O(v)$ implies~$O(u) \subseteq O(v)$.
-Note that ornamentations were introduced and studied in~\cite{DefantSack} for rooted trees and extended in~\cite{Sack} for directed graphs and beyond.
+Ornamentations were introduced and studied in~\cite{DefantSack} for rooted trees and extended in~\cite{Sack} for directed graphs and beyond. Ornamentations of rooted trees have been further studied in~\cite{ajran2025pop}. \Andrew{Added a citation for rooted tree ornamentations studied in a paper by Arjan and Defant. Feel free to remove if you feel necessary, but one result they prove in this paper is that the ornamentation lattice of a rooted tree is semidistributive.}
 An ornamentation~$O$ of~$D$ is \defn{acyclic} if a certain reorientation of the transitive closure~$\tc(D)$ of~$D$ constructed from~$O$ is acyclic (see precise definition later).
 The \defn{(acyclic) ornamentation poset} of~$D$ is the poset of (acyclic) ornamentations of~$D$ ordered by componentwise inclusion, meaning~$O \le O'$ if~${O(v) \subseteq O'(v)}$ for all~$v \in V$.
 The ornamentation poset~$\Orn(D)$ is always a lattice, but the acyclic ornamentation poset~$\Orn(D)$ is not always a lattice.
@@ -401,7 +403,7 @@ The approach of~\cite{BergeronPilaud} is to show that the map~$\pi \mapsto \sour
 While much weaker than the lattice map condition (which requires instead that~$S \le S'$ implies~$\projDown{S} \le \projDown{S'}$ and~$\projUp{S} \le \projUp{S'}$), the quasi-lattice map condition still ensures that the image forms a lattice.
 
 In \cref{sec:intreevalHypergraphicPosets}, we extend this characterization to intreeval hypergraphs.
-For an increasing tree~$T$ on~$[n]$, we call \defn{intreeval hypergraph} of~$T$ any subhypergraph~$\II$ of the path hypergraph~$\PP(T)$, meaning any collection of (vertex sets of) directed paths in~$T$.
+For an increasing tree~$T$ on~$[n]$, we call any subhypergraph~$\II$ of the path hypergraph~$\PP(T)$ an \defn{intreeval hypergraph} of~$T$, meaning any collection of (vertex sets of) directed paths in~$T$.
 Unfortunately, \jose{even when $\ASour(\II)$ is a lattice,} the map~$\pi \mapsto \asour{\pi}$\Jose{In the previous paragraph we used $\pi \mapsto \sour{\pi}$ instead of $\asour{\pi}$, which one should we keep?} from permutations of~$[n]$ to acyclic sourcings of~$\II$ is not \jose{necessarily} a quasi-lattice map anymore (its fibers are not intervals in general).
 Moreover, we can neither use the map~$R \mapsto \asour{R}$ from acyclic reorientations of~$\tc(T)$ to acyclic sourcings of~$\II$ as the acyclic reorientation poset~$\AReori(\tc(T))$ is not a lattice in general, in contrast to the situation of~\cref{thm:main2}.
 We use instead a natural quasi-lattice map from the ornamentation lattice~$\Orn(T)$ to the acyclic sourcing poset~$\ASour(\II)$ to obtain the following \jose{complete} characterization.
