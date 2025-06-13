@@ -145,7 +145,7 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\vincent}[1]{\todo[size=\tiny,color=blue!30]{ #1 \\ \hfill --- V.}\,}
 \newcommand{\Vincent}[1]{\todo[inline,color=blue!30]{#1 \\ \hfill --- V.}}
 \newcommand{\jose}[1]{{\color{red}#1}}
-\newcommand{\Jose}[1]{\todo[size=\tiny,color=blue!30]{ #1 \\ \hfill --- J.}\,}
+\newcommand{\Jose}[2][]{\todo[size=\tiny,color=red!30,#1]{ #2 \\ \hfill --- J.}\,}
 
 % permutations
 \newcommand{\fS}{\mathfrak{S}} % symmetric group
@@ -420,11 +420,11 @@ Let us just mention that they clearly specialize to that of~\cite{BergeronPilaud
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pagebreak
-\section{Reorientations, sourcing, ornamentations}
+\section{Reorientations, sourcings, ornamentations}
 \label{sec:general}
 
-Throughout this section, we fix a directed graph~$D$ on a vertex set~$V$ and denote by~$\tc(D)$ its transitive closure and by~$\PP(D)$ its hypergraph of directed paths.
-It is a priori not required that~$D$ is directed acyclic, although it is the case that interest us most in this paper.
+Throughout this section, we fix a directed graph~$D$ on a vertex set~$V$, and denote by~$\tc(D)$ its transitive closure and by~$\PP(D)$ its hypergraph of directed paths.
+It is a priori not required that~$D$ is \jose{\sout{directed}} acyclic, although \jose{\sout{it} this} is the case that interest us most in this paper.
 In particular, in all our pictures, $V = [n]$ and the edges are increasing (so we can omit their orientations).
 %We will mostly work with a directed acyclic graph, and we represent it with edges going up in all pictures.
 We define the reorientation lattice~$\Reori(\tc(D))$ (\cref{subsec:reorientations}), the sourcing lattice~$\Sour(\PP(D))$ (\cref{subsec:sourcings}), and the ornamentation lattice~$\Orn(D)$ (\cref{subsec:ornamentations}), and define natural surjective poset morphisms:
@@ -470,10 +470,10 @@ We denote by~$\Orn(v \in D)$ the set of ornaments at a vertex~$v$ of~$D$ and by~
 
 \begin{example}
 \label{exm:ornamentations}
-We clearly define ornamentations by
+We clearly define \jose{different} ornamentations by
 \begin{enumerate}[(i)]
 \item sending each vertex~$v \in V$ to the singleton~$\{v\}$, 
-\item sending each vertex~$v \in V$ to the set~$\triangle_D(v)$ of vertices with a path to~$v$ in~$D$,
+\item sending each vertex~$v \in V$ to the set~$\triangle_D(v)$\Jose{possible confusion with a simplex $\simplex$?} of vertices with a path to~$v$ in~$D$,
 \item for any vertex~$v \in V$ and ornament~$U \in \Orn(v \in D)$, sending~$v$ to~$U$ and any other vertex~${u \in V \ssm \{v\}}$ to the singleton~$\{u\}$.
 \end{enumerate}
 \end{example}
@@ -539,14 +539,14 @@ The minimal ornamentation of~$D$ sends each vertex~$v \in V$ to the singleton~$\
 \end{remark}
 
 \begin{example}
-The ornamentation lattice of the graph with a single edge is a $2$-elements chain.
+The ornamentation lattice of the graph with a single edge is a $2$-element chain.
 The ornamentation lattice of a graph with no path of length $2$ is a boolean lattice (see \eg \cref{fig:ornamentationsNI}\,(left) and \ref{fig:ornamentationsKT}\,(right)).
 %In general, the ornamentation lattice~$\Orn(D \sqcup D')$ of the disjoint union of two directed graphs~$D$ and~$D'$ is the Cartesian product~$\Orn(D) \times \Orn(D')$ of the ornamentation lattices of~$D$ and~$D'$
 In fact, the boolean lattices are the only distributive ornamentation lattices.
 \end{example}
 
 \begin{example}
-The ornamentation lattice of an $n$-element path is isomorphic to the Tamari lattice on binary trees with $n$ nodes (see \eg \cref{fig:ornamentationsNI}\,(right)).
+The ornamentation lattice of \jose{\sout{an} the} $n$-element path is isomorphic to the Tamari lattice on binary trees with $n$ nodes (see \eg \cref{fig:ornamentationsNI}\,(right)).
 The isomorphism is obtained through tubings (or equivalently bracket vectors).
 \end{example}
 
@@ -804,7 +804,7 @@ The proof for~$\Rco(\tc(D))$ is symmetric.
 \begin{remark}
 \label{rem:biclosedNotLattice}
 Observe however that the subposet of~$\Reori(\tc(D))$ induced by the set~$\Rbi(\tc(D))$ of transitively biclosed reorientations may fail to be a lattice.
-For instance, consider the following four transitively biclosed reorientations:
+For instance, consider the following four transitively biclosed reorientations of $\tc(\Dgraph)$:
 %\[
 %\begin{array}{cccc}
 %\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationD1}} &
@@ -904,7 +904,7 @@ In contrast, the first example of \cref{rem:Reori2OrnSemilatticeMap} shows that 
 \end{remark}
 
 \begin{remark}
-Note that the image of the transitively coclosed reorientations by the map~$R \mapsto \orn{R}$ does not cover all ornamentations of~$D$.
+Note that the image of the transitively coclosed reorientations of $\tc(D)$ by the map~$R \mapsto \orn{R}$ does not cover all ornamentations of~$D$.
 For instance, for the graph~$\Dgraph$ of \cref{fig:ornamentationsD}, the fibers under~$R \mapsto \orn{R}$ of the two ornamentations
 \[
 \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1}
@@ -965,6 +965,23 @@ For a sourcing~$S$ of~$\PP(D)$, we denote by~$\reori{S}$ the reorientation of~$\
 The map~$S \mapsto \reori{S}$ is order-preserving.
 \vincent{I actually believe that it is a lattice embedding.}
 \end{lemma}
+
+\Jose[inline]{I'm not sure of the argument below. Consider these two sourcings on the $3$-element path:
+\[
+\begin{cases}
+12 \mapsto 1 \\
+23 \mapsto 2 \\
+123 \mapsto 2
+\end{cases}
+\hspace*{.2\linewidth}
+\begin{cases}
+12 \mapsto 1 \\
+23 \mapsto 2 \\
+123 \mapsto 3
+\end{cases}
+\]
+By componentwise comparison, the first is smaller than the second. However, the sets of reversed edges are $\{(1,2)\}$ and $\{(1,3),(2,3)\}$, respectively, which are incomparable.
+}
 
 \begin{proof}
 If~$S_1 \le S_2$, then $\rev(S_1) \subseteq \rev(S_2)$, hence $\rev(\reori{S_1}) \subseteq \rev(\reori{S_2})$, hence~$\reori{S_1} \le \reori{S_2}$.
