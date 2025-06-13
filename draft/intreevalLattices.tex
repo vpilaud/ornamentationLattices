@@ -299,7 +299,7 @@ For instance, when~$E = K_n$ is the complete graph,
 \para{Ornamentation lattices.}
 Consider a directed graph~$D$ on~$V$ and a vertex~$v \in V$.
 An \defn{ornament} of~$D$ at~$v$ is a subset~$U$ of~$V$ such that any vertex of~$U$ admits a directed path to~$v$ in~$U$.
-An \defn{ornamentation} of~$D$ is an assignment~$O$ of \jose{one} ornament\jose{\sout{s}} at each vertex of~$V$ with the nesting condition that $u \in O(v)$ implies~$O(u) \subseteq O(v)$.
+An \defn{ornamentation} of~$D$ is an assignment~$O$ of ornaments at each vertex of~$V$ with the nesting condition that $u \in O(v)$ implies~$O(u) \subseteq O(v)$.
 Note that ornamentations were introduced and studied in~\cite{DefantSack} for rooted trees and extended in~\cite{Sack} for directed graphs and beyond.
 An ornamentation~$O$ of~$D$ is \defn{acyclic} if a certain reorientation of the transitive closure~$\tc(D)$ of~$D$ constructed from~$O$ is acyclic (see precise definition later).
 The \defn{(acyclic) ornamentation poset} of~$D$ is the poset of (acyclic) ornamentations of~$D$ ordered by componentwise inclusion, meaning~$O \le O'$ if~${O(v) \subseteq O'(v)}$ for all~$v \in V$.
@@ -321,7 +321,7 @@ The general purpose of the present paper is to connect these three extensions of
 In \cref{sec:general}, we first present in more detail the reorientation lattice~$\Reori(E)$, the sourcing lattice~$\Sour(\HH)$, and the ornamentation lattice~$\Orn(D)$ mentioned above, and we connect them as follows.
 
 \begin{proposition}
-Given a directed graph~$D$, denote by~$\tc(D)$ its transitive closure and by~$\PP(D)$ its path hypergraph, whose hyperedges are the (vertex sets of the) directed paths in~$D$.
+Given a directed graph~$D$, denote by~$\tc(D)$ its transitive closure and by~$\PP(D)$ its path hypergraph, whose hyperedges are (the vertex sets of) the directed paths in~$D$.
 There are natural order-preserving surjections
 \[
 \begin{array}{rcl}
@@ -409,7 +409,7 @@ We use instead a natural quasi-lattice map from the ornamentation lattice~$\Orn(
 \begin{theorem}
 \label{thm:main3}
 Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
-The acyclic sourcing poset~$\ASour(\II)$ is a lattice if and only if $\II$ is path intersection closed (\cref{def:pathIntersectionClose}) and path star sparse (\cref{def:pathStarSparse}).
+The acyclic sourcing poset~$\ASour(\II)$ is a lattice if and only if $\II$ is path intersection closed (\cref{def:pathIntersectionClose}) and star sparse (\cref{def:pathStarSparse}).
 \end{theorem}
 
 The path intersection closed and path star sparse conditions are slightly technical\jose{, we defer the details  \sout{conditions whose details are deferred}} to \cref{sec:intreevalHypergraphicPosets}.
@@ -420,7 +420,6 @@ Let us just mention that they clearly specialize to that of~\cite{BergeronPilaud
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pagebreak
-
 \section{Reorientations, sourcing, ornamentations}
 \label{sec:general}
 
@@ -2242,7 +2241,7 @@ is the set of permutations~$\{41325, 43125, 14325, 14235, 12435, 12453, 14253, 4
 \subsection{Brooms}
 \label{subsec:brooms}
 
-This short section is dedicated to the enumeration of ornamentations of the following specific family of trees.
+This short section is dedicated to the enumeration of ornamentations of the following specific family of trees, illustrated in \cref{fig:broomsCombs}\,(left).
 
 \begin{definition}
 Let~$m,n \ge 0$.
@@ -2435,10 +2434,17 @@ We conclude that~$B_2 = C^3 (1+y \, C)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{figure}
+	\centerline{\includegraphics[scale=.68]{broomsCombs}}
+	\caption{The $(2,4)$-, $(3,3)$- and $(4,2)$-brooms (left) and the $1$-, $2$- and $3$-combs (right).}
+	\label{fig:broomsCombs}
+\end{figure}
+
 \subsection{Combs}
 \label{subsec:combs}
 
-This short section is dedicated to the enumeration of ornamentations of the following specific family of trees.
+This short section is dedicated to the enumeration of ornamentations of the following specific family of trees, illustrated in \cref{fig:broomsCombs}\,(right).
+
 
 \begin{definition}
 Let~$n \ge 0$.
@@ -2447,7 +2453,7 @@ The \defn{$n$-comb} is the rooted tree obtained by attaching a node (called \def
 
 %To fix a convention, let us denote by~$1, \dots, n$ the teeth and by~$n+1, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+n$ if~$1 \le i \le n$ and~$i+1$ if~$n < i < 2n$ (the node~$2n$ is the root).
 To fix a convention, let us denote by~$1, \dots, 2n-1$ the teeth and by~$2, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+1$ if~$i$ is odd and~$i+n$ if~$i$ is even (except the node~$2n$ which is the root).
-See \cref{fig:comb}.
+See \cref{fig:broomsCombs}.
 
 \begin{remark}
 The transitive closure of the $n$-comb has~$2^{n^2}$ reorientations, of which $n! \, (n+1)!$ are acyclic, and~$\prod_{k = 1}^n k^{n+1-k} \, (k+1)!$ sourcings.
@@ -2521,15 +2527,36 @@ The sequences \OEIS{A000698} and \OEIS{A105616} are the first two columns of the
 We have no explanation for this fact, nor candidates for families of directed trees whose numbers of ornamentations would give the other columns of this table.
 \end{remark}
 
-%sage: for n in range(10): 
+%sage: for n in range(6): 
 %....:     D = DiGraph([[i,i+n] for i in range(1,n)] + [[i,i+1] for i in range(n,2*n-1)]) 
 %....:     print(n, len(digraph_ornamentation_lattice(D))) 
-%....:                                                                                                                                                                                                     
+%....:                                                                                                                                                                                                       
 %0 1
 %1 1
 %2 4
 %3 26
 %4 226
+%5 2426
+%sage: for n in range(6): 
+%....:     D = DiGraph([[i,i+n] for i in range(2,n)] + [[i,i+1] for i in range(n,2*n-1)]) 
+%....:     print(n, len(digraph_ornamentation_lattice(D))) 
+%....:                                                                                                                                                                                                       
+%0 1
+%1 1
+%2 2
+%3 10
+%4 74
+%5 706
+%sage: for n in range(6): 
+%....:     D = DiGraph([[i,i+n] for i in range(3,n)] + [[i,i+1] for i in range(n,2*n-1)]) 
+%....:     print(n, len(digraph_ornamentation_lattice(D))) 
+%....:                                                                                                                                                                                                       
+%0 1
+%1 1
+%2 2
+%3 5
+%4 28
+%5 224
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2546,16 +2573,20 @@ We have no explanation for this fact, nor candidates for families of directed tr
 \label{sec:intreevalHypergraphicPosets}
 
 In this section, we characterize the subhypergraphs~$\II$ of the path interval~$\PP(T)$ of an increasing tree~$T$ whose acyclic sourcing poset~$\ASour(\II)$ is a lattice.
+We first state the needed definitions and the characterization (\cref{subsec:characterization}), then show that these conditions are necessary (\cref{subsec:necessary}) and sufficient (\cref{subsec:sufficient}) using an important property of star sparse intreeval hypergraphs (\cref{subsec:shortCycles}).
+Finally, when~$\ASour(\II)$ is a lattice, we give an explicit formula for its meets and joins (\cref{subsec:formulaMeetJoin})
 %We actually consider increasing trees as it simplifies the definitions of the conditions and does not loose generality up to relabeling.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Characterization}
+\label{subsec:characterization}
 
 We first present a few definitions needed to state our characterization in \cref{thm:intreevalLattices}.
 
 \begin{definition}
 An \defn{intreeval hypergraph} of an increasing tree~$T$ is a subhypergraph of~$\PP(T)$.
+In other words, any hypergraph whose hyperedges are (the vertex sets of) some directed paths in~$D$
 \end{definition}
 
 \begin{definition} 
@@ -2578,19 +2609,20 @@ See \cref{exm:intreevalHypergraphs,fig:intreevalHypergraphs}.
 Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
 Consider~$u \le_T v$, and let~$u_1, \dots, u_k$ (resp.~$v_1, \dots, v_\ell$) denote the incoming (resp.~outgoing) neighbors of~$u$ (resp.~$v$) in~$T$.
 We denote by~$X(T,u,v,\II)$ the graph on~$u_1, \dots, u_k, v_1, \dots, v_\ell$ with an edge joining~$u_i$ and~$v_j$ if and only if there is~$I \in \II$ containing both~$u_i$ and~$v_j$.
-We say that~$\II$ is \defn{path star sparse} if~$X(T,u,v,\II)$ is acyclic for all~$u,v$ connected by a directed path.
+We say that~$\II$ is \defn{star sparse} if~$X(T,u,v,\II)$ is acyclic for all~$u,v$ connected by a directed path.
 \end{definition}
 
 \begin{example}
 \label{exm:intreevalHypergraphs}
-Among the $7$ intreeval hypergraphs of \cref{fig:intreevalHypergraphs},
+Among the $8$ intreeval hypergraphs of \cref{fig:intreevalHypergraphs},
 \begin{itemize}
-\item the first two are both path intersection closed and path star sparse,
-\item the next four are not path intersection closed but path star sparse,
-\item the last one is path intersection closed but not path star sparse.
+\item the first two are both path intersection closed and star sparse,
+\item the next four are not path intersection closed but star sparse,
+\item the next one is path intersection closed but not star sparse,
+\item the last one is neither path intersection closed nor star sparse.
 \end{itemize}
 
-\begin{figure}
+\begin{figure}[b]
 	\centerline{\includegraphics[scale=.8]{intreevalHypergraphs}}
 	\caption{Some intreeval hypergraphs. See \cref{exm:intreevalHypergraphs}.}
 	\label{fig:intreevalHypergraphs}
@@ -2603,14 +2635,14 @@ It will be a consequence of \cref{lem:pathIntersectionClosed,lem:pathStarSparse,
 \begin{theorem}
 \label{thm:intreevalLattices}
 Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
-The acyclic sourcing poset~$\ASour(\II)$ is a lattice if and only if $\II$ is path intersection closed (\cref{def:pathIntersectionClose}) and path star sparse (\cref{def:pathStarSparse}).
+The acyclic sourcing poset~$\ASour(\II)$ is a lattice if and only if $\II$ is path intersection closed (\cref{def:pathIntersectionClose}) and star sparse (\cref{def:pathStarSparse}).
 \end{theorem}
 
 \begin{remark}
 When~$T$ is a line, 
 \begin{itemize}
 \item the path intersection closed condition boils down to being closed under intersection (including singletons by default),
-\item the path star sparse condition is empty,
+\item the star sparse condition is empty,
 \item the characterization of \cref{thm:intreevalLattices} was proved in~\cite[Thm.~A]{BergeronPilaud}.
 \end{itemize}
 \end{remark}
@@ -2619,13 +2651,14 @@ When~$T$ is a line,
 When~$T$ is a rooted tree,
 \begin{itemize}
 \item the path intersection closed condition rephrases to for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max J >_T \max (I\cap J)$, there exists~$K \in \II$ such that $\min(J) = \min(K)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$,
-\item the path star sparse condition is empty.
+\item the star sparse condition is empty.
 \end{itemize}
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Necessary condition}
+\label{subsec:necessary}
 
 We first prove that the two conditions of \cref{thm:intreevalLattices} are necessary.
 
@@ -2727,7 +2760,7 @@ The reader can check that~$S_A < S_C$, $S_A < S_D$, $S_B < S_E = S_F < S_C$, and
 \begin{lemma}
 \label{lem:pathStarSparse}
 Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
-If~$\ASour(\II)$ is a lattice, then $\II$ is path star sparse (\cref{def:pathStarSparse}).
+If~$\ASour(\II)$ is a lattice, then $\II$ is star sparse (\cref{def:pathStarSparse}).
 \end{lemma}
 
 \begin{proof}
@@ -2783,7 +2816,7 @@ Therefore, we have the following permutations and ornamentations:
 	S^i(\orange{2345}) & 5 & 2 \\
 	S^i(\red{2346}) & 2 & 2 \\
 	S^i(\green{1346}) & 1 & 6 \\
-	S^i(\purple{34}) & 3 & 3
+%	S^i(\purple{34}) & 3 & 3
 \end{array}
 \qquad
 \begin{array}[b]{c|c}
@@ -2791,7 +2824,7 @@ Therefore, we have the following permutations and ornamentations:
 	S(\orange{2345}) & 5 \\
 	S(\red{2346}) & 2 \\
 	S(\green{1346}) & 6 \\
-	S(\purple{34}) & 3
+%	S(\purple{34}) & 3
 \end{array}
 \qquad
 \begin{array}[b]{c|cc}
@@ -2802,7 +2835,7 @@ Therefore, we have the following permutations and ornamentations:
 	T^i(\orange{2345}) & 5 & 5 \\
 	T^i(\red{2346}) & 2 & 6 \\
 	T^i(\green{1346}) & 6 & 6 \\
-	T^i(\purple{34}) & 3 & 3
+%	T^i(\purple{34}) & 3 & 3
 \end{array}
 \]
 The reader can check that~$S^i < S < T^i$ for all~$i \in [2]$.
@@ -2810,13 +2843,14 @@ The reader can check that~$S^i < S < T^i$ for all~$i \in [2]$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Path star sparse implies no long cycles}
+\subsection{Star sparse implies no long cycles}
+\label{subsec:shortCycles}
 
-In this section, we observe the following important property of the path star sparse intreeval hypergraphs.
+In this section, we observe the following important property of the star sparse intreeval hypergraphs.
 
 \begin{proposition}
 \label{prop:pathStarSparse}
-Let~$\II$ be a path star sparse (\cref{def:pathStarSparse}) intreeval hypergraph of an increasing tree~$T$.
+Let~$\II$ be a star sparse (\cref{def:pathStarSparse}) intreeval hypergraph of an increasing tree~$T$.
 Then any minimal cycles in any sourcing of~$S$ has length~$2$.
 \end{proposition}
 
@@ -2847,17 +2881,18 @@ We denote this vertex by~$v$.
 We obtained that~$I \eqdef \bigcap_{i \in [q]} I_i$ is a non-empty (as it contains~$v$) directed path (as intersection of directed paths in a tree~$T$).
 Its final vertex is~$v$ and we denote its initial vertex by~$u$.
 For~$j \in [q]$, we denote by~$u_j$ the neighbor of~$u$ in the path from~$w_{2j-1}$ to~$u$, and we denote by~$v_j \eqdef w_{2j}$ which is a neighbor of~$v$.
-We obtained that~$u_j \in I_{2j-1} \cap I_{2j}$ while~$v_j \in I_{2j} \cap I_{2j+1}$, hence that~$u_1, v_1, \dots, u_p, v_p$ form a cycle in~$X(T, u, v, \II)$, showing that~$T$ is not path star sparse.
+We obtained that~$u_j \in I_{2j-1} \cap I_{2j}$ while~$v_j \in I_{2j} \cap I_{2j+1}$, hence that~$u_1, v_1, \dots, u_p, v_p$ form a cycle in~$X(T, u, v, \II)$, showing that~$T$ is not star sparse.
 \end{proof}
 
 \begin{remark}
-\cref{prop:pathStarSparse} fails if the intreeval hypergraph~$\II$ is not path star sparse.
+\cref{prop:pathStarSparse} fails if the intreeval hypergraph~$\II$ is not star sparse.
 For instance, if~$\II = \PP(\Xgraph)$ is the collection of all paths of the graph~$\Xgraph$ of \cref{fig:ornamentationsX}, we have sourcings with minimal cycles of length~$4$.
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Sufficient condition}
+\label{subsec:sufficient}
 
 To prove the reverse implication of \cref{thm:intreevalLattices}, we will use a quasi-lattice map as defined in~\cite[Rem.~4.14]{BergeronPilaud}.
 
@@ -2937,7 +2972,7 @@ If~$v_2 \in I_1$, this implies~$v_1 = \sour{O}^\II(I_1) \ge v_2$, hence~${v_1 = 
 
 \begin{corollary}
 \label{coro:Orn2SourIntreeval3}
-Let~$T$ be an increasing tree, $\II$ be a path star sparse intreeval hypergraph of~$T$, and~$O$ be an ornamentation of~$T$.
+Let~$T$ be an increasing tree, $\II$ be a star sparse intreeval hypergraph of~$T$, and~$O$ be an ornamentation of~$T$.
 Then the sourcing~$\sour{O}^\II$ is acyclic.
 \end{corollary}
 
@@ -3027,7 +3062,7 @@ As~$S_1(I)$ and~$S_2(J)$ both belong to~$I \cap J \subseteq K$, and~$S_1$ and~$S
 
 \begin{proposition}
 \label{prop:quasiLatticeMapIntreevalLattices}
-Let~$\II$ be a path intersection closed (\cref{def:pathIntersectionClose}) and path star sparse (\cref{def:pathStarSparse}) intreeval hypergraph of an increasing tree~$T$.
+Let~$\II$ be a path intersection closed (\cref{def:pathIntersectionClose}) and star sparse (\cref{def:pathStarSparse}) intreeval hypergraph of an increasing tree~$T$.
 Then the map~$O \mapsto \sour{O}^\II$ of \cref{def:Orn2SourIntreeval} is a quasi-lattice map.
 Hence, the acyclic sourcing poset~$\ASour(\II)$ is a lattice.
 \end{proposition}
@@ -3040,13 +3075,14 @@ The last statement thus follows from~\cref{prop:quasiLatticeMap}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Expression for the meet and join}
+\label{subsec:formulaMeetJoin}
 
 Finally, when~$\ASour(\II)$ is a lattice, we can obtain the following formula to compute its joins, mimicking the formula of~\cite[Prop.~4.15]{BergeronPilaud} when~$T$ is a path.
 A similar formula holds for meets by symmetry.
 
 \begin{proposition}
 \label{prop:expressionJoin}
-For a path intersection closed and path star sparse intreeval hypergraph~$\II$ of an increasing tree~$T$, and for any acyclic sourcings~$S_1, \dots, S_q$ of~$\II$ and any~$I \in \II$, we have
+For a path intersection closed and star sparse intreeval hypergraph~$\II$ of an increasing tree~$T$, and for any acyclic sourcings~$S_1, \dots, S_q$ of~$\II$ and any~$I \in \II$, we have
 \[
 \bigg( \bigJoin_{p \in [q]} S_p \bigg)(I) = \min \bigg( I \ssm \Big( \bigcup_{p \in [q]} \bigcup_{\substack{J \in \II \\ S_p(J) \in I}} \set{v \in J}{v < S_p(J)} \Big) \bigg).
 \]
