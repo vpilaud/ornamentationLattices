@@ -2526,15 +2526,36 @@ The sequences \OEIS{A000698} and \OEIS{A105616} are the first two columns of the
 We have no explanation for this fact, nor candidates for families of directed trees whose numbers of ornamentations would give the other columns of this table.
 \end{remark}
 
-%sage: for n in range(10): 
+%sage: for n in range(6): 
 %....:     D = DiGraph([[i,i+n] for i in range(1,n)] + [[i,i+1] for i in range(n,2*n-1)]) 
 %....:     print(n, len(digraph_ornamentation_lattice(D))) 
-%....:                                                                                                                                                                                                     
+%....:                                                                                                                                                                                                       
 %0 1
 %1 1
 %2 4
 %3 26
 %4 226
+%5 2426
+%sage: for n in range(6): 
+%....:     D = DiGraph([[i,i+n] for i in range(2,n)] + [[i,i+1] for i in range(n,2*n-1)]) 
+%....:     print(n, len(digraph_ornamentation_lattice(D))) 
+%....:                                                                                                                                                                                                       
+%0 1
+%1 1
+%2 2
+%3 10
+%4 74
+%5 706
+%sage: for n in range(6): 
+%....:     D = DiGraph([[i,i+n] for i in range(3,n)] + [[i,i+1] for i in range(n,2*n-1)]) 
+%....:     print(n, len(digraph_ornamentation_lattice(D))) 
+%....:                                                                                                                                                                                                       
+%0 1
+%1 1
+%2 2
+%3 5
+%4 28
+%5 224
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
