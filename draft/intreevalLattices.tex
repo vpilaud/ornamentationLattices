@@ -422,7 +422,7 @@ Let us just mention that they clearly specialize to that of~\cite{BergeronPilaud
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pagebreak
-\section{Reorientations, sourcings, ornamentations}
+\section{Reorientations, sourcings, and ornamentations}
 \label{sec:general}
 
 Throughout this section, we fix a directed graph~$D$ on a vertex set~$V$, and denote by~$\tc(D)$ its transitive closure and by~$\PP(D)$ its hypergraph of directed paths.
@@ -983,6 +983,7 @@ The map~$S \mapsto \reori{S}$ is order-preserving.
 \end{cases}
 \]
 By componentwise comparison, the first is smaller than the second. However, the sets of reversed edges are $\{(1,2)\}$ and $\{(1,3),(2,3)\}$, respectively, which are incomparable.
+The corresponding ornamentations, $(1,12,3)$ and $(1,2,123)$, are also incomparable. Breaking \cref{lem:Sour2Orn3}.
 }
 
 \begin{proof}
@@ -1106,7 +1107,7 @@ In contrast, we will see in \cref{sec:acyclic} that~$S \mapsto \orn{S}$ is injec
 \section{Acyclic reorientations, acyclic sourcings, and acyclic ornamentations}
 \label{sec:acyclic}
 
-We now focus our attention on the acyclic situation.
+We now focus our attention on the acyclic \jose{\sout{situation} case}.
 We assume here that~$D$ is an increasing graph on~$V = [n]$, meaning that $u < v$ for any edge~$(u,v)$ of~$D$. In particular, $D$ is acyclic.
 We then consider the acyclic reorientation poset~$\AReori(\tc(D))$ (\cref{subsec:acyclicReorientations}), the acyclic sourcing poset~$\ASour(\PP(D))$ (\cref{subsec:acyclicSourcings}), and the acyclic ornamentation poset~$\AOrn(D)$ (\cref{subsec:acyclicOrnamentations}), and define natural surjective poset morphisms:
 \[
@@ -1208,7 +1209,7 @@ Acyclic sourcings of hypergraphs were introduced in~\cite{BenedettiBergeronMacha
 
 \begin{definition}
 \label{def:ASour}
-A sourcing~$S$ of a hypergraph~$\HH$ is \defn{acyclic} if there is no distinct~$H_0, \dots, H_k \in \HH$ such that~$S(H_{i-1}) \in H_i \ssm \{S(H_i)\}$ for all~$i \in [k]$ and~$S(H_k) \in H_0 \ssm \{S(H_0)\}$.
+A sourcing~$S$ of a hypergraph~$\HH$ is \defn{acyclic} if there are no distinct~$H_0, \dots, H_k \in \HH$ such that~$S(H_{i-1}) \in H_i \ssm \{S(H_i)\}$ for all~$i \in [k]$ and~$S(H_k) \in H_0 \ssm \{S(H_0)\}$.
 The \defn{acyclic sourcing poset}~$\ASour(\HH)$ is the subposet of the sourcing lattice~$\Sour(\HH)$ induced by acyclic sourcings.
 \end{definition}
 
@@ -1228,7 +1229,7 @@ Note that the graph of~$\simplex_\HH$, oriented in the direction~$\b{\omega}$, i
 \begin{remark}
 \label{rem:ASourLat}
 Note that the acyclic sourcing poset of~$\HH$ is not always a lattice.
-Characterizing the hypergraphs whose acyclic sourcing poset is a lattice seems a difficult question in general.
+Characterizing the hypergraphs whose acyclic sourcing poset is a lattice \jose{\sout{seems} is} a difficult question in general.
 Such characterizations exist for specific families of hypergraphs, notably for graphs~\cite{Pilaud-acyclicReorientationLattices} (see \cref{prop:AReoriLat}), for interval hypergraphs~\cite{BergeronPilaud}, and (partially for) graph associahedra~\cite{BarnardMcConville}.
 We will further study this question for subhypergraphs of the path hypergraph of increasing trees in \cref{sec:intreevalHypergraphicPosets}.
 \end{remark}
@@ -1243,11 +1244,11 @@ For an acyclic reorientation~$R$ of~$\tc(D)$, we denote by~$\asour{R}$ the sourc
 
 \begin{lemma}
 \label{lem:AReori2ASour1}
-For any acyclic reorientation~$R$ of~$\tc(D)$, we have~$\rev(\asour{R}) \subseteq \rev(R)$ .
+For any acyclic reorientation~$R$ of~$\tc(D)$, we have~$\rev(\asour{R}) \subseteq \rev(R)$.\Jose{uses rev of a sourcing}
 \end{lemma}
 
 \begin{proof}
-Let~$u,v \in [n[$ be such that~$(u,v) \in \rev(\asour{R})$. 
+Let~$u,v \in [n]$ be such that~$(u,v) \in \rev(\asour{R})$. 
 Then~$u < v$ and there is a path~$P \in \PP(D)$ such that~$u \in P$ and~$v = \asour{R}(P)$.
 By definition, $v$ is the source of~$P$ in~$R$.
 Since~$P$ forms a clique in~$\tc(D)$, and $R$ is acyclic, we conclude that~$(u,v) \in \rev(R)$.
@@ -1274,7 +1275,7 @@ If~$R_1 \le R_2$, then~$\rev(R_1) \subseteq \rev(R_2)$, hence the source of any 
 
 \begin{remark}
 \label{rem:Sour2ReoriIncompatibleAcyclicity}
-The reorientation~$\reori{S}$ of~$\tc(D)$ defined in \cref{def:Sour2Reori} by~$\rev(\reori{S}) = \rev(S)$ is not always acyclic even when~$S$ is acyclic.
+The reorientation~$\reori{S}$ of~$\tc(D)$ defined in \cref{def:Sour2Reori} by~$\rev(\reori{S}) = \rev(S)$ is not always acyclic even when~$S$ is acyclic.\Jose{uses rev of a sourcing}
 For instance, consider the directed graph~$D$ and the two reorientations~$R_1$ and~$R_2$ of~$\tc(D)$ given by
 \[
 D = \! \includegraphics[scale=.8,valign=c]{graphR}
@@ -1331,7 +1332,7 @@ For any acyclic sourcing~$S$ of~$\PP(D)$, we have~$\asour{\areori{S}} = S$. In o
 Pick~$P \in \PP(D)$ and let~$v = S(P)$.
 For any~$u \in P$, we have~$(u,v) \in \arr(S)$.
 If~$u < v$, then~$(u,v) \in \rev(\areori{S})$.
-If~$u > v$, then~$(v,u) \notin \tc(\arr(S))$ by acyclicity of~$S$, so that~$(v,u) \notin \rev(\areori{S})$, so that~$(u,v) \in \rev(\areori{S})$ (since $P$ is a tournament in~$\areori{S}$).
+If~$u > v$, then~$(v,u) \notin \tc(\arr(S))$ by acyclicity of~$S$, so that~$(v,u) \notin \rev(\areori{S})$, so that~\jose{\sout{$(u,v) \in \rev(\areori{S})$} $(u,v) \in \areori{S}$} (since $P$ is a tournament in~$\areori{S}$).
 Hence, $v$ is the source of~$P$ in~$\areori{S}$, so that~$\asour{\areori{S}}(P) = v = S(P)$.
 We conclude that~$\asour{\areori{S}} = S$. 
 \end{proof}
@@ -1342,6 +1343,8 @@ To sum up, we obtained the following statement.
 \label{prop:AReori2ASour}
 The map~$R \mapsto \asour{R}$ is an order-preserving surjection from the acyclic reorientation poset~$\AReori(\tc(D))$ to the acyclic sourcing poset~$\ASour(\PP(D))$.
 \end{proposition}
+
+\Jose[inline]{We could prove this last result using the geometric perspective (hypergraphic polytope of $\PP(D)$ is a deformation of graphic zonotope of $\tc(D)$), and don't introduce the maps $S \mapsto \reori{S}$ and $S \mapsto \areori{S}$, which do not seem to have good properties. However, we need to find a way to fix the maps from (acyclic) sourcings to ornamentations.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2938,7 +2941,7 @@ p \meet q = f(\projUp{p} \meet \projUp{q}).
 \begin{proof}
 We repeat the proof here for completeness.
 Let~$p,q,r,s \in P$ such that~$p, q \le r, s$.
-Then~$\projDown{p} , \projDown{q} \le \projUp{r},  \projUp{s}$.
+Then~$\projDown{p}, \projDown{q} \le \projUp{r},  \projUp{s}$.
 Hence~$\projDown{p}, \projDown{q} \le \projDown{p} \join \projDown{q} \le \projUp{r}, \projUp{s}$.
 Since~$f$ is order-preserving, we obtain that~$f(\projUp{p}) = p, f(\projUp{q}) = q \le f(\projDown{p} \join \projDown{q}) \le f(\projUp{r}) = r, f(\projUp{s}) = s$.
 This implies that~$p$ and~$q$ admit a join~$p \join q \le f(\projDown{p} \join \projDown{q})$.
