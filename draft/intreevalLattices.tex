@@ -148,6 +148,8 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\Jose}[2][]{\todo[size=\tiny,color=red!30,#1]{ #2 \\ \hfill --- J.}\,}
 \newcommand{\andrew}[1]{{\color{purple}#1}}
 \newcommand{\Andrew}[2][]{\todo[size=\tiny,color=purple,#1]{ #2 \\ \hfill --- A.}\,}
+\newcommand{\felix}[1]{{\color{orange}#1}}
+\newcommand{\Felix}[2][]{\todo[size=\tiny,color=orange,#1]{ #2 \\ \hfill --- F.}\,}
 
 % permutations
 \newcommand{\fS}{\mathfrak{S}} % symmetric group
@@ -432,7 +434,7 @@ Throughout this section, we fix a directed graph~$D$ on a vertex set~$V$, and de
 It is a priori not required that~$D$ is acyclic, although this is the case that interest us most in this paper.
 In particular, in all our pictures, $V = [n]$ and the edges are increasing (so we can omit their orientations).
 %We will mostly work with a directed acyclic graph, and we represent it with edges going up in all pictures.
-We define the reorientation lattice~$\Reori(\tc(D))$ (\cref{subsec:reorientations}), the sourcing lattice~$\Sour(\PP(D))$ (\cref{subsec:sourcings}), and the ornamentation lattice~$\Orn(D)$ (\cref{subsec:ornamentations}), and define natural surjective poset morphisms:
+We define the reorientation lattice~$\Reori(\tc(D))$ (\cref{subsec:reorientations}), the sourcing lattice~$\Sour(\PP(D))$ (\cref{subsec:sourcings}), and the ornamentation lattice~$\Orn(D)$ (\cref{subsec:ornamentations}) \Felix{Would change the order we introduce the sections}, and define natural surjective poset morphisms:
 \[
 \begin{array}{rcl}
 	\Reori(\tc(D)) & \surjection & \Orn(D) \\
@@ -856,7 +858,7 @@ O = \!\!\includegraphics[scale=.8,valign=c]{cyclicOrnamentationD1} \qquad \reori
 We will see in \cref{lem:Orn2ReoriT} that $\reori{O}$ is transitively biclosed when~$D$ is a directed tree.
 \end{remark}
 
-This surjection behaves much nicer with respect to \cref{rem:Orn2ReoriMiddle,rem:Reori2OrnIntervals1,rem:Reori2OrnSemilatticeMap}.
+This surjection behaves much nicer with respect to \cref{rem:Orn2ReoriMiddle,rem:Reori2OrnIntervals1,rem:Reori2OrnSemilatticeMap}. \felix{when $D$ is a directed tree.}
 
 \begin{proposition}
 \label{prop:Reori2OrnMinTC}
@@ -916,7 +918,7 @@ For instance, for the graph~$\Dgraph$ of \cref{fig:ornamentationsD}, the fibers 
 \qquad
 \includegraphics[scale=.8,valign=c]{cyclicOrnamentationD2}
 \]
-are both singletons, containing the reorientations
+are \felix{\sout{both}} singletons, \felix{respectively} containing the reorientations
 \[
 \includegraphics[scale=.8,valign=c]{cyclicReorientationD1}
 \qquad
@@ -938,7 +940,7 @@ We consider the following maps on hypergraphs (they are usually called orientati
 \label{def:Sour}
 A \defn{sourcing}~$S$ of a hypergraph~$\HH$ on~$V$ is a map~$S : \HH \to V$ such that~$S(H) \in H$ for all hyperedges~$H \in \HH$.
 We denote by~$\rev(S)$ the pairs~$(u,v) \in V^2$ with~$u < v$ and such that there is~$H \in \HH$ with~$u \in H$ and~$v = S(H)$.
-The \defn{sourcing lattice}~$\Sour(\HH)$ is the lattice of sourcings of~$\HH$ ordered componentwise, meaning~$S_1 \le S_2$ if~$S_1(H) \le S_2(H)$ for all~$H \in \HH$.
+The \defn{sourcing lattice}~$\Sour(\HH)$ is the lattice of sourcings of~$\HH$ ordered componentwise, meaning~$S_1 \le S_2$ if \felix{and only if}~$S_1(H) \le S_2(H)$ for all~$H \in \HH$.
 In other words, $\Sour(\HH)$ is the Cartesian product of the subchains of~$V$ induced by the hyperedges~$\HH$.
 \end{definition}
 
@@ -1031,16 +1033,21 @@ For any sourcing~$S$ of~$\PP(D)$, the map~$\orn{S}$ is an ornamentation of~$D$.
 Follows from~\cref{lem:Reori2Orn1,lem:Sour2Orn1}.
 \end{proof}
 
-\begin{lemma}
-\label{lem:Sour2Orn3}
-The map~$S \mapsto \orn{S}$ is order-preserving.
-\end{lemma}
+\begin{remark}
+Note that neither the map~$S \mapsto \reori{S}$, not the map~$S \mapsto \orn{S}$ are order-preserving.
+\vincent{todo}
+\end{remark}
 
-\begin{proof}
-%The proof is identical to that of~\cref{lem:Reori2Orn2}.
-Follows from~\cref{lem:Reori2Orn2,lem:Sour2Reori,lem:Sour2Orn1}.
-%If~$S_1 \le S_2$, then $\rev(S_1) \subseteq \rev(S_2)$, hence any path in~$\rev(S_1)$ is a path in~$\rev(S_2)$, so that~$\orn{S_1}(v) \subseteq \orn{S_2}(v)$ for any~$v \in V$, hence~$\orn{S_1} \le \orn{S_2}$.
-\end{proof}
+%\begin{lemma}
+%\label{lem:Sour2Orn3}
+%The map~$S \mapsto \orn{S}$ is order-preserving.
+%\end{lemma}
+%
+%\begin{proof}
+%%The proof is identical to that of~\cref{lem:Reori2Orn2}.
+%Follows from~\cref{lem:Reori2Orn2,lem:Sour2Reori,lem:Sour2Orn1}.
+%%If~$S_1 \le S_2$, then $\rev(S_1) \subseteq \rev(S_2)$, hence any path in~$\rev(S_1)$ is a path in~$\rev(S_2)$, so that~$\orn{S_1}(v) \subseteq \orn{S_2}(v)$ for any~$v \in V$, hence~$\orn{S_1} \le \orn{S_2}$.
+%\end{proof}
 
 \begin{definition}
 \label{def:Orn2Sour}
@@ -1120,7 +1127,7 @@ In contrast, we will see in \cref{sec:acyclic} that~$S \mapsto \orn{S}$ is injec
 \section{Acyclic reorientations, acyclic sourcings, and acyclic ornamentations}
 \label{sec:acyclic}
 
-We now focus our attention on the acyclic \jose{\sout{situation} case}.
+We now focus our attention on the acyclic case.
 We assume here that~$D$ is an increasing graph on~$V = [n]$, meaning that $u < v$ for any edge~$(u,v)$ of~$D$. In particular, $D$ is acyclic.
 We then consider the acyclic reorientation poset~$\AReori(\tc(D))$ (\cref{subsec:acyclicReorientations}), the acyclic sourcing poset~$\ASour(\PP(D))$ (\cref{subsec:acyclicSourcings}), and the acyclic ornamentation poset~$\AOrn(D)$ (\cref{subsec:acyclicOrnamentations}), and define natural surjective poset morphisms:
 \[
@@ -1357,7 +1364,10 @@ To sum up, we obtained the following statement.
 The map~$R \mapsto \asour{R}$ is an order-preserving surjection from the acyclic reorientation poset~$\AReori(\tc(D))$ to the acyclic sourcing poset~$\ASour(\PP(D))$.
 \end{proposition}
 
+\begin{remark}
 \Jose[inline]{We could prove this last result using the geometric perspective (hypergraphic polytope of $\PP(D)$ is a deformation of graphic zonotope of $\tc(D)$), and don't introduce the maps $S \mapsto \reori{S}$ and $S \mapsto \areori{S}$, which do not seem to have good properties. However, we need to find a way to fix the maps from (acyclic) sourcings to ornamentations.}
+\vincent{I agree. I wanted to avoid geometry as much as possible. But we can at least include a remark.}
+\end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1378,6 +1388,15 @@ There exists~$P \in \PP(D)$ such that~$u \eqdef S_1(P) \ne S_2(P) \defeq v$.
 We can assume by symmetry that~$u < v$.
 Then~$u \notin \orn{S_1}(v)$ (by acyclicity of~$S_1$) while~$u \in \orn{S_2}(v)$ (by definition of~$\orn{S_2}$).
 Hence~$\orn{S_1} \ne \orn{S_2}$.
+\end{proof}
+
+\begin{lemma}
+\label{lem:ASour2AOrn2}
+The map~$S \mapsto \orn{S}$ is order-preserving on acyclic sourcings.
+\end{lemma}
+
+\begin{proof}
+\vincent{todo}
 \end{proof}
 
 \begin{lemma}
@@ -1511,7 +1530,7 @@ We conclude that~$S \mapsto \aorn{S}$ and~$O \mapsto \asour{O}$ are inverse isom
 \section{Directed trees}
 \label{sec:trees}
 
-In this section, we focus on the specific situation when the underlying directed graph~$D$ is a directed tree~$T$ (but not necessarily a rooted tree), as for example in \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX}.
+In this section, we focus on the specific case when the underlying directed graph~$D$ is a directed tree~$T$ (but not necessarily a rooted tree), as for example in \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX}.
 We start with a few basic observations (\cref{subsec:basicObservationsT}).
 We then describe the join and meet irreducible ornamentations of~$T$ and prove that the ornamentation lattice~$\Orn(T)$ is semidistributive (\cref{subsec:semidistributivityT}).
 We then revisit some strutural properties of the reorientations of~$\tc(T)$ (\cref{subsec:maximalReorientationT,subsec:transitivelyBiclosedReorientationsT}).
@@ -2082,7 +2101,7 @@ In general, we have no description of the MacNeille completion of the acyclic or
 \section{Unstarred trees and rooted trees}
 \label{sec:unstarredTrees}
 
-In this section, we discuss the specific situation when the underlying directed graph~$D$ is an unstarred tree~$T$ (defined in \cref{subsec:unstarredTrees}).
+In this section, we discuss the specific case when the underlying directed graph~$D$ is an unstarred tree~$T$ (defined in \cref{subsec:unstarredTrees}).
 The main result is the proof of \cref{thm:main2} (\cref{subsec:OrnUT}).
 Finally, we discuss enumeration properties of ornamentations of brooms (\cref{subsec:brooms}) and combs (\cref{subsec:combs}).
 
