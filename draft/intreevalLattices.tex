@@ -219,7 +219,7 @@ Given a directed graph~$D$ with transitive closure~$\tc(D)$ and path hypergraph~
 When~$D$ is a rooted (or even unstarred) increasing tree, we show that the acyclic sourcing poset of~$\PP(D)$ is isomorphic to the ornamentation lattice of~$D$, and that they form a lattice quotient of the acyclic reorientation lattice of~$\tc(D)$.
 As a consequence, we obtain polytopal realizations of the ornamentation lattices of rooted (or even unstarred) increasing trees, answering an open question of C.~Defant and A.~Sack.
 When~$D$ is an increasing tree, we show that the ornamentation lattice of~$D$ is the MacNeille completion of the acyclic sourcing poset of~$\PP(D)$.
-Finally, still when~$D$ is an increasing tree, we use the ornamentation lattice of~$D$ to characterize the subhypergraphs of the path hypergraph~$\PP(D)$ whose acyclic sourcing poset is a lattice.
+Finally, still when~$D$ is an increasing tree, we use the ornamentation lattice of~$D$ to characterize the subhypergraphs of the path hypergraph~$\PP(D)$ whose acyclic sourcing poset is a lattice. \andrew{Do you think ``hypergraphic poset'' or ``acyclic sourcing poset'' is better for the abstract? I'm thinking in terms of what people are more likely to be familiar with. I also think we should probably mention the geometry somewhere in the abstract.}
 \end{abstract}
 
 \vspace*{-1cm}
@@ -401,7 +401,7 @@ Our results largely extend the characterization of~\cite{BergeronPilaud} for int
 
 An \defn{interval hypergraph} is an hypergraph whose hyperedges all are intervals of~$[n]$.
 For an interval hypergraph~$\II$ containing all singletons, it was proved in~\cite[Thm.~A]{BergeronPilaud} that the acyclic sourcing poset~$\ASour(\II)$ is a lattice if and only if~$\II$ is closed under intersection, meaning that~$I,J \in \II$ implies~$I \cap J \in \II$.
-(As adding or removing singletons to~$\II$ preserve~$\ASour(\II)$, we impose~$\II$ to contain all singletons just to simplify the expression of intersection closedness.)
+(As adding or removing singletons to~$\II$ preserves~$\ASour(\II)$, we impose~$\II$ to contain all singletons just to simplify the expression of intersection closedness.)
 The approach of~\cite{BergeronPilaud} is to show that the map~$\pi \mapsto \asour{\pi}$ sending a permutation of~$[n]$ to an acyclic sourcing of~$\II$ is a \defn{quasi-lattice map}, meaning that the fiber of each acyclic sourcing~$S$ of~$\II$ forms an interval~$[\projDown{S}, \projUp{S}]$ of the weak order and that~$S \le S'$ in~$\ASour(\II)$ implies that~$\projDown{S} \le \projUp{S'}$.
 While much weaker than the lattice map condition (which requires instead that~$S \le S'$ implies~$\projDown{S} \le \projDown{S'}$ and~$\projUp{S} \le \projUp{S'}$), the quasi-lattice map condition still ensures that the image forms a lattice.
 
@@ -417,9 +417,9 @@ Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
 The acyclic sourcing poset~$\ASour(\II)$ is a lattice if and only if $\II$ is path intersection closed (\cref{def:pathIntersectionClose}) and star sparse (\cref{def:pathStarSparse}).
 \end{theorem}
 
-The path intersection closed and star sparse conditions are slightly technical; we defer the details to \cref{sec:intreevalHypergraphicPosets}.
-Let us just mention that they clearly specialize to that of~\cite{BergeronPilaud} when~$T$ is a path, as in this case, path intersection closedness boils down to intersection closedness, and star sparseness always holds.
 
+The path intersection closed and star sparse conditions are slightly technical; we defer the details to \cref{sec:intreevalHypergraphicPosets}. \Andrew{I think we should mention somewhere that being intersection closed is a stronger condition than being path intersection closed. In particular, for a rooted tree, being intersection closed is sufficient to be a lattice.}
+Let us just mention that they clearly specialize to that of~\cite{BergeronPilaud} when~$T$ is a path, as in this case, path intersection closedness boils down to intersection closedness, and star sparseness always holds. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -488,7 +488,7 @@ We clearly define different ornamentations by
 \begin{enumerate}[(i)]
 \item If~$U \in \Orn(u \in D)$ and~$U' \in \Orn(u' \in D)$ with~$u \in U'$, then~${U \cup U' \in \Orn(u' \in D)}$.
 %\item If~$U$ is an ornament at a vertex~$u$ of~$D$ and~$U'$ is an ornament at a vertex~$u'$ of~$D$ and~$u \in U'$, then~$U \cup U'$ is an ornament of~$D$ at~$u'$.
-\item If~$U,U' \in \Orn(v \in D)$, then~$U \cup U' \in \Orn(v \in D)$, while $U \cap U'$ is not necessarily~in~${\Orn(v \in D)}$.
+\item If~$U,U' \in \Orn(v \in D)$, then~$U \cup U' \in \Orn(v \in D)$, while $U \cap U'$ is not necessarily~in~${\Orn(v \in D)}$. \Andrew{Do we address this ``not necessarily'' condition anywhere?} 
 %\item If~$U,U'$ are two ornaments at a vertex~$v$ of~$D$, then~$U \cup U'$ is also an ornament at~$v$, while $U \cap U'$ is not necessarily an ornament at~$v$.
 \end{enumerate}
 \end{lemma}
@@ -496,7 +496,7 @@ We clearly define different ornamentations by
 \begin{proof}
 For Part~(i), let~$w \in U \cup U'$. If~$w \in U'$, then there is a path from~$w$ to~$u'$ in~$U'$, hence in~$U \cup U'$.
 If~$w \in U$, then there is a path from~$w$ to~$u$ in~$U$ and a path from~$u$ to~$u'$ in~$U'$, hence a path from~$w$ to~$u'$ in~$U \cup U'$.
-Part~(ii) is a specialization of Part~(i) to~$u = v$ and~$u' = v$.
+Part~(ii) is a specialization of Part~(i) to~$u = v$ and~$u' = v$. 
 \end{proof}
 
 \pagebreak
@@ -552,7 +552,7 @@ In fact, the boolean lattices are the only distributive ornamentation lattices.
 
 \begin{example}
 The ornamentation lattice of the $n$-element path is isomorphic to the Tamari lattice on binary trees with $n$ nodes (see \eg \cref{fig:ornamentationsNI}\,(right)).
-The isomorphism is obtained through tubings (or equivalently bracket vectors).
+The isomorphism is obtained through tubings (or equivalently bracket vectors). \Andrew{I think this is a little vague. Perhaps we should say something like, ``The isomorphism is identical to the construction of bracket vectors in~\cite{HuangTamari}. I'm not sure the reader will know what we mean by tubings.}
 \end{example}
 
 %\begin{remark}
@@ -579,8 +579,8 @@ The isomorphism is obtained through tubings (or equivalently bracket vectors).
 
 \begin{figure}
 	\centerline{\includegraphics[scale=.68,valign=c]{ornamentationsK}\qquad\includegraphics[scale=.68,valign=c]{ornamentationsT}}
-	\caption{The ornamentation lattices~$\Orn(\Kgraph)$ and~$\Orn(\Tgraph)$. (Gray = cyclic).}
-	\label{fig:ornamentationsKT}
+	\caption{The ornamentation lattices~$\Orn(\Kgraph)$ and~$\Orn(\Tgraph)$. (Gray = cyclic). \andrew{Is it clear how the triangle is oriented?}}
+	\label{fig:ornamentationsKT} 
 \end{figure}
 
 %\begin{remark}
@@ -657,7 +657,7 @@ There is a natural surjection from the reorientation lattice~$\Reori(\tc(D))$ to
 
 \begin{definition}
 \label{def:Reori2Orn}
-For a reorientation~$R$ of~$\tc(D)$, we define a map~$\orn{R}$ on~$V$ which associates to each vertex~$v \in V$ the inclusion maximal ornament of~$D$ at~$v$ contained in the subset of vertices~$u \in V$ with a directed path to~$v$ in $\rev(R)$.
+For a reorientation~$R$ of~$\tc(D)$, we define a map~$\orn{R}$ on~$V$ which associates to each vertex~$v \in V$ the inclusion maximal ornament of~$D$ at~$v$ contained in the subset of vertices~$u \in V$ with a directed path to~$v$ in $\rev(R)$. \andrew{I think we should be a little more precise about what this means. I think somebody reading this could confuse $\rev(R)$ for either of the following: (i) the subgraph of only arrows in $\tc(D)$, but with all of the arrows reversed from their normal orientation. (ii) $\tc(D)$ but with the arrows in $\rev(R)$ reversed.}
 \end{definition}
 
 \begin{lemma}
@@ -768,7 +768,7 @@ For instance,
 }
 
 \medskip\noindent
-To correct this default, we can restrict our attention to transitively closed reorientations of~$\tc(D)$.
+To correct this default\Andrew{I think the word here is intended to be either ``fault'' or ``defect'', but I'm not sure which.}, we can restrict our attention to transitively closed reorientations of~$\tc(D)$.
 \end{remark}
 
 \begin{definition}
