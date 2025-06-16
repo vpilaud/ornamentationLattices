@@ -1178,7 +1178,7 @@ E \ssm \rev(R_1 \meet R_2) & = E \;\cap\; \tc \!\big( E \ssm (\rev(R_1) \cap \re
 \end{align*}
 \end{proposition}
 
-We now recall the standard map from permutations to acyclic orientations.
+We now recall the standard map from permutations to acyclic \felix{\sout{orientations} reorientations}.
 
 \begin{definition}
 For a permutation~$\pi$ of~$[n]$, we denote by~$\areori{\pi}$ the reorientation of~$\tc(D)$ where $(u,v) \in \tc(D)$ is reoriented in~$\areori{\pi}$ if~$\pi^{-1}(u) > \pi^{-1}(v)$.
@@ -1259,7 +1259,7 @@ We now recall that there is such a surjection when focusing on acyclic reorienta
 
 \begin{definition}
 \label{def:AReori2ASour}
-For an acyclic reorientation~$R$ of~$\tc(D)$, we denote by~$\asour{R}$ the sourcing on~$\PP(D)$ where~$\asour{R}(P)$ is the source of~$P$ in~$R$ (it is well-defined since any path in~$D$ forms a clique in~$\tc(D)$).
+For an acyclic reorientation~$R$ of~$\tc(D)$, we denote by~$\asour{R}$ the sourcing on~$\PP(D)$ where~$\asour{R}(P)$ is the source of~$P$ in~$R$ (it is well-defined since any path in~$D$ forms a clique in~$\tc(D)$). \Felix{Should we define the notion of sources for reorientations} \felix{For a path $P=[a_1,\dots,a_k]$ in $R$, do we mean that $R(P)=R((a_1,a_k))$? If $R((a_1,a_k))=a_k$, does that mean that $(a_1,a_k)\in \rev(R)$?}
 \end{definition}
 
 \begin{lemma}
@@ -1271,7 +1271,7 @@ For any acyclic reorientation~$R$ of~$\tc(D)$, we have~$\rev(\asour{R}) \subsete
 Let~$u,v \in [n]$ be such that~$(u,v) \in \rev(\asour{R})$. 
 Then~$u < v$ and there is a path~$P \in \PP(D)$ such that~$u \in P$ and~$v = \asour{R}(P)$.
 By definition, $v$ is the source of~$P$ in~$R$.
-Since~$P$ forms a clique in~$\tc(D)$, and $R$ is acyclic, we conclude that~$(u,v) \in \rev(R)$.
+Since~$P$ forms a clique in~$\tc(D)$, and $R$ is acyclic, we conclude that~$(u,v) \in \rev(R)$. \felix{I don't see what is the nuance between the source of $P=[u,\dots,v]$ and $(u,v)\in \rev(R)$.}
 \end{proof}
 
 \begin{lemma}
