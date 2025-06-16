@@ -991,7 +991,7 @@ Thus~$\rev(\reori{S_1}) = \rev(S_1) \subseteq \rev(S_2) = \rev(\reori{S_2})$, so
 
 In contrast, not all reorientations of~$\tc(D)$ can be projected to a sourcing of~$\PP(D)$, because reorientations might have cycles inside paths of~$D$.
 We will fix this issue by restricting to acyclic reorientations and acyclic sourcings in \cref{sec:acyclic}.
-At the moment, we thus need to define a map from all sourcings of~$\PP(D)$ to all ornamentations of~$D$.
+However, we can still use~$S \mapsto \reori{S}$ to define a map from all sourcings of~$\PP(D)$ to all ornamentations of~$D$.
 
 \begin{definition}
 \label{def:Sour2Orn}
@@ -1265,21 +1265,6 @@ Their concatenation~$PQ$ is a path from~$u$ to~$w$ with~$S(PQ) = w$ by acyclicit
 Hence~$(u,w) \in \rev(S)$.
 \end{proof}
 
-\begin{remark}
-\label{rem:Sour2ReoriIncompatibleAcyclicity}
-Despite \cref{lem:revTCAcyclic}, the reorientation~$\reori{S}$ of~$\tc(D)$ defined in \cref{def:Sour2Reori} by~$\rev(\reori{S}) = \rev(S)$ is not always acyclic even when the sourcing~$S$ of~$\PP(D)$ is acyclic.
-For instance, consider the directed graph~$D$ and the two reorientations~$R_1$ and~$R_2$ of~$\tc(D)$ given by
-\[
-D = \! \includegraphics[scale=.8,valign=c]{graphR}
-\qquad\qquad
-R_1 = \! \includegraphics[scale=.8,valign=c]{reorientationR1}
-\qquad\text{and}\qquad
-R_2 = \! \includegraphics[scale=.8,valign=c]{reorientationR2}
-.
-\]
-Note that~$R_1$ is acyclic so that~$\asour{R_1}$ is acyclic, and that~$\reori{\asour{R_1}} = R_2$ is cyclic.
-\end{remark}
-
 We have observed in \cref{subsec:sourcings} that there is no natural surjection from all reorientations of~$\tc(D)$ to all sourcings of~$\PP(D)$.
 We now recall that there is such a surjection when focusing on acyclic reorientations and acyclic sourcings.
 
@@ -1317,6 +1302,22 @@ The map~$R \mapsto \asour{R}$ is order-preserving.
 %For two acyclic reorientations~$R_1$ and~$R_2$ of~$\tc(D)$, 
 If~$R_1 \le R_2$, then~$\rev(R_1) \subseteq \rev(R_2)$, hence the source of any path~$P$ in~$R_1$ is smaller than the source of~$P$ in~$R_2$, hence~$\asour{R_1} \le \asour{R_2}$.
 \end{proof}
+
+\begin{remark}
+\label{rem:Sour2ReoriIncompatibleAcyclicity}
+The reorientation~$\reori{S}$ of~$\tc(D)$ defined in \cref{def:Sour2Reori} by~$\rev(\reori{S}) = \rev(S)$ is not always acyclic even when~$S$ is acyclic.
+For instance, consider the directed graph~$D$ and the two reorientations~$R_1$ and~$R_2$ of~$\tc(D)$ given by
+\[
+D = \! \includegraphics[scale=.8,valign=c]{graphR}
+\qquad\qquad
+R_1 = \! \includegraphics[scale=.8,valign=c]{reorientationR1}
+\qquad\text{and}\qquad
+R_2 = \! \includegraphics[scale=.8,valign=c]{reorientationR2}
+.
+\]
+Note that~$R_1$ is acyclic so that~$\asour{R_1}$ is acyclic, and that~$\reori{\asour{R_1}} = R_2$ is cyclic.
+We thus need to define a section of the map~$R \mapsto \asour{R}$.
+\end{remark}
 
 \begin{definition}
 \label{def:ASour2AReori}
