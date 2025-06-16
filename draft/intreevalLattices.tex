@@ -972,7 +972,7 @@ We first observe that any sourcing~$S$ of~$\PP(D)$ can be lifted to a reorientat
 \begin{definition}
 \label{def:Sour2Reori}
 Consider a sourcing~$S$ of~$\PP(D)$.
-We denote by~$\rev(S)$ the set of pairs~$(u,v) \in V^2$ such that there is a directed path~$P$ in~$D$ from~$u$ to~$v$ with~$S(P) = v$.
+We denote by~$\rev(S)$ the set of pairs~$(u,v) \in V^2$ such that there is a directed path~$P \in \PP(D)$ from~$u$ to~$v$ with~$S(P) = v$.
 We denote by~$\reori{S}$ the reorientation of~$\tc(D)$ defined by~$\rev(\reori{S}) = \rev(S)$.
 %\vincent{This map is not compatible with acyclicity later... But I don't see how to fix that.}
 \end{definition}
@@ -984,7 +984,7 @@ The map~$S \mapsto \reori{S}$ is order-preserving.
 
 \begin{proof}
 Consider two sourcings~$S_1 \le S_2$ of~$\PP(D)$.
-For any~$(u,v) \in \rev(S_1)$, there is a path~$P$ from~$u$ to~$v$ with~$S_1(P) = v$.
+For any~$(u,v) \in \rev(S_1)$, there is a path~$P \in \PP(D)$ from~$u$ to~$v$ with~$S_1(P) = v$.
 We have~$v = S_1(P) \le S_2(P) \le \max(P) = v$, so that~$S_2(P) = v$, hence~$(u,v) \in \rev(S_2)$.
 Thus~$\rev(\reori{S_1}) = \rev(S_1) \subseteq \rev(S_2) = \rev(\reori{S_2})$, so that~${\reori{S_1} \le \reori{S_2}}$.
 \end{proof}
@@ -1038,14 +1038,14 @@ The map~$O \mapsto \sour{O}$ is order-preserving.
 
 \begin{proof}
 Assume that~$O_1 \le O_2$, so that~$O_1(v) \subseteq O_2(v)$ for all~$v \in V$.
-Consider any path~$P$ from~$u$ to~$v$, and let~$w \eqdef \sour{O_1}(P)$.
+Consider any path~$P \in \PP(D)$ from~$u$ to~$v$, and let~$w \eqdef \sour{O_1}(P)$.
 Then we have~$u \in O_1(w) \subseteq O_2(w)$, so that~$\sour{O_2}(u) \ge w$ by definition.
 Therefore, $\sour{O_1}(P) \le \sour{O_2}(P)$ for any path~$P \in \PP(D)$, hence~${\sour{O_1} \le \sour{O_2}}$.
 \end{proof}
 
 \begin{lemma}
 \label{lem:Orn2Sour2}
-The following are equivalent for any ornamentation~$O$ of~$D$ and vertices~$u,v \in V^2$:
+The following are equivalent for any ornamentation~$O$ of~$D$ and vertices~$u,v \in [n]$:
 \begin{enumerate}[(i)]
 \item $(u,v) \in \rev(\sour{O})$,
 \item there is a path from~$u$ to~$v$ in~$\rev(\sour{O})$,
@@ -1061,15 +1061,15 @@ Nothing to prove.
 \uline{\textsl{(ii) $\Rightarrow$ (iii):}}
 Assume that there is a path from~$u$ to~$v$ in~$\rev(\sour{O})$.
 Denote by~${u = w_0, w_1, \dots, w_p = v}$ the vertices along this path.
-For each $1 \le i \le p$, as~$(w_{i-1}, w_i) \in \rev(\sour{O})$, there is a path~$P_i$ from~$w_{i-1}$ to~$w_i$ with~$\sour{O}(P_i) = w_i$ by \cref{def:Sour2Reori}, hence~$w_{i-1} \in O(w_i)$ by \cref{def:Orn2Sour}.
+For each $1 \le i \le p$, as~$(w_{i-1}, w_i) \in \rev(\sour{O})$, there is a path~$P_i \in \PP(D)$ from~$w_{i-1}$ to~$w_i$ with~$\sour{O}(P_i) = w_i$ by \cref{def:Sour2Reori}, hence~$w_{i-1} \in O(w_i)$ by \cref{def:Orn2Sour}.
 Since~$O$ is an ornamentation, an immediate induction shows that~$w_i \in O(v)$ for all~$0 \le i \le p$.
 We conclude that $u \in O(v)$
 
 \medskip\noindent
 \uline{\textsl{(iii) $\Rightarrow$ (i):}}
 Assume that~$u \in O(v)$.
-Then there is a path~$P$ from~$u$ to~$v$ in~$O(v)$.
-Since~$u \in O(v)$, we have~$\sour{O}(P) = v$ by \cref{def:Orn2Sour}.
+Then there is a path~$P \in \PP(D)$ from~$u$ to~$v$ in~$O(v)$.
+Since~${u \in O(v)}$, we get~$\sour{O}(P) = v$ by \cref{def:Orn2Sour}.
 Hence~$(u,v) \in \rev(\sour{O})$ by \cref{def:Sour2Reori}.
 \end{proof}
 
@@ -1095,7 +1095,7 @@ Immediate from \cref{def:Orn2Reori,def:Sour2Reori,lem:Orn2Sour2}.
 
 \begin{remark}
 Note however that there are sourcings~$S$ of~$\PP(D)$ with~$\reori{S} \ne \reori{\orn{S}}$.
-For instance, on the graph~\includegraphics[scale=.8,valign=c]{graphI}, for the sourcing~$S$ given by~$S(\{1,2\}) = 1$, $S(\{2,3\}) = 2$ and~$S(\{1,2,3\}) = 3$, we have $\orn{S} = \raisebox{-.2cm}{\includegraphics[scale=.8]{ornamentationI1}}$ so that
+For instance, on the graph~\includegraphics[scale=.8,valign=c]{graphI}, for the sourcing~$S$ given by~$S(\{1,2\}) = 1$, $S(\{2,3\}) = 2$ and~$S(\{1,2,3\}) = 3$, we have $\rev(S) = \{(1,3)\}$ so that~$\orn{S} = \raisebox{-.2cm}{\includegraphics[scale=.8]{ornamentationI1}}$ and
 \[
 \reori{S} = \raisebox{-.2cm}{\includegraphics[scale=.8]{reorientationI1}} \ne \raisebox{-.2cm}{\includegraphics[scale=.8]{reorientationI0}} = \reori{\orn{S}}.
 \]
@@ -1251,20 +1251,6 @@ Such characterizations exist for specific families of hypergraphs, notably for g
 We will further study this question for subhypergraphs of the path hypergraph of increasing trees in \cref{sec:intreevalHypergraphicPosets}.
 \end{remark}
 
-We will need the following statement.
-
-\begin{lemma}
-\label{lem:revTCAcyclic}
-If~$S$ is an acyclic sourcing of~$\PP(D)$, then~$\rev(S)$ is transitive.
-\end{lemma}
-
-\begin{proof}
-Assume that~$(u,v), (v,w) \in \rev(S)$.
-There there are directed paths~$P, Q$ from~$u$ to~$v$ and from~$v$ to~$w$ such that~$S(P) = v$ and~$S(Q) = w$ respectively.
-Their concatenation~$PQ$ is a path from~$u$ to~$w$ with~$S(PQ) = w$ by acyclicity of~$S$ (indeed, $PQ$ and~$P$ for a cycle in~$S$ if~$S(PQ) \in P \ssm \{v\}$, and $PQ$ and~$Q$ for a cycle in~$S$ if~$S(PQ) \in Q \ssm \{w\}$).
-Hence~$(u,w) \in \rev(S)$.
-\end{proof}
-
 We have observed in \cref{subsec:sourcings} that there is no natural surjection from all reorientations of~$\tc(D)$ to all sourcings of~$\PP(D)$.
 We now recall that there is such a surjection when focusing on acyclic reorientations and acyclic sourcings.
 
@@ -1397,7 +1383,7 @@ Let~$S_1 \ne S_2$ be two distinct acyclic sourcings of~$\PP(D)$.
 There exists~$P \in \PP(D)$ such that~$u \eqdef S_1(P) \ne S_2(P) \defeq v$.
 We can assume by symmetry that~$u < v$.
 If~$u \in \orn{S_1}(v)$, then there is a path from~$u$ to~$v$ in~$\rev(S_1)$.
-Let~$u = w_0, \dots, w_k = v$ denote the vertices of this path.
+Let~$u = w_0, w_1, \dots, w_k = v$ denote the vertices of this path.
 For each~$i \in [k]$, we have~$(w_{i-1},w_i) \in \rev(S_1)$, hence there is a path~$P_i$ from~$w_{i-1}$ to~$w_i$ with~$S_1(P_i) = w_i$.
 Together with~$P$, this contradicts the acyclicity of~$S_1$.
 We conclude that~${u \notin \orn{S_1}(v)}$.
@@ -1419,13 +1405,25 @@ We conclude that~$\orn{S_1} \ne \orn{S_2}$.
 
 \begin{lemma}
 \label{lem:acyclicSimplifiesDef}
-For any acyclic reorientation~$R$ of~$\tc(D)$ (resp.~acyclic sourcing~$S$ of~$\PP(D)$) and any~$u,v \in [n]$, we have~$u \in \orn{R}(v)$ (resp.~$\orn{S}(v)$) if and only if~$(u,v) \in \rev(R)$ (resp.~$\rev(S)$).
+For any acyclic reorientation~$R$ of~$\tc(D)$ (resp.~acyclic sourcing~$S$ of~$\PP(D)$) and any~$u,v \in [n]$ with~$u \in \orn{R}(v)$ (resp.~$\orn{S}(v)$), we have~$(u,v) \in \rev(R)$ (resp.~$\rev(S)$).
 \end{lemma}
 
 \begin{proof}
 Since~$R$ is acyclic, $\rev(R)$ is transitive.
 Similarly, since~$S$ is acyclic, $\rev(S)$ is transitive by \cref{lem:revTCAcyclic}.
 The statement thus follows directly from the definition of~$\orn{R}(v)$ (resp.~$\orn{S}(v)$).
+\end{proof}
+
+\begin{lemma}
+\label{lem:revTCAcyclic}
+If~$S$ is an acyclic sourcing of~$\PP(D)$, then~$\rev(S)$ is transitive.
+\end{lemma}
+
+\begin{proof}
+Assume that~$(u,v), (v,w) \in \rev(S)$.
+There there are directed paths~$P, Q$ from~$u$ to~$v$ and from~$v$ to~$w$ such that~$S(P) = v$ and~$S(Q) = w$ respectively.
+Their concatenation~$PQ$ is a path from~$u$ to~$w$ with~$S(PQ) = w$ by acyclicity of~$S$ (indeed, $PQ$ and~$P$ for a cycle in~$S$ if~$S(PQ) \in P \ssm \{v\}$, and $PQ$ and~$Q$ for a cycle in~$S$ if~$S(PQ) \in Q \ssm \{w\}$).
+Hence~$(u,w) \in \rev(S)$.
 \end{proof}
 
 \begin{lemma}
@@ -2270,12 +2268,12 @@ Since~$R \mapsto \orn{R}$ is order-preserving (\cref{lem:Reori2Orn2}) and~$R_1 \
 To prove the converse inequalities, remember the descriptions of~${O_1 \meet O_2}$ and~${O_1 \join O_2}$ from \cref{thm:OrnMeetJoin}, and of~$\rev(R_1 \meet R_2)$ and~$\rev(R_1 \join R_2)$ from~\cref{prop:AReoriLatJoinMeet}.
 
 If~$u \notin \orn{R_1 \meet R_2}(v)$, then there is $u'$ along the path from~$u$ to~$v$ such that~$(u',v) \notin \rev(R_1 \meet R_2)$ by \cref{lem:Reori2OrnT}.
-Therefore, there is a path~$u' = w_0, \dots, w_k = v$ such that~$(w_{i-1}, w_i) \notin \rev(R_1) \cap \rev(R_2)$ by~\cref{prop:AReoriLatJoinMeet}.
+Therefore, there is a path~$u' = w_0, w_1, \dots, w_k = v$ such that~$(w_{i-1}, w_i) \notin \rev(R_1) \cap \rev(R_2)$ by~\cref{prop:AReoriLatJoinMeet}.
 As~$w_{k-1}$ is on the path from~$u$ to~$v$ and~$(w_{k-1},v) \notin \rev(R_1) \cap \rev(R_2)$, we conclude by \cref{lem:Reori2OrnT} that~$u \notin \orn{R_1}(v)$ or~$u \notin \orn{R_2}(v)$, hence~$u \notin \orn{R_1}(v) \cap \orn{R_2}(v) = (\orn{R_1} \meet \orn{R_2})(v)$ (by \cref{coro:meetOrnT}, since~$T$ is a directed tree).
 We conclude that~$(\orn{R_1} \meet \orn{R_2}) \le \orn{R_1 \meet R_2}$, hence that~$\orn{R_1 \meet R_2} = \orn{R_1} \meet \orn{R_2}$.
 
 Consider now~$u \in \orn{R_1 \join R_2}(v)$.
-Let~$u = w_0, \dots, w_k = v$ denote the path from~$u$ to~$v$.
+Let~$u = w_0, w_1, \dots, w_k = v$ denote the path from~$u$ to~$v$.
 By \cref{lem:Reori2OrnT}, $(w_i, v) \in \rev(R_1 \join R_2)$ for all~$i \in [k]$.
 Assume that~$w_{i+1}, \dots, w_k \in (\orn{R_1} \join \orn{R_2})(v)$ for some~$i \in [k-1]$.
 Since~$(w_i, v) \in \rev(R_1 \join R_2) = \tc(T) \cap \tc(\rev(R_1) \cup \rev(R_2))$, there is~${i+1 \le \ell \le k}$ such that~$(w_i, w_\ell) \in \rev(R_1) \cup \rev(R_2)$.
