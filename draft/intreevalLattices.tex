@@ -1396,6 +1396,7 @@ The map~$S \mapsto \orn{S}$ is order-preserving on acyclic sourcings.
 \end{lemma}
 
 \begin{proof}
+	\felix{If $S_1 \leq S_2$, then $\rev(S_1) \subseteq \rev(S_2)$. Indeed, if $(u,v)\in \rev(S_1)$, there exists a path $P=[u,\dots,v]\in \PP(D)$. In the case there is no other path that contains $P$, then $S_2(P)=v$ and we have $(u,v)\in \rev(S_2)$. Suppose there exists another path $P_1=[u',\dots,u,\dots,v]\in \PP(D)$. If $S_1(P_1)< u$, we automatically have the existence of the path $P_2=[S_1(P_1),\dots,v]$ in $\PP(D)$. By acyclicity of $S_1$ we have that $S_1(P_2)=S_1(P_2)=v$. Since $S_1(P)\leq S_2(P_2)$, we have that $S_2(P_2)=v$ and thus, that $(u,v)\in \rev(S_2)$. If $S_1(P_1)\geq u$, by acyclicity of $S_1$ we have that $S_1(P_1)=S_1(P)=v$. Since $S_1(P)\leq S_2(P_2)$, we have that $S_2(P_2)=v$ and thus, we have that $(u,v)\in \rev(S_2)$. Symmetrically, we prove the case where there exists paths $[u,\dots,v,\dots,v']$ and $[u',\dots,u,\dots,v,\dots,v']$ in $\PP(D)$. Thus, $\rev(S_1) \subseteq \rev(S_2)$.  From this we can conclude that if $u\in \orn{S_1}(v)$, then $u\in \orn{S_2}(v)$ and thus, $\orn{S_1}\leq \orn{S_2}$.}
 \vincent{todo}
 \end{proof}
 
