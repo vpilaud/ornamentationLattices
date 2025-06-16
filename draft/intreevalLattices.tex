@@ -1251,6 +1251,20 @@ Such characterizations exist for specific families of hypergraphs, notably for g
 We will further study this question for subhypergraphs of the path hypergraph of increasing trees in \cref{sec:intreevalHypergraphicPosets}.
 \end{remark}
 
+We start with a simple observation.
+
+\begin{lemma}
+\label{lem:revTCAcyclic}
+If~$S$ is an acyclic sourcing of~$\PP(D)$, then~$\rev(S)$ is transitive.
+\end{lemma}
+
+\begin{proof}
+Assume that~$(u,v), (v,w) \in \rev(S)$.
+There there are directed paths~$P, Q$ from~$u$ to~$v$ and from~$v$ to~$w$ such that~$S(P) = v$ and~$S(Q) = w$ respectively.
+Their concatenation~$PQ$ is a path from~$u$ to~$w$ with~$S(PQ) = w$ by acyclicity of~$S$ (indeed, $PQ$ and~$P$ for a cycle in~$S$ if~$S(PQ) \in P \ssm \{v\}$, and $PQ$ and~$Q$ for a cycle in~$S$ if~$S(PQ) \in Q \ssm \{w\}$).
+Hence~$(u,w) \in \rev(S)$.
+\end{proof}
+
 We have observed in \cref{subsec:sourcings} that there is no natural surjection from all reorientations of~$\tc(D)$ to all sourcings of~$\PP(D)$.
 We now recall that there is such a surjection when focusing on acyclic reorientations and acyclic sourcings.
 
@@ -1412,18 +1426,6 @@ For any acyclic reorientation~$R$ of~$\tc(D)$ (resp.~acyclic sourcing~$S$ of~$\P
 Since~$R$ is acyclic, $\rev(R)$ is transitive.
 Similarly, since~$S$ is acyclic, $\rev(S)$ is transitive by \cref{lem:revTCAcyclic}.
 The statement thus follows directly from the definition of~$\orn{R}(v)$ (resp.~$\orn{S}(v)$).
-\end{proof}
-
-\begin{lemma}
-\label{lem:revTCAcyclic}
-If~$S$ is an acyclic sourcing of~$\PP(D)$, then~$\rev(S)$ is transitive.
-\end{lemma}
-
-\begin{proof}
-Assume that~$(u,v), (v,w) \in \rev(S)$.
-There there are directed paths~$P, Q$ from~$u$ to~$v$ and from~$v$ to~$w$ such that~$S(P) = v$ and~$S(Q) = w$ respectively.
-Their concatenation~$PQ$ is a path from~$u$ to~$w$ with~$S(PQ) = w$ by acyclicity of~$S$ (indeed, $PQ$ and~$P$ for a cycle in~$S$ if~$S(PQ) \in P \ssm \{v\}$, and $PQ$ and~$Q$ for a cycle in~$S$ if~$S(PQ) \in Q \ssm \{w\}$).
-Hence~$(u,w) \in \rev(S)$.
 \end{proof}
 
 \begin{lemma}
