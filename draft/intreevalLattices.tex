@@ -423,9 +423,9 @@ The acyclic sourcing poset~$\ASour(\II)$ is a lattice if and only if $\II$ is pa
 
 \enlargethispage{.2cm}
 Path intersection closedness and star sparsity are slightly technical conditions whose details are defered to \cref{sec:intreevalHypergraphicPosets}.
-When~$T$ is a path, these conditions specialize to that of~\cite{BergeronPilaud} as in this case, path intersection closedness boils down to intersection closedness, and star sparsity always~holds. 
+When~$T$ is a path, path intersection closedness boils down to intersection closedness, and star sparsity always holds, hence we recover~\cite[Thm.~A]{BergeronPilaud}.
 Note that intersection closedness implies path intersection closedness (but is stronger in general, except when~$T$ is a path), and that star sparsity always holds for rooted trees.
-In particular, the acyclic sourcing poset of any intersection closed intreeval hypergraph of a rooted tree is a lattice.
+In particular, the acyclic sourcing poset~$\ASour(\II)$ of any intersection closed intreeval hypergraph~$\II$ of a rooted~tree~is~a~lattice.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -481,6 +481,9 @@ An \defn{ornamentation} of~$D$ is a map $O$ on $V$ which assigns an ornament~$O(
 We denote by~$\Orn(v \in D)$ the set of ornaments at a vertex~$v$ of~$D$ and by~$\Orn(D)$ the set of ornamentations of~$D$.
 \end{definition}
 
+In our pictures, we represent an ornamentation~$O$ of~$D$ by drawing a bubble around~$O(v)$ of the same color as~$v$ for each~$v \in V$.
+See \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX,fig:ornamentationsD,fig:ornamentationsKT}.
+
 \begin{example}
 \label{exm:ornamentations}
 We can clearly define different ornamentations by
@@ -508,8 +511,6 @@ Part~(ii) is a specialization of Part~(i) to~$u = v$ and~$u' = v$.
 Finally, if~$D$ has two disjoint directed paths~$P_1$ and~$P_2$ from a vertex~$u$ to a vertex~$v$ such that~$(u,v) \notin D$, then~$P_1, P_2 \in \Orn(v \in D)$ while~$P_1 \cap P_2 = \{u,v\} \notin \Orn(v \in D)$.
 See \cref{fig:ornamentationsD,lem:meetOrnT}.
 \end{proof}
-
-\pagebreak
 
 \begin{theorem}
 \label{thm:OrnMeetJoin}
@@ -1251,7 +1252,7 @@ Such characterizations exist for specific families of hypergraphs, notably for g
 We will further study this question for subhypergraphs of the path hypergraph of increasing trees in \cref{sec:intreevalHypergraphicPosets}.
 \end{remark}
 
-We start with a simple observation about \cref{def:Sour2Reori} .
+We start with two simple observations about \cref{def:Sour2Reori} .
 
 \begin{lemma}
 \label{lem:revTCAcyclic}
@@ -1268,17 +1269,18 @@ Hence~$(u,w) \in \rev(S)$.
 \begin{remark}
 \label{rem:Sour2ReoriIncompatibleAcyclicity}
 The reorientation~$\reori{S}$ of~$\tc(D)$ defined in \cref{def:Sour2Reori} by~$\rev(\reori{S}) = \rev(S)$ is not always acyclic even when~$S$ is acyclic.
-For instance, consider the directed graph~$D$ and the two reorientations~$R_1$ and~$R_2$ of~$\tc(D)$ given by
+For instance, consider the directed graph~$D$ and the reorientations~$R$ of~$\tc(D)$ and the sourcing~$S$ of~$\PP(D)$ given by
 \[
 D = \! \includegraphics[scale=.8,valign=c]{graphR}
-\qquad\qquad
-R_1 = \! \includegraphics[scale=.8,valign=c]{reorientationR1}
+\qquad
+R = \! \includegraphics[scale=.8,valign=c]{reorientationR2}
 \qquad\text{and}\qquad
-R_2 = \! \includegraphics[scale=.8,valign=c]{reorientationR2}
-.
+\begin{array}{c}
+S(13) = 3, \;\; S(134) = 3 \;\; S(15) = 5, \\
+S(24) = 4, \;\; S(25) = 2, \;\; S(34) = 3.
+\end{array}
 \]
-Note that~$R_1$ is acyclic so that~$\asour{R_1}$ is acyclic, and that~$\reori{\asour{R_1}} = R_2$ is cyclic.
-\vincent{todo: update}
+Note that~$S$ is acyclic and that~$\reori{S} = R$ is cyclic.
 \end{remark}
 
 We have observed in \cref{subsec:sourcings} that there is no natural surjection from all reorientations of~$\tc(D)$ to all sourcings of~$\PP(D)$.
@@ -1347,17 +1349,19 @@ Let~$\areori{S}$ be the reorientation of~$\tc(D)$ defined by~$\rev(\areori{S}) =
 \label{rem:ASour2AReori}
 Note that~$\rev(S) \subseteq \rev(\areori{S})$, but the inclusion might be strict.
 In fact, the map~$S \mapsto \areori{S}$ is not order-preserving.
-For instance, consider the directed graph~$D$ and the two reorientations~$R_1$ and~$R_2$ of~$\tc(D)$ given by
-\[
+For instance, consider the directed graph~$D$, the two reorientations~$R_1$ and~$R_2$ of~$\tc(D)$, and the two sourcing~$S_1$ and~$S_2$ of~$S_1$ of~$\PP(D)$ given by
+\begin{gather*}
 D = \! \includegraphics[scale=.8,valign=c]{graphR}
 \qquad\qquad
 R_1 = \! \includegraphics[scale=.8,valign=c]{reorientationR1}
 \qquad\text{and}\qquad
 R_2 = \! \includegraphics[scale=.8,valign=c]{reorientationR3}
-.
-\]
-Let~$S_1 = \asour{R_1}$ and~$S_2 = \asour{R_2}$.
-Then one can check that~$S_1 < S_2$ while~$\areori{S_1} = R_1 \not< R_2 = \areori{S_2}$.
+\\
+S_1(13) = 3, \;\; S_1(134) = 3, \;\; S_1(15) = 5, \;\; S_1(24) = 4, \;\; S_1(25) = 2, \;\; S_1(34) = 3, \\
+S_2(13) = 3, \;\; S_1(134) = 3, \;\; S_2(15) = 5, \;\; S_2(24) = 4, \;\; S_2(25) = 5, \;\; S_2(34) = 3.
+\end{gather*}
+Note that~$R_1$, $R_2$, $S_1$ and~$S_2$ are all acyclic, and that~$R_1 = \areori{S_1}$ and~$R_2 = \areori{S_2}$ and conversely~$S_1 = \asour{R_1}$ and~$S_2 = \asour{R_2}$.
+Moreover, one can check that~$R_1 \not< R_2$ while~$S_1 < S_2$.
 \end{remark}
 
 \begin{lemma}
@@ -1393,6 +1397,7 @@ The map~$R \mapsto \asour{R}$ is an order-preserving surjection from the acyclic
 \begin{remark}
 Note that we could have argued the surjectivity of the map~$R \mapsto \asour{R}$ geometrically.
 Namely, using that the hypergraphic polytope of $\PP(D)$ is a deformation of graphical zonotope of $\tc(D)$.
+We have introduced the map~$S \mapsto \areori{S}$ instead to remain at the level of posets.
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
