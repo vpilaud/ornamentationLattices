@@ -1,0 +1,55 @@
+\begin{figure}
+    \centering
+\scalebox{1}{\begin{tikzpicture}
+
+
+\node(O) at (0,0) {$\mathcal{O}(D)$};
+\node(DO) at (0,-0.35) {\tiny{Def.~\ref{def:Orn}}};
+\node(R) at (-5,0) {$\mathcal{R}(\tc(D))$};
+\node(DR) at (-5,-0.35) {\tiny{Def.~\ref{def:Reori}}};
+\node(S) at (5,0) {$\mathcal{S}(\PP(D))$};
+\node(DS) at (5,-0.35) {\tiny{Def.~\ref{def:Sour}}};
+
+\node(subposet1)[rotate=90] at (-5,-2) {\LARGE{$\subseteq$}};
+\node(subposet2)[rotate=90] at (0,-2) {\LARGE{$\subseteq$}};
+\node(subposet3)[rotate=90] at (5,-2) {\LARGE{$\subseteq$}};
+% \node(subposet3) at (5,-2.2) {\small{subposet}};
+% \node(subposet3) at (0,-2.2) {\small{subposet}};
+% \node(subposet3) at (-5,-2.2) {\small{subposet}};
+
+\node(AO) at (0,-4) {$\mathcal{AO}(D)$};
+\node(DAO) at (0,-4.35) {\tiny{Def.~\ref{def:AOrn}}};
+\node(AR) at (-5,-4) {$\mathcal{AR}(\tc(D))$};
+\node(DAR) at (-5,-4.35) {\tiny{Def.~\ref{def:AReori}}};
+\node(AS) at (5,-4) {$\mathcal{AS}(\PP(D))$};
+\node(DAS) at (5,-4.35) {\tiny{Def.~\ref{def:ASour}}};
+
+\draw[thick, Turquoise] (O.south east) edge [-stealth,bend right=30] node [below]{\textcolor{black}{ \tiny{Def.~\ref{def:Orn2Sour}}}} node [above]{\textcolor{black}{\small{$\sour{O}$} }}  (S.south west);
+
+\draw[thick, Turquoise] (S.north west) edge [-stealth,bend right=30] node [above]{\textcolor{black}{\small{$\orn{S}$} }} node [below]{\textcolor{black}{ \tiny{Def.~\ref{def:Sour2Orn}}}}  (O.north east);
+
+\draw[thick, Turquoise] (O.south west) edge [-stealth,bend left=30] node [below]{\textcolor{black}{ \tiny{Def.~\ref{def:Orn2Reori}}}} node [above]{\textcolor{black}{\small{$\reori{O}$} }}  (R.south east);
+
+\draw[thick, Turquoise] (R.north east) edge [-stealth,bend left=30] node [above]{\textcolor{black}{\small{$\orn{R}$} }} node [below]{\textcolor{black}{ \tiny{Def.~\ref{def:Reori2Orn}}}}  (O.north west);
+
+\draw[thick, Turquoise] (S.north) edge [-stealth,bend right=35] node [above]{\textcolor{black}{\small{$\reori{S}$} }} node [below]{\textcolor{black}{ \tiny{Def.~\ref{def:Sour2Reori}}}}  (R.north);
+
+\draw[thick, Turquoise] (AO.south east) edge [>={Stealth[scale=0.65,width=6pt]},{Hooks[right]}-{>>},bend right=30] node [below]{\textcolor{black}{\small{$\asour{O}$}}} (AS.south west);
+\draw[thick, Turquoise] (AS.north west) edge [>={Stealth[scale=0.65,width=6pt]},{Hooks[right]}-{>>},bend right=30] node [above]{\textcolor{black}{\small{$\aorn{S}=\orn{S}$}}} (AO.north east);
+
+\draw[thick,red] (AO.south west) edge [-stealth,bend left=30] node [below]{\textcolor{black}{\small{$\areori{O}$}}} (AR.south east);
+
+\draw[Turquoise,thick] (AR.north east) edge [>={Stealth[scale=0.65,width=6pt]},-{>>},bend left=30] node [above]{\small{\textcolor{black}{$\aorn{R}=\orn{R}$}}} (AO.north west);
+
+% \draw[Turquoise,thick] (-3,-3.5) edge [-{Hooks[left]},bend right =30] (AR.north east);
+
+
+\draw[thick, Turquoise] (DAR.south) edge [-stealth,bend right=60] node [below]{\textcolor{black}{ \tiny{Def.~\ref{def:AReori2ASour}}}} node [above]{\textcolor{black}{\small{$\asour{R}$} }}  (DAS.south);
+
+\draw[thick, red] (DAS.south west) edge [-stealth,bend left=35] node [above]{\textcolor{black}{\small{$\asour{S}$ }}} node [below]{\textcolor{black}{\tiny{Def.~\ref{def:ASour2AReori}}}} (DAR.south east);
+
+
+\end{tikzpicture}}
+
+\caption{The arrows in turquoise represent maps that are order preserving. From top to bottom, left to right, those results respectively follow from Lemmas~\ref{lem:Sour2Reori},~\ref{lem:Reori2Orn2},~\ref{lem:Sour2Orn3},~\ref{lem:Orn2Reori1},~\ref{lem:Orn2Sour1},~\ref{lem:Orn2Sour1}, ~\ref{lem:AReori2ASour3}. The red arrows represent maps that are not order preserving. Those results follow from definition of the map $AR_O$ and from Remark~\ref{rem:ASour2AReori}.}
+\end{figure}
