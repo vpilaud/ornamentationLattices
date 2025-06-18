@@ -1198,26 +1198,26 @@ It is surjective since the fiber of any reorientation~$R$ is the set of linear e
 
 \begin{figure}
 	\centerline{\includegraphics[scale=.68]{acyclicReorientationsI}}
-	\caption{The acyclic reorientation poset~$\AReori(\Igraph)$. (It is isomorphic to the weak order.)}
+	\caption{The acyclic reorientation poset~$\AReori(\tc(\Igraph))$. (It is isomorphic to the weak order.)}
 	\label{fig:acyclicReorientationsI}
 \end{figure}
 
 
 \begin{figure}
 	\centerline{\includegraphics[scale=.68]{acyclicReorientationsY} \qquad \includegraphics[scale=.68]{acyclicReorientationsA}}
-	\caption{The acyclic reorientation posets~$\AReori(\Ygraph)$ and~$\AReori(\Agraph)$. (They are both lattices, see \cref{prop:AReoriLatticeUT}.)}
+	\caption{The acyclic reorientation posets~$\AReori(\tc(\Ygraph))$ and~$\AReori(\tc(\Agraph))$. (They are both lattices, see \cref{prop:AReoriLatticeUT}.)}
 	\label{fig:acyclicReorientationsAY}
 \end{figure}
 
 \begin{figure}
 	\centerline{\includegraphics[scale=.68]{acyclicReorientationsD}}
-	\caption{The acyclic reorientation poset~$\AReori(\Dgraph)$. (Not a lattice, see \cref{fig:MacNeilleAcyclicReorientationsD}.)}
+	\caption{The acyclic reorientation poset~$\AReori(\tc(\Dgraph))$. (Not a lattice, see \cref{fig:MacNeilleAcyclicReorientationsD}.)}
 	\label{fig:acyclicReorientationsD}
 \end{figure}
 
 \begin{figure}
 	\centerline{\includegraphics[scale=.68,valign=c]{acyclicReorientationsK}\qquad\includegraphics[scale=.68,valign=c]{acyclicReorientationsT}}
-	\caption{The acyclic reorientation posets~$\AReori(\Kgraph)$ and~$\AReori(\Tgraph)$.}
+	\caption{The acyclic reorientation posets~$\AReori(\tc(\Kgraph))$ and~$\AReori(\tc(\Tgraph))$.}
 	\label{fig:acyclicReorientationsKT}
 \end{figure}
 
@@ -1581,7 +1581,7 @@ By acyclicity of $S_1$ (resp. $S_2$) we can assume that $P$ ends at $v$ (resp. b
 %Let $u = w_0 , w_1, \dots , w_p = v$ be the vertex set of $P$.
 The acyclicity of $S_1$ further implies that $S_1(Q) = v$ for any subpath $Q$ of $P$ ending at $v$;
 so $u \in P \subseteq \aorn{S_1}(P) \subseteq \aorn{S_2}(P)$.
-But then, there exists a path $P'$ from $u$ to $v$ such that $S_2(P) = v$, contradicting the acyclicity of $S_2$.
+But then, there exists a path $P'$ from $u$ to $v$ such that $S_2(P') = v$, contradicting the acyclicity of $S_2$.
 Thus, we necessarily have $S_1 \leq S_2$.
 \end{proof}
 
