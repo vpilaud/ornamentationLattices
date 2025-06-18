@@ -212,7 +212,7 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\Tgraph}{\sf I\!X\!I} % tie graph
 \newcommand{\Ygraph}{\sf Y} % Y graph
 \newcommand{\Dgraph}{\boldsymbol{\Diamond}} % D graph
-\newcommand{\Kgraph}{\boldsymbol{\triangle}} % K graph
+\newcommand{\Kgraph}{\boldsymbol{\vartriangleleft}} % K graph
 \newcommand{\Agraph}{\rotatebox[origin=c]{180}{\sf Y}} % A graph
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1558,14 +1558,31 @@ Be careful that~$\asour{O} \ne \sour{O}$ and~$\areori{O} \ne \reori{O}$ in gener
 The map~$S \mapsto \aorn{S}$ is a poset isomorphism from the acyclic sourcing poset~$\ASour(\PP(D))$ to the acyclic ornamentation poset~$\AOrn(D)$.
 \end{proposition}
 
+%\begin{proof}
+%By \cref{lem:ASour2AOrn1}, the map~$S \mapsto \aorn{S}$ is injective on acyclic sourcings.
+%
+%We have seen in \cref{lem:Orn2Sour3} that the map~$S \mapsto \orn{S}$ is surjective on all ornamentations.
+%By definition of acyclic ornamentations, the map~$S \mapsto \aorn{S}$ is surjective on acyclic ornamentations.
+%
+%Finally, we have seen that~$S \mapsto \orn{S}$ and~$O \mapsto \sour{O}$ are order-preserving in \cref{lem:Sour2Orn3,lem:Orn2Sour1}.
+%We conclude that~$S \mapsto \aorn{S}$ and~$O \mapsto \asour{O}$ are inverse isomorphisms from the acyclic sourcing poset~$\ASour(\PP(D))$ to the acyclic ornamentation poset~$\AOrn(D)$.
+%\end{proof}
+
+\FelixAntoine[inline]{Since $O \mapsto \asour{O}$ is not the restriction of $O \mapsto \sour{O}$, we cannot use that the second is order-preserving to deduce that the first is. We modified the proof accordingly.}
+
 \begin{proof}
-By \cref{lem:ASour2AOrn1}, the map~$S \mapsto \aorn{S}$ is injective on acyclic sourcings.
+The map~$\ASour(\PP(D)) \to \AOrn(D) : S \mapsto \aorn{S}$ is injective by \cref{lem:ASour2AOrn1} and surjective by \cref{def:AOrn}.
+Moreover, it is the restriction of the order-preserving map $S \to \orn{S}$ (\cref{lem:Sour2Orn3}), and therefore it is itself order-preserving.
+We are only left to show that $S \mapsto \aorn{S}$ is order-reflecting.
 
-We have seen in \cref{lem:Orn2Sour3} that the map~$S \mapsto \orn{S}$ is surjective on all ornamentations.
-By definition of acyclic ornamentations, the map~$S \mapsto \aorn{S}$ is surjective on acyclic ornamentations.
-
-Finally, we have seen that~$S \mapsto \orn{S}$ and~$O \mapsto \sour{O}$ are order-preserving in \cref{lem:Sour2Orn3,lem:Orn2Sour1}.
-We conclude that~$S \mapsto \aorn{S}$ and~$O \mapsto \asour{O}$ are inverse isomorphisms from the acyclic sourcing poset~$\ASour(\PP(D))$ to the acyclic ornamentation poset~$\AOrn(D)$.
+Let $S_1,S_2$ be two acyclic sourcings of $\PP(D)$ such that $\aorn{S_1} \leq \aorn{S_2}$.
+Suppose that $S_1 \not\leq S_2$ and let $P \in \PP(D)$ such that $u := S_2(P) < S_1(P) =: v$.
+By acyclicity of $S_1$ (resp. $S_2$) we can assume that $P$ ends at $v$ (resp. begins at $u$).
+%Let $u = w_0 , w_1, \dots , w_p = v$ be the vertex set of $P$.
+The acyclicity of $S_1$ further implies that $S_1(Q) = v$ for any subpath $Q$ of $P$ ending at $v$;
+so $u \in P \subseteq \aorn{S_1}(P) \subseteq \aorn{S_2}(P)$.
+But then, there exists a path $P'$ from $u$ to $v$ such that $S_2(P) = v$, contradicting the acyclicity of $S_2$.
+Thus, we necessarily have $S_1 \leq S_2$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
