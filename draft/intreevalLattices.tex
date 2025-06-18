@@ -150,7 +150,9 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\andrew}[1]{{\color{purple}#1}}
 \newcommand{\Andrew}[2][]{\todo[size=\tiny,color=purple,#1]{ #2 \\ \hfill --- A.}\,}
 \newcommand{\felix}[1]{{\color{orange}#1}}
-\newcommand{\Felix}[2][]{\todo[size=\tiny,color=orange,#1]{ #2 \\ \hfill --- F.}\,}
+\newcommand{\Felix}[2][]{\todo[size=\tiny,color=orange,#1]{ #2 \\ \hfill --- AA.}\,}
+\newcommand{\antoine}[1]{{\color{teal}#1}}
+\newcommand{\Antoine}[2][]{\todo[size=\tiny,color=teal,#1]{ #2 \\ \hfill --- AA.}\,}
 
 \newcommand{\felixantoine}[1]{{\color{pink}#1}}
 \newcommand{\FelixAntoine}[2][]{\todo[size=\tiny,color=pink,#1]{ #2 \\ \hfill --- A. + F.}\,}
@@ -1630,28 +1632,28 @@ We now describe the cover relations in the ornamentation lattice~$\Orn(T)$.
 
 \begin{lemma}
 \label{lem:coverRelationsOrnT}
-Two ornamentations~$O_1$ and~$O_2$ of a directed tree~$T$ form a cover relation~$O_1 \lessdot O_2$ if and only if there are~$u, v \in V$ such that~$u \notin O_1(v)$ and $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$.
+Two ornamentations~$O_1$ and~$O_2$ of a directed graph~$D$ form a cover relation~$O_1 \lessdot O_2$ if and only if there are~$u, v \in V$ such that~$u \notin O_1(v)$ and $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$.
 Moreover, $u$ and~$v$ are uniquely determined by~$O_1$ and~$O_2$.
-\end{lemma}
+\end{lemma}\Antoine{No need the graph to be a tree. Should we put the result earlier in the article?}
 
 \begin{proof}
-Assume first that~$O_1$ and~$O_2$ are two ornamentations of~$D$ such that there are~$u, v \in V$ such that~$u \notin O_1(v)$ and~$O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$.
+Assume first that~$O_1$ and~$O_2$ are two ornamentations of~$D$ such that there are~$u, v \in V$ with~$u \notin O_1(v)$ and~$O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$.
 We clearly have~$O_1 \le O_2$.
 Moreover, consider any ornamentation~$O$ of~$D$ such that~$O_1 \le O \le O_2$.
 Then~$O_1(w) = O(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$ and~$O_1(v) \subseteq O(v) \subseteq O_2(v)$.
-If~$O_1 \ne O$, then there is~$x \in O(v) \ssm O_1(v)$ and let~$y$ be the last vertex not in~$O_1(v)$ along the path from~$x$ to~$v$ in~$O(v)$.
+If~$O_1 \ne O$, then $O(v) \ssm O_1(v)\neq \emptyset$ and let~$y$ be a maximal element in $O(v) \ssm O_1(v)$.
 As~$y \in O(v) \ssm O_1(v) \subseteq O_2(v) \ssm  O_1(v) = O_1(u)$, we have~$u = y \in O(v)$.
-We conclude that~$O_1(u) \subseteq O(u) \subseteq O(v)$, and thus that~$O = O_2$.
+We conclude that~$O_1(u) = O(u) \subseteq O(v)$, and thus that~$O = O_2$.
 
 Conversely, assume that~$O_1$ and~$O_2$ are two ornamentations of~$D$ such that~$O_1 \lessdot O_2$ is a cover relation in~$\Orn(D)$.
 Consider~$v \in V$ such that~$O_1(v) \ne O_2(v)$ and~$O_1(w) = O_2(w)$ for any~$w \in O_1(v)$.
 Then the map~$O$ on~$V$ defined by $O(v) = O_1(v)$ and~$O(w) = O_2(w)$ for all~$w \ne v$ is an ornamentation of~$D$. % because~$O_1$ and~$O_2$ are.
 Moreover, $O_1 \le O < O_2$.
 Hence, $O_1 = O$.
-Consider now~$u$ maximal in~$T$ such that~$u \in O_2(v) \ssm O_1(v)$.
+Consider now~$u$ maximal in~$D$ such that~$u \in O_2(v) \ssm O_1(v)$.
 Then the map~$O$ on~$V$ defined by~$O(v) = O_1(v) \cup O_1(u)$ and~$O(w) = O_1(w)$ for all~$w \ne v$ is an ornamentation of~$D$.
-Moreover, $O_1 \le O < O_2$.
-Hence, $O_1 = O$.
+Moreover, $O_1 < O \le O_2$.
+Hence, $O_2 = O$.
 We have thus found~$u$ and~$v$ as required and they are determined by~$O_1$ and~$O_2$.
 \end{proof}
 
