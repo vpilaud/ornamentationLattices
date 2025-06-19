@@ -1981,10 +1981,10 @@ For any ornamentation~$O$ of a directed tree~$T$, the reorientation~$\maxreori{O
 \begin{proof}
 We first prove that~$\orn{\maxreori{O}} = O$.
 Fix~$u,v \in V$.
-Observe first that~$u \in O(v)$ implies~$(u,v) \in \rev(\maxreori{O})$ since~$v \in O(w)$ implies~$u \in O(v) \subseteq O(w)$ for any~$w \in V$, so that~$u \in  \orn{\maxreori{O}}(v)$ by definition.
-Conversely, assume that~$u \notin O(v)$ and consider such an~$u$ which is closest to~$v$.
+\sout{Observe first that~$u \in O(v)$ implies~$(u,v) \in \rev(\maxreori{O})$ since~$v \in O(w)$ implies~$u \in O(v) \subseteq O(w)$ for any~$w \in V$, so that~$u \in  \orn{\maxreori{O}}(v)$ by definition.} \felix{Observe first that~$u \in O(v)$ implies~$(u,v) \in \rev(\maxreori{O})$, since for any~$w \in V$, the fact that~$v \in O(w)$ implies~$u \in O(v) \subseteq O(w)$. Hence, by definition,~$u \in \orn{\maxreori{O}}(v)$.} \Felix{This is a reformulation}
+Conversely, assume that~$u \notin O(v)$ and consider such an~$u$ which is \felix{the} closest to~$v$.
 Consider the path~$u, u', \dots, v$ in~$T$.
-For any~$v'$ between~$u'$ and~$v$, we have~$u \notin O(v)$ while~$u', v' \in O(v)$, which implies that~$(u,v') \notin \rev(\maxreori{O})$.
+For any~$v'$ between~$u'$ and~$v$, we have~\sout{$u \notin O(v)$} \felix{$u \notin O(v')$} while~$u', v' \in O(v)$, which implies that~$(u,v') \notin \rev(\maxreori{O})$.
 Hence, there is no path from~$u$ to~$v$ in~$\rev(\maxreori{O})$, and thus~$u \notin \orn{\maxreori{O}}(v)$.
 We conclude that~$u \in O(v) \iff u \in \orn{\maxreori{O}}(v)$, that is~$O = \orn{\maxreori{O}}$.
 
@@ -1993,7 +1993,7 @@ Assume that there is~$u,v \in V$ such that~$(u,v) \in \rev(R) \ssm \rev(\maxreor
 Consider the path~$u, u', \dots, v$ in~$T$, and let~$w \in V$ be such that~$u \notin O(w)$ while~$u', v \in O(w)$.
 Since~$\orn{R} = O$ and~$v \in O(w)$, there is a path from~$v$ to~$w$ in~$\rev(R)$, hence from~$u$ to~$v$ in~$\rev(R)$ since~$(u,v) \in \rev(R)$.
 Moreover, since~$(u,u') \in T$ and~$u' \in O(w)$, the set~$O(w) \cup \{u\}$ is an ornament of~$T$ at~$w$.
-Hence, $O(w) \cup \{u\}$ contradicts the maximality of~$\orn{R}(w)$.
+Hence, $O(w) \cup \{u\}$ \Felix{Should we had that $\orn{R}(u)=\{u\}\in \orn{R}$} contradicts the maximality of~$\orn{R}(w)$.
 We conclude that if~$\orn{R} = O$, then~$\rev(R) \subseteq \rev(\maxreori{O})$, hence~$R \le \maxreori{O}$.
 \end{proof}
 
