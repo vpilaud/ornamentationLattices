@@ -14,6 +14,7 @@
 \setlength{\abovecaptionskip}{10pt}
 \setlength{\belowcaptionskip}{5pt}
 \usepackage[export]{adjustbox}
+\usepackage[dvipsnames]{xcolor}
 
 %\reserveinserts{50}
 \graphicspath{{figures/}}
@@ -150,7 +151,12 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\andrew}[1]{{\color{purple}#1}}
 \newcommand{\Andrew}[2][]{\todo[size=\tiny,color=purple,#1]{ #2 \\ \hfill --- A.}\,}
 \newcommand{\felix}[1]{{\color{orange}#1}}
-\newcommand{\Felix}[2][]{\todo[size=\tiny,color=orange,#1]{ #2 \\ \hfill --- F.}\,}
+\newcommand{\Felix}[2][]{\todo[size=\tiny,color=orange,#1]{ #2 \\ \hfill --- AA.}\,}
+\newcommand{\antoine}[1]{{\color{teal}#1}}
+\newcommand{\Antoine}[2][]{\todo[size=\tiny,color=teal,#1]{ #2 \\ \hfill --- AA.}\,}
+
+\newcommand{\felixantoine}[1]{{\color{pink}#1}}
+\newcommand{\FelixAntoine}[2][]{\todo[size=\tiny,color=pink,#1]{ #2 \\ \hfill --- A. + F.}\,}
 
 % permutations
 \newcommand{\fS}{\mathfrak{S}} % symmetric group
@@ -209,7 +215,7 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\Tgraph}{\sf I\!X\!I} % tie graph
 \newcommand{\Ygraph}{\sf Y} % Y graph
 \newcommand{\Dgraph}{\boldsymbol{\Diamond}} % D graph
-\newcommand{\Kgraph}{\boldsymbol{\triangle}} % K graph
+\newcommand{\Kgraph}{\boldsymbol{\vartriangleleft}} % K graph
 \newcommand{\Agraph}{\rotatebox[origin=c]{180}{\sf Y}} % A graph
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -426,6 +432,10 @@ Path intersection closedness and star sparsity are slightly technical conditions
 When~$T$ is a path, path intersection closedness boils down to intersection closedness, and star sparsity always holds, hence we recover~\cite[Thm.~A]{BergeronPilaud}.
 Note that intersection closedness implies path intersection closedness (but is stronger in general, except when~$T$ is a path), and that star sparsity always holds for rooted trees.
 In particular, the acyclic sourcing poset~$\ASour(\II)$ of any intersection closed intreeval hypergraph~$\II$ of a rooted~tree~is~a~lattice.
+
+\input{figures/diagram.tex}
+
+\input{figures/diagram1.tex}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -653,7 +663,7 @@ We now consider reorientations of graphs, as illustrated in \cref{fig:reorientat
 
 \begin{figure}[b]
 	\centerline{\begin{tabular}{c} \includegraphics[scale=.68,valign=c]{reorientationsK} \\ \includegraphics[scale=.68,valign=c]{reorientationsN} \end{tabular}\qquad\includegraphics[scale=.68,valign=c]{reorientationsT}}
-	\caption{The reorientation lattices~$\Reori(\Kgraph)$, $\Reori(\Ngraph)$ and~$\Reori(\Tgraph)$. (Gray = cyclic). See also \cref{fig:acyclicReorientationsKT}.}
+	\caption{The reorientation lattices~$\Reori(\tc(\Kgraph))$, $\Reori(\tc(\Ngraph))$ and~$\Reori(\tc(\Tgraph))$. (Gray = cyclic). See also \cref{fig:acyclicReorientationsKT}.}
 	\label{fig:reorientationsKNT}
 \end{figure}
 
@@ -991,7 +1001,7 @@ We have~$v = S_1(P) \le S_2(P) \le \max(P) = v$, so that~$S_2(P) = v$, hence~$(u
 Thus~$\rev(\reori{S_1}) = \rev(S_1) \subseteq \rev(S_2) = \rev(\reori{S_2})$, so that~${\reori{S_1} \le \reori{S_2}}$.
 \end{proof}
 
-In contrast, not all reorientations of~$\tc(D)$ can be projected to a sourcing of~$\PP(D)$, because reorientations might have cycles inside paths of~$D$.
+In contrast, not all reorientations of~$\tc(D)$ can be projected to a sourcing of~$\PP(D)$, because reorientations might have cycles inside paths of~$D$. \felixantoine{What does cycles inside paths means?}
 We will fix this issue by restricting to acyclic reorientations and acyclic sourcings in \cref{sec:acyclic}.
 However, we can still use~$S \mapsto \reori{S}$ to define a map from all sourcings of~$\PP(D)$ to all ornamentations of~$D$.
 
@@ -1196,26 +1206,26 @@ It is surjective since the fiber of any reorientation~$R$ is the set of linear e
 
 \begin{figure}
 	\centerline{\includegraphics[scale=.68]{acyclicReorientationsI}}
-	\caption{The acyclic reorientation poset~$\AReori(\Igraph)$. (It is isomorphic to the weak order.)}
+	\caption{The acyclic reorientation poset~$\AReori(\tc(\Igraph))$. (It is isomorphic to the weak order.)}
 	\label{fig:acyclicReorientationsI}
 \end{figure}
 
 
 \begin{figure}
 	\centerline{\includegraphics[scale=.68]{acyclicReorientationsY} \qquad \includegraphics[scale=.68]{acyclicReorientationsA}}
-	\caption{The acyclic reorientation posets~$\AReori(\Ygraph)$ and~$\AReori(\Agraph)$. (They are both lattices, see \cref{prop:AReoriLatticeUT}.)}
+	\caption{The acyclic reorientation posets~$\AReori(\tc(\Ygraph))$ and~$\AReori(\tc(\Agraph))$. (They are both lattices, see \cref{prop:AReoriLatticeUT}.)}
 	\label{fig:acyclicReorientationsAY}
 \end{figure}
 
 \begin{figure}
 	\centerline{\includegraphics[scale=.68]{acyclicReorientationsD}}
-	\caption{The acyclic reorientation poset~$\AReori(\Dgraph)$. (Not a lattice, see \cref{fig:MacNeilleAcyclicReorientationsD}.)}
+	\caption{The acyclic reorientation poset~$\AReori(\tc(\Dgraph))$. (Not a lattice, see \cref{fig:MacNeilleAcyclicReorientationsD}.)}
 	\label{fig:acyclicReorientationsD}
 \end{figure}
 
 \begin{figure}
 	\centerline{\includegraphics[scale=.68,valign=c]{acyclicReorientationsK}\qquad\includegraphics[scale=.68,valign=c]{acyclicReorientationsT}}
-	\caption{The acyclic reorientation posets~$\AReori(\Kgraph)$ and~$\AReori(\Tgraph)$.}
+	\caption{The acyclic reorientation posets~$\AReori(\tc(\Kgraph))$ and~$\AReori(\tc(\Tgraph))$.}
 	\label{fig:acyclicReorientationsKT}
 \end{figure}
 
@@ -1556,14 +1566,31 @@ Be careful that~$\asour{O} \ne \sour{O}$ and~$\areori{O} \ne \reori{O}$ in gener
 The map~$S \mapsto \aorn{S}$ is a poset isomorphism from the acyclic sourcing poset~$\ASour(\PP(D))$ to the acyclic ornamentation poset~$\AOrn(D)$.
 \end{proposition}
 
+%\begin{proof}
+%By \cref{lem:ASour2AOrn1}, the map~$S \mapsto \aorn{S}$ is injective on acyclic sourcings.
+%
+%We have seen in \cref{lem:Orn2Sour3} that the map~$S \mapsto \orn{S}$ is surjective on all ornamentations.
+%By definition of acyclic ornamentations, the map~$S \mapsto \aorn{S}$ is surjective on acyclic ornamentations.
+%
+%Finally, we have seen that~$S \mapsto \orn{S}$ and~$O \mapsto \sour{O}$ are order-preserving in \cref{lem:Sour2Orn3,lem:Orn2Sour1}.
+%We conclude that~$S \mapsto \aorn{S}$ and~$O \mapsto \asour{O}$ are inverse isomorphisms from the acyclic sourcing poset~$\ASour(\PP(D))$ to the acyclic ornamentation poset~$\AOrn(D)$.
+%\end{proof}
+
+\FelixAntoine[inline]{Since $O \mapsto \asour{O}$ is not the restriction of $O \mapsto \sour{O}$, we cannot use that the second is order-preserving to deduce that the first is. We modified the proof accordingly.}
+
 \begin{proof}
-By \cref{lem:ASour2AOrn1}, the map~$S \mapsto \aorn{S}$ is injective on acyclic sourcings.
+The map~$\ASour(\PP(D)) \to \AOrn(D) : S \mapsto \aorn{S}$ is injective by \cref{lem:ASour2AOrn1} and surjective by \cref{def:AOrn}.
+Moreover, it is the restriction of the order-preserving map $S \to \orn{S}$ (\cref{lem:Sour2Orn3}), and therefore it is itself order-preserving.
+We are only left to show that $S \mapsto \aorn{S}$ is order-reflecting.
 
-We have seen in \cref{lem:Orn2Sour3} that the map~$S \mapsto \orn{S}$ is surjective on all ornamentations.
-By definition of acyclic ornamentations, the map~$S \mapsto \aorn{S}$ is surjective on acyclic ornamentations.
-
-Finally, we have seen that~$S \mapsto \orn{S}$ and~$O \mapsto \sour{O}$ are order-preserving in \cref{lem:Sour2Orn3,lem:Orn2Sour1}.
-We conclude that~$S \mapsto \aorn{S}$ and~$O \mapsto \asour{O}$ are inverse isomorphisms from the acyclic sourcing poset~$\ASour(\PP(D))$ to the acyclic ornamentation poset~$\AOrn(D)$.
+Let $S_1,S_2$ be two acyclic sourcings of $\PP(D)$ such that $\aorn{S_1} \leq \aorn{S_2}$.
+Suppose that $S_1 \not\leq S_2$ and let $P \in \PP(D)$ such that $u := S_2(P) < S_1(P) =: v$.
+By acyclicity of $S_1$ (resp. $S_2$) we can assume that $P$ ends at $v$ (resp. begins at $u$).
+%Let $u = w_0 , w_1, \dots , w_p = v$ be the vertex set of $P$.
+The acyclicity of $S_1$ further implies that $S_1(Q) = v$ for any subpath $Q$ of $P$ ending at $v$;
+so $u \in P \subseteq \aorn{S_1}(P) \subseteq \aorn{S_2}(P)$.
+But then, there exists a path $P'$ from $u$ to $v$ such that $S_2(P') = v$, contradicting the acyclicity of $S_2$.
+Thus, we necessarily have $S_1 \leq S_2$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1611,28 +1638,28 @@ We now describe the cover relations in the ornamentation lattice~$\Orn(T)$.
 
 \begin{lemma}
 \label{lem:coverRelationsOrnT}
-Two ornamentations~$O_1$ and~$O_2$ of a directed tree~$T$ form a cover relation~$O_1 \lessdot O_2$ if and only if there are~$u, v \in V$ such that~$u \notin O_1(v)$ and $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$.
+Two ornamentations~$O_1$ and~$O_2$ of a directed graph~$D$ form a cover relation~$O_1 \lessdot O_2$ if and only if there are~$u, v \in V$ such that~$u \notin O_1(v)$ and $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$.
 Moreover, $u$ and~$v$ are uniquely determined by~$O_1$ and~$O_2$.
-\end{lemma}
+\end{lemma}\Antoine{No need the graph to be a tree. Should we put the result earlier in the article?}
 
 \begin{proof}
-Assume first that~$O_1$ and~$O_2$ are two ornamentations of~$D$ such that there are~$u, v \in V$ such that~$u \notin O_1(v)$ and~$O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$.
+Assume first that~$O_1$ and~$O_2$ are two ornamentations of~$D$ such that there are~$u, v \in V$ with~$u \notin O_1(v)$ and~$O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$.
 We clearly have~$O_1 \le O_2$.
 Moreover, consider any ornamentation~$O$ of~$D$ such that~$O_1 \le O \le O_2$.
 Then~$O_1(w) = O(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$ and~$O_1(v) \subseteq O(v) \subseteq O_2(v)$.
-If~$O_1 \ne O$, then there is~$x \in O(v) \ssm O_1(v)$ and let~$y$ be the last vertex not in~$O_1(v)$ along the path from~$x$ to~$v$ in~$O(v)$.
+If~$O_1 \ne O$, then $O(v) \ssm O_1(v)\neq \emptyset$ and let~$y$ be a maximal element in $O(v) \ssm O_1(v)$.
 As~$y \in O(v) \ssm O_1(v) \subseteq O_2(v) \ssm  O_1(v) = O_1(u)$, we have~$u = y \in O(v)$.
-We conclude that~$O_1(u) \subseteq O(u) \subseteq O(v)$, and thus that~$O = O_2$.
+We conclude that~$O_1(u) = O(u) \subseteq O(v)$, and thus that~$O = O_2$.
 
 Conversely, assume that~$O_1$ and~$O_2$ are two ornamentations of~$D$ such that~$O_1 \lessdot O_2$ is a cover relation in~$\Orn(D)$.
 Consider~$v \in V$ such that~$O_1(v) \ne O_2(v)$ and~$O_1(w) = O_2(w)$ for any~$w \in O_1(v)$.
 Then the map~$O$ on~$V$ defined by $O(v) = O_1(v)$ and~$O(w) = O_2(w)$ for all~$w \ne v$ is an ornamentation of~$D$. % because~$O_1$ and~$O_2$ are.
 Moreover, $O_1 \le O < O_2$.
 Hence, $O_1 = O$.
-Consider now~$u$ maximal in~$T$ such that~$u \in O_2(v) \ssm O_1(v)$.
+Consider now~$u$ maximal in~$D$ such that~$u \in O_2(v) \ssm O_1(v)$.
 Then the map~$O$ on~$V$ defined by~$O(v) = O_1(v) \cup O_1(u)$ and~$O(w) = O_1(w)$ for all~$w \ne v$ is an ornamentation of~$D$.
-Moreover, $O_1 \le O < O_2$.
-Hence, $O_1 = O$.
+Moreover, $O_1 < O \le O_2$.
+Hence, $O_2 = O$.
 We have thus found~$u$ and~$v$ as required and they are determined by~$O_1$ and~$O_2$.
 \end{proof}
 
@@ -1848,7 +1875,7 @@ Consider now an ornamentation~$O$ of~$T$ such that~$O \not\le O_1$ but~$O \le O_
 Since~$O_1(w) = O_2(w)$ for~$w \ne v$, we must have~$u \in O(v)$, hence~$P \subseteq O(v)$.
 We conclude that~$J_P \le O$.
 
-Observe now that~$O_1 \le O$ (as~$u \notin O_1(v)$, we have~$\lessin{T}{u} \cap O_1(w) = \varnothing$ for all~$u <_T w \le_T v$) but~$O_2 \not\le O$ (because~$u \in O_2(v)$ while~$u \notin M_P(v)$).
+Observe now that~$O_1 \le $\sout{$O$} $\felix{M_P}$ (as~$u \notin O_1(v)$, we have~$\lessin{T}{u} \cap O_1(w) = \varnothing$ for all~$u <_T w \le_T v$) but~$O_2 \not\le$ \sout{$O$} $\felix{M_P}$ (because~$u \in O_2(v)$ while~$u \notin M_P(v)$).
 Consider now an ornamentation~$O$ of~$T$ such that~$O_1 \le O$ but~$O_2 \not\le O$.
 Note that~$O_2(w) = O_1(w) \subseteq O(w)$ for all~$w \ne v$.
 Assume that~$u \in O(w)$ for some~$u <_T w \le_T v$.
@@ -2126,7 +2153,7 @@ In general, we have no description of the MacNeille completion of the acyclic or
 %
 \begin{figure}
 	\centerline{\includegraphics[scale=.68]{MacNeilleAcyclicReorientationsD}}
-	\caption{The MacNeille completion of the acyclic reorientation poset~$\AReori(\Dgraph)$ of \cref{fig:acyclicReorientationsD}. (Gray = added element). See \cref{rem:MacNeille}.}
+	\caption{The MacNeille completion of the acyclic reorientation poset~$\AReori(\tc(\Dgraph))$ of \cref{fig:acyclicReorientationsD}. (Gray = added element). See \cref{rem:MacNeille}.}
 	\label{fig:MacNeilleAcyclicReorientationsD}
 \end{figure}
 %
