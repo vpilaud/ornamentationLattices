@@ -370,7 +370,7 @@ See \cref{fig:allMaps} for an overview of these connections.
 
 \begin{figure}
 	\centerline{\input{figures/diagram_new.tex}}
-	\caption{Connections between the posets studied in this paper. Below each poset or map appears a pointer to the corresponding definition. Below each map, we also point to the main statements concerning it (in the general case of a directed graph). The maps in turquoise are order preserving while those in red are not.}
+	\caption{Connections between the posets studied in this paper. Below each poset or map appears a pointer to the corresponding definition. Below each map, we also point to the main statements concerning it (in the general case of a directed graph). The maps in turquoise are order preserving while those in red are not. The symbol~\smash{\Large$\circlearrowleft$} means a commuting diagram, the symbol~\smash{\raisebox{-.05cm}{\rotatebox{90}{{$\curvearrowright$}}}} means that one map is a section of the other. Dashed arrows indicate inclusions.}
 	\label{fig:allMaps}
 \end{figure}
 
@@ -439,22 +439,6 @@ Path intersection closedness and star sparsity are slightly technical conditions
 When~$T$ is a path, path intersection closedness boils down to intersection closedness, and star sparsity always holds, hence we recover~\cite[Thm.~A]{BergeronPilaud}.
 Note that intersection closedness implies path intersection closedness (but is stronger in general, except when~$T$ is a path), and that star sparsity always holds for rooted trees.
 In particular, the acyclic sourcing poset~$\ASour(\II)$ of any intersection closed intreeval hypergraph~$\II$ of a rooted~tree~is~a~lattice.
-
-\begin{figure}
-	\centerline{\input{figures/diagram.tex}}
-	\caption{The arrows in turquoise represent maps that are order preserving. From top to bottom, left to right, those results respectively follow from~\cref{lem:Sour2Reori,,lem:Reori2Orn2,,lem:Sour2Orn3,,lem:Orn2Reori1,,lem:Orn2Sour1,,lem:Orn2Sour1,,lem:AReori2ASour3}.  The red arrows represent maps that are not order preserving. Those results follow from definition of the map~$\areori{O}$ and from Remark~\ref{rem:ASour2AReori}.}
-	\label{fig:allMaps}
-\end{figure}
-
-\begin{figure}
-    \centerline{\input{figures/diagram1.tex}}
-	\caption{These diagrams commute by \cref{lem:Sour2Orn1,,lem:Orn2Sour4,,lem:AReori2ASour2AOrn} respectively. Let us remark that when we restrict ourself to the acyclic case, the two top diagrams do not commute.}
-\end{figure}
-
-\begin{figure}
-    \centerline{\input{figures/diagram1_new.tex}}
-	\caption{These diagrams commute by \cref{lem:Sour2Orn1,,lem:Orn2Sour4,,lem:AReori2ASour2AOrn} respectively. Let us remark that when we restrict ourself to the acyclic case, the two top diagrams do not commute.}
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1019,10 +1003,10 @@ We have~$v = S_1(P) \le S_2(P) \le \max(P) = v$, so that~$S_2(P) = v$, hence~$(u
 Thus~$\rev(\reori{S_1}) = \rev(S_1) \subseteq \rev(S_2) = \rev(\reori{S_2})$, so that~${\reori{S_1} \le \reori{S_2}}$.
 \end{proof}
 
-In contrast, not all reorientations of~$\tc(D)$ can be projected to a sourcing of~$\PP(D)$, because reorientations might have cycles inside paths of~$D$.
-\felixantoine{What does cycles inside paths means?}
-\Vincent{Bad formulation... I mean that the clique in $\tc(D)$ corresponding to a directed path does not necessarily have a source in an reorientation. Hence, I cannot define a sourcing because I need a source for each path.}
+In contrast, we cannot define a map from the reorientation lattice~$\Reori(\tc(D))$ to the sourcing lattice~$\Sour(\PP(D))$, because the subgraph of a reorientation of~$\tc(D)$ induced by the vertices of a path of~$\PP(D)$ might not have a source.
 We will fix this issue by restricting to acyclic reorientations and acyclic sourcings in \cref{sec:acyclic}.
+
+Observe also that $S \mapsto \reori{S}$ is not injective.
 However, we can still use~$S \mapsto \reori{S}$ to define a map from all sourcings of~$\PP(D)$ to all ornamentations of~$D$.
 
 \begin{definition}
@@ -1494,7 +1478,7 @@ Let~$P$ be a path from~$u$ to~$v$ in~$\orn{R}(v)$.
 By \cref{lem:acyclicSimplifiesDef}, we have~$(w,v) \in \rev(R)$ for all~$w \in P$.
 Therefore, $v$ is the source of~$P$ in~$R$, that is, $v = \asour{R}(P)$.
 We thus obtain that~$(u,v) \in \rev(\asour{R})$.
-We conclude that~ \sout{$\orn{R}(v)$} \felix{$\rev(R)$}$ \subseteq \rev(\asour{R})$, hence that~$\orn{R}(v) \subseteq \orn{\asour{R}}(v)$ by maximality of~$\orn{\asour{R}}(v)$.
+We conclude that~$\rev(R) \subseteq \rev(\asour{R})$, hence that~$\orn{R}(v) \subseteq \orn{\asour{R}}(v)$ by maximality of~$\orn{\asour{R}}(v)$.
 \end{proof}
 
 \begin{lemma}
@@ -1592,8 +1576,6 @@ The map~$S \mapsto \aorn{S}$ is a poset isomorphism from the acyclic sourcing po
 \end{proposition}
 
 \begin{proof}
-\FelixAntoine{Since $O \mapsto \asour{O}$ is not the restriction of $O \mapsto \sour{O}$, we cannot use that the second is order-preserving to deduce that the first is. We modified the proof accordingly.}
-\Vincent{Good point!}
 The map~$S \mapsto \aorn{S}$ is injective by \cref{lem:ASour2AOrn1} and surjective by \cref{def:AOrn}.
 Moreover, it is order-preserving as it is the restriction of the map $S \to \orn{S}$, which is order-preserving by \cref{lem:Sour2Orn3}.
 We are only left to show that $S \mapsto \aorn{S}$ is order-reflecting.
@@ -1662,12 +1644,9 @@ Assume first that~$O_1$ and~$O_2$ are two ornamentations of~$T$ such that there 
 We clearly have~$O_1 \le O_2$.
 Moreover, consider any ornamentation~$O$ of~$T$ such that~$O_1 \le O \le O_2$.
 Then~$O_1(w) = O(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$ and~$O_1(v) \subseteq O(v) \subseteq O_2(v)$.
-%If~$O_1 \ne O$, then $O(v) \ssm O_1(v) \ne \varnothing$ and let~$y$ be a maximal element in $O(v) \ssm O_1(v)$.
-\Vincent{I changed again as I feel my path is needed...}\Antoine{Yes, I am convinced that we need the path; this is the reason it works on trees and not on general graph. But we don't need $y$ and its maximality.}
 If~$O_1 \ne O$, then there is~$x \in O(v) \ssm O_1(v)$.
-% and let~$y$ be the last vertex not in~$O_1(v)$ along the path from~$x$ to~$v$ in~$O(v)$.
-As~$x \in O(v) \ssm O_1(v) \subseteq O_2(v) \ssm  O_1(v) = O_1(u)$.
-Hence, the directed path from~$x$ to~$v$ passes through~$u$, and we have~$u \in O(v)$.
+Note that~$x \in O(v) \ssm O_1(v) \subseteq O_2(v) \ssm  O_1(v) = O_1(u)$.
+Hence, the directed path from~$x$ to~$v$ in~$T$ passes through~$u$, and we have~$u \in O(v)$.
 We conclude that~$O_1(u) = O(u) \subseteq O(v)$, and thus that~$O = O_2$.
 
 Conversely, assume that~$O_1$ and~$O_2$ are two ornamentations of~$T$ such that~$O_1 \lessdot O_2$ is a cover relation in~$\Orn(T)$.
@@ -1682,15 +1661,13 @@ Hence, $O_2 = O$.
 We have thus found~$u$ and~$v$ as required and they are determined by~$O_1$ and~$O_2$.
 \end{proof}
 
-\Antoine{\sout{No need the graph to be a tree. Should we put the result earlier in the article?}}
-\Vincent{I disagree, the description of cover relations for arbitrary directed graphs is slightly more involved. You can find a counter-example in \cref{fig:ornamentationsKT}\,(left). At some point, I had the lemma below in \cref{subsec:ornamentations}. But I thought it was too complicated to have it at the beginning...}
-
-\begin{lemma}
-\label{lem:coverRelationsOrn}
-Two ornamentations~$O_1$ and~$O_2$ of~$D$ form a cover relation~$O_1 \lessdot O_2$ if and only if there are~$u, v \in V$ such that~$u \notin O_1(v)$, $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$, and~$O_1(w) = O_1(u)$ for any~$w \in O_1(u)$ with an edge towards~$O_1(v)$.
-\Vincent{This statement will disappear or go to \cref{subsec:ornamentations}.}
-\Antoine{I don't understand the last part. How could $O_1(w) = O_1(u)$ with $w<u$? Is it that $u$ is the only element in $O_1(u)\ssm O_1(v)$ that is covered by an element $x\in O_1(v)$?}
-\end{lemma}
+\begin{remark}
+\label{rem:coverRelationsOrn}
+The description of \cref{lem:coverRelationsOrnT} is not sufficient to have a cover relation of the ornamentation lattice~$\Orn(D)$ of any directed graph~$D$.
+See \eg \cref{fig:ornamentationsKT}\,(left).
+The general description is slightly more involved.
+Namely, two ornamentations~$O_1$ and~$O_2$ of~$D$ form a cover relation~$O_1 \lessdot O_2$ if and only if there are~$u, v \in V$ such that~$u \notin O_1(v)$, $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$, and~$O_1(w) = O_1(u)$ for any~$w \in O_1(u)$ with an edge towards~$O_1(v)$.
+\end{remark}
 
 %\begin{proof}
 %Assume first that~$O_1$ and~$O_2$ are two ornamentations of~$D$ such that there are~$u, v \in V$ such that~$u \notin O_1(v)$, $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$, and~$O_1(w) = O_1(u)$ for any~$w \in O_1(u)$ with an edge towards~$O_1(v)$.
@@ -1981,10 +1958,10 @@ For any ornamentation~$O$ of a directed tree~$T$, the reorientation~$\maxreori{O
 \begin{proof}
 We first prove that~$\orn{\maxreori{O}} = O$.
 Fix~$u,v \in V$.
-\sout{Observe first that~$u \in O(v)$ implies~$(u,v) \in \rev(\maxreori{O})$ since~$v \in O(w)$ implies~$u \in O(v) \subseteq O(w)$ for any~$w \in V$, so that~$u \in  \orn{\maxreori{O}}(v)$ by definition.} \felix{Observe first that~$u \in O(v)$ implies~$(u,v) \in \rev(\maxreori{O})$, since for any~$w \in V$, the fact that~$v \in O(w)$ implies~$u \in O(v) \subseteq O(w)$. Hence, by definition,~$u \in \orn{\maxreori{O}}(v)$.} \Felix{This is a reformulation}
-Conversely, assume that~$u \notin O(v)$ and consider such an~$u$ which is \felix{the} closest to~$v$.
+Observe first that~$u \in O(v)$ implies~$(u,v) \in \rev(\maxreori{O})$, since for any~$w \in V$, the fact that~$v \in O(w)$ implies~$u \in O(v) \subseteq O(w)$. Hence, by definition,~$u \in \orn{\maxreori{O}}(v)$.
+Conversely, assume that~$u \notin O(v)$ and consider such an~$u$ which is the closest to~$v$.
 Consider the path~$u, u', \dots, v$ in~$T$.
-For any~$v'$ between~$u'$ and~$v$, we have~\sout{$u \notin O(v)$} \felix{$u \notin O(v')$} while~$u', v' \in O(v)$, which implies that~$(u,v') \notin \rev(\maxreori{O})$.
+For any~$v'$ between~$u'$ and~$v$, we have~$u \notin O(v)$ while~$u', v' \in O(v)$, which implies that~$(u,v') \notin \rev(\maxreori{O})$.
 Hence, there is no path from~$u$ to~$v$ in~$\rev(\maxreori{O})$, and thus~$u \notin \orn{\maxreori{O}}(v)$.
 We conclude that~$u \in O(v) \iff u \in \orn{\maxreori{O}}(v)$, that is~$O = \orn{\maxreori{O}}$.
 
@@ -1993,7 +1970,7 @@ Assume that there is~$u,v \in V$ such that~$(u,v) \in \rev(R) \ssm \rev(\maxreor
 Consider the path~$u, u', \dots, v$ in~$T$, and let~$w \in V$ be such that~$u \notin O(w)$ while~$u', v \in O(w)$.
 Since~$\orn{R} = O$ and~$v \in O(w)$, there is a path from~$v$ to~$w$ in~$\rev(R)$, hence from~$u$ to~$v$ in~$\rev(R)$ since~$(u,v) \in \rev(R)$.
 Moreover, since~$(u,u') \in T$ and~$u' \in O(w)$, the set~$O(w) \cup \{u\}$ is an ornament of~$T$ at~$w$.
-Hence, $O(w) \cup \{u\}$ \Felix{Should we add that $\orn{R}(u)=\{u\}\in \orn{R}$} contradicts the maximality of~$\orn{R}(w)$.
+Hence, $O(w) \cup \{u\}$ contradicts the maximality of~$\orn{R}(w) = O(w)$.
 We conclude that if~$\orn{R} = O$, then~$\rev(R) \subseteq \rev(\maxreori{O})$, hence~$R \le \maxreori{O}$.
 \end{proof}
 
@@ -2005,7 +1982,7 @@ Hence, the transitively closed reorientations~$R$ of~$\tc(T)$ with~${\orn{R} = O
 
 \begin{proof}
 Assume that there is a directed path~$u, u', \dots, v$ in~$T$ such that~$(u,v) \notin \rev(\maxreori{O})$.
-Let~$w \in V$ be such that $u \notin O(w)$ but~$u',$\sout{$v'$} \felix{$v$} \Felix{Pointer for the typo in case we don't find it} $\in O(w)$.
+Let~$w \in V$ be such that $u \notin O(w)$ but~$u',v \in O(w)$.
 Then, for any~$v'$ between~$u'$ and~$v$, we have~$v' \in O(w)$, hence~$(u,v') \not \in \rev(\maxreori{O})$.
 We thus obtained that~$(u,v'), (v',v) \in \rev(\maxreori{O})$ implies~$(u,v) \in \rev(\maxreori{O})$, that is, $\rev(\maxreori{O})$ is transitively closed.
 %\Vincent{not only it has a max, but it has a Tamari max....}
@@ -2036,7 +2013,7 @@ Assume by symmetry that~$(u_{i-1}, u_i) \in \rev(R_1)$.
 Since~$R_1$ is coclosed, either~$(u_{i-1}, v) \in \rev(R_1)$ or~$(v, u_i) \in \rev(R_1)$.
 We thus obtain that either~$(u,v) \in \rev(R)$ or~$(v,w) \in \rev(R)$, hence that~$R$ is indeed coclosed.
 
-Since any transitively closed reorientation~$R'$ such that~$R' > R_1$ and~$R' > R_2$ clearly satisfies~$R' > R$\Felix{$\geq$?}, we conclude that~$R$ is the join of~$R_1$ and~$R_2$ among transitively biclosed reoriorientations.
+Since any transitively closed reorientation~$R'$ such that~$R' > R_1$ and~$R' > R_2$ clearly satisfies~$R' \ge R$, we conclude that~$R$ is the join of~$R_1$ and~$R_2$ among transitively biclosed reoriorientations.
 Thus, $\Rbi(\tc(T))$ is a finite bounded join semilattice, hence a lattice.
 \end{proof}
 
