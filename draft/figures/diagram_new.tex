@@ -1,0 +1,50 @@
+\begin{tikzpicture}
+
+	\node(R) at (-5,0) {$\Reori(\tc(D))$};
+	\node(DR) at (-5,-0.35) {\tiny{Def.~\ref{def:Reori}}};
+	\node(S) at (0,0) {$\Sour(\PP(D))$};
+	\node(DS) at (0,-0.35) {\tiny{Def.~\ref{def:Sour}}};
+	\node(O) at (5,0) {$\Orn(D)$};
+	\node(DO) at (5,-0.35) {\tiny{Def.~\ref{def:Orn}}};
+
+	\draw[thick, Turquoise] (R.north) edge [>={Stealth[scale=0.65,width=6pt]},-{>>},bend left=35] node [above]{\textcolor{black}{\small{$\orn{R}$} }} node [below]{\textcolor{black}{\tiny{\begin{tabular}{c} Def.~\ref{def:Reori2Orn} \\ \ref{lem:Reori2Orn1}, \ref{lem:Reori2Orn2}, \ref{prop:Reori2Orn}, \ref{prop:ReoriTC2Orn}, \ref{prop:Reori2OrnMeetSemilaticeTC} \end{tabular}}}}  (O.north);
+	\draw[thick, Turquoise] (DO.south) edge [-stealth,bend left=35] node [below]{\textcolor{black}{ \tiny{\begin{tabular}{c}Def.~\ref{def:Orn2Reori} \\ \ref{lem:Orn2Reori1}, \ref{prop:ReoriTC2Orn}, \ref{prop:Reori2OrnMinTC} \end{tabular}}}} node [above]{\textcolor{black}{\small{$\reori{O}$} }}  (DR.south);
+	\draw[thick, Turquoise] (S.west) edge [-stealth] node [above]{\textcolor{black}{\small{$\reori{S}$} }} node [below]{\textcolor{black}{ \tiny{\begin{tabular}{c} Def.~\ref{def:Sour2Reori} \\ \ref{lem:Sour2Reori} \end{tabular}}}}  (R.east);
+	\draw[thick, Turquoise] (S.north east) edge [>={Stealth[scale=0.65,width=6pt]},-{>>},bend left=33] node [above]{\textcolor{black}{\small{$\orn{S}$} }} node [below]{\textcolor{black}{ \tiny{\begin{tabular}{c} Def.~\ref{def:Sour2Orn} \\ \ref{lem:Sour2Orn2}, \ref{lem:Sour2Orn3}, \ref{prop:Sour2Orn} \end{tabular}}}}  (O.north west);	
+	\draw[thick, Turquoise] (O.south west) edge [-stealth,bend left=33] node [below]{\textcolor{black}{ \tiny{\begin{tabular}{c} Def.~\ref{def:Orn2Sour} \\ \ref{lem:Orn2Sour1}, \ref{lem:Orn2Sour2} \end{tabular}}}} node [above]{\textcolor{black}{\small{$\sour{O}$} }}  (S.south east);
+
+	\node at (0,.8) {\textbf{\rotatebox{180}{\huge{$\circlearrowright$}}}}; \node at (-.5,.8) {\tiny{\ref{lem:Sour2Orn1}}};
+	\node at (0,-1) {\textbf{\huge{$\circlearrowleft$}}}; \node at (-.5,-1) {\tiny{\ref{lem:Orn2Sour4}}};
+	\node at (6,0) {\textbf{\rotatebox{90}{\huge{$\circlearrowleft$}}}}; \node at (6,-.35) {\tiny{\ref{lem:Orn2Reori2}}};
+	\node at (2.5,-.1) {\textbf{\rotatebox{270}{\huge{$\circlearrowright$}}}}; \node at (2,-.1) {\tiny{\ref{lem:Orn2Sour3}}};
+	
+	\node(subposet1)[rotate=90] at (-5,-3.2) {\LARGE{$\subseteq$}};
+	\node(subposet2)[rotate=90] at (0,-3.2) {\LARGE{$\subseteq$}};
+	\node(subposet3)[rotate=90] at (5,-3.2) {\LARGE{$\subseteq$}};
+	% \node(subposet3) at (5,-2.2) {\small{subposet}};
+	% \node(subposet3) at (0,-2.2) {\small{subposet}};
+	% \node(subposet3) at (-5,-2.2) {\small{subposet}};
+	
+	\node(Sym) at (-8,-6) {$\fS_n$};
+	\node(AR) at (-5,-6) {$\AReori(\tc(D))$};
+	\node(DAR) at (-5,-6.35) {\tiny{Def.~\ref{def:AReori}}};
+	\node(AS) at (0,-6) {$\ASour(\PP(D))$};
+	\node(DAS) at (0,-6.35) {\tiny{Def.~\ref{def:ASour}}};
+	\node(AO) at (5,-6) {$\AOrn(D)$};
+	\node(DAO) at (5,-6.35) {\tiny{Def.~\ref{def:AOrn}}};
+	\node(Phantom) at (8,-6) {\phantom{$\fS_n$}};
+		
+	\draw[Turquoise,thick] (Sym.east) edge [>={Stealth[scale=0.65,width=6pt]},-{>>}] node [below]{\textcolor{black}{ \tiny{\begin{tabular}{c} Def.~\ref{def:Perm2AReori} \\ \ref{prop:Perm2AReori} \end{tabular}}}} node [above]{\small{\textcolor{black}{$\areori{\pi}$}}} (AR.west);	
+	\draw[Turquoise,thick] (AR.north) edge [>={Stealth[scale=0.65,width=6pt]},-{>>},bend left=35] node [below]{\textcolor{black}{ \tiny{Def.~\ref{def:moreNotations}}}} node [above]{\small{\textcolor{black}{$\aorn{R}=\orn{R}$}}} (AO.north);	
+	\draw[thick,red] (DAO.south) edge [-stealth,bend left=35] node [below]{\textcolor{black}{ \tiny{Def.~\ref{def:moreNotations}}}} node [above]{\textcolor{black}{\small{$\areori{O}$}}} (DAR.south);
+	\draw[thick, Turquoise] (AR.north east) edge [>={Stealth[scale=0.65,width=6pt]},-{>>},bend left=33] node [below]{\textcolor{black}{ \tiny{\begin{tabular}{c} Def.~\ref{def:AReori2ASour} \\ \ref{lem:AReori2ASour1}, \ref{lem:AReori2ASour2}, \ref{lem:AReori2ASour3}, \ref{prop:AReori2ASour} \end{tabular}}}} node [above]{\textcolor{black}{\small{$\asour{R}$} }}  (AS.north west);
+	\draw[thick, red] (AS.south west) edge [-stealth,bend left=33] node [above]{\textcolor{black}{\small{$\areori{S}$ }}} node [below]{\textcolor{black}{ \tiny{\begin{tabular}{c} Def.~\ref{def:ASour2AReori} \\ \ref{lem:ASour2AReori1}, \ref{rem:ASour2AReori} \end{tabular}}}} (AR.south east);
+	\draw[thick, Turquoise] (AS.north east) edge [>={Stealth[scale=0.65,width=6pt]},{Hooks[left]}-{>>},bend left=33] node [below] {\textcolor{black}{\tiny{\begin{tabular}{c} Def.~\ref{def:moreNotations} \\ \ref{lem:ASour2AOrn1}, \ref{prop:ASour2AOrn} \end{tabular}}}} node [above]{\textcolor{black}{\small{$\aorn{S}=\orn{S}$}}} (AO.north west);
+	\draw[thick, Turquoise] (AO.south west) edge [>={Stealth[scale=0.65,width=6pt]},{Hooks[left]}-{>>},bend left=33] node [below]{\textcolor{black}{ \tiny{Def.~\ref{def:moreNotations}}}} node [above]{\textcolor{black}{\small{$\asour{O}$}}} (AS.south east);
+
+	\node at (0,-5) {\textbf{\rotatebox{180}{\huge{$\circlearrowright$}}}}; \node at (-.5,-5) {\tiny{\ref{lem:AReori2ASour2AOrn}}};
+	\node at (0,-7) {\textbf{\huge{$\circlearrowleft$}}}; \node at (-.5,-7) {\tiny{\ref{def:moreNotations}}};
+	\node at (-2.5,-6.1) {\textbf{\rotatebox{270}{\huge{$\circlearrowright$}}}}; \node at (-2,-6.1) {\tiny{\ref{lem:ASour2AReori2}}};
+	\node at (2.5,-6.1) {\textbf{\rotatebox{270}{\huge{$\circlearrowright$}}}}; \node at (2,-6.1) {\tiny{\ref{def:moreNotations}}};
+
+\end{tikzpicture}
