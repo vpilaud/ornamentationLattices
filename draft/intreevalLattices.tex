@@ -150,7 +150,7 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\andrew}[1]{{\color{purple}#1}}
 \newcommand{\Andrew}[2][]{\todo[size=\tiny,color=purple,#1]{ #2 \\ \hfill --- A.}\,}
 \newcommand{\felix}[1]{{\color{orange}#1}}
-\newcommand{\Felix}[2][]{\todo[size=\tiny,color=orange,#1]{ #2 \\ \hfill --- AA.}\,}
+\newcommand{\Felix}[2][]{\todo[size=\tiny,color=orange,#1]{ #2 \\ \hfill --- F.}\,}
 \newcommand{\antoine}[1]{{\color{teal}#1}}
 \newcommand{\Antoine}[2][]{\todo[size=\tiny,color=teal,#1]{ #2 \\ \hfill --- AA.}\,}
 \newcommand{\felixantoine}[1]{{\color{pink}#1}}
@@ -369,7 +369,7 @@ In particular, the acyclic sourcing poset~$\ASour(\PP(D))$ can be seen as a subp
 See \cref{fig:allMaps} for an overview of these connections.
 
 \begin{figure}
-	\centerline{\input{figures/diagram_new.tex}}
+	%\centerline{\input{figures/diagram_new.tex}}
 	\caption{Connections between the posets studied in this paper. Below each poset or map appears a pointer to the corresponding definition. Below each map, we also point to the main statements concerning it (in the general case of a directed graph). The maps in turquoise are order preserving while those in red are not.}
 	\label{fig:allMaps}
 \end{figure}
@@ -452,7 +452,7 @@ In particular, the acyclic sourcing poset~$\ASour(\II)$ of any intersection clos
 \end{figure}
 
 \begin{figure}
-    \centerline{\input{figures/diagram1_new.tex}}
+    %\centerline{\input{figures/diagram1_new.tex}}
 	\caption{These diagrams commute by \cref{lem:Sour2Orn1,,lem:Orn2Sour4,,lem:AReori2ASour2AOrn} respectively. Let us remark that when we restrict ourself to the acyclic case, the two top diagrams do not commute.}
 \end{figure}
 
@@ -1993,7 +1993,7 @@ Assume that there is~$u,v \in V$ such that~$(u,v) \in \rev(R) \ssm \rev(\maxreor
 Consider the path~$u, u', \dots, v$ in~$T$, and let~$w \in V$ be such that~$u \notin O(w)$ while~$u', v \in O(w)$.
 Since~$\orn{R} = O$ and~$v \in O(w)$, there is a path from~$v$ to~$w$ in~$\rev(R)$, hence from~$u$ to~$v$ in~$\rev(R)$ since~$(u,v) \in \rev(R)$.
 Moreover, since~$(u,u') \in T$ and~$u' \in O(w)$, the set~$O(w) \cup \{u\}$ is an ornament of~$T$ at~$w$.
-Hence, $O(w) \cup \{u\}$ \Felix{Should we had that $\orn{R}(u)=\{u\}\in \orn{R}$} contradicts the maximality of~$\orn{R}(w)$.
+Hence, $O(w) \cup \{u\}$ \Felix{Should we add that $\orn{R}(u)=\{u\}\in \orn{R}$} contradicts the maximality of~$\orn{R}(w)$.
 We conclude that if~$\orn{R} = O$, then~$\rev(R) \subseteq \rev(\maxreori{O})$, hence~$R \le \maxreori{O}$.
 \end{proof}
 
@@ -2005,7 +2005,7 @@ Hence, the transitively closed reorientations~$R$ of~$\tc(T)$ with~${\orn{R} = O
 
 \begin{proof}
 Assume that there is a directed path~$u, u', \dots, v$ in~$T$ such that~$(u,v) \notin \rev(\maxreori{O})$.
-Let~$w \in V$ be such that $u \notin O(w)$ but~$u',v' \in O(w)$.
+Let~$w \in V$ be such that $u \notin O(w)$ but~$u',$\sout{$v'$} \felix{$v$} \Felix{Pointer for the typo in case we don't find it} $\in O(w)$.
 Then, for any~$v'$ between~$u'$ and~$v$, we have~$v' \in O(w)$, hence~$(u,v') \not \in \rev(\maxreori{O})$.
 We thus obtained that~$(u,v'), (v',v) \in \rev(\maxreori{O})$ implies~$(u,v) \in \rev(\maxreori{O})$, that is, $\rev(\maxreori{O})$ is transitively closed.
 %\Vincent{not only it has a max, but it has a Tamari max....}
@@ -2036,7 +2036,7 @@ Assume by symmetry that~$(u_{i-1}, u_i) \in \rev(R_1)$.
 Since~$R_1$ is coclosed, either~$(u_{i-1}, v) \in \rev(R_1)$ or~$(v, u_i) \in \rev(R_1)$.
 We thus obtain that either~$(u,v) \in \rev(R)$ or~$(v,w) \in \rev(R)$, hence that~$R$ is indeed coclosed.
 
-Since any transitively closed reorientation~$R'$ such that~$R' > R_1$ and~$R' > R_2$ clearly satisfies~$R' > R$, we conclude that~$R$ is the join of~$R_1$ and~$R_2$ among transitively biclosed reoriorientations.
+Since any transitively closed reorientation~$R'$ such that~$R' > R_1$ and~$R' > R_2$ clearly satisfies~$R' > R$\Felix{$\geq$?}, we conclude that~$R$ is the join of~$R_1$ and~$R_2$ among transitively biclosed reoriorientations.
 Thus, $\Rbi(\tc(T))$ is a finite bounded join semilattice, hence a lattice.
 \end{proof}
 
