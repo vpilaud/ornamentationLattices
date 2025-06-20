@@ -29,7 +29,7 @@
 \author{Antoine Abram}
 \address[A.~Abram]{LACIM, Université du Québec à Montréal, Montréal}
 \email{abram.antoine@courrier.uqam.ca}
-%\urladdr{}
+\urladdr{https://antoineabram.codeberg.page}
 
 \author{Jose Bastidas}
 \address[J.~Bastidas]{LACIM, Université du Québec à Montréal, Montréal}
@@ -150,7 +150,7 @@ VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/A
 \newcommand{\andrew}[1]{{\color{purple}#1}}
 \newcommand{\Andrew}[2][]{\todo[size=\tiny,color=purple,#1]{ #2 \\ \hfill --- A.}\,}
 \newcommand{\felix}[1]{{\color{orange}#1}}
-\newcommand{\Felix}[2][]{\todo[size=\tiny,color=orange,#1]{ #2 \\ \hfill --- AA.}\,}
+\newcommand{\Felix}[2][]{\todo[size=\tiny,color=orange,#1]{ #2 \\ \hfill --- F.}\,}
 \newcommand{\antoine}[1]{{\color{teal}#1}}
 \newcommand{\Antoine}[2][]{\todo[size=\tiny,color=teal,#1]{ #2 \\ \hfill --- AA.}\,}
 \newcommand{\felixantoine}[1]{{\color{pink}#1}}
@@ -1663,10 +1663,11 @@ We clearly have~$O_1 \le O_2$.
 Moreover, consider any ornamentation~$O$ of~$T$ such that~$O_1 \le O \le O_2$.
 Then~$O_1(w) = O(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$ and~$O_1(v) \subseteq O(v) \subseteq O_2(v)$.
 %If~$O_1 \ne O$, then $O(v) \ssm O_1(v) \ne \varnothing$ and let~$y$ be a maximal element in $O(v) \ssm O_1(v)$.
-\Vincent{I changed again as I feel my path is needed...}
-If~$O_1 \ne O$, then there is~$x \in O(v) \ssm O_1(v)$ and let~$y$ be the last vertex not in~$O_1(v)$ along the path from~$x$ to~$v$ in~$O(v)$.
-As~$y \in O(v) \ssm O_1(v) \subseteq O_2(v) \ssm  O_1(v) = O_1(u)$.
-Hence, the directed path from~$x$ to~$v$ passes through~$u$, and we have~$u = y \in O(v)$.
+\Vincent{I changed again as I feel my path is needed...}\Antoine{Yes, I am convinced that we need the path; this is the reason it works on trees and not on general graph. But we don't need $y$ and its maximality.}
+If~$O_1 \ne O$, then there is~$x \in O(v) \ssm O_1(v)$.
+% and let~$y$ be the last vertex not in~$O_1(v)$ along the path from~$x$ to~$v$ in~$O(v)$.
+As~$x \in O(v) \ssm O_1(v) \subseteq O_2(v) \ssm  O_1(v) = O_1(u)$.
+Hence, the directed path from~$x$ to~$v$ passes through~$u$, and we have~$u \in O(v)$.
 We conclude that~$O_1(u) = O(u) \subseteq O(v)$, and thus that~$O = O_2$.
 
 Conversely, assume that~$O_1$ and~$O_2$ are two ornamentations of~$T$ such that~$O_1 \lessdot O_2$ is a cover relation in~$\Orn(T)$.
@@ -1681,13 +1682,14 @@ Hence, $O_2 = O$.
 We have thus found~$u$ and~$v$ as required and they are determined by~$O_1$ and~$O_2$.
 \end{proof}
 
-\Antoine{No need the graph to be a tree. Should we put the result earlier in the article?}
+\Antoine{\sout{No need the graph to be a tree. Should we put the result earlier in the article?}}
 \Vincent{I disagree, the description of cover relations for arbitrary directed graphs is slightly more involved. You can find a counter-example in \cref{fig:ornamentationsKT}\,(left). At some point, I had the lemma below in \cref{subsec:ornamentations}. But I thought it was too complicated to have it at the beginning...}
 
 \begin{lemma}
 \label{lem:coverRelationsOrn}
 Two ornamentations~$O_1$ and~$O_2$ of~$D$ form a cover relation~$O_1 \lessdot O_2$ if and only if there are~$u, v \in V$ such that~$u \notin O_1(v)$, $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$, and~$O_1(w) = O_1(u)$ for any~$w \in O_1(u)$ with an edge towards~$O_1(v)$.
 \Vincent{This statement will disappear or go to \cref{subsec:ornamentations}.}
+\Antoine{I don't understand the last part. How could $O_1(w) = O_1(u)$ with $w<u$? Is it that $u$ is the only element in $O_1(u)\ssm O_1(v)$ that is covered by an element $x\in O_1(v)$?}
 \end{lemma}
 
 %\begin{proof}
@@ -1991,7 +1993,7 @@ Assume that there is~$u,v \in V$ such that~$(u,v) \in \rev(R) \ssm \rev(\maxreor
 Consider the path~$u, u', \dots, v$ in~$T$, and let~$w \in V$ be such that~$u \notin O(w)$ while~$u', v \in O(w)$.
 Since~$\orn{R} = O$ and~$v \in O(w)$, there is a path from~$v$ to~$w$ in~$\rev(R)$, hence from~$u$ to~$v$ in~$\rev(R)$ since~$(u,v) \in \rev(R)$.
 Moreover, since~$(u,u') \in T$ and~$u' \in O(w)$, the set~$O(w) \cup \{u\}$ is an ornament of~$T$ at~$w$.
-Hence, $O(w) \cup \{u\}$ \Felix{Should we had that $\orn{R}(u)=\{u\}\in \orn{R}$} contradicts the maximality of~$\orn{R}(w)$.
+Hence, $O(w) \cup \{u\}$ \Felix{Should we add that $\orn{R}(u)=\{u\}\in \orn{R}$} contradicts the maximality of~$\orn{R}(w)$.
 We conclude that if~$\orn{R} = O$, then~$\rev(R) \subseteq \rev(\maxreori{O})$, hence~$R \le \maxreori{O}$.
 \end{proof}
 
@@ -2003,7 +2005,7 @@ Hence, the transitively closed reorientations~$R$ of~$\tc(T)$ with~${\orn{R} = O
 
 \begin{proof}
 Assume that there is a directed path~$u, u', \dots, v$ in~$T$ such that~$(u,v) \notin \rev(\maxreori{O})$.
-Let~$w \in V$ be such that $u \notin O(w)$ but~$u',v' \in O(w)$.
+Let~$w \in V$ be such that $u \notin O(w)$ but~$u',$\sout{$v'$} \felix{$v$} \Felix{Pointer for the typo in case we don't find it} $\in O(w)$.
 Then, for any~$v'$ between~$u'$ and~$v$, we have~$v' \in O(w)$, hence~$(u,v') \not \in \rev(\maxreori{O})$.
 We thus obtained that~$(u,v'), (v',v) \in \rev(\maxreori{O})$ implies~$(u,v) \in \rev(\maxreori{O})$, that is, $\rev(\maxreori{O})$ is transitively closed.
 %\Vincent{not only it has a max, but it has a Tamari max....}
@@ -2034,7 +2036,7 @@ Assume by symmetry that~$(u_{i-1}, u_i) \in \rev(R_1)$.
 Since~$R_1$ is coclosed, either~$(u_{i-1}, v) \in \rev(R_1)$ or~$(v, u_i) \in \rev(R_1)$.
 We thus obtain that either~$(u,v) \in \rev(R)$ or~$(v,w) \in \rev(R)$, hence that~$R$ is indeed coclosed.
 
-Since any transitively closed reorientation~$R'$ such that~$R' > R_1$ and~$R' > R_2$ clearly satisfies~$R' > R$, we conclude that~$R$ is the join of~$R_1$ and~$R_2$ among transitively biclosed reoriorientations.
+Since any transitively closed reorientation~$R'$ such that~$R' > R_1$ and~$R' > R_2$ clearly satisfies~$R' > R$\Felix{$\geq$?}, we conclude that~$R$ is the join of~$R_1$ and~$R_2$ among transitively biclosed reoriorientations.
 Thus, $\Rbi(\tc(T))$ is a finite bounded join semilattice, hence a lattice.
 \end{proof}
 
