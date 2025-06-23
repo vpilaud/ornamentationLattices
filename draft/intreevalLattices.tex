@@ -1,9 +1,8 @@
 \documentclass{amsart}
 
 \usepackage{enumerate, amsmath, amsfonts, amssymb, amsthm, thmtools, wasysym, graphics, graphicx, url, hyperref, hypcap, a4wide, pdflscape, multido, xargs, colortbl, multicol, multirow, calc, shuffle, hvfloat}
-\hypersetup{colorlinks=true, citecolor=darkblue, linkcolor=darkblue}
+\hypersetup{colorlinks=true, citecolor=darkblue, linkcolor=darkblue, hypertexnames=false}
 %\usepackage[all]{xy}
-\hypersetup{hypertexnames=false,}
 \usepackage{tikz}
 \usetikzlibrary{trees, decorations, decorations.markings, shapes, arrows, matrix, calc, fit, intersections, patterns, angles, cd}
 \usepackage{tikz-qtree}
@@ -34,7 +33,7 @@
 \author{Jose Bastidas}
 \address[J.~Bastidas]{LACIM, Université du Québec à Montréal, Montréal}
 \email{bastidas.math@proton.me}
-\urladdr{https://sites.google.com/view/bastidas/}
+\urladdr{https://bastidas-jose.codeberg.page}
 
 \author{F\'elix G\'elinas}
 \address[F.~G\'elinas]{Department of Mathematics and Statistics, York University, Toronto}
@@ -47,7 +46,7 @@
 \urladdr{https://www.ub.edu/comb/vincentpilaud/}
 
 \author{Andrew Sack}
-\address[A.~Sack]{}
+\address[A.~Sack]{Department of Mathematics, University of Michigan, Ann Arbor}
 \email{asack@umich.edu}
 \urladdr{https://andrewsack.com/}
 
@@ -401,8 +400,8 @@ For these trees, the acyclic sourcing poset and ornamentation lattice are even c
 For an unstarred increasing tree~$T$,
 \begin{enumerate}
 \item the acyclic reorientation poset~$\AReori(\tc(T))$, the acyclic sourcing poset~$\ASour(\PP(T))$, and the acyclic ornamentation poset~$\AOrn(T)$ are all lattices,
-\item all ornamentations of~$T$ are in fact acyclic, so that~$\ASour(\PP(T)) \simeq \AOrn(T) = \Orn(T)$,
-\item the map~$R \mapsto \orn{R}$ is a surjective lattice map, so that the ornamentation lattice~$\Orn(T)$ is a lattice quotient of the acyclic reorientation lattice~$\AReori(\tc(T))$,
+\item all ornamentations of~$T$ are in fact acyclic, and so~$\ASour(\PP(T)) \simeq \AOrn(T) = \Orn(T)$,
+\item the map~$R \mapsto \orn{R}$ is a surjective lattice map, and so the ornamentation lattice~$\Orn(T)$ is a lattice quotient of the acyclic reorientation lattice~$\AReori(\tc(T))$,
 \item the ornamentation lattice~$\Orn(T)$ is isomorphic to the transitive closure of the graph of the path hypergraphic polytope~$\simplex_{\PP(T)}$ oriented in the direction~$\b{w}$. \label{item:polytopalRealization}
 \end{enumerate}
 \end{theorem}
@@ -471,6 +470,8 @@ We define the ornamentation lattice~$\Orn(D)$ (\cref{subsec:ornamentations}), th
 
 \subsection{Ornamentations}
 \label{subsec:ornamentations}
+
+\Jose[inline]{There is an edge missing from the ornamentation $\{1,2,13,24\}$ of $\Ngraph$ (in the center of the left figure)}
 
 \begin{figure}[b]
 	\centerline{\includegraphics[scale=.68]{ornamentationsN} \qquad \raisebox{.5cm}{\includegraphics[scale=.68]{ornamentationsI}}}
@@ -549,8 +550,8 @@ Given two ornamentations~$O_1$ and~$O_2$ of~$D$, consider the map~$O_\meet$ on~$
 Note that $O_\meet(v)$ is well defined by \cref{lem:unionOrnaments}, and that~$O_\meet(v) \in \Orn(v \in D)$ for any~$v \in V$ by definition.
 Consider now~$u,v \in V$ such that~$u \in O_\meet(v)$.
 Since~$O_\meet(u) \in \Orn(u \in D)$ and~$O_\meet(v) \in \Orn(v \in D)$ with~${u \in O_\meet(v)}$, \cref{lem:unionOrnaments} gives~$O_\meet(u) \cup O_\meet(v) \in \Orn(v \in D)$.
-As~$u \in O_\meet(v) \subseteq O_1(v) \cap O_2(v)$ and~$O_1$ and~$O_2$ are ornamentations of~$D$, we have~$O_1(u) \subseteq O_1(v)$ and~$O_2(u) \subseteq O_2(v)$, so that~${O_\meet(u) \subseteq O_1(u) \cap O_2(u) \subseteq O_1(v) \cap O_2(v)}$, hence~$O_\meet(u) \cup O_\meet(v) \subseteq O_1(v) \cap O_2(v)$.
-By maximality of~$O_\meet(v)$, we conclude that ${O_\meet(u) \cup O_\meet(v) \subseteq O_\meet(v)}$, so that~$O_\meet(u) \subseteq O_\meet(v)$.
+As~$u \in O_\meet(v) \subseteq O_1(v) \cap O_2(v)$ and~$O_1$ and~$O_2$ are ornamentations of~$D$, we have~$O_1(u) \subseteq O_1(v)$ and~$O_2(u) \subseteq O_2(v)$, so~${O_\meet(u) \subseteq O_1(u) \cap O_2(u) \subseteq O_1(v) \cap O_2(v)}$, hence~$O_\meet(u) \cup O_\meet(v) \subseteq O_1(v) \cap O_2(v)$.
+By maximality of~$O_\meet(v)$, we conclude that ${O_\meet(u) \cup O_\meet(v) \subseteq O_\meet(v)}$, and therefore~$O_\meet(u) \subseteq O_\meet(v)$.
 We conclude that~$O_\meet$ is an ornamentation of~$D$.
 Moreover, $O_\meet$ is clearly the meet of~$O_1$ and~$O_2$ in componentwise inclusion.
 
@@ -658,7 +659,7 @@ The isomorphism is identical to the construction of bracket vectors in~\cite{Hua
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\pagebreak
+\pagebreak \Andrew{Do we need this pagebrak here? It's breaking the previous page.}
 \subsection{Reorientations}
 \label{subsec:reorientations}
 
@@ -695,7 +696,7 @@ By definition, $\orn{R}(v) \in \Orn(v \in D)$ for all~$v \in V$.
 Consider now~$u,v \in V$ such that~${u \in \orn{R}(v)}$.
 Since~$\orn{R}(u) \in \Orn(u \in D)$ and~$\orn{R}(v) \in \Orn(v \in D)$ with~${u \in \orn{R}(v)}$, \cref{lem:unionOrnaments} ensures that $\orn{R}(u) \cup \orn{R}(v) \in \Orn(v \in D)$.
 Moreover, by path concatenation, there is a path from any vertex of~$\orn{R}(u) \cup \orn{R}(v)$ to~$v$ in~$\rev(R)$.
-By maximality of~$\orn{R}(v)$, we conclude that~$\orn{R}(u) \cup \orn{R}(v) \subseteq \orn{R}(v)$, so that~${\orn{R}(u) \subseteq \orn{R}(v)}$.
+By maximality of~$\orn{R}(v)$, we conclude that~$\orn{R}(u) \cup \orn{R}(v) \subseteq \orn{R}(v)$, and so~${\orn{R}(u) \subseteq \orn{R}(v)}$.
 \end{proof}
 
 \begin{lemma}
@@ -704,7 +705,7 @@ The map~$R \mapsto \orn{R}$ is order-preserving (meaning that~$R_1 \le R_2 \impl
 \end{lemma}
 
 \begin{proof}
-If~$R_1 \le R_2$, then $\rev(R_1) \subseteq \rev(R_2)$, hence any path in~$\rev(R_1)$ is a path in~$\rev(R_2)$, so that~$\orn{R_1}(v) \subseteq \orn{R_2}(v)$ for any~$v \in V$, hence~$\orn{R_1} \le \orn{R_2}$.
+If~$R_1 \le R_2$, then $\rev(R_1) \subseteq \rev(R_2)$, hence any path in~$\rev(R_1)$ is a path in~$\rev(R_2)$, and so~$\orn{R_1}(v) \subseteq \orn{R_2}(v)$ for any~$v \in V$, hence~$\orn{R_1} \le \orn{R_2}$.
 \end{proof}
 
 \begin{definition}
@@ -827,7 +828,7 @@ The set~$\Rcl(\tc(D))$ (resp.~$\Rco(\tc(D))$) of transitively closed (resp.~cocl
 
 \begin{proof}
 As the intersection of transitively closed relations is transitively closed, $R_1, R_2 \in \Rcl(\tc(D))$ implies $R_1 \meet R_2 \in \Rcl(\tc(D))$.
-As~$\tc(D)$ is transitively closed, the maximal reorientation of~$\tc(D)$ is transitively closed, so that $\Rcl(\tc(D))$ is a bounded meet semilattice, hence a lattice.
+As~$\tc(D)$ is transitively closed, the maximal reorientation of~$\tc(D)$ is transitively closed, and so $\Rcl(\tc(D))$ is a bounded meet semilattice, hence a lattice.
 The proof for~$\Rco(\tc(D))$ is symmetric.
 \end{proof}
 
@@ -866,7 +867,7 @@ Hence, the map~$R \mapsto \orn{R}$ restricts to a surjection from the transitive
 
 \begin{proof}
 Let~$u,v,w \in V$ such that~$(u,v), (v,w) \in \rev(\reori{O})$.
-Then~$u \in O(v)$ and~$v \in O(w)$, so that~$u \in O(w)$ since~$O$ is an ornamentation.
+Then~$u \in O(v)$ and~$v \in O(w)$, and so~$u \in O(w)$ since~$O$ is an ornamentation.
 Hence~$(u,w) \in \rev(\reori{O})$.
 \end{proof}
 
@@ -893,7 +894,7 @@ Consider any transitively closed reorientation~$R$ of~$\tc(D)$ such that~$\orn{R
 Let~$u,v \in V$ be such that~$(u,v) \in \rev(\reori{O})$, that is, such that~$u \in O(v)$.
 By definition of~$\orn{R}(v) = O(v)$, there is a directed path from~$u$ to~$v$ in~$\rev(R)$.
 As $R$ is transitively closed, this implies that~$(u,v) \in \rev(R)$.
-We conclude that~$\rev(\reori{O}) \subseteq \rev(R)$, so that~$\reori{O} \le R$.
+We conclude that~$\rev(\reori{O}) \subseteq \rev(R)$, and so~$\reori{O} \le R$.
 \end{proof}
 
 \begin{remark}
@@ -1000,8 +1001,8 @@ The map~$S \mapsto \reori{S}$ is order-preserving.
 \begin{proof}
 Consider two sourcings~$S_1 \le S_2$ of~$\PP(D)$.
 For any~$(u,v) \in \rev(S_1)$, there is a path~$P \in \PP(D)$ from~$u$ to~$v$ with~$S_1(P) = v$.
-We have~$v = S_1(P) \le S_2(P) \le \max(P) = v$, so that~$S_2(P) = v$, hence~$(u,v) \in \rev(S_2)$.
-Thus~$\rev(\reori{S_1}) = \rev(S_1) \subseteq \rev(S_2) = \rev(\reori{S_2})$, so that~${\reori{S_1} \le \reori{S_2}}$.
+We have~$v = S_1(P) \le S_2(P) \le \max(P) = v$, and so~$S_2(P) = v$, hence~$(u,v) \in \rev(S_2)$.
+Thus~$\rev(\reori{S_1}) = \rev(S_1) \subseteq \rev(S_2) = \rev(\reori{S_2})$, and so~${\reori{S_1} \le \reori{S_2}}$.
 \end{proof}
 
 In contrast, we cannot define a map from the reorientation lattice~$\Reori(\tc(D))$ to the sourcing lattice~$\Sour(\PP(D))$, because the subgraph of a reorientation of~$\tc(D)$ induced by the vertices of a path of~$\PP(D)$ might not have a source.
@@ -1056,7 +1057,7 @@ The map~$O \mapsto \sour{O}$ is order-preserving.
 \begin{proof}
 Assume that~$O_1 \le O_2$, so that~$O_1(v) \subseteq O_2(v)$ for all~$v \in V$.
 Consider any path~$P \in \PP(D)$ from~$u$ to~$v$, and let~$w \eqdef \sour{O_1}(P)$.
-Then we have~$u \in O_1(w) \subseteq O_2(w)$, so that~$\sour{O_2}(u) \ge w$ by definition.
+Then we have~$u \in O_1(w) \subseteq O_2(w)$, and so~$\sour{O_2}(u) \ge w$ by definition.
 Therefore, $\sour{O_1}(P) \le \sour{O_2}(P)$ for any path~$P \in \PP(D)$, hence~${\sour{O_1} \le \sour{O_2}}$.
 \end{proof}
 
@@ -1317,7 +1318,7 @@ For any acyclic reorientation~$R$ of~$\tc(D)$, we have~$\rev(\asour{R}) \subsete
 \begin{proof}
 Let~$u,v \in [n]$ be such that~$(u,v) \in \rev(\asour{R})$. 
 Then there is a path~$P \in \PP(D)$ from~$u$ to~$v$ such that~$\asour{R}(P) = v$.
-We conclude that~$(v,u) \in R$, so that~$(u,v) \in \rev(R)$.
+We conclude that~$(v,u) \in R$, and so~$(u,v) \in \rev(R)$.
 \end{proof}
 
 \begin{lemma}
@@ -1326,7 +1327,7 @@ For any acyclic reorientation~$R$ of~$\tc(D)$, the sourcing~$\asour{R}$ is acycl
 \end{lemma}
 
 \begin{proof}
-If~$P_0, \dots, P_k \in \PP(D)$ are such that~$\asour{R}(P_{i-1}) \in P_i \ssm \{\asour{R}(P_i)\}$, then~$\asour{R}(P_k), \dots, \asour{R}(P_0)$ is a directed path in~$R$, so that~$R$ has no edge from~$\asour{R}(P_0)$ to~$\asour{R}(P_k)$ by acyclicity of~$R$, hence~${\asour{R}(P_k) \notin P_0 \ssm \{\asour{R}(P_0)\}}$.
+If~$P_0, \dots, P_k \in \PP(D)$ are such that~$\asour{R}(P_{i-1}) \in P_i \ssm \{\asour{R}(P_i)\}$, then~$\asour{R}(P_k), \dots, \asour{R}(P_0)$ is a directed path in~$R$, and so~$R$ has no edge from~$\asour{R}(P_0)$ to~$\asour{R}(P_k)$ by acyclicity of~$R$, hence~${\asour{R}(P_k) \notin P_0 \ssm \{\asour{R}(P_0)\}}$.
 \end{proof}
 
 \begin{lemma}
@@ -1367,7 +1368,7 @@ Let~$\areori{S}$ be the reorientation of~$\tc(D)$ defined by~$\rev(\areori{S}) =
 \label{rem:ASour2AReori}
 Note that~$\rev(S) \subseteq \rev(\areori{S})$, but the inclusion might be strict.
 In fact, the map~$S \mapsto \areori{S}$ is not order-preserving.
-For instance, consider the directed graph~$D$, the two reorientations~$R_1$ and~$R_2$ of~$\tc(D)$, and the two sourcing~$S_1$ and~$S_2$ of~$S_1$ of~$\PP(D)$ given by
+For instance, consider the directed graph~$D$, the two reorientations~$R_1$ and~$R_2$ of~$\tc(D)$, and the two sourcings~$S_1$ and~$S_2$ of~$S_1$ of~$\PP(D)$ given by
 \begin{gather*}
 D = \! \includegraphics[scale=.8,valign=c]{graphR}
 \qquad\qquad
@@ -1388,7 +1389,7 @@ For any acyclic sourcing~$S$ of~$\PP(D)$, the reorientation~$\areori{S}$ of~$\tc
 \end{lemma}
 
 \begin{proof}
-If~$\areori{S}$ contains a cycle, so does~$\arr(S)$, so that~$S$ is cyclic by \cref{def:ASour}.
+If~$\areori{S}$ contains a cycle, so does~$\arr(S)$, and so~$S$ is cyclic by \cref{def:ASour}.
 \end{proof}
 
 \begin{lemma}
@@ -1400,8 +1401,8 @@ For any acyclic sourcing~$S$ of~$\PP(D)$, we have~$\asour{\areori{S}} = S$. In o
 Pick~$P \in \PP(D)$ and let~$v = S(P)$.
 For any~$u \in P$, we have~$(u,v) \in \arr(S)$.
 If~$u < v$, then~$(u,v) \in \rev(\areori{S})$.
-If~$u > v$, then~$(v,u) \notin \tc(\arr(S))$ by acyclicity of~$S$, so that~$(v,u) \notin \rev(\areori{S})$, so that~$(u,v) \in \areori{S}$ (since $P$ is a tournament in~$\areori{S}$).
-Hence, $v$ is the source of~$P$ in~$\areori{S}$, so that~$\asour{\areori{S}}(P) = v = S(P)$.
+If~$u > v$, then~$(v,u) \notin \tc(\arr(S))$ by acyclicity of~$S$, and so~$(v,u) \notin \rev(\areori{S})$, and so~$(u,v) \in \areori{S}$ (since $P$ is a tournament in~$\areori{S}$).
+Hence, $v$ is the source of~$P$ in~$\areori{S}$, and so~$\asour{\areori{S}}(P) = v = S(P)$.
 We conclude that~$\asour{\areori{S}} = S$. 
 \end{proof}
 
@@ -1667,7 +1668,7 @@ We have thus found~$u$ and~$v$ as required and they are determined by~$O_1$ and~
 The description of \cref{lem:coverRelationsOrnT} is not sufficient to have a cover relation of the ornamentation lattice~$\Orn(D)$ of any directed graph~$D$.
 See \eg \cref{fig:ornamentationsKT}\,(left).
 The general description is slightly more involved.
-Namely, two ornamentations~$O_1$ and~$O_2$ of~$D$ form a cover relation~$O_1 \lessdot O_2$ if and only if there are~$u, v \in V$ such that~$u \notin O_1(v)$, $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$, and~$O_1(w) = O_1(u)$ for any~$w \in O_1(u)$ with an edge towards~$O_1(v)$.
+Namely, two ornamentations~$O_1$ and~$O_2$ of~$D$ form a cover relation~$O_1 \lessdot O_2$ if and only if there are~$u, v \in V$ such that~$u \notin O_1(v)$, $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$, and~$O_1(w) = O_1(u)$ for any~$w \in O_1(u)$ with an edge towards~$O_1(v)$. A proof may be found in~\cite{Sack}.
 \end{remark}
 
 %\begin{proof}
@@ -2117,13 +2118,13 @@ For any~$P \in \PP(T)$, the reorientations~$\reori{J_P}$ and~$\reori{M_P}$ of~$\
 \end{lemma}
 
 \begin{proof}
-Observe that~$\rev(J_P) = (P \ssm \{v\}) \times \{v\}$.
-Hence, any induced cycle in~$\reori{J_P}$ must consist in an edge~$(v,y)$ and a directed path from~$y$ to~$v$ in~$T$ for some~$u \le_T y \le_T v$.
-This is impossible as the last edge of this path would be in~$\rev(J_P)$.
+Observe that~\sout{$\rev(J_P)$} $\felix{\rev(\reori{J_P})}= (P \ssm \{v\}) \times \{v\}$.
+Hence, any induced cycle in~$\reori{J_P}$ must consist of an edge~$(v,y)$ and a directed path from~$y$ to~$v$ in~$T$ for some~$u \le_T y \le_T v$.
+This is impossible as the last edge of this path would be in~\sout{$\rev(J_P)$} $\felix{\rev(\reori{J_P})}$. \Felix{I don't think we need the variable $u$ here.}
 
-Observe that~$\tc(T) \ssm \rev(M_P) = \lessin{T}{u} \times (P \ssm \{u\})$.
-Any cycle in~$\reori{M_P}$ should have an edge of $\tc(T) \ssm \rev(M_P)$, hence a vertex in~$\lessin{T}{u}$ and a vertex in~$P \ssm \{u\}$.
-This is impossible as there is no edge of~$\reori{M_P}$ leaving~$P \ssm \{u\}$.
+Observe that~$\tc(T) \ssm$ \sout{$\rev(M_P)$} $\felix{\rev(\reori{M_P})} = \lessin{T}{u} \times (P \ssm \{u\})$.
+Any cycle in~$\reori{M_P}$ should have an edge of $\tc(T) \ssm$ \sout{$\rev(J_P)$} $\felix{\rev(\reori{M_P})}$, hence a vertex in~$\lessin{T}{u}$ and a vertex in~$P \ssm \{u\}$.
+This is impossible as there is no edge of~$\reori{M_P}$ leaving~$P \ssm \{u\}$ \felix{and arriving in $\lessin{T}{u}$}.
 \end{proof}
 
 \begin{corollary}
@@ -2169,7 +2170,7 @@ For instance, for the directed graph~$\Dgraph$ of  \cref{fig:ornamentationsD},
 \]
 suffices to make it a lattice, as illustrated in \cref{fig:MacNeilleAcyclicOrnamentationsD}.
 \end{itemize}
-Another interesting case is the directed graph~$\Kgraph$ of \cref{fig:ornamentationsKT,fig:reorientationsKNT,fig:acyclicReorientationsKT}, for which the acyclic ornamentations already form lattice, even if there is a cyclic ornamentation.
+Another interesting case is the directed graph~$\Kgraph$ of \cref{fig:ornamentationsKT,fig:reorientationsKNT,fig:acyclicReorientationsKT}, for which the acyclic ornamentations already form lattice, even if there \sout{is} \felix{exists} a cyclic ornamentation.
 In contrast, \cref{thm:MacNeille} still holds for the directed graph~$\Tgraph$ of \cref{fig:ornamentationsKT}.
 In general, we have no description of the MacNeille completion of the acyclic ornamentation lattice of an arbitrary directed graph.
 %
@@ -2366,7 +2367,7 @@ If~$T$ is an unstarred tree, then the ornamentation lattice~$\Orn(T)$ is isomorp
 Lattice quotients of acyclic reorientation lattices were studied in detail in~\cite{Pilaud-acyclicReorientationLattices}.
 We can reformulate \cref{prop:AReoriLatticeUT,prop:AOrnLatticeUT,prop:AReori2AOrnLatticeMapUT} using the language of~\cite{Pilaud-acyclicReorientationLattices}: if~$T$ is an unstarred tree, then
 \begin{enumerate}
-\item the transitive closure~$\tc(T)$ is skeletal, so that~$\AReori(\tc(T))$ is an acyclic reorientation lattice,
+\item the transitive closure~$\tc(T)$ is skeletal, and so~$\AReori(\tc(T))$ is an acyclic reorientation lattice,
 \item the ornamentation lattice~$\AReori(\tc(T))$ is (isomorphic to) the Tamari lattice of~$\tc(T)$ defined by the $\tc(T)$-sylvester congruence,
 \item the path hypergraphic polytope~$\simplex_{\PP(T)}$ is the $\tc(T)$-associahedron.
 \end{enumerate}
@@ -2375,7 +2376,7 @@ We can reformulate \cref{prop:AReoriLatticeUT,prop:AOrnLatticeUT,prop:AReori2AOr
 \begin{remark}
 It might seem more natural to use the map~$\fS_n \to \ASour(\PP(T))$ defined by~$\pi \mapsto \asour{\areori{\pi}}$ instead of the map~$\AReori(\tc(T)) \to \ASour(\PP(T))$ defined by~$R \mapsto \asour{R}$.
 However, the former is not always a lattice map, while the latter is.
-For instance, the fiber of the ornamentation
+For instance, the fiber of the ornamentation \Andrew{Should we be more explicit by saying something like ``the acyclic sourcing identified with the ornamentation''?}
 \[
 \includegraphics[scale=.8,valign=c]{ornamentationV}
 \]
@@ -3189,7 +3190,7 @@ We conclude that~$\minorn{S}{\II} \subseteq O \le \maxorn{S}{\II}$.
 Conversely, consider an ornamentation~$O$ of~$T$ such that~$\minorn{S}{I} \subseteq O \le \maxorn{S}{I}$ and let~$I \in \II$ and~$v \eqdef S(I)$. Then
 \begin{itemize}
 \item As~$S(I) = v$, we have~$I \cap [v] \subseteq \minorn{S}{I}(v) \subseteq \minorn{S}{I} \subseteq O(v)$, hence~$v \le \sour{O}^\II(I)$ by definition~of~$\sour{O}^\II$.
-\item Conversely, for any~$v < w \in I$, we have~$S(I) = v < w \in I$ so that~$O(w) \subseteq \maxorn{S}{\II}(w) \subseteq \maxorn{S}{I}(w) \subseteq \lessin{T}{w} \ssm (I \cap [v])$. Hence, $\min(I) \notin O(w)$, so that~$\sour{O}^\II(I) \ne w$. We thus obtain that~$\sour{O}^\II(I) \le v$
+\item Conversely, for any~$v < w \in I$, we have~$S(I) = v < w \in I$ and so~$O(w) \subseteq \maxorn{S}{\II}(w) \subseteq \maxorn{S}{I}(w) \subseteq \lessin{T}{w} \ssm (I \cap [v])$. Hence, $\min(I) \notin O(w)$, and so~$\sour{O}^\II(I) \ne w$. We thus obtain that~$\sour{O}^\II(I) \le v$
 \end{itemize}
 We conclude that~$\sour{O}^\II(I) = S(I)$ for all~$I \in \II$, hence that~$\sour{O}^\II = S$.
 \end{proof}
@@ -3249,7 +3250,7 @@ As~$I$ is a path containing~$S(I)$ and~$S(J)$, it contains also~$S_p(K)$.
 We obtain that~$S_p(K) \in I$, $S(I) \in K$ and~$S(I) < S_p(K)$ contradicting our definition of~$S$.
 We conclude that~$S$ is acyclic.
 
-For any~$p \in [q]$, we have~$S_p(I) \in I$ so that~$S(I) \ge S_p(I)$ for all~$I \in \II$, hence~$S \ge S_p$.
+For any~$p \in [q]$, we have~$S_p(I) \in I$ and so~$S(I) \ge S_p(I)$ for all~$I \in \II$, hence~$S \ge S_p$.
 Consider now an acyclic sourcing~$S'$ of~$\II$ such that~$S' \ge S_p$ for all~$p \in [q]$.
 Assume that there are~$I,J \in \II$ and~$p \in [q]$ such that~$S_p(J) \in I$.
 Then~$S_p(J) \in I \cap J$.
@@ -3258,7 +3259,7 @@ Otherwise, as~$\II$ is path intersection closed, there is~$K \in \II$ such that~
 As~$S_p(J) \in I \cap J$, the acyclicity of~$S_p$ ensures that~$S_p(K) \ge S_p(J)$.
 Since~$S' \ge S_p$, we thus obtain~$S'(K) \ge S_p(J)$.
 By acyclicity of~$S'$, we thus have~$S'(I) \ge [\min(I \cap J), S_p(J)[$, hence~$S'(I) \notin \set{v \in J}{v < S_p(J)}$.
-We obtain that~$S(I) \le S'(I)$, so that~$S \le S'$.
+We obtain that~$S(I) \le S'(I)$, and so~$S \le S'$.
 We conclude that~$S$ is indeed~$\bigJoin_{p \in [q]} S_p$.
 \end{proof}
 
