@@ -2118,13 +2118,13 @@ For any~$P \in \PP(T)$, the reorientations~$\reori{J_P}$ and~$\reori{M_P}$ of~$\
 \end{lemma}
 
 \begin{proof}
-Observe that~$\rev(J_P) = (P \ssm \{v\}) \times \{v\}$.
-Hence, any induced cycle in~$\reori{J_P}$ must consist in an edge~$(v,y)$ and a directed path from~$y$ to~$v$ in~$T$ for some~$u \le_T y \le_T v$.
-This is impossible as the last edge of this path would be in~$\rev(J_P)$.
+Observe that~\sout{$\rev(J_P)$} $\felix{\rev(\reori{J_P})}= (P \ssm \{v\}) \times \{v\}$.
+Hence, any induced cycle in~$\reori{J_P}$ must consist of an edge~$(v,y)$ and a directed path from~$y$ to~$v$ in~$T$ for some~$u \le_T y \le_T v$.
+This is impossible as the last edge of this path would be in~\sout{$\rev(J_P)$} $\felix{\rev(\reori{J_P})}$. \Felix{I don't think we need the variable $u$ here.}
 
-Observe that~$\tc(T) \ssm \rev(M_P) = \lessin{T}{u} \times (P \ssm \{u\})$.
-Any cycle in~$\reori{M_P}$ should have an edge of $\tc(T) \ssm \rev(M_P)$, hence a vertex in~$\lessin{T}{u}$ and a vertex in~$P \ssm \{u\}$.
-This is impossible as there is no edge of~$\reori{M_P}$ leaving~$P \ssm \{u\}$.
+Observe that~$\tc(T) \ssm$ \sout{$\rev(M_P)$} $\felix{\rev(\reori{M_P})} = \lessin{T}{u} \times (P \ssm \{u\})$.
+Any cycle in~$\reori{M_P}$ should have an edge of $\tc(T) \ssm$ \sout{$\rev(J_P)$} $\felix{\rev(\reori{M_P})}$, hence a vertex in~$\lessin{T}{u}$ and a vertex in~$P \ssm \{u\}$.
+This is impossible as there is no edge of~$\reori{M_P}$ leaving~$P \ssm \{u\}$ \felix{and arriving in $\lessin{T}{u}$}.
 \end{proof}
 
 \begin{corollary}
@@ -2170,7 +2170,7 @@ For instance, for the directed graph~$\Dgraph$ of  \cref{fig:ornamentationsD},
 \]
 suffices to make it a lattice, as illustrated in \cref{fig:MacNeilleAcyclicOrnamentationsD}.
 \end{itemize}
-Another interesting case is the directed graph~$\Kgraph$ of \cref{fig:ornamentationsKT,fig:reorientationsKNT,fig:acyclicReorientationsKT}, for which the acyclic ornamentations already form lattice, even if there is a cyclic ornamentation.
+Another interesting case is the directed graph~$\Kgraph$ of \cref{fig:ornamentationsKT,fig:reorientationsKNT,fig:acyclicReorientationsKT}, for which the acyclic ornamentations already form lattice, even if there \sout{is} \felix{exists} a cyclic ornamentation.
 In contrast, \cref{thm:MacNeille} still holds for the directed graph~$\Tgraph$ of \cref{fig:ornamentationsKT}.
 In general, we have no description of the MacNeille completion of the acyclic ornamentation lattice of an arbitrary directed graph.
 %
