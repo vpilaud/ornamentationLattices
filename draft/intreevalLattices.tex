@@ -2213,7 +2213,7 @@ See \cref{coro:starredCharacterizations} for a summary.
 The following conditions are equivalent for a directed tree~$T$ on~$V$:
 \begin{enumerate}[(i)]
 \item $\tc(T)$ contains an induced alternating cycle,
-\item there are distinct $a,b,c,d,e \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$, and~$(c,e)$ are all in~$\tc(T)$,
+\item there are distinct $a,b,c,d,e \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$, and~$(c,e)$ are all in~$\tc(T)$, \Felix{We need to ask that $a$ and $b$ are not comparable in $T$ and that $d$ and $e$ are not comparable in $T$. Otherwise, a tree that is an interval can be starred accroding to this definition.}
 \item there are~$u,v \in V$ such that~$u$ has at least two incoming edges in~$T$, $v$ has at least two outgoing edges in~$T$, and $T$ has a directed path from~$u$ to~$v$,
 \end{enumerate}
 \end{lemma}
@@ -2231,7 +2231,7 @@ Hence, the edge~$(d_1,u_k)$ is an edge of the path from~$d_i$ to~$u_i$ in~$T$.
 We conclude that~$C$ was not induced.
 
 Therefore, there is~$w \in V$ such that~$(d_1,w)$ and~$(w,u_k)$ are in~$\tc(T)$.
-Since~$C$ is induced, we obtain again an induced alternating cycle by replacing either~$d_1$ or~$u_k$ by~$w$ in~$C$,\Felix{What if $u_1 \leq_T w \leq_T d_{k-1}$. See the discord.} say~$u_k$ by symmetry.
+Since~$C$ is induced, we obtain again an induced alternating cycle by replacing either~$d_1$ or~$u_k$ by~$w$ in~$C$, say~$u_k$ by symmetry.
 By induction on the sum of the length of the paths between~$d_i$ and~$u_i$ in~$T$, we obtain that~$k = 2$ and that there is~$v \in V$ such that~$(d_1, v)$, $(d_2,v)$, $(v,u_1)$, and~$(v,w)$ are in~$\tc(T)$.
 As~$w$ is between~$d_1$ and~$u_2$, we also get~$(v,u_2) \in \tc(T)$.
 
