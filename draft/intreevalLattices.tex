@@ -2298,13 +2298,13 @@ Hence, neither the acyclic reorientation poset~$\AReori(\tc(T))$ nor the acyclic
 \begin{proof}
 Consider a starred tree~$T$, and let~$a,b,c,d,e$ be vertices of~$T$ as in \cref{lem:starredCharacterization}\,(ii).
 
-The reorientation~$R$ of~$\tc(T)$ defined by~$\rev(R) = \set{(w,d)}{a \le_T w <_T d} \cup \set{(w,e)}{b \le_T w < e}$ is transitively closed because~$d \not<_T e$ and~$e \not<_T d$, transitively coclosed because~$(u,w) \in \rev(R)$ implies~$(v,w) \in \rev(R)$ for any~$u <_T v <_T w$, and cyclic because~$a, d, b, c$ forms a directed cycle.
+The reorientation~$R$ of~$\tc(T)$ defined by~$\rev(R) = \set{(w,d)}{a \le_T w <_T d} \cup \set{(w,e)}{b \le_T w < e}$ is transitively closed because~$d \not<_T e$ and~$e \not<_T d$, transitively coclosed because~$(u,w) \in \rev(R)$ implies~$(v,w) \in \rev(R)$ for any~$u <_T v <_T w$, and cyclic because~\sout{$a, d, b, c$} \felix{a,e,b,d} forms a directed cycle.
 
-The ornamentation~$O = O_R$ of~$T$ with~$O(c) = \set{w}{a \le_T w <_T d}$, $O(e) = \set{w}{b \le_T w < e}$, and~$O(w) = \{w\}$ for all~$w \in V \ssm \{d,e\}$ is cyclic.
+The ornamentation~$O = O_R$ of~$T$ with~$O(c) = \set{w}{a \le_T w <_T d}$, $O(e) = \set{w}{b \le_T w < e}$, and~$O(w) = \{w\}$ for all~\sout{$w \in V \ssm \{d,e\}$} \felix{$w\in V \ssm \set{c}{a \le_T c <_T d \textit{ or } b \le_T c <_T e}$}  is cyclic.
 Indeed, consider any reorientation~$R'$ of~$\tc(T)$ such that~$O = O_{R'}$.
 We have~$(w,d) \in \rev(R')$ for all~$a \le_T w <_T d$ (because $w \in O(d)$) and similarly~$(w,e) \in \rev(R')$ for all~$b \le_T w <_T e$.
 Therefore~$(a,e) \notin \rev(R')$ (because~${a \notin O(e)}$ while~$(w,e) \in \rev(R')$ for all~$a <_T w <_T e$) and similarly~$(b,d) \notin \rev(R')$.
-We conclude that~$a, d, b, c$ forms a directed cycle in~$R'$ as well.
+We conclude that~~\sout{$a, d, b, c$} \felix{a,e,b,d} forms a directed cycle in~$R'$ as well.
 Hence, $O$ is cyclic.
 
 We conclude by~\cref{thm:MacNeille} that~$\AReori(\tc(T))$ and~$\ASour(\PP(T)) \simeq \AOrn(T)$ are not lattices.
@@ -2368,7 +2368,7 @@ Lattice quotients of acyclic reorientation lattices were studied in detail in~\c
 We can reformulate \cref{prop:AReoriLatticeUT,prop:AOrnLatticeUT,prop:AReori2AOrnLatticeMapUT} using the language of~\cite{Pilaud-acyclicReorientationLattices}: if~$T$ is an unstarred tree, then
 \begin{enumerate}
 \item the transitive closure~$\tc(T)$ is skeletal, and so~$\AReori(\tc(T))$ is an acyclic reorientation lattice,
-\item the ornamentation lattice~$\AReori(\tc(T))$ is (isomorphic to) the Tamari lattice of~$\tc(T)$ defined by the $\tc(T)$-sylvester congruence,
+\item the \sout{ornamentation} \felix{reorientation} lattice~$\AReori(\tc(T))$ is (isomorphic to) the Tamari lattice of~$\tc(T)$ defined by the $\tc(T)$-sylvester congruence,
 \item the path hypergraphic polytope~$\simplex_{\PP(T)}$ is the $\tc(T)$-associahedron.
 \end{enumerate}
 \end{remark}
