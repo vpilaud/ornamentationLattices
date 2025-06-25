@@ -2875,7 +2875,7 @@ If~$\ASour(\II)$ were a lattice, we therefore must have an acyclic sourcing~$S_G
 \[
 S_A < S_G
 \qquad
-S_B < S_D
+\text{\sout{$S_B < S_D$} } \felix{S_B < S_G}
 \qquad
 S_G < S_C
 \qquad
@@ -2944,7 +2944,7 @@ Note that~$S$ is cyclic since it contains the cycle~$u_1, v_1, u_2, v_2, \dots, 
 Observe also that for any~$i \in [p]$ and any~$I \in \II$,
 \begin{itemize}
 \item $S^i(I) = S(I)$ except if~$\{u_i, v_{i-1}\} \subseteq I$ in which case we have~$S^i(I) = u_i < v_{i-1} = S(I)$,
-\item $T^i(I) = S(I)$ except if~$\{u_i, v_i\} \subseteq I$ in which case we have~$T^i(I) = v_i < u_i = S(I)$.
+\item $T^i(I) = S(I)$ except if~$\{u_i, v_i\} \subseteq I$ in which case we have~\sout{$T^i(I) = v_i < u_i = S(I)$} \felix{$S(I) = u_i < v_i = T^i(I)$}.
 \end{itemize}
 In particular, we obtain that~$S^i < S < T^i$ for all~$i \in [p]$.
 
@@ -3013,10 +3013,10 @@ In other words, we have
 \item $w_i \in I_{i+1} \ssm \{w_{i+1}\}$ for all~$i \in [p]$ (because~$I_1, \dots, I_p$ form a cycle in~$S$), and
 \item $w_i \in I_j \iff j \in \{i,i+1\}$ for all~$i,j \in [p]$ (because this cycle is minimal).
 \end{enumerate}
-Moreover, we can assume that there is no sourcing~$S' < S$ with a a minimal cycle of length at least~$3$.
-We also denote by~$w'_i$ the first vertex along the path joining~$w_i$ to~$w_{i+1}$ in~$T$.
+Moreover, we can assume that there is no sourcing~$S' < S$ with a minimal cycle of length at least~$3$.
+We also denote by~$w'_i$ the first vertex along the path joining~$w_i$ to~$w_{i+1}$ in~$T$.\Felix{This is not the definition of $w_i'$ that we want.}
 
-As~$I_{i+2} \cup I_{i+3} \cup \dots \cup I_{i-2} \cup I_{i-1}$ is connected by~(a) and contains both~$w_{i-1}$ and~$w_{i+1}$ but not~$w_i$ by~(b), the (not necessarily directed) path joining~$w_{i-1}$ to~$w_{i+1}$ in~$T$ cannot contain~$w_i$.
+As~\sout{$I_{i+2} \cup I_{i+3} \cup \dots \cup I_{i-2} \cup I_{i-1}$}\Felix{Not sure how I should interpret this union with the labelling of the $I_j$'s} \felix{$I_1 \cup I_2 \cup \cdots \cup I_{i-1} \cup I_{i+2} \cup I_{i+3} \cup  \cdots \cup I_{p-1} \cup I_p$ } is connected by~(a) and contains both~$w_{i-1}$ and~$w_{i+1}$ but not~$w_i$ by~(b), the (not necessarily directed) path joining~$w_{i-1}$ to~$w_{i+1}$ in~$T$ cannot contain~$w_i$.
 Hence, the paths from~$w_i$ to~$w_{i-1}$ and to~$w_{i+1}$ respectively share their first vertex, which we denote by~$w'_i$.
 Since~$w_i$ and~$w_{i+1}$ both belong to the path~$I_{i+1}$, they are connected by a directed path in~$T$.
 We thus obtain that the vertices~$w_1, \dots, w_p$ form an alternating cycle in~$\tc(T)$, and thus that~$p = 2q$.
