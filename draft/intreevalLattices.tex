@@ -38,7 +38,7 @@
 \author{F\'elix G\'elinas}
 \address[F.~G\'elinas]{Department of Mathematics and Statistics, York University, Toronto}
 \email{felixgel@yorku.ca}
-\urladdr{https://sites.google.com/view/felixgelinas}
+\urladdr{https://felixgelinas.github.io/}
 
 \author{Vincent Pilaud}
 \address[V.~Pilaud]{Universitat de Barcelona \& Centre de Recerca Matemàtica, Barcelona}
@@ -1610,8 +1610,8 @@ Finally, we describe the MacNeille completions of the acyclic reorientation pose
 \label{subsec:basicObservationsT}
 
 Let~$T$ be a directed tree on~$V$.
-For~$u,v \in V$, we write~$u \le_T v$ if there is a directed path from~$u$ to~$v$ in~$T$. %, and we write~$[u,v]_T$ for this path.
-We denote by~$\lessin{T}{w} \eqdef \set{u \in V}{u \le_T v}$ the set of vertices which admit a directed path towards~$v$ in~$T$.
+For~$u,v \in V$, we write~$u \le_T v$ if there is a (unique) directed path from~$u$ to~$v$ in~$T$. %, and we write~$[u,v]_T$ for this path.
+We denote by~$\lessin{T}{v} \eqdef \set{u \in V}{u \le_T v}$ the set of vertices which admit a directed path towards~$v$ in~$T$.
 We begin with a few observations.
 
 \begin{lemma}
@@ -1620,7 +1620,8 @@ If~$T$ is a directed tree, and~$U,U' \in \Orn(v \in T)$, then~$U \cap U' \in \Or
 \end{lemma}
 
 \begin{proof}
-In a directed tree, the ornaments are precisely the directed paths, and the intersection of two directed paths is a directed path.
+\jose{\sout{In a directed tree, the ornaments are precisely the directed paths, and the intersection of two directed paths is a directed path.}}\Jose{The first claim is not true if there is a vertex with in-degree at least $2$}
+In a directed tree, a nonempty subset $U \subseteq \lessin{T}{v}$ is an ornament if and only if for all $u \in U$, the (vertex set of the) unique path from $u$ to $v$ in $T$ is contained in $U$. This property is closed under intersection.
 \end{proof}
 
 \begin{corollary}
@@ -1688,12 +1689,12 @@ Finally, we will need the following convenient statement.
 
 \begin{lemma}
 \label{lem:Reori2OrnT}
-For a directed tree~$T$ and an acyclic reorientation~$R$ of~$\tc(T)$, we have~$u \in \orn{R}(v)$ if and only if~$(u',v) \in \rev(R)$ for all~$u \le_T u' \le_T v$.
+For a directed tree~$T$\jose{,\sout{ and}} an acyclic reorientation~$R$ of~$\tc(T)$\jose{ and vertices $u \le_T v$}, we have~$u \in \orn{R}(v)$ if and only if~$(u',v) \in \rev(R)$ for all~$u \le_T u' \le_T v$.
 \end{lemma}
 
 \begin{proof}
-Since~$T$ is a directed tree, its ornaments are directed paths.
-Since~$R$ is acyclic, there is a directed path from~$u$ to~$v$ in~$\rev(R)$ if and only if~$(u,v) \in \rev(R)$.
+\jose{\sout{Since~$T$ is a directed tree, its ornaments are directed paths.}}
+Since~$R$ is acyclic, \jose{for any $u \le_T v$,} there is a directed path from~$u$ to~$v$ in~$\rev(R)$ if and only if~$(u,v) \in \rev(R)$.
 By \cref{def:Reori2Orn}, $\orn{R}(v)$ is the maximal ornament of~$T$ at~$v$ contained in the subset of vertices~$u \in V$ with a directed path to~$v$ in $\rev(R)$.
 Hence, $u \in \orn{R}(v)$ if and only if~$u' \in \rev(R)$ for all~$u'$ along the path from~$u$ to~$v$ in~$T$.
 \end{proof}
@@ -1850,14 +1851,14 @@ Moreover,
 
 Note that in a finite join semidistributive lattice~$L$, we can associate to any meet irreducible element~$m$ of~$L$ a join irreducible element~$\kappa_\join(m) \eqdef k_\join(m, m^\star)$ of~$L$.
 
-The \defn{meet semidistributivity}, the maps~$K_\meet$, $k_\meet$ and~$\kappa_\meet$, and the \defn{canonical meet representation}~$\CMR(x)$ are all defined dually.
+The \defn{meet semidistributivity} property, the maps~$K_\meet$, $k_\meet$ and~$\kappa_\meet$, and the \defn{canonical meet representation}~$\CMR(x)$ are all defined dually.
 A lattice~$L$ is \defn{semidistributive} if it is both meet and join semidistributive.
 In this case, the maps~$\kappa_\join$ and~$\kappa_\meet$ define inverse bijections between~$\MI$ and~$\JI$.
 
 \medskip
 We now consider semidistributivity in ornamentation lattices.
 We first describe the join and meet irreducible ornamentations of a directed tree~$T$.
-Recall that for~$v \in V$, we denote by $\lessin{T}{w} \eqdef \set{u \in V}{u \le_T v}$ the set of vertices which admit a directed path towards~$v$ in~$T$.
+Recall that for~$v \in V$, we denote by $\lessin{T}{v} \eqdef \set{u \in V}{u \le_T v}$ the set of vertices which admit a directed path towards~$v$ in~$T$.
 
 \begin{definition}
 \label{def:irreducibleOrnamentationsT}
@@ -1875,9 +1876,9 @@ For any~$P \in \PP(T)$, the maps~$J_P$ and~$M_P$ are both ornamentations of~$T$.
 \end{lemma}
 
 \begin{proof}
-It follows from \cref{exm:ornamentations}\,(iii) for~$J_P$.
+The claim for~$J_P$ follows from \cref{exm:ornamentations}\,(iii).
 Consider now~$u', v' \in V$ such that~$u' \in M_P(v')$.
-If~$u <_T v' \le_T v$, then~$M_P(u') = \lessin{T}{u'} \ssm \lessin{T}{u} \subseteq \lessin{T}{v'} \ssm \lessin{T}{u} = M_P(v')$.
+If~$u <_T v' \le_T v$, then~$M_P(u') = \lessin{T}{u'} \ssm \lessin{T}{u} \subseteq \lessin{T}{v'} \ssm \lessin{T}{u} = M_P(v')$; observe that the first equality holds even if $u \not\le_T u'$, since in this case $\lessin{T}{u'} \ssm \lessin{T}{u} = \lessin{T}{u'}$.\Jose{The first time I read this sentence it seemed to me that we were assuming that $u'$ is also in the path, so I added the extra clarification.}
 Otherwise, $M_P(u') \subseteq \lessin{T}{u'} \subseteq \lessin{T}{v'} = M_P(v')$.
 \end{proof}
 
@@ -2006,10 +2007,10 @@ Consider two transitively biclosed reorientations~$R_1$ and~$R_2$ of~$\tc(T)$.
 Let~$R$ be the reorientation of~$\tc(T)$ defined by~$\rev(R) = \tc(\rev(R_1) \cup \rev(R_2))$.
 
 The reorientation~$R$ is closed by definition, and we claim that it is also coclosed.
-Indeed, consider~$u,v,w \in V$ such that~$(u,v), (v,w) \in \tc(T)$ and~$(u,w) \in \rev(R)$.
+Indeed, consider~$u,v,w \in V$ such that~$(u,v), (v,w) \in \tc(T)$ and~$(u,w) \in \rev(R)$\jose{, we will show that either~$(u,v) \in \rev(R)$ or~$(v,w) \in \rev(R)$}.
 By definition of~$\rev(R)$, there is a path~$u = u_0, \dots, u_k = w$ such that~$(u_{i-1}, u_i) \in \rev(R_1) \cup \rev(R_2)$ for all~$i \in [k]$.
-As~$(u,v), (v,w) \in \tc(T)$ and~$T$ is a tree, there is~$i \in [k]$ such that~$(u_{i-1}, v)$ and~$(v, u_i)$ are in~$\tc(T)$.
-Assume by symmetry that~$(u_{i-1}, u_i) \in \rev(R_1)$.
+As~$(u,v), (v,w) \in \tc(T)$ and~$T$ is a tree, there is~$i \in [k]$ such that~\jose{\sout{$(u_{i-1}, v)$ and~$(v, u_i)$ are in~$\tc(T)$} $u_{i-1} \le_T v \le_T u_i$. If $v = u_{i-1}$ or $v = u_i$, the claim follows. Otherwise, 
+\sout{A}a}ssume by symmetry that~$(u_{i-1}, u_i) \in \rev(R_1)$.
 Since~$R_1$ is coclosed, either~$(u_{i-1}, v) \in \rev(R_1)$ or~$(v, u_i) \in \rev(R_1)$.
 We thus obtain that either~$(u,v) \in \rev(R)$ or~$(v,w) \in \rev(R)$, hence that~$R$ is indeed coclosed.
 
@@ -2065,7 +2066,7 @@ We first briefly recall the definition of the MacNeille completion of a poset.
 
 \begin{definition}
 \label{def:MacNeilleCompletion}
-A \defn{completion} of a finite poset~$P$ is a lattice~$L$ such that there is an order-embedding~$f : P \to L$ (meaning that~$x \le_P y$ if and only if~$f(x) \le_L f(y)$).
+A \defn{completion} of a finite poset~$P$ is a lattice~$L$ such that there is an order-embedding~$f : P \to L$ (meaning that \jose{ $f$ is injective and}~$x \le_P y$ if and only if~$f(x) \le_L f(y)$).
 The MacNeille completion~$C(P)$ of~$P$ is the smallest completion of~$P$, meaning that for any completion~$L$ of~$P$, there exists an order-embedding from~$C(P)$ to~$L$.
 \end{definition}
 
@@ -2093,7 +2094,7 @@ If~$R$ is a transitively biclosed and cyclic reorientation of~$\tc(T)$, then it 
 \begin{proof}
 As~$R$ contains a cycle, it contains an induced oriented cycle~$C$ (any chord can be used to make the cycle shorter).
 Since~$R$ is transitively biclosed, $C$ is an induced alternating cycle in~$\tc(T)$.
-Write~$C = (d_1, u_1, \dots, d_k, u_k)$ where~$(d_i, u_i)$ and~$(u_i, d_{i+1})$ are in~$\tc(T)$ for all~$i \in [k]$.
+Write~$C = (d_1, u_1, \dots, d_k, u_k)$ where~$(d_i, u_i)$ and~\jose{\sout{$(u_i, d_{i+1})$} $(d_{i+1},u_i)$} are in~$\tc(T)$\Jose{or (if we don't make the previous change), are in $R$} for all~$i \in [k]$.
 We can moreover assume without loss of generality that for~$i \in [k]$ and any incoming neighbor~$u'$ of~$u_i$  (resp.~outgoing neighbor~$d'$ of~$d_i$) in~$R$, replacing~$u_i$ by~$u'$ (resp.~$d_i$ by~$d'$) in~$C$ does not yield an induced oriented cycle in~$R$.
 %We can assume moreover without loss of generality that~$C$ is of maximal amplitude, meaning that we cannot replace some~$d_i$ by~$d'$ for some~$(d',d_i) \in \tc(T)$ nor some~$u_i$ by~$u'$ for some~$(u_i,u') \in \tc(T)$ and still obtain an induced alternating cycle in~$R$.
 %In particular, there is no~$u' \in V$ such that~$(u_i, u') \in \rev(R)$ and~$(d_i,u') \notin \rev(R)$ for some~$i \in [k]$ and no~$d' \in V$ such that~$(d',d_i) \in \rev(R)$ and~$(d',u_i) \notin \rev(R)$ for some~$i \in [k]$.
@@ -2124,7 +2125,7 @@ This is impossible as the last edge of this path would be in~$\rev(\reori{J_P})$
 
 Observe that~$\tc(T) \ssm \rev(\reori{M_P}) = \lessin{T}{u} \times (P \ssm \{u\})$.
 Any cycle in~$\reori{M_P}$ should have an edge of $\tc(T) \ssm \rev(\reori{M_P})$, hence a vertex in~$\lessin{T}{u}$ and a vertex in~$P \ssm \{u\}$.
-This is impossible as there is no edge of~$\reori{M_P}$ leaving~$P \ssm \{u\}$ \Felix{and arriving in $\lessin{T}{u}$}\Vincent{I stand with my version.}.
+This is impossible as there is no edge of~$\reori{M_P}$ leaving~$P \ssm \{u\}$ \Felix{and arriving in $\lessin{T}{u}$}\Vincent{I stand with my version.} \Jose{I agree with Félix: those $w \le_T v$ that are not in the path $P$ nor below $u$ correspond to arrows $(w,v) \in \rev(\reori{M_P})$}.
 \end{proof}
 
 \begin{corollary}
