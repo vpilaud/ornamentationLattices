@@ -267,12 +267,12 @@ A sourcing~$S$ of~$\HH$ is \defn{acyclic} if there is no directed cycle in the d
 The \defn{(acyclic) sourcing poset} of~$\HH$ is the poset of (acyclic) sourcings of~$\HH$ ordered by componentwise comparison, meaning~$S \le S'$ if and only if~$S(H) \le S'(H)$ for all~$H \in \HH$.
 While the sourcing poset~$\Sour(\HH)$ is clearly a lattice (as a product of intervals), the acyclic sourcing poset~$\ASour(\HH)$ is not always a lattice.
 %When~$\HH$ is the hypergraph of all intervals of~$[n]$, the acyclic sourcing poset~$\Sour(\HH)$ is the Tamari lattice.
-The question to characterize the hypergraphs~$\HH$ whose acyclic sourcing posets~$\ASour(\HH)$ are lattices has been studied for specific families of hypergraphs, notably for graphs~\cite{Pilaud-acyclicReorientationLattices}, for interval hypergraphs~\cite{BergeronPilaud}, and (partially for) graph associahedra~\cite{BarnardMcConville}.
+The question to characterize the hypergraphs~$\HH$ whose acyclic sourcing poset~$\ASour(\HH)$ is a lattices has been studied for specific families of hypergraphs, notably for graphs~\cite{Pilaud-acyclicReorientationLattices}, for interval hypergraphs~\cite{BergeronPilaud}, and (partially for) graph associahedra~\cite{BarnardMcConville}.
 In this paper, we will consider the family of hypergraphs arising as the collection of paths in a directed graph, and study their acyclic sourcing posets from a lattice theoretic perspective.
 
 Let~$(\b{e}_v)_{v \in [n]}$ denote the standard basis of~$\R^n$.
 The \defn{hypergraphic polytope} of~$\HH$ is the Minkowski sum~$\simplex_\HH \eqdef \sum_{H \in \HH} \simplex_H$, where~$\simplex_H \eqdef \conv\set{\b{e}_h}{h \in H}$ denotes the face of the standard simplex indexed by the hyperedge~$H$.
-The face lattice of~$\simplex_\HH$ was described combinatorially in terms of acyclic orientations of~$\HH$ in~\cite{BenedettiBergeronMachacek}.
+The face lattice of~$\simplex_\HH$ was described combinatorially in terms of acyclic orientations\Jose{should we say "sourcings" here?} of~$\HH$ in~\cite{BenedettiBergeronMachacek}.
 In particular, it is proved in~\cite{Gelinas} that the acyclic sourcing poset~$\ASour(\HH)$ is the transitive closure of the graph of the hypergraphic polytope~$\simplex_\HH$, oriented in the standard direction~$\b{\omega} \eqdef (n-1, n-3, \dots, 3-n, 1-n)$.
 
 For instance, 
@@ -300,7 +300,7 @@ Among all these congruences, the \defn{sylvester congruence} yields the \defn{Ta
 The later is obtained by deleting inequalities in the facet description of the graphical zonotope of~$E$.
 
 \pagebreak
-For instance, when~$E = K_n$ is the complete graph,
+For instance, when~$E = K_n$ is the complete graph, \Jose{We used $\binom{[n]}{2}$ for the complete graph before (though it was in the context of hypergraphs), should we use the same notation in both places?}
 \begin{itemize}
 \item $\simplex_E$ is the permutahedron and~$\AReori(E)$ is the weak order,
 \item the associahedron of~$E$ is the associahedron of~\cite{ShniderSternberg,Loday} and the Tamari lattice of~$E$ is the Tamari lattice.
@@ -392,7 +392,7 @@ For any increasing tree~$T$ on~$[n]$,
 
 We then consider, in \cref{sec:unstarredTrees}, a special class of increasing trees containing, in particular, all rooted trees.
 A tree~$T$ is \defn{unstarred} if there are no vertices~$u,v$ of~$T$ such that~$u$ has at least two incoming edges in~$T$, $v$ has at least two outgoing edges in~$T$, and $T$ has a directed path from~$u$ to~$v$.
-For these trees, the acyclic sourcing poset and ornamentation lattice are even closer.
+For these trees, the relation between its acyclic sourcing poset and ornamentation lattice is even stronger.
 
 \pagebreak
 \begin{theorem}
@@ -406,7 +406,7 @@ For an unstarred increasing tree~$T$,
 \end{enumerate}
 \end{theorem}
 
-Note that \cref{thm:main2}\,\eqref{item:polytopalRealization} answers a question opened in~\cite{DefantSack} for rooted trees.
+Note that \cref{thm:main2}\,\eqref{item:polytopalRealization} answers a question posed in~\cite{DefantSack} for rooted trees.
 This question remains open beyond the case of unstarred trees.
 We state it as a conjecture.
 
@@ -426,7 +426,7 @@ While much weaker than the lattice map condition (which requires instead that~$S
 In \cref{sec:intreevalHypergraphicPosets}, we extend this characterization to intreeval hypergraphs.
 An \defn{intreeval hypergraph} of an increasing tree~$T$ on~$[n]$ is any subhypergraph~$\II$ of the path hypergraph~$\PP(T)$, meaning any collection of (vertex sets of) directed paths in~$T$.
 Unfortunately, even when $\ASour(\II)$ is a lattice, the map~$\pi \mapsto \asour{\pi}$ from permutations of~$[n]$ to acyclic sourcings of~$\II$ is not necessarily a quasi-lattice map anymore (its fibers are not intervals in general).
-Moreover, we can neither use the map~$R \mapsto \asour{R}$ from acyclic reorientations of~$\tc(T)$ to acyclic sourcings of~$\II$ as the acyclic reorientation poset~$\AReori(\tc(T))$ is not a lattice in general, in contrast to the situation of~\cref{thm:main2}.
+Moreover, it is also not possible to use the map~$R \mapsto \asour{R}$ from acyclic reorientations of~$\tc(T)$ to acyclic sourcings of~$\II$, as the acyclic reorientation poset~$\AReori(\tc(T))$ is not a lattice in general, in contrast to the situation of~\cref{thm:main2}.
 We use instead a natural quasi-lattice map from the ornamentation lattice~$\Orn(T)$ to the acyclic sourcing poset~$\ASour(\II)$ to obtain the following complete characterization.
 
 \begin{theorem}
@@ -436,7 +436,7 @@ The acyclic sourcing poset~$\ASour(\II)$ is a lattice if and only if $\II$ is pa
 \end{theorem}
 
 Path intersection closedness and star sparsity are slightly technical conditions whose details are defered to \cref{sec:intreevalHypergraphicPosets}.
-When~$T$ is a path, path intersection closedness boils down to intersection closedness, and star sparsity always holds, hence we recover~\cite[Thm.~A]{BergeronPilaud}.
+When~$T$ is a path, path intersection closedness boils down to intersection closedness, and star sparsity always holds, hence \cref{thm:main3} generalizes~\cite[Thm.~A]{BergeronPilaud}.
 Note that intersection closedness implies path intersection closedness (but is stronger in general, except when~$T$ is a path), and that star sparsity always holds for rooted trees.
 In particular, the acyclic sourcing poset~$\ASour(\II)$ of any intersection closed intreeval hypergraph~$\II$ of a rooted~tree~is~a~lattice.
 
@@ -495,6 +495,7 @@ We denote by~$\Orn(v \in D)$ the set of ornaments at a vertex~$v$ of~$D$ and by~
 \end{definition}
 
 In our pictures, we represent an ornamentation~$O$ of~$D$ by drawing a bubble around~$O(v)$ of the same color as~$v$ for each~$v \in V$.
+Alternatively, each bubble is an ornament at the largest vertex it contains.\Jose{I added this sentence to have a color-independent explanation of the pictures}
 See \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX,fig:ornamentationsD,fig:ornamentationsKT}.
 
 \begin{example}
@@ -503,7 +504,7 @@ We can clearly define different ornamentations by
 \begin{enumerate}[(i)]
 \item sending each vertex~$v \in V$ to the singleton~$\{v\}$, 
 \item sending each vertex~$v \in V$ to the set~$\lessin{D}{v}$ of vertices with a path to~$v$ in~$D$,
-\item for any vertex~$v \in V$ and ornament~$U \in \Orn(v \in D)$, sending~$v$ to~$U$ and any other vertex~${u \in V \ssm \{v\}}$ to the singleton~$\{u\}$.
+\item given a vertex~$v \in V$ and an ornament~$U \in \Orn(v \in D)$, sending~$v$ to~$U$ and any other vertex~${u \in V \ssm \{v\}}$ to the singleton~$\{u\}$.
 \end{enumerate}
 \end{example}
 
@@ -569,7 +570,7 @@ The minimal ornamentation of~$D$ sends each vertex~$v \in V$ to the singleton~$\
 
 \begin{example}
 The ornamentation lattice of the graph with a single edge is a $2$-element chain.
-The ornamentation lattice of a graph with no path of length $2$ is a boolean lattice (see \eg \cref{fig:ornamentationsNI}\,(left) and \ref{fig:ornamentationsKT}\,(right)).
+More generally, the ornamentation lattice of a graph with no path of length $2$ is a boolean lattice (see \eg \cref{fig:ornamentationsNI}\,(left) and \ref{fig:ornamentationsKT}\,(right)).
 %In general, the ornamentation lattice~$\Orn(D \sqcup D')$ of the disjoint union of two directed graphs~$D$ and~$D'$ is the Cartesian product~$\Orn(D) \times \Orn(D')$ of the ornamentation lattices of~$D$ and~$D'$
 In fact, the boolean lattices are the only distributive ornamentation lattices.
 \end{example}
@@ -657,6 +658,7 @@ The isomorphism is identical to the construction of bracket vectors in~\cite{Hua
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%\pagebreak \Andrew{Do we need this pagebrak here? It's breaking the previous page.}
 \subsection{Reorientations}
 \label{subsec:reorientations}
 
@@ -814,7 +816,7 @@ For instance,
 \qquad\text{and}\qquad
 \includegraphics[scale=.8,valign=c]{cyclicReorientationX2}
 \]
-are cyclic biclosed reorientations of $\tc(\Xgraph)$.
+are cyclic biclosed reorientations of $\tc(\Xgraph)$, where $\Xgraph$ is the graph in \cref{fig:ornamentationsX}.
 We will see in \cref{prop:AReoriLatticeUT} that all transitively biclosed reorientations are acyclic when~$T$ is an unstarred tree.
 \end{remark}
 
@@ -1054,7 +1056,7 @@ The map~$O \mapsto \sour{O}$ is order-preserving.
 \begin{proof}
 Assume that~$O_1 \le O_2$, so that~$O_1(v) \subseteq O_2(v)$ for all~$v \in V$.
 Consider any path~$P \in \PP(D)$ from~$u$ to~$v$, and let~$w \eqdef \sour{O_1}(P)$.
-Then we have~$u \in O_1(w) \subseteq O_2(w)$, and so~$\sour{O_2}(u) \ge w$ by definition.
+Then we have~$u \in O_1(w) \subseteq O_2(w)$, and so~$\sour{O_2}(P) \ge w$ by definition.
 Therefore, $\sour{O_1}(P) \le \sour{O_2}(P)$ for any path~$P \in \PP(D)$, hence~${\sour{O_1} \le \sour{O_2}}$.
 \end{proof}
 
@@ -1304,7 +1306,7 @@ We now recall that there is such a surjection when focusing on acyclic reorienta
 
 \begin{definition}
 \label{def:AReori2ASour}
-For an acyclic reorientation~$R$ of~$\tc(D)$, we denote by~$\asour{R}$ the sourcing on~$\PP(D)$ where~$\asour{R}(P)$ is the source of~$P$ in~$R$, meaning the vertex~$u \in P$ such that~$(u,v) \in R$ for all~$v \in P \ssm \{u\}$ (it is well-defined since any path in~$D$ forms a clique in~$\tc(D)$).
+For an acyclic reorientation~$R$ of~$\tc(D)$, we denote by~$\asour{R}$ the sourcing on~$\PP(D)$ where~$\asour{R}(P)$ is the source of~$P$ in~$R$, meaning the vertex~$u \in P$ such that~$(u,v) \in R$ for all~$v \in P \ssm \{u\}$ (it is well-defined since any path in~$D$ induces a clique in~$\tc(D)$).
 \end{definition}
 
 \begin{lemma}
@@ -2115,15 +2117,13 @@ For any~$P \in \PP(T)$, the reorientations~$\reori{J_P}$ and~$\reori{M_P}$ of~$\
 \end{lemma}
 
 \begin{proof}
-Let~$u \le_T v$ be the endpoints of the directed path~$P$.
+Observe that~\sout{$\rev(J_P)$} $\felix{\rev(\reori{J_P})}= (P \ssm \{v\}) \times \{v\}$.
+Hence, any induced cycle in~$\reori{J_P}$ must consist of an edge~$(v,y)$ and a directed path from~$y$ to~$v$ in~$T$ for some~$u \le_T y \le_T v$.
+This is impossible as the last edge of this path would be in~\sout{$\rev(J_P)$} $\felix{\rev(\reori{J_P})}$. \Felix{I don't think we need the variable $u$ here.}
 
-Observe that~$\rev(\reori{J_P})= (P \ssm \{v\}) \times \{v\}$.
-Hence, any induced cycle in~$\reori{J_P}$ must consist of an edge~$(v,y)$ and a directed path from~$y$ to~$v$ in~$T$ for some~$y \in P$.
-This is impossible as the last edge of this path would be in~$\rev(\reori{J_P})$.
-
-Observe that~$\tc(T) \ssm \rev(\reori{M_P}) = \lessin{T}{u} \times (P \ssm \{u\})$.
-Any cycle in~$\reori{M_P}$ should have an edge of $\tc(T) \ssm \rev(\reori{M_P})$, hence a vertex in~$\lessin{T}{u}$ and a vertex in~$P \ssm \{u\}$.
-This is impossible as there is no edge of~$\reori{M_P}$ leaving~$P \ssm \{u\}$ \Felix{and arriving in $\lessin{T}{u}$}\Vincent{I stand with my version.}.
+Observe that~$\tc(T) \ssm$ \sout{$\rev(M_P)$} $\felix{\rev(\reori{M_P})} = \lessin{T}{u} \times (P \ssm \{u\})$.
+Any cycle in~$\reori{M_P}$ should have an edge of $\tc(T) \ssm$ \sout{$\rev(J_P)$} $\felix{\rev(\reori{M_P})}$, hence a vertex in~$\lessin{T}{u}$ and a vertex in~$P \ssm \{u\}$.
+This is impossible as there is no edge of~$\reori{M_P}$ leaving~$P \ssm \{u\}$ \felix{and arriving in $\lessin{T}{u}$}.
 \end{proof}
 
 \begin{corollary}
@@ -2212,7 +2212,7 @@ See \cref{coro:starredCharacterizations} for a summary.
 The following conditions are equivalent for a directed tree~$T$ on~$V$:
 \begin{enumerate}[(i)]
 \item $\tc(T)$ contains an induced alternating cycle,
-\item there are distinct $a,b,c,d,e \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$, and~$(c,e)$ are all in~$\tc(T)$, \Felix{We need to ask that $a$ and $b$ are not comparable in $T$ and that $d$ and $e$ are not comparable in $T$. Otherwise, a tree that is an interval can be starred accroding to this definition.}\Vincent{You are totally right!}
+\item there are distinct $a,b,c,d,e \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$, and~$(c,e)$ are all in~$\tc(T)$, \Felix{We need to ask that $a$ and $b$ are not comparable in $T$ and that $d$ and $e$ are not comparable in $T$. Otherwise, a tree that is an interval can be starred accroding to this definition.}
 \item there are~$u,v \in V$ such that~$u$ has at least two incoming edges in~$T$, $v$ has at least two outgoing edges in~$T$, and $T$ has a directed path from~$u$ to~$v$,
 \end{enumerate}
 \end{lemma}
@@ -2297,15 +2297,13 @@ Hence, neither the acyclic reorientation poset~$\AReori(\tc(T))$ nor the acyclic
 \begin{proof}
 Consider a starred tree~$T$, and let~$a,b,c,d,e$ be vertices of~$T$ as in \cref{lem:starredCharacterization}\,(ii).
 
-The reorientation~$R$ of~$\tc(T)$ defined by~$\rev(R) = \set{(w,d)}{a \le_T w <_T d} \cup \set{(w,e)}{b \le_T w < e}$ is transitively closed because~$d \not<_T e$ and~$e \not<_T d$, transitively coclosed because~$(u,w) \in \rev(R)$ implies~$(v,w) \in \rev(R)$ for any~$u <_T v <_T w$, and cyclic because~$a, d, b, e$ forms a directed cycle.
-\Vincent{I use $a,d,b,e$}
+The reorientation~$R$ of~$\tc(T)$ defined by~$\rev(R) = \set{(w,d)}{a \le_T w <_T d} \cup \set{(w,e)}{b \le_T w < e}$ is transitively closed because~$d \not<_T e$ and~$e \not<_T d$, transitively coclosed because~$(u,w) \in \rev(R)$ implies~$(v,w) \in \rev(R)$ for any~$u <_T v <_T w$, and cyclic because~\sout{$a, d, b, c$} \felix{a,e,b,d} forms a directed cycle.
 
-The ornamentation~$O = O_R$ of~$T$ with~$O(d) = \set{w}{a \le_T w <_T d}$, $O(e) = \set{w}{b \le_T w <_T e}$, and~$O(w) = \{w\}$ for all~$w \in V \ssm \{d,e\}$ \Felix{$w\in V \ssm \set{c}{a \le_T c <_T d \textit{ or } b \le_T c <_T e}$}\Vincent{I need to define $O(w)$ for all~$w$...}  is cyclic.
+The ornamentation~$O = O_R$ of~$T$ with~$O(c) = \set{w}{a \le_T w <_T d}$, $O(e) = \set{w}{b \le_T w < e}$, and~$O(w) = \{w\}$ for all~\sout{$w \in V \ssm \{d,e\}$} \felix{$w\in V \ssm \set{c}{a \le_T c <_T d \textit{ or } b \le_T c <_T e}$}  is cyclic.
 Indeed, consider any reorientation~$R'$ of~$\tc(T)$ such that~$O = O_{R'}$.
 We have~$(w,d) \in \rev(R')$ for all~$a \le_T w <_T d$ (because $w \in O(d)$) and similarly~$(w,e) \in \rev(R')$ for all~$b \le_T w <_T e$.
 Therefore~$(a,e) \notin \rev(R')$ (because~${a \notin O(e)}$ while~$(w,e) \in \rev(R')$ for all~$a <_T w <_T e$) and similarly~$(b,d) \notin \rev(R')$.
-We conclude that~$a, d, b, e$ forms a directed cycle in~$R'$ as well.
-\Vincent{I use $a,d,b,e$}
+We conclude that~~\sout{$a, d, b, c$} \felix{a,e,b,d} forms a directed cycle in~$R'$ as well.
 Hence, $O$ is cyclic.
 
 We conclude by~\cref{thm:MacNeille} that~$\AReori(\tc(T))$ and~$\ASour(\PP(T)) \simeq \AOrn(T)$ are not lattices.
@@ -2369,7 +2367,7 @@ Lattice quotients of acyclic reorientation lattices were studied in detail in~\c
 We can reformulate \cref{prop:AReoriLatticeUT,prop:AOrnLatticeUT,prop:AReori2AOrnLatticeMapUT} using the language of~\cite{Pilaud-acyclicReorientationLattices}: if~$T$ is an unstarred tree, then
 \begin{enumerate}
 \item the transitive closure~$\tc(T)$ is skeletal, and so~$\AReori(\tc(T))$ is an acyclic reorientation lattice,
-\item the reorientation lattice~$\AReori(\tc(T))$ is (isomorphic to) the Tamari lattice of~$\tc(T)$ defined by the $\tc(T)$-sylvester congruence,
+\item the \sout{ornamentation} \felix{reorientation} lattice~$\AReori(\tc(T))$ is (isomorphic to) the Tamari lattice of~$\tc(T)$ defined by the $\tc(T)$-sylvester congruence,
 \item the path hypergraphic polytope~$\simplex_{\PP(T)}$ is the $\tc(T)$-associahedron.
 \end{enumerate}
 \end{remark}
@@ -2377,7 +2375,7 @@ We can reformulate \cref{prop:AReoriLatticeUT,prop:AOrnLatticeUT,prop:AReori2AOr
 \begin{remark}
 It might seem more natural to use the map~$\fS_n \to \ASour(\PP(T))$ defined by~$\pi \mapsto \asour{\areori{\pi}}$ instead of the map~$\AReori(\tc(T)) \to \ASour(\PP(T))$ defined by~$R \mapsto \asour{R}$.
 However, the former is not always a lattice map, while the latter is.
-For instance, the fiber of the acyclic sourcing identified with the ornamentation
+For instance, the fiber of the ornamentation \Andrew{Should we be more explicit by saying something like ``the acyclic sourcing identified with the ornamentation''?}
 \[
 \includegraphics[scale=.8,valign=c]{ornamentationV}
 \]
@@ -2583,8 +2581,8 @@ We conclude that~$B_2 = C^3 (1+y \, C)$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}
-	\centerline{\includegraphics[scale=.8]{broomsCombs}}
-	\caption{The $(2,4)$-, $(3,3)$- and $(4,2)$-brooms (left) and the $1$-, $2$-, $3$- and $4$-combs (right).}
+	\centerline{\includegraphics[scale=.68]{broomsCombs}}
+	\caption{The $(2,4)$-, $(3,3)$- and $(4,2)$-brooms (left) and the $1$-, $2$- and $3$-combs (right).}
 	\label{fig:broomsCombs}
 \end{figure}
 
@@ -2600,7 +2598,7 @@ The \defn{$n$-comb} is the rooted tree obtained by attaching a node (called \def
 \end{definition}
 
 %To fix a convention, let us denote by~$1, \dots, n$ the teeth and by~$n+1, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+n$ if~$1 \le i \le n$ and~$i+1$ if~$n < i < 2n$ (the node~$2n$ is the root).
-To fix a convention, let us denote by~$1, \dots, 2n-1$ the teeth and by~$2, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+1$ if~$i$ is odd and~$i+2$ if~$i$ is even (except the node~$2n$ which is the root).
+To fix a convention, let us denote by~$1, \dots, 2n-1$ the teeth and by~$2, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+1$ if~$i$ is odd and~\sout{$i+n$} \felix{$i+2$} \Felix{Pointer} if~$i$ is even (except the node~$2n$ which is the root).
 See \cref{fig:broomsCombs}.
 
 \begin{remark}
@@ -2874,13 +2872,13 @@ S_B < S_D.
 
 If~$\ASour(\II)$ were a lattice, we therefore must have an acyclic sourcing~$S_G$ of~$\II$ such that
 \[
-S_A \le S_G
+S_A < S_G
 \qquad
-S_B \le S_G
+\text{\sout{$S_B < S_D$} } \felix{S_B < S_G}
 \qquad
-S_G \le S_C
+S_G < S_C
 \qquad
-S_G \le S_D.
+S_G < S_D.
 \]
 Since~$S_G$ is acyclic and~$\pi \mapsto \asour{\pi}$ is surjective, there is a permutation~$\pi_G$ such that~$S_G = \asour{\pi}$.
 Let
@@ -2945,7 +2943,7 @@ Note that~$S$ is cyclic since it contains the cycle~$u_1, v_1, u_2, v_2, \dots, 
 Observe also that for any~$i \in [p]$ and any~$I \in \II$,
 \begin{itemize}
 \item $S^i(I) = S(I)$ except if~$\{u_i, v_{i-1}\} \subseteq I$ in which case we have~$S^i(I) = u_i < v_{i-1} = S(I)$,
-\item $T^i(I) = S(I)$ except if~$\{u_i, v_i\} \subseteq I$ in which case we have~$S(I) = u_i < v_i = T^i(I)$.
+\item $T^i(I) = S(I)$ except if~$\{u_i, v_i\} \subseteq I$ in which case we have~\sout{$T^i(I) = v_i < u_i = S(I)$} \felix{$S(I) = u_i < v_i = T^i(I)$}.
 \end{itemize}
 In particular, we obtain that~$S^i < S < T^i$ for all~$i \in [p]$.
 
@@ -3015,8 +3013,9 @@ In other words, we have
 \item $w_i \in I_j \iff j \in \{i,i+1\}$ for all~$i,j \in [p]$ (because this cycle is minimal).
 \end{enumerate}
 Moreover, we can assume that there is no sourcing~$S' < S$ with a minimal cycle of length at least~$3$.
+We also denote by~$w'_i$ the first vertex along the path joining~$w_i$ to~$w_{i+1}$ in~$T$.\Felix{This is not the definition of $w_i'$ that we want.}
 
-As~$\bigcup_{j \in [p] \ssm \{i,i+1\}} I_j$ is connected by~(a) and contains both~$w_{i-1} \in I_{i-1}$ and~$w_{i+1} \in I_{i+2}$ but not~$w_i$ by~(b), the (not necessarily directed) path joining~$w_{i-1}$ to~$w_{i+1}$ in~$T$ cannot contain~$w_i$.
+As~\sout{$I_{i+2} \cup I_{i+3} \cup \dots \cup I_{i-2} \cup I_{i-1}$}\Felix{Not sure how I should interpret this union with the labelling of the $I_j$'s} \felix{$I_1 \cup I_2 \cup \cdots \cup I_{i-1} \cup I_{i+2} \cup I_{i+3} \cup  \cdots \cup I_{p-1} \cup I_p$ } is connected by~(a) and contains both~$w_{i-1}$ and~$w_{i+1}$ but not~$w_i$ by~(b), the (not necessarily directed) path joining~$w_{i-1}$ to~$w_{i+1}$ in~$T$ cannot contain~$w_i$.
 Hence, the paths from~$w_i$ to~$w_{i-1}$ and to~$w_{i+1}$ respectively share their first vertex, which we denote by~$w'_i$.
 Since~$w_i$ and~$w_{i+1}$ both belong to the path~$I_{i+1}$, they are connected by a directed path in~$T$.
 We thus obtain that the vertices~$w_1, \dots, w_p$ form an alternating cycle in~$\tc(T)$, and thus that~$p = 2q$.
