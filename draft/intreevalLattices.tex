@@ -3076,7 +3076,7 @@ Hence~$\projDown{p}, \projDown{q} \le \projDown{p} \join \projDown{q} \le \projU
 Since~$f$ is order-preserving, we obtain that~$f(\projUp{p}) = p, f(\projUp{q}) = q \le f(\projDown{p} \join \projDown{q}) \le f(\projUp{r}) = r, f(\projUp{s}) = s$.
 This implies that~$p$ and~$q$ admit a join~$p \join q \le f(\projDown{p} \join \projDown{q})$.
 Moreover, as~$p, q \le p \join q$, we have~$\projDown{p}, \projDown{q} \le \projUp{p \join q}$, hence $\projDown{p} \join \projDown{q} \le \projUp{p \join q}$.
-Since~$f$ is order-[reserving, we obtain that~$f(\projDown{p} \join \projDown{q}) \le f(\projUp{p \join q}) = p \join q$.
+Since~$f$ is order-preserving, we obtain that~$f(\projDown{p} \join \projDown{q}) \le f(\projUp{p \join q}) = p \join q$.
 We conclude that~$p \join q = f(\projDown{p} \join \projDown{q})$.
 The proof for the meet is symmetric.
 \end{proof}
@@ -3184,10 +3184,10 @@ We thus obtain that~$\minorn{S}{I}(v) \subseteq O(v)$.
 \item If~$S(I) < v \in I$, we have~$\min(I) \in O(S(I)) \ssm O(v)$ by definition of~$\sour{O}^\II = S$, hence~$(I \cap [S(I)]) \cap O(v) = \varnothing$ since~$O$ is an ornamentation.
 We thus obtain that~$O(v) \subseteq \maxorn{S}{I}(v)$.
 \end{itemize}
-In all cases, $\minorn{S}{I}(v) \subseteq O(v) \le \maxorn{S}{I}(v)$ for any~$v \in [n]$ and~$I \in \II$.
-We conclude that~$\minorn{S}{\II} \subseteq O \le \maxorn{S}{\II}$.
+In all cases, \sout{$\minorn{S}{I}(v) \subseteq O(v) \le \maxorn{S}{I}(v)$} \felix{$\minorn{S}{I}(v) \subseteq O(v) \subseteq \maxorn{S}{I}(v)$} for any~$v \in [n]$ and~$I \in \II$.
+We conclude that~\sout{$\minorn{S}{I}(v) \subseteq O(v) \le \maxorn{S}{I}(v)$} \felix{$\minorn{S}{I}(v) \le O(v) \le \maxorn{S}{I}(v)$}.
 
-Conversely, consider an ornamentation~$O$ of~$T$ such that~$\minorn{S}{I} \subseteq O \le \maxorn{S}{I}$ and let~$I \in \II$ and~$v \eqdef S(I)$. Then
+Conversely, consider an ornamentation~$O$ of~$T$ such that~$\minorn{S}{I} \subseteq O \le \maxorn{S}{I}$\Felix{We want $\le$ of $\subseteq$ here?} and let~$I \in \II$ and~$v \eqdef S(I)$. Then
 \begin{itemize}
 \item As~$S(I) = v$, we have~$I \cap [v] \subseteq \minorn{S}{I}(v) \subseteq \minorn{S}{I} \subseteq O(v)$, hence~$v \le \sour{O}^\II(I)$ by definition~of~$\sour{O}^\II$.
 \item Conversely, for any~$v < w \in I$, we have~$S(I) = v < w \in I$ and so~$O(w) \subseteq \maxorn{S}{\II}(w) \subseteq \maxorn{S}{I}(w) \subseteq \lessin{T}{w} \ssm (I \cap [v])$. Hence, $\min(I) \notin O(w)$, and so~$\sour{O}^\II(I) \ne w$. We thus obtain that~$\sour{O}^\II(I) \le v$
@@ -3245,7 +3245,7 @@ Let~$S$ be the sourcing defined by the formula of the statement.
 Assume by means of contradiction that~$S$ is cyclic.
 By \cref{prop:pathStarSparse}, there is~$I,J \in \II$ such that~$S(I) \in J \ssm \{S(J)\}$ and~$S(J) \in I \ssm \{S(I)\}$.
 Assume by symmetry that~$S(I) < S(J)$.
-As~$S(I) \in J$ and~$S(I) < S(J)$, there exists~$p \in [q]$ and~$K \in \II$ such that~$S_p(K) \in J$ and~$S(I) \in K$ and~$S(I) < S_p(K) \le S(J)$.
+As~$S(I) \in J$ and~$S(I) < S(J)$, there exists~$p \in [q]$ and~$K \in \II$\Felix{Should we briefly say that this $K$ is coming from the path intersection closedness?} such that~$S_p(K) \in J$ and~$S(I) \in K$ and~$S(I) < S_p(K) \le S(J)$.
 As~$I$ is a path containing~$S(I)$ and~$S(J)$, it contains also~$S_p(K)$.
 We obtain that~$S_p(K) \in I$, $S(I) \in K$ and~$S(I) < S_p(K)$ contradicting our definition of~$S$.
 We conclude that~$S$ is acyclic.
