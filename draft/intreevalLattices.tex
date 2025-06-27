@@ -267,12 +267,16 @@ A sourcing~$S$ of~$\HH$ is \defn{acyclic} if there is no directed cycle in the d
 The \defn{(acyclic) sourcing poset} of~$\HH$ is the poset of (acyclic) sourcings of~$\HH$ ordered by componentwise comparison, meaning~$S \le S'$ if and only if~$S(H) \le S'(H)$ for all~$H \in \HH$.
 While the sourcing poset~$\Sour(\HH)$ is clearly a lattice (as a product of intervals), the acyclic sourcing poset~$\ASour(\HH)$ is not always a lattice.
 %When~$\HH$ is the hypergraph of all intervals of~$[n]$, the acyclic sourcing poset~$\Sour(\HH)$ is the Tamari lattice.
-The question to characterize the hypergraphs~$\HH$ whose acyclic sourcing poset~$\ASour(\HH)$ is a lattices has been studied for specific families of hypergraphs, notably for graphs~\cite{Pilaud-acyclicReorientationLattices}, for interval hypergraphs~\cite{BergeronPilaud}, and (partially for) graph associahedra~\cite{BarnardMcConville}.
+The question to characterize the hypergraphs~$\HH$ whose acyclic sourcing poset~$\ASour(\HH)$ is a lattice has been studied for specific families of hypergraphs, notably for graphs~\cite{Pilaud-acyclicReorientationLattices}, for interval hypergraphs~\cite{BergeronPilaud}, and (partially for) graph associahedra~\cite{BarnardMcConville}.
+\Vincent{I would still use plural here, but I am not sure...}
 In this paper, we will consider the family of hypergraphs arising as the collection of paths in a directed graph, and study their acyclic sourcing posets from a lattice theoretic perspective.
 
 Let~$(\b{e}_v)_{v \in [n]}$ denote the standard basis of~$\R^n$.
 The \defn{hypergraphic polytope} of~$\HH$ is the Minkowski sum~$\simplex_\HH \eqdef \sum_{H \in \HH} \simplex_H$, where~$\simplex_H \eqdef \conv\set{\b{e}_h}{h \in H}$ denotes the face of the standard simplex indexed by the hyperedge~$H$.
-The face lattice of~$\simplex_\HH$ was described combinatorially in terms of acyclic orientations\Jose{should we say "sourcings" here?} of~$\HH$ in~\cite{BenedettiBergeronMachacek}.
+The face lattice of~$\simplex_\HH$ was described combinatorially in terms of acyclic orientations
+\Jose{should we say "sourcings" here?}
+\Vincent{I would keep it as it is here.}
+of~$\HH$ in~\cite{BenedettiBergeronMachacek}.
 In particular, it is proved in~\cite{Gelinas} that the acyclic sourcing poset~$\ASour(\HH)$ is the transitive closure of the graph of the hypergraphic polytope~$\simplex_\HH$, oriented in the standard direction~$\b{\omega} \eqdef (n-1, n-3, \dots, 3-n, 1-n)$.
 
 For instance, 
@@ -300,7 +304,9 @@ Among all these congruences, the \defn{sylvester congruence} yields the \defn{Ta
 The later is obtained by deleting inequalities in the facet description of the graphical zonotope of~$E$.
 
 \pagebreak
-For instance, when~$E = K_n$ is the complete graph, \Jose{We used $\binom{[n]}{2}$ for the complete graph before (though it was in the context of hypergraphs), should we use the same notation in both places?}
+For instance, when~$E = K_n$ is the complete graph,
+\Jose{We used $\binom{[n]}{2}$ for the complete graph before (though it was in the context of hypergraphs), should we use the same notation in both places?}
+\Vincent{I would keep it as it is here.}
 \begin{itemize}
 \item $\simplex_E$ is the permutahedron and~$\AReori(E)$ is the weak order,
 \item the associahedron of~$E$ is the associahedron of~\cite{ShniderSternberg,Loday} and the Tamari lattice of~$E$ is the Tamari lattice.
@@ -495,7 +501,9 @@ We denote by~$\Orn(v \in D)$ the set of ornaments at a vertex~$v$ of~$D$ and by~
 \end{definition}
 
 In our pictures, we represent an ornamentation~$O$ of~$D$ by drawing a bubble around~$O(v)$ of the same color as~$v$ for each~$v \in V$.
-Alternatively, each bubble is an ornament at the largest vertex it contains.\Jose{I added this sentence to have a color-independent explanation of the pictures}
+Alternatively, each bubble is the ornament at its largest vertex.
+\Jose{I added this sentence to have a color-independent explanation of the pictures}
+\Vincent{Good point. I changed it a little bit.}
 See \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX,fig:ornamentationsD,fig:ornamentationsKT}.
 
 \begin{example}
@@ -1611,6 +1619,7 @@ Finally, we describe the MacNeille completions of the acyclic reorientation pose
 
 Let~$T$ be a directed tree on~$V$.
 For~$u,v \in V$, we write~$u \le_T v$ if there is a (unique) directed path from~$u$ to~$v$ in~$T$. %, and we write~$[u,v]_T$ for this path.
+\Vincent{Or we could say: if the path from~$u$ to~$v$ in~$T$ is oriented from~$u$ to~$v$...}
 We denote by~$\lessin{T}{v} \eqdef \set{u \in V}{u \le_T v}$ the set of vertices which admit a directed path towards~$v$ in~$T$.
 We begin with a few observations.
 
@@ -1621,7 +1630,9 @@ If~$T$ is a directed tree, and~$U,U' \in \Orn(v \in T)$, then~$U \cap U' \in \Or
 
 \begin{proof}
 \jose{\sout{In a directed tree, the ornaments are precisely the directed paths, and the intersection of two directed paths is a directed path.}}\Jose{The first claim is not true if there is a vertex with in-degree at least $2$}
-In a directed tree, a nonempty subset $U \subseteq \lessin{T}{v}$ is an ornament if and only if for all $u \in U$, the (vertex set of the) unique path from $u$ to $v$ in $T$ is contained in $U$. This property is closed under intersection.
+\Vincent{Good point. It was completely wrong.}
+In a directed tree~$T$, a nonempty subset $U \subseteq \lessin{T}{v}$ is an ornament of~$T$ at~$v$ if and only if for all $u \in U$, the (vertex set of the) unique path from $u$ to $v$ in $T$ is contained in $U$.
+This property is closed under intersection.
 \end{proof}
 
 \begin{corollary}
@@ -1689,12 +1700,11 @@ Finally, we will need the following convenient statement.
 
 \begin{lemma}
 \label{lem:Reori2OrnT}
-For a directed tree~$T$\jose{,\sout{ and}} an acyclic reorientation~$R$ of~$\tc(T)$\jose{ and vertices $u \le_T v$}, we have~$u \in \orn{R}(v)$ if and only if~$(u',v) \in \rev(R)$ for all~$u \le_T u' \le_T v$.
+For a directed tree~$T$, an acyclic reorientation~$R$ of~$\tc(T)$ and vertices $u \le_T v$, we have~$u \in \orn{R}(v)$ if and only if~$(u',v) \in \rev(R)$ for all~$u \le_T u' \le_T v$.
 \end{lemma}
 
 \begin{proof}
-\jose{\sout{Since~$T$ is a directed tree, its ornaments are directed paths.}}
-Since~$R$ is acyclic, \jose{for any $u \le_T v$,} there is a directed path from~$u$ to~$v$ in~$\rev(R)$ if and only if~$(u,v) \in \rev(R)$.
+Since~$R$ is acyclic, for any $u \le_T v$, there is a directed path from~$u$ to~$v$ in~$\rev(R)$ if and only if~$(u,v) \in \rev(R)$.
 By \cref{def:Reori2Orn}, $\orn{R}(v)$ is the maximal ornament of~$T$ at~$v$ contained in the subset of vertices~$u \in V$ with a directed path to~$v$ in $\rev(R)$.
 Hence, $u \in \orn{R}(v)$ if and only if~$u' \in \rev(R)$ for all~$u'$ along the path from~$u$ to~$v$ in~$T$.
 \end{proof}
@@ -1878,7 +1888,9 @@ For any~$P \in \PP(T)$, the maps~$J_P$ and~$M_P$ are both ornamentations of~$T$.
 \begin{proof}
 The claim for~$J_P$ follows from \cref{exm:ornamentations}\,(iii).
 Consider now~$u', v' \in V$ such that~$u' \in M_P(v')$.
-If~$u <_T v' \le_T v$, then~$M_P(u') = \lessin{T}{u'} \ssm \lessin{T}{u} \subseteq \lessin{T}{v'} \ssm \lessin{T}{u} = M_P(v')$; observe that the first equality holds even if $u \not\le_T u'$, since in this case $\lessin{T}{u'} \ssm \lessin{T}{u} = \lessin{T}{u'}$.\Jose{The first time I read this sentence it seemed to me that we were assuming that $u'$ is also in the path, so I added the extra clarification.}
+If~$u <_T v' \le_T v$, then~$M_P(u') = \lessin{T}{u'} \ssm \lessin{T}{u} \subseteq \lessin{T}{v'} \ssm \lessin{T}{u} = M_P(v')$ (observe that the first equality holds even if $u \not\le_T u'$, since in this case $\lessin{T}{u'} \ssm \lessin{T}{u} = \lessin{T}{u'}$).
+\Jose{The first time I read this sentence it seemed to me that we were assuming that $u'$ is also in the path, so I added the extra clarification.}
+\Vincent{Yes, it helps. I was not sure if it was needed, but it is better with it.}
 Otherwise, $M_P(u') \subseteq \lessin{T}{u'} \subseteq \lessin{T}{v'} = M_P(v')$.
 \end{proof}
 
@@ -1889,7 +1901,7 @@ Then~$J_P$ (resp.~$M_P$) is the unique minimal element of~$\set{O \in \Orn(T)}{O
 \end{lemma}
 
 \begin{proof}
-Observe first that~$J_P \not\le O_1$ (since~$u \in P = J_P(v)$ while~$u \notin O_1(v)$) but~$J_P \le O_2$ (since~$P \subseteq O_2(v)$). 
+Observe first that~$J_P \not\le O_1$ (since~$u \in P = J_P(v)$ while~$u \notin O_1(v)$) but~$J_P \le O_2$ (since~${P \subseteq O_2(v)}$). 
 %Observe first that~$O_1 \join J_P = O_2$.
 %Indeed, one the one hand, $O_2(w) = O_1(w) \subseteq (O_1 \join J_P)(w)$ for all~$w \ne v$ and~$O_2(v) = O_1(u) \cup O_1(v) \subseteq (O_1 \join J_P)(v)$ (since~$u \in P = J_P(v)$) so that~$O_1 \join J_P \ge O_2$. 
 %On the other hand, $J_P \le O_2$ (because~$P \subseteq O_2(v)$) so that~$O_1 \join J_P \le O_2$.
@@ -2007,10 +2019,11 @@ Consider two transitively biclosed reorientations~$R_1$ and~$R_2$ of~$\tc(T)$.
 Let~$R$ be the reorientation of~$\tc(T)$ defined by~$\rev(R) = \tc(\rev(R_1) \cup \rev(R_2))$.
 
 The reorientation~$R$ is closed by definition, and we claim that it is also coclosed.
-Indeed, consider~$u,v,w \in V$ such that~$(u,v), (v,w) \in \tc(T)$ and~$(u,w) \in \rev(R)$\jose{, we will show that either~$(u,v) \in \rev(R)$ or~$(v,w) \in \rev(R)$}.
-By definition of~$\rev(R)$, there is a path~$u = u_0, \dots, u_k = w$ such that~$(u_{i-1}, u_i) \in \rev(R_1) \cup \rev(R_2)$ for all~$i \in [k]$.
-As~$(u,v), (v,w) \in \tc(T)$ and~$T$ is a tree, there is~$i \in [k]$ such that~\jose{\sout{$(u_{i-1}, v)$ and~$(v, u_i)$ are in~$\tc(T)$} $u_{i-1} \le_T v \le_T u_i$. If $v = u_{i-1}$ or $v = u_i$, the claim follows. Otherwise, 
-\sout{A}a}ssume by symmetry that~$(u_{i-1}, u_i) \in \rev(R_1)$.
+Indeed, we consider~$u,v,w \in V$ such that~$(u,v), (v,w) \in \tc(T)$ and~$(u,w) \in \rev(R)$, and we will show that either~$(u,v) \in \rev(R)$ or~$(v,w) \in \rev(R)$.
+By definition of~$\rev(R)$, there is a path~${u = u_0, \dots, u_k = w}$ such that~$(u_{i-1}, u_i) \in \rev(R_1) \cup \rev(R_2)$ for all~$i \in [k]$.
+As~$(u,v), (v,w) \in \tc(T)$ and~$T$ is a tree, there is~$i \in [k]$ such that~$u_{i-1} \le_T v \le_T u_i$.
+If $v = u_{i-1}$ or $v = u_i$, the claim follows. 
+Otherwise, assume by symmetry that~$(u_{i-1}, u_i) \in \rev(R_1)$.
 Since~$R_1$ is coclosed, either~$(u_{i-1}, v) \in \rev(R_1)$ or~$(v, u_i) \in \rev(R_1)$.
 We thus obtain that either~$(u,v) \in \rev(R)$ or~$(v,w) \in \rev(R)$, hence that~$R$ is indeed coclosed.
 
@@ -2066,7 +2079,7 @@ We first briefly recall the definition of the MacNeille completion of a poset.
 
 \begin{definition}
 \label{def:MacNeilleCompletion}
-A \defn{completion} of a finite poset~$P$ is a lattice~$L$ such that there is an order-embedding~$f : P \to L$ (meaning that \jose{ $f$ is injective and}~$x \le_P y$ if and only if~$f(x) \le_L f(y)$).
+A \defn{completion} of a finite poset~$P$ is a lattice~$L$ such that there is an order-embedding~$f : P \to L$ (meaning that $f$ is injective and~$x \le_P y$ if and only if~$f(x) \le_L f(y)$).
 The MacNeille completion~$C(P)$ of~$P$ is the smallest completion of~$P$, meaning that for any completion~$L$ of~$P$, there exists an order-embedding from~$C(P)$ to~$L$.
 \end{definition}
 
@@ -2094,7 +2107,7 @@ If~$R$ is a transitively biclosed and cyclic reorientation of~$\tc(T)$, then it 
 \begin{proof}
 As~$R$ contains a cycle, it contains an induced oriented cycle~$C$ (any chord can be used to make the cycle shorter).
 Since~$R$ is transitively biclosed, $C$ is an induced alternating cycle in~$\tc(T)$.
-Write~$C = (d_1, u_1, \dots, d_k, u_k)$ where~$(d_i, u_i)$ and~\jose{\sout{$(u_i, d_{i+1})$} $(d_{i+1},u_i)$} are in~$\tc(T)$\Jose{or (if we don't make the previous change), are in $R$} for all~$i \in [k]$.
+Write~$C = (d_1, u_1, \dots, d_k, u_k)$ where~$(d_i, u_i)$ and~$(d_{i+1},u_i)$ are in~$\tc(T)$ for all~$i \in [k]$.
 We can moreover assume without loss of generality that for~$i \in [k]$ and any incoming neighbor~$u'$ of~$u_i$  (resp.~outgoing neighbor~$d'$ of~$d_i$) in~$R$, replacing~$u_i$ by~$u'$ (resp.~$d_i$ by~$d'$) in~$C$ does not yield an induced oriented cycle in~$R$.
 %We can assume moreover without loss of generality that~$C$ is of maximal amplitude, meaning that we cannot replace some~$d_i$ by~$d'$ for some~$(d',d_i) \in \tc(T)$ nor some~$u_i$ by~$u'$ for some~$(u_i,u') \in \tc(T)$ and still obtain an induced alternating cycle in~$R$.
 %In particular, there is no~$u' \in V$ such that~$(u_i, u') \in \rev(R)$ and~$(d_i,u') \notin \rev(R)$ for some~$i \in [k]$ and no~$d' \in V$ such that~$(d',d_i) \in \rev(R)$ and~$(d',u_i) \notin \rev(R)$ for some~$i \in [k]$.
@@ -2243,7 +2256,7 @@ As~$w$ is between~$d_1$ and~$u_2$, we also get~$(v,u_2) \in \tc(T)$.
 \uline{\textsl{(ii) $\Rightarrow$ (iii):}} Let~$a,b,c,d,e$ as in~(ii). Let $u$ (resp.~$v$) be the first (resp.~last) common vertex of the paths from~$a$ and~$b$ to~$c$ (resp.~from~$c$ to~$d$ and~$e$). Then~$u$ (resp.~$v$) has at least two incoming (resp.~outgoing) arrows, and there is a path from~$u$ to~$v$ passing through~$c$.
 
 \medskip\noindent
-\uline{\textsl{(iii) $\Rightarrow$ (ii):}} Let~$u,v$ as in~(iii). Let~$a,b$ be two incoming neighbors of~$u$, let~$d,e$ be two outgoinng neighbors of~$v$, and let~$c$ be any vertex along the path from~$u$ to~$v$. Then~$a,b,c,d,e$ are as in~(ii).
+\uline{\textsl{(iii) $\Rightarrow$ (ii):}} Let~$u,v$ as in~(iii). Let~$a,b$ be two incoming neighbors of~$u$, let~$d,e$ be two outgoing neighbors of~$v$, and let~$c$ be any vertex along the path from~$u$ to~$v$. Then~$a,b,c,d,e$ are as in~(ii).
 \end{proof}
 
 \begin{definition}
@@ -2741,7 +2754,7 @@ In other words, any hypergraph whose hyperedges are (the vertex sets of) some di
 
 \begin{definition} 
 \label{def:pathIntersectionClose}
-We say that an intreeval hypergraph~$\II$ of an increasing tree~$T$ is \defn{path intersection closed} if for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max(J) >_T \max (I\cap J)$, there exists~$K \in \II$ such that $\min(J) \le_T \min(K) \le_T \min(I\cap J)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$.
+We say that an intreeval hypergraph~$\II$ of an increasing tree~$T$ is \defn{path intersection closed} if for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max(J) >_T \max(I\cap J)$, there exists~$K \in \II$ such that $\min(J) \le_T \min(K) \le_T \min(I\cap J)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$.
 \end{definition}
 
 \begin{remark}
@@ -2758,7 +2771,7 @@ See \cref{exm:intreevalHypergraphs,fig:intreevalHypergraphs}.
 \label{def:pathStarSparse}
 Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
 Consider~$u \le_T v$, and let~$u_1, \dots, u_k$ (resp.~$v_1, \dots, v_\ell$) denote the incoming (resp.~outgoing) neighbors of~$u$ (resp.~$v$) in~$T$.
-We denote by~$X(T,u,v,\II)$ the \andrew{(undirected)} graph on~$u_1, \dots, u_k,\; v_1, \dots, v_\ell$ with an edge joining~$u_i$ and~$v_j$ if and only if there is~$I \in \II$ containing both~$u_i$ and~$v_j$.
+We denote by~$X(T,u,v,\II)$ the (undirected) graph on~$u_1, \dots, u_k,\; v_1, \dots, v_\ell$ with an edge joining~$u_i$ and~$v_j$ if and only if there is~$I \in \II$ containing both~$u_i$ and~$v_j$.
 We say that~$\II$ is \defn{star sparse} if~$X(T,u,v,\II)$ is acyclic for all~$u,v$ connected by a directed path.
 \end{definition}
 
@@ -2800,7 +2813,7 @@ When~$T$ is a line,
 \begin{remark}
 When~$T$ is a rooted tree,
 \begin{itemize}
-\item the path intersection closed condition rephrases to for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max J >_T \max (I\cap J)$, there exists~$K \in \II$ such that $\min(J) = \min(K)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$,
+\item the path intersection closed condition rephrases to for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max(J) >_T \max(I\cap J)$, there exists~$K \in \II$ such that $\min(J) = \min(K)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$,
 \item the star sparse condition is empty.
 \end{itemize}
 In particular, we have the following corollary.
@@ -2825,11 +2838,14 @@ If~$\ASour(\II)$ is a lattice, then $\II$ is path intersection closed (\cref{def
 
 \begin{proof}
 The proof follows exactly the same lines as that of~\cite[Prop.~4.6]{BergeronPilaud}.
-Assume by means of contradiction that there are~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max J <_T \andrew{\text{ should be } >_T} \max (I\cap J)$, and there is no~$K \in \II$ such that $\min(J) \le_T \min(K) \le_T \min(I\cap J)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$.
+Assume by means of contradiction that there are~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max(J) >_T \max(I\cap J)$, and there is no~$K \in \II$ such that $\min(J) \le_T \min(K) \le_T \min(I\cap J)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$.
 
 Let~$b$ (resp.~$c$) be the bottom (resp.~top) endpoint of~$I \cap J$, and~$a$ (resp.~$d$) be its neighbor in~$I \ssm J$ (resp.~$J \ssm I$).
+Note that~$a,b,c,d$ are all distinct since~$|I \cap J| > 1$.
 Let~$Y$ be a word formed by~$(I \cup J) \ssm \{a,b,c,d\}$ in any order, and~$X$ be a word formed by~$[n] \ssm (I \cup J)$ in any order.
-Consider the permutations \Andrew{Do we need to assume here that $\I$ contains all singletons? Otherwise is it possible for $b = c$? Or does path intersection closed handle this somehow?}
+Consider the permutations
+\Andrew{Do we need to assume here that $\I$ contains all singletons? Otherwise is it possible for $b = c$? Or does path intersection closed handle this somehow?}
+\Vincent{Not sure to understand the issue. To avoid assuming that $\II$ contains singletons, I added~$|I \cap J| > 1$. I have added a sentence stating that $a,b,c,d$ are all distincts.}
 \[
 \pi_A \eqdef XbacdY
 \quad
@@ -2889,11 +2905,16 @@ Let
 \[
 g \eqdef \pi_G(\min\set{i \in [n]}{\pi_G(i) \in I \cup J}).
 \]
-If~$\min(I) \le_T g <_T b$, then~$S_G(I) = g < b = S_A(I)$, contradicting that~$S_A < S_G$. 
-If~$\min(J) \le_T g <_T c$, then~$S_G(J) = g < c = S_B(J)$, contradicting that~$S_B < S_G$. 
-If~$c <_T g \le \max(J)$, then~$S_G(J) = g > c = S_D(J)$, contradicting that~$S_G < S_D$. 
-If~$b <_T g \le_T \max(I)$, then~$S_G(I) = g > b = S_C(I)$, contradicting that~$S_G < S_C$.
-As these four cases are all excluded, we reached a contradiction. \Andrew{Why can't $g = b$ or $g = c$? Also were these intended to be on new lines or in an itemize/enumerate environment? It would make the cases easier to follow I think.}
+We discuss four cases:
+\begin{itemize}
+\item if~$\min(I) \le_T g <_T b$, then~$S_G(I) = g < b = S_A(I)$, contradicting that~$S_A < S_G$,
+\item if~$\min(J) \le_T g <_T c$, then~$S_G(J) = g < c = S_B(J)$, contradicting that~$S_B < S_G$,
+\item if~$c <_T g \le \max(J)$, then~$S_G(J) = g > c = S_D(J)$, contradicting that~$S_G < S_D$,
+\item if~$b <_T g \le_T \max(I)$, then~$S_G(I) = g > b = S_C(I)$, contradicting that~$S_G < S_C$.
+\end{itemize}
+As these four cases are all excluded, we reached a contradiction.
+\Andrew{Why can't $g = b$ or $g = c$? Also were these intended to be on new lines or in an itemize/enumerate environment? It would make the cases easier to follow I think.}
+\Vincent{$g = b$ is covered by the second case. $g = c$ is covered by the fourth case. I added an itemize, it is indeed much easier to read.}
 \end{proof}
 
 \begin{example}
@@ -3186,10 +3207,10 @@ We thus obtain that~$\minorn{S}{I}(v) \subseteq O(v)$.
 \item If~$S(I) < v \in I$, we have~$\min(I) \in O(S(I)) \ssm O(v)$ by definition of~$\sour{O}^\II = S$, hence~$(I \cap [S(I)]) \cap O(v) = \varnothing$ since~$O$ is an ornamentation.
 We thus obtain that~$O(v) \subseteq \maxorn{S}{I}(v)$.
 \end{itemize}
-In all cases, \sout{$\minorn{S}{I}(v) \subseteq O(v) \le \maxorn{S}{I}(v)$} \felix{$\minorn{S}{I}(v) \subseteq O(v) \subseteq \maxorn{S}{I}(v)$} for any~$v \in [n]$ and~$I \in \II$.
-We conclude that~\sout{$\minorn{S}{I}(v) \subseteq O(v) \le \maxorn{S}{I}(v)$} \felix{$\minorn{S}{I}(v) \le O(v) \le \maxorn{S}{I}(v)$}.
+In all cases, $\minorn{S}{I}(v) \subseteq O(v) \subseteq \maxorn{S}{I}(v)$ for any~$v \in [n]$ and~$I \in \II$.
+We conclude that~$\minorn{S}{I} \le O \le \maxorn{S}{I}$ for any~$I \in \II$.
 
-Conversely, consider an ornamentation~$O$ of~$T$ such that~$\minorn{S}{I} \subseteq O \le \maxorn{S}{I}$\Felix{We want $\le$ of $\subseteq$ here?} and let~$I \in \II$ and~$v \eqdef S(I)$. Then
+Conversely, consider an ornamentation~$O$ of~$T$ such that~$\minorn{S}{I} \le O \le \maxorn{S}{I}$ and let~$I \in \II$ and~$v \eqdef S(I)$. Then
 \begin{itemize}
 \item As~$S(I) = v$, we have~$I \cap [v] \subseteq \minorn{S}{I}(v) \subseteq \minorn{S}{I} \subseteq O(v)$, hence~$v \le \sour{O}^\II(I)$ by definition~of~$\sour{O}^\II$.
 \item Conversely, for any~$v < w \in I$, we have~$S(I) = v < w \in I$ and so~$O(w) \subseteq \maxorn{S}{\II}(w) \subseteq \maxorn{S}{I}(w) \subseteq \lessin{T}{w} \ssm (I \cap [v])$. Hence, $\min(I) \notin O(w)$, and so~$\sour{O}^\II(I) \ne w$. We thus obtain that~$\sour{O}^\II(I) \le v$
@@ -3210,7 +3231,7 @@ This implies~$\min(I) \le S_2(J) < S_1(I) \le \max(J)$.
 Hence, $S_1(I)$ and~$S_2(J)$ are distinct and both belong to~$I \cap J$.
 Moreover, as~$S_1 \le S_2$, we have~$S_1(J) \le S_2(J) < S_1(I) \le S_2(I)$.
 Since~$S_1$ and~$S_2$ are both acyclic, we deduce that~$\min(J) \le S_1(J) < \min(I \cap J)$ while~$\max(I) \ge S_2(I) > \max(I \cap J)$.
-As~$\II$ is path intersection closed, there exists~$K \in \II$ such that~$\min(I) \le_T \min(K) \le_T \min(I\cap J)$ and $\max(I\cap J) \le_T \max K \le_T \max(J)$.
+As~$\II$ is path intersection closed, there exists~$K \in \II$ such that~$\min(I) \le_T \min(K) \le_T \min(I\cap J)$ and $\max(I\cap J) \le_T \max(K) \le_T \max(J)$.
 As~$S_1(I)$ and~$S_2(J)$ both belong to~$I \cap J \subseteq K$, and~$S_1$ and~$S_2$ are both acyclic, we obtain that~$S_2(K) \le S_2(J) < S_1(I) \le S_1(K)$, which contradicts~$S_1 \le S_2$.
 \end{proof}
 
@@ -3243,11 +3264,16 @@ For a path intersection closed and star sparse intreeval hypergraph~$\II$ of an 
 \end{proposition}
 
 \begin{proof}
+As~$\II$ is path intersection closed and star sparse, the acyclic sourcing poset~$\ASour(\II)$ is a lattice by~\cref{prop:quasiLatticeMapIntreevalLattices}, hence the join~$\bigJoin_{p \in [q]} S_p$ exists and we just need to prove that it is given by the formula of the statement.
+
 Let~$S$ be the sourcing defined by the formula of the statement.
 Assume by means of contradiction that~$S$ is cyclic.
 By \cref{prop:pathStarSparse}, there is~$I,J \in \II$ such that~$S(I) \in J \ssm \{S(J)\}$ and~$S(J) \in I \ssm \{S(I)\}$.
 Assume by symmetry that~$S(I) < S(J)$.
-As~$S(I) \in J$ and~$S(I) < S(J)$, there exists~$p \in [q]$ and~$K \in \II$\Felix{Should we briefly say that this $K$ is coming from the path intersection closedness?} such that~$S_p(K) \in J$ and~$S(I) \in K$ and~$S(I) < S_p(K) \le S(J)$.
+As~$S(I) \in J$ and~$S(I) < S(J)$, there exists~$p \in [q]$ and~$K \in \II$
+\Felix{Should we briefly say that this $K$ is coming from the path intersection closedness?}
+\Vincent{$K$ is coming from the formula, not from intersection closedness... I have added a sentence at the beginning to make clear where we actually use the assumptions...}
+such that~$S_p(K) \in J$ and~$S(I) \in K$ and~$S(I) < S_p(K) \le S(J)$.
 As~$I$ is a path containing~$S(I)$ and~$S(J)$, it contains also~$S_p(K)$.
 We obtain that~$S_p(K) \in I$, $S(I) \in K$ and~$S(I) < S_p(K)$ contradicting our definition of~$S$.
 We conclude that~$S$ is acyclic.
