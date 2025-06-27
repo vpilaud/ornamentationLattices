@@ -2758,7 +2758,7 @@ See \cref{exm:intreevalHypergraphs,fig:intreevalHypergraphs}.
 \label{def:pathStarSparse}
 Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
 Consider~$u \le_T v$, and let~$u_1, \dots, u_k$ (resp.~$v_1, \dots, v_\ell$) denote the incoming (resp.~outgoing) neighbors of~$u$ (resp.~$v$) in~$T$.
-We denote by~$X(T,u,v,\II)$ the graph on~$u_1, \dots, u_k, v_1, \dots, v_\ell$ with an edge joining~$u_i$ and~$v_j$ if and only if there is~$I \in \II$ containing both~$u_i$ and~$v_j$.
+We denote by~$X(T,u,v,\II)$ the \andrew{(undirected)} graph on~$u_1, \dots, u_k,\; v_1, \dots, v_\ell$ with an edge joining~$u_i$ and~$v_j$ if and only if there is~$I \in \II$ containing both~$u_i$ and~$v_j$.
 We say that~$\II$ is \defn{star sparse} if~$X(T,u,v,\II)$ is acyclic for all~$u,v$ connected by a directed path.
 \end{definition}
 
@@ -2825,11 +2825,11 @@ If~$\ASour(\II)$ is a lattice, then $\II$ is path intersection closed (\cref{def
 
 \begin{proof}
 The proof follows exactly the same lines as that of~\cite[Prop.~4.6]{BergeronPilaud}.
-Assume by means of contradiction that there are~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max J <_T \max (I\cap J)$, and there is no~$K \in \II$ such that $\min(J) \le_T \min(K) \le_T \min(I\cap J)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$.
+Assume by means of contradiction that there are~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max J <_T \andrew{\text{ should be } >_T} \max (I\cap J)$, and there is no~$K \in \II$ such that $\min(J) \le_T \min(K) \le_T \min(I\cap J)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$.
 
 Let~$b$ (resp.~$c$) be the bottom (resp.~top) endpoint of~$I \cap J$, and~$a$ (resp.~$d$) be its neighbor in~$I \ssm J$ (resp.~$J \ssm I$).
 Let~$Y$ be a word formed by~$(I \cup J) \ssm \{a,b,c,d\}$ in any order, and~$X$ be a word formed by~$[n] \ssm (I \cup J)$ in any order.
-Consider the permutations
+Consider the permutations \Andrew{Do we need to assume here that $\I$ contains all singletons? Otherwise is it possible for $b = c$? Or does path intersection closed handle this somehow?}
 \[
 \pi_A \eqdef XbacdY
 \quad
@@ -2889,11 +2889,11 @@ Let
 \[
 g \eqdef \pi_G(\min\set{i \in [n]}{\pi_G(i) \in I \cup J}).
 \]
-If~$\min(I) \le_T g <_T b$, then~$S_G(I) = g < b = S_A(I)$, contradicting that~$S_A < S_G$.
-If~$\min(J) \le_T g <_T c$, then~$S_G(J) = g < c = S_B(J)$, contradicting that~$S_B < S_G$.
-If~$c <_T g \le \max(J)$, then~$S_G(J) = g > c = S_D(J)$, contradicting that~$S_G < S_D$.
+If~$\min(I) \le_T g <_T b$, then~$S_G(I) = g < b = S_A(I)$, contradicting that~$S_A < S_G$. 
+If~$\min(J) \le_T g <_T c$, then~$S_G(J) = g < c = S_B(J)$, contradicting that~$S_B < S_G$. 
+If~$c <_T g \le \max(J)$, then~$S_G(J) = g > c = S_D(J)$, contradicting that~$S_G < S_D$. 
 If~$b <_T g \le_T \max(I)$, then~$S_G(I) = g > b = S_C(I)$, contradicting that~$S_G < S_C$.
-As these four cases are all excluded, we reached a contradiction.
+As these four cases are all excluded, we reached a contradiction. \Andrew{Why can't $g = b$ or $g = c$? Also were these intended to be on new lines or in an itemize/enumerate environment? It would make the cases easier to follow I think.}
 \end{proof}
 
 \begin{example}
