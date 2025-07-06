@@ -2726,7 +2726,7 @@ We have no explanation for this fact, nor candidates for families of directed tr
 
 In this section, we characterize the subhypergraphs~$\II$ of the path interval~$\PP(T)$ of an increasing tree~$T$ whose acyclic sourcing poset~$\ASour(\II)$ is a lattice.
 We first state the needed definitions and the characterization (\cref{subsec:characterization}), then show that these conditions are necessary (\cref{subsec:necessary}) and sufficient (\cref{subsec:sufficient}) using an important property of star sparse intreeval hypergraphs (\cref{subsec:shortCycles}).
-Finally, when~$\ASour(\II)$ is a lattice, we give an explicit formula for its meets and joins (\cref{subsec:formulaMeetJoin})
+Finally, when~$\ASour(\II)$ is a lattice, we give an explicit formula for its meets and joins (\cref{subsec:formulaMeetJoin}).
 %We actually consider increasing trees as it simplifies the definitions of the conditions and does not loose generality up to relabeling.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2738,7 +2738,7 @@ We first present a few definitions needed to state our characterization in \cref
 
 \begin{definition}
 An \defn{intreeval hypergraph} of an increasing tree~$T$ is a subhypergraph of~$\PP(T)$.
-In other words, any hypergraph whose hyperedges are (the vertex sets of) some directed paths in~$D$.
+In other words, any hypergraph whose hyperedges are (the vertex sets of) some directed paths in~$T$.
 \end{definition}
 
 \begin{definition} 
@@ -2749,8 +2749,8 @@ We say that an intreeval hypergraph~$\II$ of an increasing tree~$T$ is \defn{pat
 \begin{remark}
 Note that
 \begin{itemize}
-\item if~$I \cap J \in \II$ and~$I \cap J > 1$ implies~$I \cap J \in \II$, then~$\II$ is path intersection closed,
-\item if~$\II$ is path intersection closed, then ~$I,J \in \II$ and~$I \cap J > 1$ implies that there is~$K \in \II$ with~$I \cap J \subseteq K$.
+\item if~$I , J \in \II$ and~$|I \cap J| > 1$ implies~$I \cap J \in \II$, then~$\II$ is path intersection closed,
+\item if~$\II$ is path intersection closed, then ~$I,J \in \II$ and~$|I \cap J| > 1$ implies that there is~$K \in \II$ with~$I \cap J \subseteq K$.\Jose{This is always true taking $K = I$ or $K = J$ (independent of being path intersection closed).}
 \end{itemize}
 However, the reverse of these two implications are both wrong.
 See \cref{exm:intreevalHypergraphs,fig:intreevalHypergraphs}.
@@ -2769,7 +2769,7 @@ We say that~$\II$ is \defn{star sparse} if~$X(T,u,v,\II)$ is acyclic for all~$u,
 Among the $8$ intreeval hypergraphs of \cref{fig:intreevalHypergraphs},
 \begin{itemize}
 \item the first two are both path intersection closed and star sparse,
-\item the next four are not path intersection closed but star sparse,
+\item the next four are not path intersection closed but are star sparse,
 \item the next one is path intersection closed but not star sparse,
 \item the last one is neither path intersection closed nor star sparse.
 \end{itemize}
@@ -2791,10 +2791,10 @@ The acyclic sourcing poset~$\ASour(\II)$ is a lattice if and only if $\II$ is pa
 \end{theorem}
 
 \begin{remark}
-When~$T$ is a line, 
+When~$T$ is a\jose{n oriented path\sout{line}}, 
 \begin{itemize}
 \item the path intersection closed condition boils down to being closed under intersection (including singletons by default),
-\item the star sparse condition is empty,
+\item the star sparse condition \jose{\sout{is empty}holds trivially},
 \item the characterization of \cref{thm:intreevalLattices} was proved in~\cite[Thm.~A]{BergeronPilaud}.
 \end{itemize}
 \end{remark}
@@ -2803,7 +2803,7 @@ When~$T$ is a line,
 When~$T$ is a rooted tree,
 \begin{itemize}
 \item the path intersection closed condition rephrases to for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max(J) >_T \max(I\cap J)$, there exists~$K \in \II$ such that $\min(J) = \min(K)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$,
-\item the star sparse condition is empty.
+\item the star sparse condition \jose{\sout{is empty}holds trivially}.
 \end{itemize}
 In particular, we have the following corollary.
 \end{remark}
@@ -2833,6 +2833,7 @@ Let~$b$ (resp.~$c$) be the bottom (resp.~top) endpoint of~$I \cap J$, and~$a$ (r
 Note that~$a,b,c,d$ are all distinct since~$|I \cap J| > 1$.
 Let~$Y$ be a word formed by~$(I \cup J) \ssm \{a,b,c,d\}$ in any order, and~$X$ be a word formed by~$[n] \ssm (I \cup J)$ in any order.
 Consider the permutations
+\Jose[inline]{Would it be more clear if we label these permutations so that \[\pi_A < \pi_B > \pi_C < \pi_D > \pi_E < \pi_F\]? That would make \cref{exm:pathIntersectionClosed} easier to verify for the reader, too.}
 \[
 \pi_A \eqdef XbacdY
 \quad
@@ -2846,7 +2847,7 @@ Consider the permutations
 \quad
 \pi_F \eqdef XadbcY
 \]
-and let~$S_A \eqdef \asour{\pi_A}, \dots, S_F \eqdef \asour{\pi_F}$ denote the corresponding acyclic sourcings of~$T$ (where~${\pi \mapsto \aorn{\pi}}$ is the composition of $\pi \mapsto \areori{\pi}$ and $R \mapsto \asour{\pi}$).
+and let~$S_A \eqdef \asour{\pi_A}, \dots, S_F \eqdef \asour{\pi_F}$ denote the corresponding acyclic sourcings of~\jose{\sout{$T$}$\II$ or $\PP(T)$?} (where~${\pi \mapsto \jose{\sout{\aorn{\pi}}\asour{\pi}}}$ is the composition of $\pi \mapsto \areori{\pi}$ and $R \mapsto \asour{\pi}$).
 See \cref{exm:pathIntersectionClosed} for an illustration of these permutations and acyclic sourcings.
 
 We claim that~$S_E = S_F$.
@@ -2877,7 +2878,7 @@ S_B < S_E = S_F < S_C
 S_B < S_D.
 \]
 
-If~$\ASour(\II)$ were a lattice, we therefore must have an acyclic sourcing~$S_G$ of~$\II$ such that
+If~$\ASour(\II)$ were a lattice, we \jose{\sout{therefore must}would}\Jose{Maybe its more clear to start the proof with $\ASour(\II)$ being a lattice and writing here "Since $\ASour(\II)$ is a lattice, we have..."} have an acyclic sourcing~$S_G$ of~$\II$ such that
 \[
 S_A \le S_G
 \qquad
@@ -2928,7 +2929,7 @@ If~$\ASour(\II)$ is a lattice, then $\II$ is star sparse (\cref{def:pathStarSpar
 \begin{proof}
 Assume by means of contradiction that there are~$u \le_T v$ such that~$X(T,u,v,\II)$ contains a cycle~$u_1, v_1, u_2, v_2, \dots, u_p, v_p$, where~$p \ge 2$ (the indices are understood modulo~$p$).
 Without loss of generality, we can assume that this cycle is induced.
-Note that~$u_i < v_j$ for all~$i,j \in [p]$ since we consider increasing trees, and that there is no~$I \in \II$ containing either two distinct~$u_i$'s or two distinct~$v_j$'s since they are incomparable in~$T$.
+Note that~$u_i <_T v_j$ for all~$i,j \in [p]$ since we consider increasing trees, and that there is no~$I \in \II$ containing either two distinct~$u_i$'s or two distinct~$v_j$'s since they are incomparable in~$T$.
 
 Let~$W$ be a word formed by the other vertices~$[n] \ssm \{u_0, v_0, \dots, u_p, v_p\}$ in any order.
 For~$i \in [p]$, define the permutations
@@ -2945,7 +2946,7 @@ S(I) =
 \begin{cases}
 	u_i & \text{if~$u_i \in I$ and~$v_{i-1} \notin I$} \\
 	v_i & \text{if~$v_i \in I$ and~$u_{i-1} \notin I$} \\
-	w & \text{in all other cases, where~$w$ is the first letter of~$W$ that appear in~$I$}.
+	w & \text{in all other cases, where~$w$ is the first letter of~$W$ that appears in~$I$}.
 \end{cases}
 \]
 See \cref{exm:pathStarSparse} for an illustration of these permutations and sourcings.
@@ -2958,7 +2959,7 @@ Observe also that for any~$i \in [p]$ and any~$I \in \II$,
 \end{itemize}
 In particular, we obtain that~$S^i < S < T^i$ for all~$i \in [p]$.
 
-If~$\ASour(\II)$ were a lattice, we therefore must have an acyclic sourcing~$T$ of~$\II$ such that~$S^i \le T \le T^i$ for all~$i \in [p]$.
+If~$\ASour(\II)$ were a lattice, we therefore must have\Jose{same grammar question as in previous proof} an acyclic sourcing~$T$ of~$\II$ such that~$S^i \le T \le T^i$ for all~$i \in [p]$.
 For any~$I \in \II$, there is~$i \in [p]$ such that~$u_i \notin I$.
 For this~$i$, we have~$S(I) = S^i(I) \le T(I) \le T^i(I) = S(I)$, hence~$S(I) = T(I)$.
 We conclude that~$S = T$ contradicting the acyclicity of~$T$.
@@ -3013,7 +3014,7 @@ In this section, we observe the following important property of the star sparse 
 \begin{proposition}
 \label{prop:pathStarSparse}
 Let~$\II$ be a star sparse (\cref{def:pathStarSparse}) intreeval hypergraph of an increasing tree~$T$.
-Then any minimal cycles in any sourcing of~$S$ has length~$2$.
+Then any minimal cycle in any sourcing of~$S$ has length~$2$.
 \end{proposition}
 
 \begin{proof}
@@ -3096,12 +3097,12 @@ Recall that a lattice map is a surjective order-preserving map~$f$ from a lattic
 \item the fiber of any~$p \in P$ is an interval~$f^{-1}(p) = [\projDown{p}, \projUp{p}]$ of~$L$,
 \item $\projDown{p} \le \projDown{q}$ and~$\projUp{p} \le \projUp{q}$ for any~$p \le q$ in~$P$.
 \end{itemize}
-Clearly, a lattice map is a quasi-lattice map, but the reverse is wrong.
+Clearly, a lattice map is a quasi-lattice map, but the reverse is \jose{\sout{wrong}not true}.
 While a quasi-lattice map already ensures that~$P$ is a lattice, it is much weaker than a lattice map.
 \end{remark}
 
 We now consider the following map from the ornamentation lattice~$\Orn(T)$ to the sourcing poset~$\Sour(\II)$.
-Note that $\sour{O}^\II$ is just the restriction to~$\II$ of the sourcing~$\sour{O}$ of~$\PP(T)$ defined in \cref{def:Orn2Sour}.
+Note that $\sour{O}^\II$ is just the restriction to~$\II$ of the sourcing~$\sour{O}$ of~$\PP(T)$ defined in \cref{def:Orn2Sour}.\Jose{Should we use a similar notation for the acyclic sourcings of $\II$ in the proof of \cref{lem:pathIntersectionClosed}?}
 
 \begin{definition}
 \label{def:Orn2SourIntreeval}
@@ -3148,9 +3149,9 @@ Follows from \cref{lem:Orn2SourIntreeval2,prop:pathStarSparse}.
 Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
 For an acyclic sourcing~$S$ of~$\II$ and any~$I \in \II$, we define two ornamentations~$\minorn{S}{I}$ and~$\maxorn{S}{I}$ of~$T$ by
 \[
-\minorn{S}{I}(v) \eqdef \begin{cases} I \cap [v] & \text{if } v = S(I) \\ \{v\} & \text{otherwise} \end{cases}
+\minorn{S}{I}(v) \eqdef \begin{cases} I \cap \lessin{T}{v} & \text{if } v = S(I) \\ \{v\} & \text{otherwise} \end{cases}
 \qquad\text{and}\qquad
-\maxorn{S}{I}(v) \eqdef  \begin{cases} \lessin{T}{v} \ssm (I \cap [S(I)]) & \text{if } S(I) < v \in I \\ \lessin{T}{v} & \text{otherwise} \end{cases}
+\maxorn{S}{I}(v) \eqdef  \begin{cases} \lessin{T}{v} \ssm (I \cap \lessin{T}{S(I)}) & \text{if } S(I) < v \in I \\ \lessin{T}{v} & \text{otherwise} \end{cases}
 .
 \]
 Finally, we define two ornamentations~$\minorn{S}{\II}$ and~$\maxorn{S}{\II}$ of~$T$ by
@@ -3182,7 +3183,7 @@ We conclude that~$\minorn{S}{I}(v) \subseteq \maxorn{S}{J}(v)$ for any~$v \in [n
 
 \begin{lemma}
 \label{lem:Sour2OrnIntreeval2}
-For any acyclic sourcing~$S$ of~$\II$, the ornamentations~$O$ of~$T$ such that~$\sour{O}^\II = S$ form an interval of the acyclic sourcing poset~$\ASour(\II)$ with minimal element~$\minorn{S}{\II}$ and maximal element~$\maxorn{S}{\II}$.
+For any acyclic sourcing~$S$ of~$\II$, the ornamentations~$O$ of~$T$ such that~$\sour{O}^\II = S$ form an interval of the \jose{\sout{acyclic sourcing poset~$\ASour(\II)$}ornamentation lattice $\Orn(T)$} with minimal element~$\minorn{S}{\II}$ and maximal element~$\maxorn{S}{\II}$.
 \end{lemma}
 
 \begin{proof}
