@@ -2304,7 +2304,7 @@ Consider a starred tree~$T$, and let~$a,b,c,d,e$ be vertices of~$T$ as in \cref{
 
 The reorientation~$R$ of~$\tc(T)$ defined by~$\rev(R) = \set{(w,d)}{a \le_T w <_T d} \cup \set{(w,e)}{b \le_T w < e}$ is transitively closed because~$d \not<_T e$ and~$e \not<_T d$, transitively coclosed because~$(u,w) \in \rev(R)$ implies~$(v,w) \in \rev(R)$ for any~$u <_T v <_T w$, and cyclic because~$a, e, b, d$ forms a directed cycle.
 
-The ornamentation~$O = \orn{R}$ of~$T$ with~$O(d) = \set{w}{a \le_T w \le_T d}$, $O(e) = \set{w}{b \le_T \le <_T e}$, and~$O(w) = \{w\}$ for all~$w \in V \ssm \{d,e\}$ is cyclic.
+The ornamentation~$O = \orn{R}$ of~$T$ with~$O(d) = \set{w}{a \le_T w \le_T d}$, $O(e) = \set{w}{b \le_T w \le_T e}$, and~$O(w) = \{w\}$ for all~$w \in V \ssm \{d,e\}$ is cyclic.
 Indeed, consider any reorientation~$R'$ of~$\tc(T)$ such that~$O = \orn{R'}$.
 We have~$(w,d) \in \rev(R')$ for all~$a \le_T w <_T d$ (because $w \in O(d)$) and similarly~$(w,e) \in \rev(R')$ for all~$b \le_T w <_T e$.
 Therefore,~$(a,e) \notin \rev(R')$ (because~${a \notin O(e)}$ while~$(w,e) \in \rev(R')$ for all~$a <_T w <_T e$) and similarly~$(b,d) \notin \rev(R')$.
@@ -2321,7 +2321,6 @@ To sum up, we proved the following statement.
 The following conditions are equivalent for a directed tree~$T$ on~$V$:
 \begin{enumerate}[(i)]
 \item $\tc(T)$ contains an induced alternating cycle,
-%\item there are $a,b,c,d,e \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$, and~$(c,e)$ are all in~$\tc(T)$,
 \item there are distinct $a,b,c,d,e \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$, and~$(c,e)$ are all in~$\tc(T)$, while~$(a,b)$, $(b,a)$, $(d,e)$ and~$(e,d)$ are not in~$\tc(T)$,
 \item there are~$u,v \in V$ such that~$u$ has at least two incoming edges in~$T$, $v$ has at least two outgoing edges in~$T$, and $T$ has a directed path from~$u$ to~$v$,
 \item there exists a transitively biclosed and cyclic reorientation of~$\tc(T)$,
@@ -2346,8 +2345,8 @@ We need to show that ${\orn{R_1 \meet R_2} = \orn{R_1} \meet \orn{R_2}}$ and~$\o
 Since~$R \mapsto \orn{R}$ is order-preserving (\cref{lem:Reori2Orn2}) and~$R_1 \meet R_2 \le R_1 \le R_1 \join R_2$ and~$R_1 \meet R_2 \le R_2 \le R_1 \join R_2$, we have~$\orn{R_1 \meet R_2} \le \orn{R_1} \le \orn{R_1 \join R_2}$ and~$\orn{R_1 \meet R_2} \le \orn{R_2} \le \orn{R_1 \join R_2}$, hence~${\orn{R_1 \meet R_2} \le \orn{R_1} \meet \orn{R_2}}$ and~${\orn{R_1} \join \orn{R_2} \le \orn{R_1 \join R_2}}$.
 To prove the converse inequalities, remember the descriptions of~${O_1 \meet O_2}$ and~${O_1 \join O_2}$ from \cref{thm:OrnMeetJoin}, and of~$\rev(R_1 \meet R_2)$ and~$\rev(R_1 \join R_2)$ from~\cref{prop:AReoriLatJoinMeet}.
 
-If \jose{$u <_T v$ but~}$u \notin \orn{R_1 \meet R_2}(v)$, then there is $u'$ along the path from~$u$ to~$v$ such that~$(u',v) \notin \rev(R_1 \meet R_2)$ by \cref{lem:Reori2OrnT}.
-Therefore, the\jose{\sout{re is a}} path~$u' = w_0, w_1, \dots, w_k = v$ \jose{\sout{such that}satisfies}~$(w_{i-1}, w_i) \notin \rev(R_1) \cap \rev(R_2)$ \jose{for all $i \in [k]$} by~\cref{prop:AReoriLatJoinMeet}.
+If $u <_T v$ but~$u \notin \orn{R_1 \meet R_2}(v)$, then there is $u'$ along the path from~$u$ to~$v$ such that~$(u',v) \notin \rev(R_1 \meet R_2)$ by \cref{lem:Reori2OrnT}.
+Therefore, the path~$u' = w_0, w_1, \dots, w_k = v$ satisfies~$(w_{i-1}, w_i) \notin \rev(R_1) \cap \rev(R_2)$ for all $i \in [k]$ by~\cref{prop:AReoriLatJoinMeet}.
 As~$w_{k-1}$ is on the path from~$u$ to~$v$ and~$(w_{k-1},v) \notin \rev(R_1) \cap \rev(R_2)$, we conclude by \cref{lem:Reori2OrnT} that~$u \notin \orn{R_1}(v)$ or~$u \notin \orn{R_2}(v)$, hence~$u \notin \orn{R_1}(v) \cap \orn{R_2}(v) = (\orn{R_1} \meet \orn{R_2})(v)$ (by \cref{coro:meetOrnT}, since~$T$ is a directed tree).
 We conclude that~$(\orn{R_1} \meet \orn{R_2}) \le \orn{R_1 \meet R_2}$, hence that~$\orn{R_1 \meet R_2} = \orn{R_1} \meet \orn{R_2}$.
 
@@ -2357,7 +2356,7 @@ By \cref{lem:Reori2OrnT}, $(w_i, v) \in \rev(R_1 \join R_2)$ for all~$i \in [k]$
 Assume that~$w_{i+1}, \dots, w_k \in (\orn{R_1} \join \orn{R_2})(v)$ for some~$i \in [k-1]$.
 Since~$(w_i, v) \in \rev(R_1 \join R_2) = \tc(T) \cap \tc(\rev(R_1) \cup \rev(R_2))$, there is~${i+1 \le \ell \le k}$ such that~$(w_i, w_\ell) \in \rev(R_1) \cup \rev(R_2)$.
 Assume that~$\ell$ is minimal for this property, and assume by symmetry that~$(w_i, w_\ell) \in \rev(R_1)$.
-Since~$R_1$ is acyclic, \jose{\sout{we have}the minimality of $\ell$ implies that}~$(w_j, w_\ell) \in \rev(R_1)$ for all~${i \le j \le \ell}$.
+Since~$R_1$ is acyclic, the minimality of $\ell$ implies that~$(w_j, w_\ell) \in \rev(R_1)$ for all~${i \le j \le \ell}$.
 By \cref{lem:Reori2OrnT}, we obtain that~$w_i \in \orn{R_1}(w_\ell)$.
 By \cref{thm:OrnMeetJoin}, we therefore obtain that~${w_i \in (\orn{R_1} \join \orn{R_2})(v)}$.
 Hence, by descending induction, we obtain that~$u \in (\orn{R_1} \join \orn{R_2})(v)$.
