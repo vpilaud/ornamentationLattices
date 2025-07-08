@@ -3022,10 +3022,44 @@ In other words, we have
 Moreover, we can assume that there is no sourcing~$S' < S$ with a minimal cycle of length at least~$3$.
 
 As~$\bigcup_{j \in [p] \ssm \{i,i+1\}} I_j$ is connected by~(a) and contains both~$w_{i-1} \in I_{i-1}$ and~$w_{i+1} \in I_{i+2}$ but not~$w_i$ by~(b), the (not necessarily directed) path joining~$w_{i-1}$ to~$w_{i+1}$ in~$T$ cannot contain~$w_i$.
-Hence, the paths from~$w_i$ to~$w_{i-1}$ and to~$w_{i+1}$ respectively share their first vertex, which we denote by~$w'_i$.
+Hence, the paths from~$w_i$ to~$w_{i-1}$ and to~$w_{i+1}$ respectively share their vertex adjacent to $w_i$, which we denote by~$w'_i$.
 Since~$w_i$ and~$w_{i+1}$ both belong to the path~$I_{i+1}$, they are connected by a directed path in~$T$.
 We thus obtain that the vertices~$w_1, \dots, w_p$ form an alternating cycle in~$\tc(T)$, and thus that~$p = 2q$.
-By symmetry, assume that~$w_i$ has two incoming (resp.~outgoing) arrows in this cycle if~$i$ is even (resp.~odd).
+By symmetry, assume that~$w_i$ has two incoming (resp.~outgoing) arrows in this cycle if~$i$ is even (resp.~odd); see the figure below.
+\begin{center}
+\begin{tikzpicture}
+\node[fill,circle,inner sep=1pt] (Z) at (-1,1.5) {};
+\node[fill,circle,inner sep=1pt] (Y) at (-1,1.2) {};
+\node[fill,circle,inner sep=1pt] (A) at (0,0.0) {};
+\node[fill,circle,inner sep=1pt] (B) at (0,0.3) {};
+\node[fill,circle,inner sep=1pt] (D) at (1,1.5) {};
+\node[fill,circle,inner sep=1pt] (C) at (1,1.2) {};
+\node[fill,circle,inner sep=1pt] (E) at (2,0.0) {};
+\node[fill,circle,inner sep=1pt] (F) at (2,0.3) {};
+\node[fill,circle,inner sep=1pt] (H) at (3,1.5) {};
+\node[fill,circle,inner sep=1pt] (G) at (3,1.2) {};
+
+\node at (-.55,1.5) {\scriptsize $w_{2j-2}$};
+\node at (-.55,1.2) {\scriptsize $w'_{2j-2}$};
+\node at (0.45,0.0) {\scriptsize $w_{2j-1}$};
+\node at (0.45,0.3) {\scriptsize $w'_{2j-1}$};
+\node at (1.3,1.5) {\scriptsize $w_{2j}$};
+\node at (1.3,1.2) {\scriptsize $w'_{2j}$};
+\node at (2.45,0.0) {\scriptsize $w_{2j+1}$};
+\node at (2.45,0.3) {\scriptsize $w'_{2j+1}$};
+\node at (3.45,1.5) {\scriptsize $w_{2j+2}$};
+\node at (3.45,1.2) {\scriptsize $w'_{2j+2}$};
+
+\node at (-2,.75) {$\cdots$};
+\draw (-1.5,.75) to [out=10,in=270] (Y);
+\draw (B) to [out=90,in=270] (Y) -- (Z);
+\draw (A) -- (B) to [out=90,in=270] (C) -- (D);
+\draw (E) -- (F) to [out=90,in=270] (C);
+\draw (F) to [out=90,in=270] (G) -- (H);
+\draw (3.5,.75) to [out=170,in=270] (G);
+\node at (4,.75) {$\cdots$};
+\end{tikzpicture}
+\end{center}
 
 Let~$j \in [q]$.
 If~$w'_{2j}$ is not in~$I_{2j+2}$, we can consider the sourcing~$S'$ of~$\II$ defined by~$S'(I_{2j}) = w'_{2j}$ and~$S'(I) = S(I)$ for all~$I \in \II$.
