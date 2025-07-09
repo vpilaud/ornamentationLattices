@@ -2845,7 +2845,7 @@ Consider the permutations
 \pi_F \eqdef XadbcY
 \]
 and let~$S_A \eqdef \asour{\pi_A}^\II, \dots, S_F \eqdef \asour{\pi_F}^\II$ denote the corresponding acyclic sourcings of~$\II$, where~$\asour{\pi}^\II$ is defined by~$\asour{\pi}^\II(I) \eqdef \pi\bigl(\min \set{j \in [n]}{\pi(j) \in I} \bigr)$.
-See \cref{exm:pathIntersectionClosed,fig:pathIntersectionClosedStarSparse} for an illustration of these permutations and acyclic sourcings.
+See \cref{exm:pathIntersectionClosed,fig:pathIntersectionClosedStarSparse}\,(left) for an illustration of these permutations and acyclic sourcings.
 
 We claim that~$S_E = S_F$.
 Indeed, if~$K \in \II$ is such that~$S_E(K) \ne S_F(K)$, then~$K \supseteq \{b,c\}$ but~$K \cap (X \cup \{a,d\}) = \varnothing$.
@@ -2916,7 +2916,7 @@ Let~$I \eqdef \{1,3,4,5\}$ and~$J \eqdef \{2,3,4,6\}$ so that~$a = 1$, $b = 3$, 
 	S_Z(\red{2346}) & 3 & 4 & 6 & 4 & 6 & 6
 \end{array}
 \]
-See \cref{fig:pathIntersectionClosedStarSparse}.
+See \cref{fig:pathIntersectionClosedStarSparse}\,(left).
 The reader can check that~$S_A < S_C$, $S_A < S_D$, $S_B < S_E = S_F < S_C$, and~$S_B < S_D$.
 %
 \begin{figure}
@@ -2959,7 +2959,7 @@ S(I) =
 	w & \text{in all other cases, where~$w$ is the first letter of~$W$ that appears in~$I$}.
 \end{cases}
 \]
-See \cref{exm:pathStarSparse,fig:pathIntersectionClosedStarSparse} for an illustration of these permutations and sourcings.
+See \cref{exm:pathStarSparse,fig:pathIntersectionClosedStarSparse}\,(right) for an illustration of these permutations and sourcings.
 
 Note that~$S$ is cyclic since it contains the cycle~$u_1, v_1, u_2, v_2, \dots, u_p, v_p$ that we started from.
 Observe also that for any~$i \in [p]$ and any~$I \in \II$,
@@ -3011,7 +3011,7 @@ Therefore, we have the following permutations and ornamentations:
 %	T^i(\purple{34}) & 3 & 3
 \end{array}
 \]
-See \cref{fig:pathIntersectionClosedStarSparse}.
+See \cref{fig:pathIntersectionClosedStarSparse}\,(right).
 The reader can check that~$S^i < S < T^i$ for all~$i \in [2]$.
 \end{example}
 
@@ -3037,14 +3037,7 @@ In other words, we have
 \end{enumerate}
 Moreover, we can assume that there is no sourcing~$S' < S$ with a minimal cycle of length at least~$3$.
 
-As~$\bigcup_{j \in [p] \ssm \{i,i+1\}} I_j$ is connected by~(a) and contains both~$w_{i-1} \in I_{i-1}$ and~$w_{i+1} \in I_{i+2}$ but not~$w_i$ by~(b), the (not necessarily directed) path joining~$w_{i-1}$ to~$w_{i+1}$ in~$T$ cannot contain~$w_i$.
-Hence, the paths from~$w_i$ to~$w_{i-1}$ and to~$w_{i+1}$ respectively share their vertex adjacent to $w_i$, which we denote by~$w'_i$.
-Since~$w_i$ and~$w_{i+1}$ both belong to the path~$I_{i+1}$, they are connected by a directed path in~$T$.
-We thus obtain that the vertices~$w_1, \dots, w_p$ form an alternating cycle in~$\tc(T)$, and thus that~$p = 2q$.
-By symmetry, assume that~$w_i$ has two incoming (resp.~outgoing) arrows in this cycle if~$i$ is even (resp.~odd).
-See \cref{fig:pathStarSparse}.
-
-\begin{figure}
+\begin{figure}[b]
 	\centerline{
 	\begin{tikzpicture}
 	\coordinate (Z) at (-1,1.5);
@@ -3099,6 +3092,13 @@ See \cref{fig:pathStarSparse}.
 	\caption{Illustration of the notations in the proof of \cref{prop:pathStarSparse}.}
 	\label{fig:pathStarSparse}
 \end{figure}
+
+As~$\bigcup_{j \in [p] \ssm \{i,i+1\}} I_j$ is connected by~(a) and contains both~$w_{i-1} \in I_{i-1}$ and~$w_{i+1} \in I_{i+2}$ but not~$w_i$ by~(b), the (not necessarily directed) path joining~$w_{i-1}$ to~$w_{i+1}$ in~$T$ cannot contain~$w_i$.
+Hence, the paths from~$w_i$ to~$w_{i-1}$ and to~$w_{i+1}$ respectively share their vertex adjacent to $w_i$, which we denote by~$w'_i$.
+Since~$w_i$ and~$w_{i+1}$ both belong to the path~$I_{i+1}$, they are connected by a directed path in~$T$.
+We thus obtain that the vertices~$w_1, \dots, w_p$ form an alternating cycle in~$\tc(T)$, and thus that~$p = 2q$.
+By symmetry, assume that~$w_i$ has two incoming (resp.~outgoing) arrows in this cycle if~$i$ is even (resp.~odd).
+See \cref{fig:pathStarSparse}.
 
 Let~$j \in [q]$.
 If~$w'_{2j}$ is not in~$I_{2j+2}$, we can consider the sourcing~$S'$ of~$\II$ defined by~$S'(I_{2j}) = w'_{2j}$ and~$S'(I) = S(I)$ for all~$I \in \II$.
