@@ -2828,7 +2828,6 @@ Let~$b$ (resp.~$c$) be the bottom (resp.~top) endpoint of~$I \cap J$, and~$a$ (r
 Note that~$a,b,c,d$ are all distinct since~$|I \cap J| > 1$.
 Let~$Y$ be a word formed by~$(I \cup J) \ssm \{a,b,c,d\}$ in any order, and~$X$ be a word formed by~$[n] \ssm (I \cup J)$ in any order.
 Consider the permutations
-\Jose[inline]{Would it be more clear if we label these permutations so that \[\pi_A < \pi_B > \pi_C < \pi_D > \pi_E < \pi_F\]? That would make \cref{exm:pathIntersectionClosed} easier to verify for the reader, too.}
 \[
 \pi_A \eqdef XbacdY
 \quad
@@ -2843,7 +2842,7 @@ Consider the permutations
 \pi_F \eqdef XadbcY
 \]
 and let~$S_A \eqdef \asour{\pi_A}^\II, \dots, S_F \eqdef \asour{\pi_F}^\II$ denote the corresponding acyclic sourcings of~$\II$, where~$\asour{\pi}^\II$ is defined by~$\asour{\pi}^\II(I) \eqdef \pi\bigl(\min \set{j \in [n]}{\pi(j) \in I} \bigr)$.
-See \cref{exm:pathIntersectionClosed} for an illustration of these permutations and acyclic sourcings.
+See \cref{exm:pathIntersectionClosed,fig:pathIntersectionClosedStarSparse} for an illustration of these permutations and acyclic sourcings.
 
 We claim that~$S_E = S_F$.
 Indeed, if~$K \in \II$ is such that~$S_E(K) \ne S_F(K)$, then~$K \supseteq \{b,c\}$ but~$K \cap (X \cup \{a,d\}) = \varnothing$.
@@ -2905,14 +2904,25 @@ We illustrate the construction of the proof of \cref{lem:pathIntersectionClosed}
 Let~$I \eqdef \{1,3,4,5\}$ and~$J \eqdef \{2,3,4,6\}$ so that~$a = 1$, $b = 3$, $c = 4$, $d = 6$, $X = \varnothing$, $Y = 25$ and we have the following permutations and sources:
 \[
 \begin{array}{c|cccccc}
-	X & A & B & C & D & E & F \\
+	Z & A & B & C & D & E & F \\
 	\hline
-	\pi_X & 314625 & 146325 & 631425 & 463125 & 164325 & 163425 \\
-	S_X(\blue{1345}) & 3 & 1 & 3 & 4 & 1 & 1 \\
-	S_X(\red{2346}) & 3 & 4 & 6 & 4 & 6 & 6
+	\pi_Z & 314625 & 146325 & 631425 & 463125 & 164325 & 163425 \\
+	S_Z(\blue{1345}) & 3 & 1 & 3 & 4 & 1 & 1 \\
+	S_Z(\red{2346}) & 3 & 4 & 6 & 4 & 6 & 6
 \end{array}
 \]
+See \cref{fig:pathIntersectionClosedStarSparse}.
 The reader can check that~$S_A < S_C$, $S_A < S_D$, $S_B < S_E = S_F < S_C$, and~$S_B < S_D$.
+%
+\begin{figure}
+	\centerline{
+		\input{figures/pathIntersectionClosed}
+		\hspace{1.5cm}
+		\input{figures/starSparse}
+	}
+	\caption{The permutations and sourcings of \cref{exm:pathIntersectionClosed} (left) and of \cref{exm:pathStarSparse} (right), illustrating the proofs of \cref{lem:pathIntersectionClosed,lem:pathStarSparse}. The black arrows indicate relations in weak order.}
+	\label{fig:pathIntersectionClosedStarSparse}
+\end{figure}
 \end{example}
 
 \begin{lemma}
@@ -2944,7 +2954,7 @@ S(I) =
 	w & \text{in all other cases, where~$w$ is the first letter of~$W$ that appears in~$I$}.
 \end{cases}
 \]
-See \cref{exm:pathStarSparse} for an illustration of these permutations and sourcings.
+See \cref{exm:pathStarSparse,fig:pathIntersectionClosedStarSparse} for an illustration of these permutations and sourcings.
 
 Note that~$S$ is cyclic since it contains the cycle~$u_1, v_1, u_2, v_2, \dots, u_p, v_p$ that we started from.
 Observe also that for any~$i \in [p]$ and any~$I \in \II$,
@@ -2996,6 +3006,7 @@ Therefore, we have the following permutations and ornamentations:
 %	T^i(\purple{34}) & 3 & 3
 \end{array}
 \]
+See \cref{fig:pathIntersectionClosedStarSparse}.
 The reader can check that~$S^i < S < T^i$ for all~$i \in [2]$.
 \end{example}
 
