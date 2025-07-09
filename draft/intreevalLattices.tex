@@ -483,6 +483,24 @@ We define the ornamentation lattice~$\Orn(D)$ (\cref{subsec:ornamentations}), th
 	\label{fig:ornamentationsAY}
 \end{figure}
 
+\begin{figure}
+	\centerline{\includegraphics[scale=.68]{ornamentationsX}}
+	\caption{The ornamentation lattice~$\Orn(\Xgraph)$. (Gray = cyclic).}
+	\label{fig:ornamentationsX}
+\end{figure}
+
+\begin{figure}
+	\centerline{\includegraphics[scale=.68]{ornamentationsD}}
+	\caption{The ornamentation lattice~$\Orn(\Dgraph)$. (Gray = cyclic).}
+	\label{fig:ornamentationsD}
+\end{figure}
+
+\begin{figure}
+	\centerline{\includegraphics[scale=.68,valign=c]{ornamentationsK}\qquad\includegraphics[scale=.68,valign=c]{ornamentationsT}}
+	\caption{The ornamentation lattices~$\Orn(\Kgraph)$ and~$\Orn(\Tgraph)$. (Gray = cyclic).}
+	\label{fig:ornamentationsKT} 
+\end{figure}
+
 The following definition, first introduced for rooted trees in~\cite{DefantSack}, is illustrated in \cref{fig:ornamentationsNI,fig:ornamentationsAY,fig:ornamentationsX,fig:ornamentationsD,fig:ornamentationsKT}.
 It will also be extended beyond directed graphs in~\cite{Sack}.
 
@@ -590,24 +608,6 @@ The isomorphism is identical to the construction of bracket vectors in~\cite{Hua
 %\end{itemize}
 %\end{remark}
 
-\begin{figure}
-	\centerline{\includegraphics[scale=.68]{ornamentationsX}}
-	\caption{The ornamentation lattice~$\Orn(\Xgraph)$. (Gray = cyclic).}
-	\label{fig:ornamentationsX}
-\end{figure}
-
-\begin{figure}
-	\centerline{\includegraphics[scale=.68]{ornamentationsD}}
-	\caption{The ornamentation lattice~$\Orn(\Dgraph)$. (Gray = cyclic).}
-	\label{fig:ornamentationsD}
-\end{figure}
-
-\begin{figure}
-	\centerline{\includegraphics[scale=.68,valign=c]{ornamentationsK}\qquad\includegraphics[scale=.68,valign=c]{ornamentationsT}}
-	\caption{The ornamentation lattices~$\Orn(\Kgraph)$ and~$\Orn(\Tgraph)$. (Gray = cyclic).}
-	\label{fig:ornamentationsKT} 
-\end{figure}
-
 %\begin{remark}
 %A few properties of the ornamentation lattice~$\Orn(D)$:
 %\begin{enumerate}[(i)]
@@ -661,13 +661,13 @@ The isomorphism is identical to the construction of bracket vectors in~\cite{Hua
 \subsection{Reorientations}
 \label{subsec:reorientations}
 
-We now consider reorientations of graphs, as illustrated in \cref{fig:reorientationsKNT}.
-
 \begin{figure}[b]
 	\centerline{\begin{tabular}{c} \includegraphics[scale=.68,valign=c]{reorientationsK} \\ \includegraphics[scale=.68,valign=c]{reorientationsN} \end{tabular}\qquad\includegraphics[scale=.68,valign=c]{reorientationsT}}
 	\caption{The reorientation lattices~$\Reori(\tc(\Kgraph))$, $\Reori(\tc(\Ngraph))$ and~$\Reori(\tc(\Tgraph))$. (Gray = cyclic). See also \cref{fig:acyclicReorientationsKT}.}
 	\label{fig:reorientationsKNT}
 \end{figure}
+
+We now consider reorientations of graphs, as illustrated in \cref{fig:reorientationsKNT}.
 
 \begin{definition}
 \label{def:Reori}
@@ -1157,6 +1157,30 @@ We then consider the acyclic reorientation poset~$\AReori(\tc(D))$ (\cref{subsec
 \subsection{Acyclic reorientations}
 \label{subsec:acyclicReorientations}
 
+\begin{figure}[b]
+	\centerline{\includegraphics[scale=.68]{acyclicReorientationsI}}
+	\caption{The acyclic reorientation poset~$\AReori(\tc(\Igraph))$. (It is isomorphic to the weak order.)}
+	\label{fig:acyclicReorientationsI}
+\end{figure}
+
+\begin{figure}
+	\centerline{\includegraphics[scale=.68]{acyclicReorientationsY} \qquad \includegraphics[scale=.68]{acyclicReorientationsA}}
+	\caption{The acyclic reorientation posets~$\AReori(\tc(\Ygraph))$ and~$\AReori(\tc(\Agraph))$. (They are both lattices, see \cref{prop:AReoriLatticeUT}.)}
+	\label{fig:acyclicReorientationsAY}
+\end{figure}
+
+\begin{figure}
+	\centerline{\includegraphics[scale=.68]{acyclicReorientationsD}}
+	\caption{The acyclic reorientation poset~$\AReori(\tc(\Dgraph))$. (Not a lattice, see \cref{fig:MacNeilleAcyclicReorientationsD}.)}
+	\label{fig:acyclicReorientationsD}
+\end{figure}
+
+\begin{figure}
+	\centerline{\includegraphics[scale=.68,valign=c]{acyclicReorientationsK}\qquad\includegraphics[scale=.68,valign=c]{acyclicReorientationsT}}
+	\caption{The acyclic reorientation posets~$\AReori(\tc(\Kgraph))$ and~$\AReori(\tc(\Tgraph))$.}
+	\label{fig:acyclicReorientationsKT}
+\end{figure}
+
 Acyclic reorientations of directed acyclic graphs is a classical subject, see for instance~\cite{Greene,GreeneZaslavsky,Pilaud-acyclicReorientationLattices} and \cref{fig:acyclicReorientationsAY,fig:acyclicReorientationsD,fig:acyclicReorientationsKT} for illustrations.
 
 \begin{definition}
@@ -1207,33 +1231,8 @@ The map~$\pi \mapsto \areori{\pi}$ is an order-preserving surjection from the we
 \begin{proof}
 Recall that the weak order on~$\fS_n$ is defined by the inclusion of inversion sets, where the inversion set of~$\pi \in \fS_n$ is~$\inv(\pi) \eqdef \set{(u,v)}{u < v \text{ and } \pi^{-1}(u) > \pi^{-1}(v)}$.
 By definition, we have~$\rev(\areori{\pi}) = \inv(\pi) \cap \tc(D)$, hence~$\pi \mapsto \areori{\pi}$ is order-preserving.
-It is surjective since the fiber of any reorientation~$R$ is the set of linear extensions of~$R$, which is non-empty when~$R$ is acyclic.
+It is surjective since the fiber of any reorientation~$R$ is the set of linear extensions of~$R$, which is non-empty when~$R$~is~acyclic.
 \end{proof}
-
-\begin{figure}
-	\centerline{\includegraphics[scale=.68]{acyclicReorientationsI}}
-	\caption{The acyclic reorientation poset~$\AReori(\tc(\Igraph))$. (It is isomorphic to the weak order.)}
-	\label{fig:acyclicReorientationsI}
-\end{figure}
-
-
-\begin{figure}
-	\centerline{\includegraphics[scale=.68]{acyclicReorientationsY} \qquad \includegraphics[scale=.68]{acyclicReorientationsA}}
-	\caption{The acyclic reorientation posets~$\AReori(\tc(\Ygraph))$ and~$\AReori(\tc(\Agraph))$. (They are both lattices, see \cref{prop:AReoriLatticeUT}.)}
-	\label{fig:acyclicReorientationsAY}
-\end{figure}
-
-\begin{figure}
-	\centerline{\includegraphics[scale=.68]{acyclicReorientationsD}}
-	\caption{The acyclic reorientation poset~$\AReori(\tc(\Dgraph))$. (Not a lattice, see \cref{fig:MacNeilleAcyclicReorientationsD}.)}
-	\label{fig:acyclicReorientationsD}
-\end{figure}
-
-\begin{figure}
-	\centerline{\includegraphics[scale=.68,valign=c]{acyclicReorientationsK}\qquad\includegraphics[scale=.68,valign=c]{acyclicReorientationsT}}
-	\caption{The acyclic reorientation posets~$\AReori(\tc(\Kgraph))$ and~$\AReori(\tc(\Tgraph))$.}
-	\label{fig:acyclicReorientationsKT}
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2142,6 +2141,18 @@ It follows from \cref{lem:irreduciblesReorientationsAcyclicT} for transitively b
 \end{proof}
 
 We conclude with the main statement of this section.
+%
+\begin{figure}[b]
+	\centerline{\includegraphics[scale=.68]{MacNeilleAcyclicReorientationsD}}
+	\caption{The MacNeille completion of the acyclic reorientation poset~$\AReori(\tc(\Dgraph))$ of \cref{fig:acyclicReorientationsD}. (Gray = added element). See \cref{rem:MacNeille}.}
+	\label{fig:MacNeilleAcyclicReorientationsD}
+\end{figure}
+%
+\begin{figure}
+	\centerline{\includegraphics[scale=.68]{MacNeilleAcyclicOrnamentationsD}}
+	\caption{The MacNeille completion of the acyclic ornamentation poset~$\AOrn(\Dgraph)$ of \cref{fig:ornamentationsD}. (Gray = added element). See \cref{rem:MacNeille}.}
+	\label{fig:MacNeilleAcyclicOrnamentationsD}
+\end{figure}
 
 \begin{theorem}
 \label{thm:MacNeille}
@@ -2156,6 +2167,8 @@ For a directed tree~$T$,
 \begin{proof}
 This follows from \cref{prop:MacNeilleCompletion,coro:irreduciblesAcyclicT}.
 \end{proof}
+
+\pagebreak
 
 \begin{remark}
 \label{rem:MacNeille}
@@ -2174,18 +2187,6 @@ suffices to make it a lattice, as illustrated in \cref{fig:MacNeilleAcyclicOrnam
 Another interesting case is the directed graph~$\Kgraph$ of \cref{fig:ornamentationsKT,fig:reorientationsKNT,fig:acyclicReorientationsKT}, for which the acyclic ornamentations already form lattice, even if there exists a cyclic ornamentation.
 In contrast, \cref{thm:MacNeille} still holds for the directed graph~$\Tgraph$ of \cref{fig:ornamentationsKT}.
 In general, we have no description of the MacNeille completion of the acyclic ornamentation lattice of an arbitrary directed graph.
-%
-\begin{figure}
-	\centerline{\includegraphics[scale=.68]{MacNeilleAcyclicReorientationsD}}
-	\caption{The MacNeille completion of the acyclic reorientation poset~$\AReori(\tc(\Dgraph))$ of \cref{fig:acyclicReorientationsD}. (Gray = added element). See \cref{rem:MacNeille}.}
-	\label{fig:MacNeilleAcyclicReorientationsD}
-\end{figure}
-%
-\begin{figure}
-	\centerline{\includegraphics[scale=.68]{MacNeilleAcyclicOrnamentationsD}}
-	\caption{The MacNeille completion of the acyclic ornamentation poset~$\AOrn(\Dgraph)$ of \cref{fig:ornamentationsD}. (Gray = added element). See \cref{rem:MacNeille}.}
-	\label{fig:MacNeilleAcyclicOrnamentationsD}
-\end{figure}
 \end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2794,6 +2795,8 @@ When~$T$ is an oriented path,
 \end{itemize}
 \end{remark}
 
+\pagebreak
+
 \begin{remark}
 When~$T$ is a rooted tree,
 \begin{itemize}
@@ -2897,6 +2900,8 @@ We discuss four cases:
 Note that the case $g = b$ (resp.~$g = c$) is covered by Case~(ii) (resp.~(iii)), hence these four cases cover all possibilities.
 As these four cases are all excluded, we reached a contradiction.
 \end{proof}
+
+\pagebreak
 
 \begin{example}
 \label{exm:pathIntersectionClosed}
