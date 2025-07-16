@@ -2743,7 +2743,12 @@ In other words, any hypergraph whose hyperedges are (the vertex sets of) some di
 
 \begin{definition} 
 \label{def:pathIntersectionClose}
-We say that an intreeval hypergraph~$\II$ of an increasing tree~$T$ is \defn{path intersection closed} if for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max(J) >_T \max(I\cap J)$, there exists~$K \in \II$ such that $\min(J) \le_T \min(K) \le_T \min(I\cap J)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$.
+We say that an intreeval hypergraph~$\II$ of an increasing tree~$T$ is \defn{path intersection closed} if for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max(J) >_T \max(I\cap J)$, there exists~$K \in \II$ such that 
+\jose{$I \cap J \subseteq K \subseteq [\min(J) , \max(I)]_T$.\sout{$\min(J) \le_T \min(K) \le_T \min(I\cap J)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$.}}\Jose{I was getting confused with all the inequalities. Would this be easier to parse for the reader?}
+\end{definition}
+
+\begin{definition} 
+We say that an intreeval hypergraph~$\II$ of an increasing tree~$T$ is \defn{path intersection closed} if for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max(J) >_T \max(I\cap J)$, there exists~$K \in \II$ such that 
 \end{definition}
 
 \begin{remark}
