@@ -2236,9 +2236,19 @@ Note that the same argument shows that all edges of~$C$ are in~$\tc(T) \ssm T$.
 
 Let~$w$ denote the last vertex before~$u_k$ along the path from~$d_1$ to~$u_k$.
 If~$w$ does not belong to the path from~$d_k$ to~$u_k$, then the cycle~$C$ must pass again through~$u_k$, contradicting inducedness.
+\Antoine{I think I don't understand this.
+If $T$ is two X's of \cref{fig:ornamentationsX}, say X and X', but with 5 and 4' glued together, then taking $C=(1,5,1',5',2',5,2)$, $w=3$ does not work. I proposed another proof.}
+
 Hence, we obtain a new induced alternating cycle by replacing~$u_k$ by~$w$ in~$C$.
 By induction on the sum of the length of the paths between~$d_i$ and~$u_i$ in~$T$, we obtain that~$k = 2$ and that there is~$v \in V$ such that~$(d_1, v)$, $(d_2,v)$, $(v,u_1)$, and~$(v,w)$ are in~$\tc(T)$.
 As~$w$ is between~$d_1$ and~$u_2$, we also get~$(v,u_2) \in \tc(T)$.
+
+
+\antoine{I propose: We take $C$ to be minimal (in the sense that it is not two cycles glued together).
+	Let~$w$ denote the last vertex before~$u_k$ along the path from~$d_1$ to~$u_k$.
+	If~$w$ does not belong to the path from~$d_k$ to~$u_k$, then the cycle~$C$ must pass again through~$u_k$,
+	\red{contradicting minimality of $C$}.
+	Now, there exists $i$ such that $d_j<w<u_i\neq u_k$ where $j\in\{i,i-1\}$. We have $a=d_1$, $b=d_j$, $c=w$, $d=u_k$ and $e=u_i$.}
 
 \medskip\noindent
 \uline{\textsl{(ii) $\Rightarrow$ (i):}} Let~$a,b,c,d,e$ as in~(ii). Then~$(a,d,b,e)$ forms an induced alternating cycle in~$\tc(T)$.
@@ -2762,7 +2772,7 @@ See \cref{exm:intreevalHypergraphs,fig:intreevalHypergraphs}.
 Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
 Consider~$u \le_T v$, and let~$u_1, \dots, u_k$ (resp.~$v_1, \dots, v_\ell$) denote the incoming (resp.~outgoing) neighbors of~$u$ (resp.~$v$) in~$T$.
 We denote by~$X(T,u,v,\II)$ the (undirected) graph on~$u_1, \dots, u_k,\; v_1, \dots, v_\ell$ with an edge joining~$u_i$ and~$v_j$ if and only if there is~$I \in \II$ containing both~$u_i$ and~$v_j$.
-We say that~$\II$ is \defn{star sparse} if~$X(T,u,v,\II)$ is acyclic for all~$u,v$ connected by a directed path.
+We say that~$\II$ is \defn{star sparse} if~$X(T,u,v,\II)$ is acyclic for all~$u,v$ connected by a directed path. \Antoine{Would it point out more the link with the induced cycles of last section to denote the vertices by $d_1,\cdots d_k$ and $u_1\cdots u_k$ instead of $u_1\cdots u_k$ and $v_1\cdots v_k$?}
 \end{definition}
 
 \begin{example}
@@ -2831,6 +2841,7 @@ If~$\ASour(\II)$ is a lattice, then $\II$ is path intersection closed (\cref{def
 \begin{proof}
 The proof follows exactly the same lines as that of~\cite[Prop.~4.6]{BergeronPilaud}.
 Assume by means of contradiction that~$\ASour(\II)$ is a lattice but that there are~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max(J) >_T \max(I\cap J)$, and there is no~$K \in \II$ such that $\min(J) \le_T \min(K) \le_T \min(I\cap J)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$.
+\Antoine{Should we replace this by Jose's description?}
 
 Let~$b$ (resp.~$c$) be the bottom (resp.~top) endpoint of~$I \cap J$, and~$a$ (resp.~$d$) be its neighbor in~$I \ssm J$ (resp.~$J \ssm I$).
 Note that~$a,b,c,d$ are all distinct since~$|I \cap J| > 1$.
@@ -3286,7 +3297,7 @@ For any acyclic sourcings~$S_1$ and~$S_2$ of~$\II$, if~$S_1 \le S_2$ then~$\mino
 
 \begin{proof}
 Assume by means of contradiction that~$S_1 \le S_2$ and~$\minorn{S_1}{\II} \not\le \maxorn{S_2}{\II}$.
-Since~$\minorn{S_1}{\II} \le \maxorn{S_2}{\II}$, there exist~$I, J \in \II$ such that~$\minorn{S_1}{I} \not\le \maxorn{S_2}{J}$.
+Since~$\minorn{S_1}{\II} \antoine{\not\le} \maxorn{S_2}{\II}$, there exist~$I, J \in \II$ such that~$\minorn{S_1}{I} \not\le \maxorn{S_2}{J}$.
 This implies~$\min(I) \le S_2(J) < S_1(I) \le \max(J)$.
 Hence, $S_1(I)$ and~$S_2(J)$ are distinct and both belong to~$I \cap J$.
 Moreover, as~$S_1 \le S_2$, we have~$S_1(J) \le S_2(J) < S_1(I) \le S_2(I)$.
