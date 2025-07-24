@@ -54,7 +54,6 @@
 VP was partially supported by the Spanish project PID2022-137283NB-C21 of MCIN/AEI/10.13039/501100011033 / FEDER, UE, by the Spanish--German project COMPOTE (AEI PCI2024-155081-2 \& DFG 541393733), by the Severo Ochoa and María de Maeztu Program for Centers and Units of Excellence in R\&D (CEX2020-001084-M), by the Departament de Recerca i Universitats de la Generalitat de Catalunya (2021 SGR 00697), and by the French--Austrian project PAGCAP (ANR-21-CE48-0020 \& FWF I 5788).
 }
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % theorems
@@ -259,14 +258,12 @@ The objective of this paper is to study the interconnections between natural ext
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \para{Hypergraphic posets and hypergraphic polytopes.}
-%Hypergraphic polytopes and posets were introduced in~\cite{BenedettiBergeronMachacek,BergeronPilaud}.
 Consider a hypergraph~$\HH$ on~$[n]$.
 A \defn{sourcing} of~$\HH$ is a map~$S$ associating to each hyperedge~$H \in \HH$ a source~$S(H) \in H$.
 Note that sourcings of~$\HH$ are often called orientations of~$\HH$, we changed the name to avoid confusion with reorientations of directed graphs also manipulated in this paper.
 A sourcing~$S$ of~$\HH$ is \defn{acyclic} if there is no directed cycle in the directed graph with edges~$(h,S(H))$ for all~$h \in H \in \HH$.
 The \defn{(acyclic) sourcing poset} of~$\HH$ is the poset of (acyclic) sourcings of~$\HH$ ordered by componentwise comparison, meaning~$S \le S'$ if and only if~$S(H) \le S'(H)$ for all~$H \in \HH$.
 While the sourcing poset~$\Sour(\HH)$ is clearly a lattice (as a product of intervals), the acyclic sourcing poset~$\ASour(\HH)$ is not always a lattice.
-%When~$\HH$ is the hypergraph of all intervals of~$[n]$, the acyclic sourcing poset~$\Sour(\HH)$ is the Tamari lattice.
 The question to characterize the hypergraphs~$\HH$ whose acyclic sourcing posets~$\ASour(\HH)$ are lattices has been studied for specific families of hypergraphs, notably for graphs~\cite{Pilaud-acyclicReorientationLattices}, for interval hypergraphs~\cite{BergeronPilaud}, and (partially for) graph associahedra~\cite{BarnardMcConville}.
 In this paper, we will consider the family of hypergraphs arising as the collection of paths in a directed graph, and study their acyclic sourcing posets from a lattice theoretic perspective.
 
@@ -277,7 +274,7 @@ In particular, it is proved in~\cite{Gelinas} that the acyclic sourcing poset~$\
 
 For instance, 
 \begin{itemize}
-\item if~$\HH = \binom{[n]}{2}$ is the complete graph, $\simplex_\HH$ is the permutahedron and $\ASour(\HH)$ is the weak order. % on permutations,
+\item if~$\HH = \binom{[n]}{2}$ is the complete graph, $\simplex_\HH$ is the permutahedron and $\ASour(\HH)$ is the weak order.
 \item if~$\HH = \set{[i,j]}{1 \le i \le j \le n}$ is the complete interval hypergraph, $\simplex_\HH$ is the associahedron of~\cite{ShniderSternberg,Loday} and~$\ASour(\HH)$ is the Tamari lattice~\cite{Tamari}.
 \end{itemize}
 
@@ -451,7 +448,6 @@ In particular, the acyclic sourcing poset~$\ASour(\II)$ of any intersection clos
 Throughout this section, we fix a directed graph~$D$ on a vertex set~$V$, and denote by~$\tc(D)$ its transitive closure and by~$\PP(D)$ its hypergraph of directed paths.
 It is a priori not required that~$D$ is acyclic, although this is the case that interest us most in this paper.
 In particular, in all our pictures, $V = [n]$ and the edges are increasing (so we can omit their orientations).
-%We will mostly work with a directed acyclic graph, and we represent it with edges going up in all pictures.
 We define the ornamentation lattice~$\Orn(D)$ (\cref{subsec:ornamentations}), the reorientation lattice~$\Reori(\tc(D))$ (\cref{subsec:reorientations}), and the sourcing lattice~$\Sour(\PP(D))$ (\cref{subsec:sourcings}), and define natural surjective poset morphisms:
 \[
 \begin{array}{rcl}
@@ -530,9 +526,7 @@ We can clearly define different ornamentations by
 \label{lem:unionOrnaments}
 \begin{enumerate}[(i)]
 \item If~$U \in \Orn(u \in D)$ and~$U' \in \Orn(u' \in D)$ with~$u \in U'$, then~${U \cup U' \in \Orn(u' \in D)}$.
-%\item If~$U$ is an ornament at a vertex~$u$ of~$D$ and~$U'$ is an ornament at a vertex~$u'$ of~$D$ and~$u \in U'$, then~$U \cup U'$ is an ornament of~$D$ at~$u'$.
 \item If~$U,U' \in \Orn(v \in D)$, then~$U \cup U' \in \Orn(v \in D)$, while $U \cap U'$ is not necessarily~in~${\Orn(v \in D)}$.
-%\item If~$U,U'$ are two ornaments at a vertex~$v$ of~$D$, then~$U \cup U'$ is also an ornament at~$v$, while $U \cap U'$ is not necessarily an ornament at~$v$.
 \end{enumerate}
 \end{lemma}
 
@@ -550,19 +544,11 @@ The set~$\Orn(D)$ of ornamentations of~$D$ is a lattice under componentwise incl
 For any two ornamentations~$O_1$ and~$O_2$ of~$D$,
 \begin{itemize}
 \item $(O_1 \meet O_2)(v)$ is the inclusion maximal ornament at~$v$ contained in~$O_1(v) \cap O_2(v)$,
-%\item the join~$O_1 \join O_2$ is the ornamentation of~$D$ where~$(O_1 \join O_2)(v) = \set{u \in V}{u \, R \, v}$ where $R$ is the transitive closure of~$u \in O_1(v) \cup O_2(v)$.
 \item $(O_1 \join O_2)(v)$ is the inclusion minimal subset~$U$ of~$V$ containing~$v$ and such that~$u \in U$ implies~$O_1(u) \cup O_2(u) \subseteq U$.
 \end{itemize}
 \end{theorem}
 
 \begin{proof}
-%Given two ornamentations~$O_1$ and~$O_2$ of~$D$, let~$O_\meet$ and $O_\join$ be the maps on~$V$ defined by 
-%\begin{itemize}
-%\item $O_\meet(v)$ is the inclusion maximal ornament at~$v$ contained in~$O_1(v) \cap O_2(v)$,
-%%\item $O_\join(v) = \set{u \in V}{u \, R \, v}$ where $R$ is the transitive closure of~$u \in O_1(v) \cup O_2(v)$.
-%\item $O_\join(v)$ is the inclusion minimal subset~$U$ of~$V$ containing~$v$ and such that~$u \in U$ implies~$O_1(u) \cup O_2(u) \subseteq U$.
-%\end{itemize}
-%
 Given two ornamentations~$O_1$ and~$O_2$ of~$D$, consider the map~$O_\meet$ on~$V$ where $O_\meet(v)$ is the inclusion maximal ornament at~$v$ contained in~$O_1(v) \cap O_2(v)$.
 Note that $O_\meet(v)$ is well-defined by \cref{lem:unionOrnaments}, and that~$O_\meet(v) \in \Orn(v \in D)$ for any~$v \in V$ by definition.
 Consider now~$u,v \in V$ such that~$u \in O_\meet(v)$.
@@ -589,7 +575,6 @@ The minimal ornamentation of~$D$ sends each vertex~$v \in V$ to the singleton~$\
 \begin{example}
 The ornamentation lattice of the graph with a single edge is a $2$-element chain.
 More generally, the ornamentation lattice of a graph with no path of length $2$ is a boolean lattice (see \eg \cref{fig:ornamentationsNI}\,(left) and \ref{fig:ornamentationsKT}\,(right)).
-%In general, the ornamentation lattice~$\Orn(D \sqcup D')$ of the disjoint union of two directed graphs~$D$ and~$D'$ is the Cartesian product~$\Orn(D) \times \Orn(D')$ of the ornamentation lattices of~$D$ and~$D'$
 In fact, the boolean lattices are the only distributive ornamentation lattices.
 \end{example}
 
@@ -597,64 +582,6 @@ In fact, the boolean lattices are the only distributive ornamentation lattices.
 The ornamentation lattice of the $n$-element path is isomorphic to the Tamari lattice on binary trees with $n$ nodes (see \eg \cref{fig:ornamentationsNI}\,(right)).
 The isomorphism is identical to the construction of bracket vectors in~\cite{HuangTamari}.
 \end{example}
-
-%\begin{remark}
-%\label{rem:posetPropertiesOrnamentations}
-%A few poset properties of the ornamentations lattice~$\Orn(D)$:
-%\begin{itemize}
-%\item The minimal ornamentation sends each vertex~$v \in V$ to the singleton~$\{v\}$, and the maximal ornamentation sends each vertex~$v \in V$ to the set~$\lessin{D}{v}$ of vertices with a path to~$v$ in~$D$.
-%\item Two ornamentations~$O_1$ and~$O_2$ of~$D$ form a cover relation~$O_1 \lessdot O_2$ if and only if there are~$u, v \in V$ such that~$u \notin O_1(v)$, $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$, and~$O_1(w) = O_1(u)$ for any~$w \in O_1(u)$ with an edge towards~$O_1(v)$.
-%\item For any~$U \subseteq V$, the ornamentation lattice of the subgraph~$D_U$ of~$D$ induced by~$U$ is an interval of the ornamentation lattice of~$D$ (namely, the bottom interval below the ornamentation of~$D$ where~$O(u)$ is the set of vertices of~$U$ with a path to~$u$ in~$U$ for all~$u \in U$, while~$O(v)$ is the singleton~$\{v\}$ for all~$v \in V \ssm U$).
-%\end{itemize}
-%\end{remark}
-
-%\begin{remark}
-%A few properties of the ornamentation lattice~$\Orn(D)$:
-%\begin{enumerate}[(i)]
-%\item The minimal (resp.~maximal) ornamentation of~$D$ sends each vertex~$v \in V$ to the singleton~$\{v\}$ (resp.~to the set~$\lessin{D}{v}$ of vertices with a path to~$v$ in~$D$).
-%\item The join irreducible ornamentations of~$D$ are precisely the ornamentations~$\Orn_P$ described in \cref{exm:ornamentations}\,(iii) for the directed paths~$P$ in~$D$ which admit no shortcut in~$D$. (The meet irreducible ornamentations are more complicated to describe.)
-%\item $\Orn(D)$ is distributive if and only if~$D$ contains no path of length~$2$ (in which case, $\Orn(D)$ is actually a boolean lattice).
-%\item $\Orn(D)$ is semidistributive if and only if~$D$ is a directed tree.
-%\Vincent{This is wrong...}
-%\end{enumerate}
-%\end{remark}
-
-%\begin{lemma}
-%\label{lem:coverRelationsOrn}
-%Two ornamentations~$O_1$ and~$O_2$ of~$D$ form a cover relation~$O_1 \lessdot O_2$ if and only if there are~$u, v \in V$ such that~$u \notin O_1(v)$, $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$, and~$O_1(w) = O_1(u)$ for any~$w \in O_1(u)$ with an edge towards~$O_1(v)$.
-%\Vincent{I am not sure this description is understandable...}
-%\end{lemma}
-%
-%\begin{proof}
-%Assume first that~$O_1$ and~$O_2$ are two ornamentations of~$D$ such that there are~$u, v \in V$ such that~$u \notin O_1(v)$, $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$, and~$O_1(w) = O_1(u)$ for any~$w \in O_1(u)$ with an edge towards~$O_1(v)$.
-%We have~$O_1 \le O_2$. Moreover, consider any ornamentation~$O$ of~$D$ such that~$O_1 \le O \le O_2$.
-%Then~$O_1(w) = O(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$ and~$O_1(v) \subseteq O(v) \subseteq O_2(v)$. If~$O_1 \ne O$, then there is~$x \in O(v) \ssm O_1(v)$ and let~$y$ be the last vertex not in~$O_1(v)$ along the path from~$x$ to~$v$ in~$O(v)$.
-%As~$y \in O(v) \ssm O_1(v) \subseteq O_2(v) \ssm O_1(v) \subseteq O_1(u)$ and~$y$ has an edge towards~$O_1(v)$, we have~$O_1(y) = O_1(u)$, and we thus obtain that~$O(v) \supseteq O_1(y) \cup O_1(v) = O_1(u) \cup O_1(v) = O_2(v)$, hence that~$O = O_2$.
-%
-%Conversely, assume that~$O_1$ and~$O_2$ are two ornamentations of~$D$ such that~$O_1 \lessdot O_2$ is a cover relation in~$\Orn(D)$.
-%Consider~$v \in V$ such that~$O_1(v) \ne O_2(v)$ and~$O_1(w) = O_2(w)$ for any~$w \in O_1(v)$.
-%Then the map~$O$ on~$V$ defined by $O(v) = O_1(v)$ and~$O(w) = O_2(w)$ for all~$w \ne v$ is an ornamentation of~$D$.
-%Moreover, $O_1 \le O < O_2$.
-%Hence, $O_1 = O$.
-%\Vincent{todo}
-%\end{proof}
-%
-%We now describe the join irreducible ornamentations.
-%Note that the meet irreducible ornamentations are more complicated to describe in general.
-%We will describe them for directed trees in \cref{prop:meetIrreducibleOrnamentationsT}.
-%
-%\begin{proposition}
-%\label{prop:joinIrreducibleOrnamentations}
-%The join irreducible ornamentations of~$D$ are precisely the ornamentations~$\Orn_P$ described in \cref{exm:ornamentations}\,(iii) for the directed paths~$P$ in~$D$ which admit no shortcut in~$D$.
-%\end{proposition}
-%
-%\begin{proof}
-%\Vincent{todo}
-%\end{proof}
-%
-%\begin{lemma}
-%For any~$U \subseteq V$, the ornamentation lattice of the subgraph~$D_U$ of~$D$ induced by~$U$ is an interval of the ornamentation lattice of~$D$ (namely, the bottom interval below the ornamentation of~$D$ where~$O(u)$ is the set of vertices of~$U$ with a path to~$u$ in~$U$ for all~$u \in U$, while~$O(v)$ is the singleton~$\{v\}$ for all~$v \in V \ssm U$).
-%\end{lemma}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -709,7 +636,6 @@ If~$R_1 \le R_2$, then $\rev(R_1) \subseteq \rev(R_2)$, hence any path in~$\rev(
 \begin{definition}
 \label{def:Orn2Reori}
 For an ornamentation~$O$ of~$D$, we define a reorientation~$\reori{O}$ of~$\tc(D)$ where for each~$(u,v) \in \tc(D)$, we have~$(u,v) \in \rev(\reori{O})$ if and only if~$u \in O(v)$.
-%\Vincent{This map is not compatible with acyclicity later... But I don't see how to fix that.}
 \end{definition}
 
 \begin{lemma}
@@ -834,16 +760,6 @@ The proof for~$\Rco(\tc(D))$ is symmetric.
 \label{rem:biclosedNotLattice}
 Observe however that the subposet of~$\Reori(\tc(D))$ induced by the set~$\Rbi(\tc(D))$ of transitively biclosed reorientations may fail to be a lattice.
 For instance, consider the following four transitively biclosed reorientations of~$\tc(\Dgraph)$:
-%\[
-%\begin{array}{cccc}
-%\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationD1}} &
-%\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationD2}} &
-%\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationD3}} &
-%\raisebox{-.23cm}{\includegraphics[scale=.8]{reorientationD4}}
-%\\
-%R_1 & R_2 & R_3 & R_4
-%\end{array}
-%\]
 \[
 R_1 = \!\! \includegraphics[scale=.8,valign=c]{reorientationD1}
 \qquad
@@ -918,14 +834,6 @@ and therefore in $\rev(R_1) \cap \rev(R_2) = \rev(R_1 \meet R_2)$ (by \cref{lem:
 So, $\{u = w_0, w_1, \dots, w_p = v\} \in \Orn(v \in D)$ and each $w_i$ has a directed path to $v$ in $\rev(R_1) \cap \rev(R_2)$.
 By maximality of $\orn{R_1 \meet R_2}(v)$, we deduce $u \in \orn{R_1 \meet R_2}(v)$.
 Thus, we have shown that $\orn{R_1} \meet \orn{R_2} \le \orn{R_1 \meet R_2}$, and we conclude that~$\orn{R_1 \meet R_2} = \orn{R_1} \meet \orn{R_2}$.
-%
-%Conversely, let $u \in \orn{R_1 \meet R_2}(v)$.
-%There is a path $u = w_0, w_1, \dots, w_p = v$ in $\orn{R_1 \meet R_2}(v)$.
-%Thus, each arrow $(w_i,v)$ of $\tc(D)$ is in $\rev(R_1 \meet R_2) = \rev(R_1) \cap \rev(R_2)$,
-%showing that this same path is contained in both $\orn{R_1}(v)$ and $\orn{R_2}(v)$.
-%By \cref{thm:OrnMeetJoin}, $\{u = w_0, w_1, \dots, w_p = v\} \subseteq O_\meet(v)$.
-%Thus, we have shown that $O_\meet \geq \orn{R_1 \meet R_2}$.
-%\Vincent{I removed the second part of the argument as it immediately follows from the order preserving condition.}
 \end{proof}
 
 \begin{remark}
@@ -955,24 +863,14 @@ which are not transitively coclosed.
 \label{subsec:sourcings}
 
 We now assume that~$V$ is totally ordered, say that~$V = [n]$ with the natural order.
-%We now assume that~$D$ is an increasing graph on~$V = [n]$.
 We consider the following maps on hypergraphs (they are usually called orientations of hypergraphs, we have preferred the term sourcings of hypergraphs to avoid confusion with the reorientations of graphs).
 
 \begin{definition}
 \label{def:Sour}
 A \defn{sourcing}~$S$ of a hypergraph~$\HH$ on~$V$ is a map~$S : \HH \to V$ such that~$S(H) \in H$ for all hyperedges~$H \in \HH$.
-%We denote by~$\rev(S)$ the pairs~$(u,v) \in V^2$ with~$u < v$ and such that there is~$H \in \HH$ with~$u \in H$ and~$v = S(H)$. \Vincent{here}
 The \defn{sourcing lattice}~$\Sour(\HH)$ is the lattice of sourcings of~$\HH$ ordered componentwise, meaning~$S_1 \le S_2$ if and only if~$S_1(H) \le S_2(H)$ for all~$H \in \HH$.
 In other words, $\Sour(\HH)$ is the Cartesian product of the subchains of~$V$ induced by the hyperedges~$\HH$.
 \end{definition}
-
-%In this paper, we will consider sourcings of the interval hypergraph of~$D$.
-%
-%\begin{definition}
-%Let~$D$ be a directed graph on~$V$.
-%For~$u,v \in V$, the \defn{interval}~$[u,v]$ is the union of all directed paths from~$u$ to~$v$.
-%The \defn{interval hypergraph} of~$D$ is the collection~$\II$(D) of non-empty intervals~$[u,v]$ for all~$u,v \in V$.
-%\end{definition}
 
 We now assume that~$D$ is an increasing graph on~$V = [n]$, meaning that~$u < v$ for any edge~$(u,v)$ of~$D$, and we consider sourcings of the path hypergraph of~$D$.
 
@@ -988,7 +886,6 @@ We first observe that any sourcing~$S$ of~$\PP(D)$ can be lifted to a reorientat
 Consider a sourcing~$S$ of~$\PP(D)$.
 We denote by~$\rev(S)$ the set of pairs~$(u,v) \in [n]^2$ such that there is a directed path~$P \in \PP(D)$ from~$u$ to~$v$ with~$S(P) = v$.
 We denote by~$\reori{S}$ the reorientation of~$\tc(D)$ defined by~$\rev(\reori{S}) = \rev(S)$.
-%\Vincent{This map is not compatible with acyclicity later... But I don't see how to fix that.}
 \end{definition}
 
 \begin{lemma}
@@ -1044,7 +941,6 @@ Follows from~\cref{lem:Reori2Orn2,lem:Sour2Reori,lem:Sour2Orn1}.
 \begin{definition}
 \label{def:Orn2Sour}
 For an ornamentation~$O$ of~$D$, we define a sourcing~$\sour{O}$ of~$\PP(D)$ where the source~$\sour{O}(P)$ for a path~$P$ from~$u$ to~$v$ in~$D$ is the maximal~$w \in P$ such that~$u \in O(w)$.
-%\Vincent{This map is not compatible with acyclicity later... But I don't see how to fix that.}
 \end{definition}
 
 \begin{lemma}
@@ -1106,7 +1002,6 @@ For any ornamentation~$O$ of~$D$, we have~$\reori{O} = \reori{\sour{O}}$.
 
 \begin{proof}
 Immediate from \cref{def:Orn2Reori,def:Sour2Reori,lem:Orn2Sour2}.
-%We have~$\rev(\reori{O}) = \set{(u,v)}{u \in O(v)}$ by \cref{def:Orn2Reori}, and~$\rev(\reori{\sour{O}}) = \rev(\sour{O})$ by \cref{def:Sour2Reori}, and~$\rev(\sour{O}) = \set{(u,v)}{u \in O(v)}$ by \cref{lem:Orn2Sour1}.
 \end{proof}
 
 \begin{remark}
@@ -1129,10 +1024,6 @@ The map~$S \mapsto \orn{S}$ is obviously not injective.
 For instance, $\orn{S}$ is the maximal ornamentation of~$D$ for any sourcing~$S$ of~$\PP(D)$ such that~$S(\{u,v\}) = v$ for each edge~$(u,v)$ of~$D$.
 In contrast, we will see in \cref{sec:acyclic} that~$S \mapsto \orn{S}$ is injective on acyclic sourcings of~$\PP(D)$.
 \end{remark}
-
-%\begin{remark}
-%\Vincent{We can play the same game with transitively closed sourcings~$S$, meaning for which $\rev(S)$ is transitively closed... Maybe just a remark about it is enough...}
-%\end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1333,31 +1224,13 @@ The map~$R \mapsto \asour{R}$ is order-preserving.
 \end{lemma}
 
 \begin{proof}
-%For two acyclic reorientations~$R_1$ and~$R_2$ of~$\tc(D)$, 
 If~$R_1 \le R_2$, then~$\rev(R_1) \subseteq \rev(R_2)$, hence the source of any path~$P$ in~$R_1$ is smaller than the source of~$P$ in~$R_2$, hence~$\asour{R_1} \le \asour{R_2}$.
 \end{proof}
-
-%\begin{remark}
-%\label{rem:Sour2ReoriIncompatibleAcyclicity}
-%The reorientation~$\reori{S}$ of~$\tc(D)$ defined in \cref{def:Sour2Reori} by~$\rev(\reori{S}) = \rev(S)$ is not always acyclic even when~$S$ is acyclic.
-%For instance, consider the directed graph~$D$ and the two reorientations~$R_1$ and~$R_2$ of~$\tc(D)$ given by
-%\[
-%D = \! \includegraphics[scale=.8,valign=c]{graphR}
-%\qquad\qquad
-%R_1 = \! \includegraphics[scale=.8,valign=c]{reorientationR1}
-%\qquad\text{and}\qquad
-%R_2 = \! \includegraphics[scale=.8,valign=c]{reorientationR2}
-%.
-%\]
-%Note that~$R_1$ is acyclic so that~$\asour{R_1}$ is acyclic, and that~$\reori{\asour{R_1}} = R_2$ is cyclic.
-%We thus need to define a section of the map~$R \mapsto \asour{R}$.
-%\end{remark}
 
 \begin{definition}
 \label{def:ASour2AReori}
 Let~$S$ be an acyclic sourcing of~$\PP(D)$.
 We denote by $\arr(S)$ the pairs~$(u,v) \in [n]^2$ such that there is~$P \in \PP(D)$ with~$u \in P$ and~$v = S(P)$.
-%\Vincent{note that we can assume that~$P$ is a path from~$u$ to~$v$. But there might be more than one path since~$D$ is not a tree.}
 Let~$\areori{S}$ be the reorientation of~$\tc(D)$ defined by~$\rev(\areori{S}) = \tc(\arr(S)) \cap \tc(D)$.
 \end{definition}
 
@@ -1443,16 +1316,6 @@ Since~$S_2$ is acyclic, we have~$S_2(Q) = S_2(P) = v$.
 Hence,~$(u,v) \in \rev(S_2)$, which implies that~$u \in \orn{S_2}(v)$.
 We conclude that~$\orn{S_1} \ne \orn{S_2}$.
 \end{proof}
-
-%\begin{lemma}
-%\label{lem:ASour2AOrn2}
-%The map~$S \mapsto \orn{S}$ is order-preserving on acyclic sourcings.
-%\end{lemma}
-%
-%\begin{proof}
-%	\felix{If $S_1 \leq S_2$, then $\rev(S_1) \subseteq \rev(S_2)$. Indeed, if $(u,v)\in \rev(S_1)$, there exists a path $P=[u,\dots,v]\in \PP(D)$. In the case there is no other path that contains $P$, then $S_2(P)=v$ and we have $(u,v)\in \rev(S_2)$. Suppose there exists another path $P_1=[u',\dots,u,\dots,v]\in \PP(D)$. If $S_1(P_1)< u$, we automatically have the existence of the path $P_2=[S_1(P_1),\dots,v]$ in $\PP(D)$. By acyclicity of $S_1$ we have that $S_1(P_2)=S_1(P_2)=v$. Since $S_1(P)\leq S_2(P_2)$, we have that $S_2(P_2)=v$ and thus, that $(u,v)\in \rev(S_2)$. If $S_1(P_1)\geq u$, by acyclicity of $S_1$ we have that $S_1(P_1)=S_1(P)=v$. Since $S_1(P)\leq S_2(P_2)$, we have that $S_2(P_2)=v$ and thus, we have that $(u,v)\in \rev(S_2)$. Symmetrically, we prove the case where there exists paths $[u,\dots,v,\dots,v']$ and $[u',\dots,u,\dots,v,\dots,v']$ in $\PP(D)$. Thus, $\rev(S_1) \subseteq \rev(S_2)$.  From this we can conclude that if $u\in \orn{S_1}(v)$, then $u\in \orn{S_2}(v)$ and thus, $\orn{S_1}\leq \orn{S_2}$.}
-%\Vincent{todo}
-%\end{proof}
 
 \begin{lemma}
 \label{lem:acyclicSimplifiesDef}
@@ -1582,7 +1445,6 @@ We are only left to show that $S \mapsto \aorn{S}$ is order-reflecting.
 Let $S_1$ and~$S_2$ be two acyclic sourcings of~$\PP(D)$ such that~$\aorn{S_1} \leq \aorn{S_2}$.
 Suppose that~$S_1 \not\leq S_2$ and let~$P \in \PP(D)$ such that~$u \eqdef S_2(P) < S_1(P) \defeq v$.
 By acyclicity of~$S_1$ (resp.~$S_2$) we can assume that~$P$ ends at~$v$ (resp.~begins at~$u$).
-%Let $u = w_0 , w_1, \dots , w_p = v$ be the vertex set of $P$.
 The acyclicity of~$S_1$ further implies that~$S_1(Q) = v$ for any subpath~$Q$ of~$P$ ending at~$v$.
 Hence,~$u \in P \subseteq \aorn{S_1}(P) \subseteq \aorn{S_2}(P)$.
 But then, there exists a path~$P'$ from~$u$ to~$v$ such that~$S_2(P') = v$, contradicting the acyclicity of~$S_2$.
@@ -1651,7 +1513,7 @@ We conclude that~$O_1(u) = O(u) \subseteq O(v)$, and thus that~$O = O_2$.
 
 Conversely, assume that~$O_1$ and~$O_2$ are two ornamentations of~$T$ such that~$O_1 \lessdot O_2$ is a cover relation in~$\Orn(T)$.
 Consider~$v \in V$ such that~$O_1(v) \ne O_2(v)$ and~$O_1(w) = O_2(w)$ for any~$w \in O_1(v)$.
-Then the map~$O$ on~$V$ defined by $O(v) = O_1(v)$ and~$O(w) = O_2(w)$ for all~$w \ne v$ is an ornamentation of~$T$. % because~$O_1$ and~$O_2$ are.
+Then the map~$O$ on~$V$ defined by $O(v) = O_1(v)$ and~$O(w) = O_2(w)$ for all~$w \ne v$ is an ornamentation of~$T$.
 Moreover, $O_1 \le O < O_2$.
 Hence, $O_1 = O$.
 Consider now~$u$ maximal in~$T$ such that~$u \in O_2(v) \ssm O_1(v)$.
@@ -1669,21 +1531,6 @@ The general description is slightly more involved.
 Namely, two ornamentations~$O_1$ and~$O_2$ of~$D$ form a cover relation~$O_1 \lessdot O_2$ if and only if there are~$u, v \in V$ such that~$u \notin O_1(v)$, $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$, and~$O_1(w) = O_1(u)$ for any~$w \in O_1(u)$ with an edge towards~$O_1(v)$. A proof may be found in~\cite{Sack}.
 \end{remark}
 
-%\begin{proof}
-%Assume first that~$O_1$ and~$O_2$ are two ornamentations of~$D$ such that there are~$u, v \in V$ such that~$u \notin O_1(v)$, $O_2(v) = O_1(u) \cup O_1(v)$ while~$O_1(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$, and~$O_1(w) = O_1(u)$ for any~$w \in O_1(u)$ with an edge towards~$O_1(v)$.
-%We have~$O_1 \le O_2$. Moreover, consider any ornamentation~$O$ of~$D$ such that~$O_1 \le O \le O_2$.
-%Then~$O_1(w) = O(w) = O_2(w)$ for all~${w \in V \ssm \{v\}}$ and~$O_1(v) \subseteq O(v) \subseteq O_2(v)$. If~$O_1 \ne O$, then there is~$x \in O(v) \ssm O_1(v)$ and let~$y$ be the last vertex not in~$O_1(v)$ along the path from~$x$ to~$v$ in~$O(v)$.
-%As~$y \in O(v) \ssm O_1(v) \subseteq O_2(v) \ssm O_1(v) \subseteq O_1(u)$ and~$y$ has an edge towards~$O_1(v)$, we have~$O_1(y) = O_1(u)$, and we thus obtain that~$O(v) \supseteq O_1(y) \cup O_1(v) = O_1(u) \cup O_1(v) = O_2(v)$, hence that~$O = O_2$.
-%
-%Conversely, assume that~$O_1$ and~$O_2$ are two ornamentations of~$D$ such that~$O_1 \lessdot O_2$ is a cover relation in~$\Orn(D)$.
-%Consider~$v \in V$ such that~$O_1(v) \ne O_2(v)$ and~$O_1(w) = O_2(w)$ for any~$w \in O_1(v)$.
-%Then the map~$O$ on~$V$ defined by $O(v) = O_1(v)$ and~$O(w) = O_2(w)$ for all~$w \ne v$ is an ornamentation of~$D$.
-%Moreover, $O_1 \le O < O_2$.
-%Hence, $O_1 = O$.
-%\Vincent{todo}
-%\end{proof}
-
-
 Finally, we will need the following convenient statement.
 
 \begin{lemma}
@@ -1699,117 +1546,6 @@ Hence, $u \in \orn{R}(v)$ if and only if~$u' \in \rev(R)$ for all~$u'$ along the
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\subsection{Join and meet irreducible ornamentations}
-%
-%Let us start by a standard definition.
-%
-%\begin{definition}
-%Let~$(L, \le, \meet, \join)$ be a finite lattice.
-%An element~$x \in L$ is called \defn{join} (resp.~\defn{meet}) \defn{irreducible} if it covers (resp.~is covered by) a unique element denoted~$x_\star$ (resp.~$x^\star$).
-%We denote by $\JI$ (resp.~$\MI$) the subposet of~$L$ induced by the set of join (resp.~meet) irreducible elements of~$L$.
-%\end{definition}
-%
-%We now describe the join and meet irreducible ornamentations of a directed tree~$T$.
-%
-%\begin{definition}
-%\label{def:irreducibleOrnamentationsT}
-%For a directed path~$P$ from~$u$ to~$v$ in a directed tree~$T$, we denote by~$J_P$ and~$M_P$ the two maps on~$V$ defined by
-%\[
-%J_P(w) \eqdef \begin{cases} P & \text{if } w = v \\ \{w\} & \text{otherwise} \end{cases}
-%\qquad\text{and}\qquad
-%M_P(w) \eqdef \begin{cases} \lessin{T}{w} \ssm \lessin{T}{u} & \text{if } u <_T w \le_T v \\ \lessin{T}{w} & \text{otherwise} \end{cases}
-%.
-%\]
-%\end{definition}
-%
-%\begin{lemma}
-%For any~$P \in \PP(T)$, the maps~$J_P$ and~$M_P$ are both ornamentations of~$T$.
-%\end{lemma}
-%
-%\begin{proof}
-%It follows from \cref{exm:ornamentations}\,(iii) for~$J_P$.
-%Consider now~$u', v' \in V$ such that~$u' \in M_P(v')$.
-%If~$u <_T v' \le_T v$, then~$M_P(u') = \lessin{T}{u'} \ssm \lessin{T}{u} \subseteq \lessin{T}{v'} \ssm \lessin{T}{u} = M_P(v')$.
-%Otherwise, $M_P(u') \subseteq \lessin{T}{u'} \subseteq \lessin{T}{v'} = M_P(v')$.
-%\end{proof}
-%
-%\begin{proposition}
-%\label{prop:irreducibleOrnamentationsT}
-%Let~$T$ be a directed tree.
-%The join (resp.~meet) irreducible ornamentations of~$T$ are precisely the ornamentations~$J_P$ (resp.~$M_P$) for all directed paths~$P$ in~$T$.
-%\end{proposition}
-%
-%\begin{proof}
-%%Denote by~$J_P^\star$ and~$M_P^\star$ the two ornamentations of~$T$ defined by
-%%\[
-%%J_P^\star(w) \eqdef \begin{cases} P \ssm \{u\} & \text{if } w = v \\ \{w\} & \text{otherwise} \end{cases}
-%%\qquad\text{and}\qquad
-%%M_P^\star(w) \eqdef \begin{cases} \big( \lessin{T}{v} \ssm \lessin{T}{u} \big) \cup \{u\} & \text{if } w = v \\ \lessin{T}{w} & \text{otherwise.} \end{cases}
-%%\]
-%Observe first that~$J_P$ (resp.~$M_P$) is indeed join (resp.~meet) irreducible as it covers (resp.~is covered by) a unique ornamentation given by removing~$u$ from~$J_P(v)$ (resp.~adding~$\Delta_T(u)$ to $M_P(v)$).
-%
-%Consider now a join irreducible ornamentation~$J$ of~$T$, and let~$J_\star$ be the unique ornamentation of~$T$ covered by~$J$.
-%%If~$O(v) = \{v\}$ for all~$v \in V$, then~$O$ is the minimal ornamentation of~$T$.
-%For any~$v \in V$ such that~$J(v) \ne \{v\}$, the map~$J^v$ defined by~$J^v(v) \eqdef \{v\}$ and~$J^v(w) \eqdef J(w)$ for~$w \ne v$ is an ornamentation of~$T$ with~$J^v < J$, hence~$J^v \le J_\star$.
-%If~$v \ne v' \in V$ are such that~$J(v) \ne \{v\}$ and~$J(v') \ne \{v'\}$, then~$J^v \le J_\star < J$ and~$J^{v'} \le J_\star < J$, hence~$J^v(w) \cup J^{v'}(w) \subseteq J_\star(w) \subseteq J(w)$ for all~$w \in V$.
-%Since~$J^v(w) = J(w)$ for~$w \ne v$ and~$J^{v'}(w) = J(w)$ for~$w \ne v'$, this yields~$J_\star = J$, a contradiction.
-%Hence, there is a unique~$v \in V$ such that~$J(v) \ne \{v\}$.
-%For any source~$u$ of~$J(v)$ in~$T$, the map~$J_u$ defined by~$J_u(v) \eqdef J(v) \ssm \{u\}$ and~$J_u(w) \eqdef J(u)$ for~$w \ne v$ is an ornamentation of~$T$ covered by~$J$.
-%We conclude that~$J(v)$ has a unique source~$u$, and that~$J = J_P$ where~$P$ is the directed path from~$u$ to~$v$ in~$T$.
-%
-%\Vincent{The second part of the proof is a consequence of~\cref{thm:OrnSemidistributiveT}.}
-%Consider now a meet irreducible ornamentation~$M$ of~$T$, and let~$M^\star$ be the unique ornamentation of~$T$ covering~$M$.
-%Let~$v \in V$ be such that~$M(v) \ne \lessin{T}{v}$ and~$M(w) = \lessin{T}{w}$ for any~$w \in V$ with~${v \in M(w)}$.
-%Let~$u \in \lessin{T}{v} \ssm M(v)$ and maximal in~$\le_T$ for this property.
-%Then the map~$M_u^v$ defined by~$M_u^v(v) = M(v) \cup \lessin{T}{u}$ and~$M_u^v(w) = M(w)$ for~$w \ne v$ is an ornamentation of~$T$ with~$M < M_u^v$.
-%Moreover, if there are~$(u,v) \ne (u',v')$ satisfying the conditions for~$u$ and~$v$ above, then~$M < M^\star \le M_u^v$ and~$M < M^\star \le M_{u'}^{v'}$, hence~$M(w) \subseteq M^\star(w) \subseteq M_u^v(w) \cap M_{u'}^{v'}(w)$ for all~$w \in V$.
-%If~$v \ne v'$, we get~$M = M^\star$ since~$M_u^v(w) = M(w)$ for~$w \ne v$ and~$M_{u'}^{v'}(w) = M(w)$ for~$w \ne v'$.
-%If~$v = v'$ but~$u \ne u'$, we get~$M = M^\star$ since~$M_u^v(w) = M(w)$ for~$w \ne v$ and~$M_u^v(v) \cap M_{u'}^{v'}(v) = M(v)$.
-%Hence, there is a unique~$v$ as above, and a unique~$u$ as above.
-%%Denote by~$X_M$ the set of pairs~$(u,v) \in V^2$ such that
-%%\begin{itemize}
-%%\item $M(v) \ne \lessin{T}{v}$ and~$M(w) = \lessin{T}{w}$ for any~$w \in V$ with~${v \in M(w)}$,
-%%\item $u \in \lessin{T}{v} \ssm M(v)$ and~$u$ is maximal in~$\le_T$ for this property.
-%%\end{itemize}
-%%For~$(u,v) \in X_M$, the map~$M_u^v$ defined by~$M_u^v(v) = M(v) \cup \lessin{T}{u}$ and~$M_u^v(w) = M(w)$ for~$w \ne v$ is an ornamentation of~$T$ with~$M < M_u^v$.
-%%If~$(u,v) \ne (u',v') \in X_M$, then~$M < M^\star \le M_u^v$ and~$M < M^\star \le M_{u'}^{v'}$, hence~$M(w) \subseteq M^\star(w) \subseteq M_u^v(w) \cap M_{u'}^{v'}(w)$ for all~$w \in V$.
-%%If~$v \ne v'$, we get~$M = M^\star$ since~$M_u^v(w) = M(w)$ for~$w \ne v$ and~$M_{u'}^{v'}(w) = M(w)$ for~$w \ne v'$.
-%%If~$v = v'$ but~$u \ne u'$, we get~$M = M^\star$ since~$M_u^v(w) = M(w)$ for~$w \ne v$ and~$M_u^v(v) \cap M_{u'}^{v'}(v) = M(v)$.
-%%Hence, there is a unique~$(u,v) \in X_M$.
-%For any~$w \in V$ with~$M(w) \ne \lessin{T}{w}$, we have
-%\begin{itemize}
-%\item $w \in M(v)$ as otherwise we would find~$v' \ne v$ satisfying the same condition as~$v$ above.
-%\item $u <_T w \le_T v$ as otherwise we would find~$u' \ne u$ satisfying the same condition as~$u$ above.
-%\item $M(w) = \lessin{T}{w} \ssm \lessin{T}{u}$. Otherwise, consider~$u <_T w \le_T v$ maximal such that~$M(w) \ne \lessin{T}{w} \ssm \lessin{T}{u}$. Then the map~$M_w$ defined by~$M_w(w) = \lessin{T}{w} \ssm \lessin{T}{u}$ and~$M_w(x) = M(x)$ for~$x \ne w$ is an ornamentation of~$T$ with~$M < M_w$. Hence, $M(x) \subseteq M^\star(x) \subseteq M_u^v(x) \cap M_w(x)$ for all~$x \in V$. Since~$M_u^v(x) = M(x)$ for~$x \ne v$ and~$M_w(x) = M(x)$ for~$x \ne w$, we get~$M = M^\star$, a contradiction.
-%\end{itemize}
-%We conclude that~$M = M_P$ where~$P$ is the directed path from~$u$ to~$v$ in~$T$.
-%\end{proof}
-%
-%\begin{lemma}
-%\label{lem:irreduciblesAcyclicT}
-%For any~$P \in \PP(T)$, the reorientations~$\reori{J_P}$ and~$\reori{M_P}$ of~$\tc(T)$ are both acyclic.
-%\end{lemma}
-%
-%\begin{proof}
-%Observe that~$\rev(J_P) = (P \ssm \{v\}) \times \{v\}$.
-%Hence, any induced cycle in~$\reori{J_P}$ must consist in an edge~$(v,y)$ and a directed path from~$y$ to~$v$ in~$T$ for some~$u \le_T y \le_T v$.
-%This is impossible as the last edge of this path would be in~$\rev(J_P)$.
-%
-%Observe that~$\tc(T) \ssm \rev(M_P) = \lessin{T}{u} \times (P \ssm \{u\})$.
-%Any cycle in~$\reori{M_P}$ should have an edge of $\tc(T) \ssm \rev(M_P)$, hence a vertex in~$\lessin{T}{u}$ and a vertex in~$P \ssm \{u\}$.
-%This is impossible as there is no edge of~$\reori{M_P}$ leaving~$P \ssm \{u\}$.
-%\end{proof}
-%
-%\begin{corollary}
-%All join (resp.~meet) irreducible ornamentations of a directed tree~$T$ are acyclic.
-%\end{corollary}
-%
-%\begin{proof}
-%This follows from \cref{lem:irreduciblesAcyclicT,prop:irreducibleOrnamentationsT}.
-%\end{proof}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \subsection{Semidistributivity and canonical join representations in the ornamentation lattice}
 \label{subsec:semidistributivityT}
 
@@ -1822,7 +1558,6 @@ We denote by $\JI$ (resp.~$\MI$) the subposet of~$L$ induced by the set of join 
 \end{definition}
 
 \begin{definition}
-%Let~$(L, \le, \meet, \join)$ be a finite lattice.
 A \defn{join representation} of~$x \in L$ is a subset~${J \subseteq L}$ such that~$x = \bigJoin J$.
 Such a representation is \defn{irredundant} if~$x \ne \bigJoin J'$ for any strict subset~$J' \subsetneq J$.
 The irredundant join representations in~$L$ are antichains of~$L$, and are ordered by containment of the lower sets of their elements (\ie~$J \le J'$ if and only if for any~$y \in J$ there exists~$y' \in J'$ such that~$y \le y'$ in~$L$).
@@ -1888,9 +1623,6 @@ Then~$J_P$ (resp.~$M_P$) is the unique minimal element of~$\set{O \in \Orn(T)}{O
 
 \begin{proof}
 Observe first that~$J_P \not\le O_1$ (since~$u \in P = J_P(v)$ while~$u \notin O_1(v)$) but~$J_P \le O_2$ (since~${P \subseteq O_2(v)}$). 
-%Observe first that~$O_1 \join J_P = O_2$.
-%Indeed, one the one hand, $O_2(w) = O_1(w) \subseteq (O_1 \join J_P)(w)$ for all~$w \ne v$ and~$O_2(v) = O_1(u) \cup O_1(v) \subseteq (O_1 \join J_P)(v)$ (since~$u \in P = J_P(v)$) so that~$O_1 \join J_P \ge O_2$. 
-%On the other hand, $J_P \le O_2$ (because~$P \subseteq O_2(v)$) so that~$O_1 \join J_P \le O_2$.
 Consider now an ornamentation~$O$ of~$T$ such that~$O \not\le O_1$ but~$O \le O_2$.
 Since~$O_1(w) = O_2(w)$ for~$w \ne v$, we must have~$u \in O(v)$, hence~$P \subseteq O(v)$.
 We conclude that~$J_P \le O$.
@@ -1912,7 +1644,7 @@ For a directed tree~$T$,
 \begin{itemize}
 \item the ornamentation lattice~$\Orn(T)$ is semidistributive,
 \item the join (resp.~meet) irreducible ornamentations of~$T$ are precisely the ornamentations~$J_P$ (resp.~$M_P$) for all directed paths~$P$ in~$T$,
-\item the canonical join (resp.~meet) representation of an ornamentation~$O$ is~$O = \bigJoin_P J_P$ (resp.~$O = \bigMeet_P M_P$) where the join (resp.~meet) ranges over all paths~$P = [u,v]$ described in \cref{lem:coverRelationsOrnT} for the cover relations~$O' \lessdot O$ (resp.~$O \lessdot O'$), %\Vincent{is there a better description} 
+\item the canonical join (resp.~meet) representation of an ornamentation~$O$ is~$O = \bigJoin_P J_P$ (resp.~$O = \bigMeet_P M_P$) where the join (resp.~meet) ranges over all paths~$P = [u,v]$ described in \cref{lem:coverRelationsOrnT} for the cover relations~$O' \lessdot O$ (resp.~$O \lessdot O'$),
 \item we have~$\kappa_\join(M_P) = J_P$ and~$\kappa_\meet(J_P) = M_P$ for any~$P \in \PP(T)$.
 \end{itemize}
 \end{theorem}
@@ -1984,7 +1716,6 @@ Assume that there is a directed path~$u, u', \dots, v$ in~$T$ such that~$(u,v) \
 Let~$w \in V$ be such that $u \notin O(w)$ but~$u',v \in O(w)$.
 Then, for any~$v'$ between~$u'$ and~$v$, we have~$v' \in O(w)$, hence~$(u,v') \not \in \rev(\maxreori{O})$.
 We thus obtained that~$(u,v'), (v',v) \in \rev(\maxreori{O})$ implies~$(u,v) \in \rev(\maxreori{O})$, that is, $\rev(\maxreori{O})$ is transitively closed.
-%\Vincent{not only it has a max, but it has a Tamari max....}
 We conclude that the fiber of~$O$ is an interval, since it has a minimum by \cref{prop:Reori2OrnMinTC} and a maximum by \cref{prop:Reori2OrnMaxTree}.
 \end{proof}
 
@@ -2020,41 +1751,14 @@ Thus, $\Rbi(\tc(T))$ is a finite bounded join semilattice, hence a lattice.
 \begin{lemma}
 \label{lem:Orn2ReoriT}
 For an ornamentation~$O$ of a directed tree~$T$, the reorientation~$\reori{O}$ is transitively biclosed.
-%Hence, any induced oriented cycle in~$\reori{O}$ is an induced alternating cycle in~$\tc(T)$ (meaning taking alternatively forward and backward arrows).
 \end{lemma}
 
 \begin{proof}
 We have already seen in \cref{prop:ReoriTC2Orn} that~$\reori{O}$ is transitively closed.
 Let~$u, v, w \in V$ be such that~$(u,v)$ and~$(v,w)$ are in~$\tc(T)$,
-%Assume that~${(u,v), (v,w) \in \rev(\reori{O})}$.
-%Then~$u \in O(v)$ and~$v \in O(w)$, hence~$u \in O(w)$ since~$O$ is an ornamentation, thus ${(u,w) \in \rev(\reori{O})}$.
 and that~$(u,w) \in \rev(\reori{O})$. Then~$u \in O(w)$. As~$T$ is a tree, the complete path from~$u$ to~$w$ is in~$O(w)$, hence~$v \in O(w)$ and thus $(v,w) \in \rev(\reori{O})$.
 We conclude that~$\reori{O}$ is transitively coclosed.
-%The last statement immediately follows as an induced cycle cannot chain two consecutive forward arrows, nor two consecutive backwards arrows.
 \end{proof}
-
-%We say that $a,b,d,e \in V$ are \defn{starred} in~$T$ if there is $c \in V$ such that~$(a,c)$, $(b,c)$, $(c,d)$ and~$(c,e)$ are all in~$\tc(T)$.
-%
-%\begin{lemma}
-%\label{lem:starred}
-%For a directed tree~$T$, any induced alternating cycle in~$\tc(T)$ is of the form~$(a,d,b,e)$ where~$a,d,b,e$ are starred in~$T$.
-%\end{lemma}
-%
-%\begin{proof}
-%Let~$C$ be an induced alternating cycle in~$\tc(T)$.
-%We can write~$C = (d_1, u_1, d_2, u_2, \dots, d_k, u_k)$ where~$(d_i, u_i)$ and~$(u_i, d_{i+1})$ are in~$\tc(T)$ for all~$i \in [k]$.
-%
-%Assume first that~$(d_1,u_k)$ is an edge of~$T$.
-%Let~$D$ and~$U$ denote the connected components of~$T \ssm \{(d_1,u_k)\}$ containing~$d_1$ and~$u_k$ respectively.
-%Let~$i \in [k]$ be maximal such that~$d_i \in D$.
-%Since~$d_{i+1} \in U$ and~$d_{i+1} \to u_i$ in~$\tc(T)$, we have~$u_i \in U$.
-%Hence, the edge~$(d_1,u_k)$ is an edge of the path from~$d_i$ to~$u_i$ in~$T$.
-%We conclude that~$C$ was not induced.
-%
-%Therefore, there is~$w \in V$ such that~$(d_1,w)$ and~$(w,u_k)$ are in~$\tc(T)$.
-%Since~$C$ is induced, we obtain again an induced alternating cycle by replacing either~$d_1$ or~$u_k$ by~$x$ in~$C$, say~$u_k$ by symmetry.
-%By induction on the sum of the length of the paths between~$d_i$ and~$u_i$ in~$T$, we obtain that~$k = 2$ there is~$v \in V$ such that~$(d_1, v)$, $(d_2,v)$, $(v,u_1)$, and~$(v,w)$ are in~$\tc(T)$, and as~$w$ is between~$d_1$ and~$u_2$, we also get~$(v,u_2) \in \tc(T)$.
-%\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2095,9 +1799,6 @@ As~$R$ contains a cycle, it contains an induced oriented cycle~$C$ (any chord ca
 Since~$R$ is transitively biclosed, $C$ is an induced alternating cycle in~$\tc(T)$.
 Write~$C = (d_1, u_1, \dots, d_k, u_k)$ where~$(d_i, u_i)$ and~$(d_{i+1},u_i)$ are in~$\tc(T)$ for all~$i \in [k]$.
 We can moreover assume without loss of generality that for~$i \in [k]$ and any incoming neighbor~$u'$ of~$u_i$  (resp.~outgoing neighbor~$d'$ of~$d_i$) in~$R$, replacing~$u_i$ by~$u'$ (resp.~$d_i$ by~$d'$) in~$C$ does not yield an induced oriented cycle in~$R$.
-%We can assume moreover without loss of generality that~$C$ is of maximal amplitude, meaning that we cannot replace some~$d_i$ by~$d'$ for some~$(d',d_i) \in \tc(T)$ nor some~$u_i$ by~$u'$ for some~$(u_i,u') \in \tc(T)$ and still obtain an induced alternating cycle in~$R$.
-%In particular, there is no~$u' \in V$ such that~$(u_i, u') \in \rev(R)$ and~$(d_i,u') \notin \rev(R)$ for some~$i \in [k]$ and no~$d' \in V$ such that~$(d',d_i) \in \rev(R)$ and~$(d',u_i) \notin \rev(R)$ for some~$i \in [k]$.
-%Otherwise, we can replace~$u_i$ by~$u'$ (resp.~$d_i$ by~$d'$) in~$C$ to obtain an induced alternating cycle with a larger amplitude.
 For~$i \in [k]$, consider the reorientation~$R_i$ of~$\tc(T)$ obtained by reversing the edge~$(d_i,u_i)$, meaning that~$\rev(R_i) = \rev(R) \cup \{(d_i,u_i)\}$.
 The reorientation~$R_i$ clearly covers~$R$, and we claimed that is still biclosed.
 Indeed,
@@ -2156,7 +1857,6 @@ We conclude with the main statement of this section.
 
 \begin{theorem}
 \label{thm:MacNeille}
-%The ornamentation lattice~$\Orn(T)$ of a directed tree~$T$ has no strict subposet which forms a lattice and contains all acyclic ornamentations of~$T$.
 For a directed tree~$T$, 
 \begin{itemize}
 \item the transitively biclosed reorientation lattice~$\Rbi(\tc(T))$ is the MacNeille completion of the acyclic reorientation poset~$\AReori(\tc(T))$,
@@ -2613,7 +2313,6 @@ Let~$n \ge 0$.
 The \defn{$n$-comb} is the rooted tree obtained by attaching a node (called \defn{tooth}) to each node of a path with $n$ nodes (called \defn{handle}).
 \end{definition}
 
-%To fix a convention, let us denote by~$1, \dots, n$ the teeth and by~$n+1, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+n$ if~$1 \le i \le n$ and~$i+1$ if~$n < i < 2n$ (the node~$2n$ is the root).
 To fix a convention, let us denote by~$1, \dots, 2n-1$ the teeth and by~$2, \dots, 2n$ the handle of the $n$-comb, so that the parent of node~$i$ is $i+1$ if~$i$ is odd and~$i+2$ if~$i$ is even (except the node~$2n$ which is the root).
 See \cref{fig:broomsCombs}.
 
@@ -2721,13 +2420,6 @@ We have no explanation for this fact, nor candidates for families of directed tr
 %5 224
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\subsection{Complete binary trees}
-%\label{subsec:CompleteBinaryTrees}
-%
-%\Vincent{Is there something interesting to say. Number of ornamentations?}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2737,7 +2429,6 @@ We have no explanation for this fact, nor candidates for families of directed tr
 In this section, we characterize the subhypergraphs~$\II$ of the path interval~$\PP(T)$ of an increasing tree~$T$ whose acyclic sourcing poset~$\ASour(\II)$ is a lattice.
 We first state the needed definitions and the characterization (\cref{subsec:characterization}), then show that these conditions are necessary (\cref{subsec:necessary}) and sufficient (\cref{subsec:sufficient}) using an important property of star sparse intreeval hypergraphs (\cref{subsec:shortCycles}).
 Finally, when~$\ASour(\II)$ is a lattice, we give an explicit formula for its meets and joins (\cref{subsec:formulaMeetJoin}).
-%We actually consider increasing trees as it simplifies the definitions of the conditions and does not loose generality up to relabeling.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -3005,7 +2696,6 @@ Therefore, we have the following permutations and ornamentations:
 	S^i(\orange{2345}) & 5 & 2 \\
 	S^i(\red{2346}) & 2 & 2 \\
 	S^i(\green{1346}) & 1 & 6 \\
-%	S^i(\purple{34}) & 3 & 3
 \end{array}
 \qquad
 \begin{array}[b]{c|c}
@@ -3013,7 +2703,6 @@ Therefore, we have the following permutations and ornamentations:
 	S(\orange{2345}) & 5 \\
 	S(\red{2346}) & 2 \\
 	S(\green{1346}) & 6 \\
-%	S(\purple{34}) & 3
 \end{array}
 \qquad
 \begin{array}[b]{c|cc}
@@ -3024,7 +2713,6 @@ Therefore, we have the following permutations and ornamentations:
 	T^i(\orange{2345}) & 5 & 5 \\
 	T^i(\red{2346}) & 2 & 6 \\
 	T^i(\green{1346}) & 6 & 6 \\
-%	T^i(\purple{34}) & 3 & 3
 \end{array}
 \]
 See \cref{fig:pathIntersectionClosedStarSparse}\,(right).
@@ -3205,7 +2893,6 @@ Follows from \cref{lem:Orn2Sour1} as $\sour{O}^\II$ is just the restriction to~$
 
 \begin{lemma}
 \label{lem:Orn2SourIntreeval2}
-%Let~$T$ be a directed tree, $\II$ be an intreeval hypergraph of~$T$, and~$O$ be an ornamentation of~$T$.
 For any ornamentation~$O$ of~$T$, all cycles of the sourcing~$\sour{O}^\II$ have length at least~$3$.
 \end{lemma}
 
@@ -3225,9 +2912,6 @@ Then the sourcing~$\sour{O}^\II$ is acyclic.
 \begin{proof}
 Follows from \cref{lem:Orn2SourIntreeval2,prop:pathStarSparse}.
 \end{proof}
-
-%For a vertex~$v$ of~$T$, we denote by~$\lessin{T}{v}$ the set of vertices with a directed path to~$v$ in~$T$.
-%Here, it is convenient to assume that the intreeval hypergraph~$\II$ contains all singletons~$\{v\}$ for~$v \in [n]$.
 
 \begin{definition}
 Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
