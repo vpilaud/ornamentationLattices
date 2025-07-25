@@ -2003,12 +2003,16 @@ Hence, neither the acyclic reorientation poset~$\AReori(\tc(T))$, the acyclic so
 \begin{proof}
 Consider a starred tree~$T$, and let~$a,b,c,d,e$ be vertices of~$T$ as in \cref{lem:starredCharacterization}\,(ii).
 
-The reorientation~$R$ of~$\tc(T)$ defined by~$\rev(R) = \set{(w,d)}{a \le_T w <_T d} \cup \set{(w,e)}{b \le_T w < e}$ is transitively closed because~$d \not<_T e$ and~$e \not<_T d$, transitively coclosed because~$(u,w) \in \rev(R)$ implies~$(v,w) \in \rev(R)$ for any~$u <_T v <_T w$, and cyclic because~$a, e, b, d$ forms a directed cycle.
+The reorientation~$R$ of~$\tc(T)$ defined by~$\rev(R) = \set{(w,d)}{a \le_T w <_T d} \cup \set{(w,e)}{b \le_T w <_T e}$ is transitively closed because~$d \not<_T e$ and~$e \not<_T d$, transitively coclosed because~$(u,w) \in \rev(R)$ implies~$(v,w) \in \rev(R)$ for any~$u <_T v <_T w$, and cyclic because~$a, e, b, d$ forms a directed cycle.
 
-The ornamentation~$O = \orn{R}$ of~$T$ with~$O(d) = \set{w}{a \le_T w \le_T d}$, $O(e) = \set{w}{b \le_T w \le_T e}$, and~$O(w) = \{w\}$ for all~$w \in V \ssm \{d,e\}$ is cyclic.
+%The ornamentation~$O = \orn{R}$ of~$T$ with~$O(d) = \set{w}{a \le_T w \le_T d}$, $O(e) = \set{w}{b \le_T w \le_T e}$,
+The ornamentation~$O = \orn{R}$ of~$T$ with~$O(d) = [a,d]_T$, $O(e) = [b,d]_T$, and~$O(w) = \{w\}$ for all~$w \in V \ssm \{d,e\}$ is cyclic.
 Indeed, consider any reorientation~$R'$ of~$\tc(T)$ such that~$O = \orn{R'}$.
-We have~$(w,d) \in \rev(R')$ for all~$a \le_T w <_T d$ (because $w \in O(d)$) and similarly~$(w,e) \in \rev(R')$ for all~$b \le_T w <_T e$.
-Therefore,~$(a,e) \notin \rev(R')$ (because~${a \notin O(e)}$ while~$(w,e) \in \rev(R')$ for all~$a <_T w <_T e$) and similarly~$(b,d) \notin \rev(R')$.
+We have~$(w,d) \in \rev(R')$ for all~$w \in [a,d]_T$
+%$a \le_T w <_T d$
+(because $w \in O(d)$) and similarly~$(w,e) \in \rev(R')$ for all~$w \in [b,e]_T$. %$b \le_T w <_T e$.
+Therefore,~$(a,e) \notin \rev(R')$ (because~${a \notin O(e)}$ while~$(w,e) \in \rev(R')$ for all~$w \in [a,e]_T$ %$a <_T w <_T e$)
+and similarly~$(b,d) \notin \rev(R')$.
 We conclude that~$a, e, b, d$ forms a directed cycle in~$R'$ as well.
 Hence, $O$ is cyclic.
 
@@ -2963,7 +2967,7 @@ For any acyclic sourcings~$S_1$ and~$S_2$ of~$\II$, if~$S_1 \le S_2$ then~$\mino
 
 \begin{proof}
 Assume by means of contradiction that~$S_1 \le S_2$ and~$\minorn{S_1}{\II} \not\le \maxorn{S_2}{\II}$.
-Since~$\minorn{S_1}{\II} \antoine{\not\le} \maxorn{S_2}{\II}$, there exist~$I, J \in \II$ such that~$\minorn{S_1}{I} \not\le \maxorn{S_2}{J}$.
+Since~$\minorn{S_1}{\II} \not\le \maxorn{S_2}{\II}$, there exist~$I, J \in \II$ such that~$\minorn{S_1}{I} \not\le \maxorn{S_2}{J}$.
 This implies~$\min(I) \le S_2(J) < S_1(I) \le \max(J)$.
 Hence, $S_1(I)$ and~$S_2(J)$ are distinct and both belong to~$I \cap J$.
 Moreover, as~$S_1 \le S_2$, we have~$S_1(J) \le S_2(J) < S_1(I) \le S_2(I)$.
@@ -2996,14 +3000,15 @@ A similar formula holds for meets by symmetry.
 \label{prop:expressionJoin}
 For a path intersection closed and star sparse intreeval hypergraph~$\II$ of an increasing tree~$T$, and for any acyclic sourcings~$S_1, \dots, S_q$ of~$\II$ and any~$I \in \II$, we have
 \[
-\bigg( \bigJoin_{p \in [q]} S_p \bigg)(I) = \min \bigg( I \ssm \Big( \bigcup_{p \in [q]} \bigcup_{\substack{J \in \II \\ S_p(J) \in I}} \set{v \in J}{v < S_p(J)} \Big) \bigg).
+\bigg( \bigJoin_{p \in [q]} S_p \bigg)(I) = \min \bigg( I \ssm \Big( \bigcup_{p \in [q]} \bigcup_{\substack{J \in \II : \\ S_p(J) \in I}} \set{v \in I \cap J}{v < S_p(J)} \Big) \bigg).
 \]
 \end{proposition}
 
 \begin{proof}
 As~$\II$ is path intersection closed and star sparse, the acyclic sourcing poset~$\ASour(\II)$ is a lattice by~\cref{prop:quasiLatticeMapIntreevalLattices}, hence the join~$\bigJoin_{p \in [q]} S_p$ exists and we just need to prove that it is given by the formula of the statement.
-
 Let~$S$ be the sourcing defined by the formula of the statement.
+We will first prove that $S$ is acyclic and then that it is indeed the least upper bound of $\{S_p\}_{p \in [q]}$.
+
 Assume by means of contradiction that~$S$ is cyclic.
 By \cref{prop:pathStarSparse}, there is~$I,J \in \II$ such that~$S(I) \in J \ssm \{S(J)\}$ and~$S(J) \in I \ssm \{S(I)\}$.
 Assume by symmetry that~$S(I) < S(J)$.
@@ -3012,17 +3017,28 @@ As~$I$ is a path containing~$S(I)$ and~$S(J)$, it contains also~$S_p(K)$.
 We obtain that~$S_p(K) \in I$, $S(I) \in K$ and~$S(I) < S_p(K)$ contradicting our definition of~$S$.
 We conclude that~$S$ is acyclic.
 
+%For any~$p \in [q]$, we have~$S_p(I) \in I$ and so~$S(I) \ge S_p(I)$ for all~$I \in \II$, hence~$S \ge S_p$.
+%Consider now an acyclic sourcing~$S'$ of~$\II$ such that~$S' \ge S_p$ for all~$p \in [q]$.
+%Assume that there are~$I,J \in \II$ and~$p \in [q]$ such that~$S_p(J) \in I$.
+%Then~$S_p(J) \in I \cap J$.
+%If~$|I \cap J| = 1$, we obviously have~$S'(I) \notin \set{v \in J}{v < S_p(J)}$.
+%Otherwise, as~$\II$ is path intersection closed, there is~$K \in \II$ such that~$\min(J) \le_T \min(K) \le_T \min(I \cap J)$ and~$\max(I \cap J) \le_T \max(K) \le_T \max(I)$.
+%As~$S_p(J) \in I \cap J$, the acyclicity of~$S_p$ ensures that~$S_p(K) \ge S_p(J)$.
+%Since~$S' \ge S_p$, we thus obtain~$S'(K) \ge S_p(J)$.
+%By acyclicity of~$S'$, we thus have~$S'(I) \ge [\min(I \cap J), S_p(J)[$, hence~$S'(I) \notin \set{v \in J}{v < S_p(J)}$.
+%We obtain that~$S(I) \le S'(I)$, and so~$S \le S'$.
+%We conclude that~$S$ is indeed~$\bigJoin_{p \in [q]} S_p$.
+
 For any~$p \in [q]$, we have~$S_p(I) \in I$ and so~$S(I) \ge S_p(I)$ for all~$I \in \II$, hence~$S \ge S_p$.
-Consider now an acyclic sourcing~$S'$ of~$\II$ such that~$S' \ge S_p$ for all~$p \in [q]$.
-Assume that there are~$I,J \in \II$ and~$p \in [q]$ such that~$S_p(J) \in I$.
-Then~$S_p(J) \in I \cap J$.
-If~$|I \cap J| = 1$, we obviously have~$S'(I) \notin \set{v \in J}{v < S_p(J)}$.
-Otherwise, as~$\II$ is path intersection closed, there is~$K \in \II$ such that~$\min(J) \le_T \min(K) \le_T \min(I \cap J)$ and~$\max(I \cap J) \le_T \max(K) \le_T \max(I)$.
-As~$S_p(J) \in I \cap J$, the acyclicity of~$S_p$ ensures that~$S_p(K) \ge S_p(J)$.
-Since~$S' \ge S_p$, we thus obtain~$S'(K) \ge S_p(J)$.
-By acyclicity of~$S'$, we thus have~$S'(I) \ge [\min(I \cap J), S_p(J)[$, hence~$S'(I) \notin \set{v \in J}{v < S_p(J)}$.
-We obtain that~$S(I) \le S'(I)$, and so~$S \le S'$.
-We conclude that~$S$ is indeed~$\bigJoin_{p \in [q]} S_p$.
+Consider an acyclic sourcing~$S'$ of~$\II$ such that~$S' \ge S_p$ for all~$p \in [q]$,
+and assume by means of contradiction that $S'(I) < S(I)$ for some $I \in \II$.
+Then, there is $p \in [q]$ and $J \in \II$ such that $S_p(J) \in I$ and $S'(I) \in \set{v \in I \cap J}{v < S_p(J)}$.
+In particular, $S_p(J)$ and $S'(I)$ are two different elements of $I \cap J$, so $|I \cap J| > 1$.
+The acyclicity of $S_p$ implies that $S_p(I) \notin J$, thus $\min(I) < \min(I \cap J)$ as $S_p(I) \leq S'(I) \in J$.
+Similarly, the acyclicity of $S'$ implies that $S'(J) \notin I$, thus $\max(I \cap J) < \max(J)$ as $S'(J) \geq S_p(J) \in I$.
+By path intersection closedness, there is~$K \in \II$ such that $I \cap J \subseteq K \subseteq [\min(J),\max(I)]_T$.
+The acyclicity of $S_p$ now implies that $S_p(J) \leq S_p(K)$, thus $S'(I) < S_p(J) \leq S_p(K) \leq S'(K)$.
+This contradicts the acyclicity of $S'$ as $S'(I) \in I \cap J \subseteq K$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
