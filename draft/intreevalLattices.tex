@@ -239,8 +239,6 @@ Finally, still when~$D$ is an increasing tree, we use the ornamentation lattice 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\pagebreak
-
 \section{Introduction}
 \label{sec:introduction}
 
@@ -1471,7 +1469,7 @@ Finally, we describe the MacNeille completions of the acyclic reorientation pose
 \label{subsec:basicObservationsT}
 
 Let~$T$ be a directed tree on~$V$.
-For~$u,v \in V$, we write~$u \le_T v$ if the unique path between~$u$ and~$v$ in~$T$ is a directed path from~$u$ to~$v$.
+For~$u,v \in V$, we write~$u \le_T v$ if the unique path between~$u$ and~$v$ in~$T$ is a directed path from~$u$ to~$v$, and we denote the vertices along this path by~$[u,v]_T \eqdef \set{w \in T}{u \le_T w \le_T v}$.
 We let~$\lessin{T}{v} \eqdef \set{u \in V}{u \le_T v}$ denote the set of vertices which admit a directed path towards~$v$ in~$T$.
 We begin with a few observations.
 
@@ -1797,18 +1795,18 @@ If~$R$ is a transitively biclosed and cyclic reorientation of~$\tc(T)$, then it 
 \begin{proof}
 As~$R$ contains a cycle, it contains an induced oriented cycle~$C$ (any chord can be used to make the cycle shorter).
 Since~$R$ is transitively biclosed, $C$ is an induced alternating cycle in~$\tc(T)$.
-Write~$C = (d_1, u_1, \dots, d_k, u_k)$ where~$(d_i, u_i)$ and~$(d_{i+1},u_i)$ are in~$\tc(T)$ for all~$i \in [k]$.
-We can moreover assume without loss of generality that for~$i \in [k]$ and any incoming neighbor~$u'$ of~$u_i$  (resp.~outgoing neighbor~$d'$ of~$d_i$) in~$R$, replacing~$u_i$ by~$u'$ (resp.~$d_i$ by~$d'$) in~$C$ does not yield an induced oriented cycle in~$R$.
-For~$i \in [k]$, consider the reorientation~$R_i$ of~$\tc(T)$ obtained by reversing the edge~$(d_i,u_i)$, meaning that~$\rev(R_i) = \rev(R) \cup \{(d_i,u_i)\}$.
+Write~$C = (u_1, v_1, \dots, u_k, v_k)$ where~$(u_i, v_i)$ and~$(u_{i+1},v_i)$ are in~$\tc(T)$ for all~$i \in [k]$.
+We can moreover assume without loss of generality that for~$i \in [k]$ and any outgoing neighbor~$u'$ of~$u_i$ (resp.~incoming neighbor~$v'$ of~$v_i$) in~$R$, replacing~$u_i$ by~$u'$ (resp.~$v_i$ by~$v'$) in~$C$ does not yield an induced oriented cycle in~$R$.
+For~$i \in [k]$, consider the reorientation~$R_i$ of~$\tc(T)$ obtained by reversing the edge~$(u_i,v_i)$, meaning that~$\rev(R_i) = \rev(R) \cup \{(u_i,v_i)\}$.
 The reorientation~$R_i$ clearly covers~$R$, and we claimed that is still biclosed.
 Indeed,
 \begin{itemize}
-\item If~$R_i$ were not closed, we would have~$u' \in V$ with~$(u_i, u') \in \rev(R)$ and~$(d_i,u') \notin \rev(R)$ or~$d' \in V$ with~$(d',d_i) \in \rev(R)$ and~$(d',u_i) \notin \rev(R)$. We could then replace~$u_i$ by~$u'$ or~$d_i$ by~$d'$ in~$C$ and obtained another induced oriented cycle in~$R$.
-\item If~$R_i$ were not coclosed, we would have~$d' \in V$ with~$(d_i,d') \in \tc(T) \ssm \rev(R)$ and~$(d',u_i) \in \tc(T) \ssm \rev(R)$. We could then replace~$d_i$ by~$d'$ in~$C$ and obtained another induced oriented cycle in~$R$.
+\item If~$R_i$ were not closed, we would have~$u' \in V$ with~$(u',u_i) \in \rev(R)$ and~$(u',v_i) \notin \rev(R)$ or~$v' \in V$ with~$(v_i, v') \in \rev(R)$ and~$(u_i,v') \notin \rev(R)$. We could then replace~$u_i$ by~$u'$ or~$v_i$ by~$v'$ in~$C$ and obtained another induced oriented cycle in~$R$.
+\item If~$R_i$ were not coclosed, we would have~$u' \in V$ with~$(u_i,u') \in \tc(T) \ssm \rev(R)$ and~$(u',v_i) \in \tc(T) \ssm \rev(R)$. We could then replace~$u_i$ by~$u'$ in~$C$ and obtained another induced oriented cycle in~$R$.
 \end{itemize}
 In both cases, this contradicts our assumption on~$C$.
 Hence, we obtained~$k$ biclosed reorientations of~$\tc(T)$ covering~$R$.
-Symmetrically, we can construct a biclosed reorientations~$R_i$ of~$\tc(T)$ covered by~$R$ by reversing the arrow~$(d_{i+1}, u_i)$ for any~$i \in [k]$.
+Symmetrically, we can construct a biclosed reorientations~$R_i$ of~$\tc(T)$ covered by~$R$ by reversing the arrow~$(u_{i+1}, v_i)$ for any~$i \in [k]$.
 \end{proof}
 
 \begin{lemma}
@@ -1869,7 +1867,6 @@ This follows from \cref{prop:MacNeilleCompletion,coro:irreduciblesAcyclicT}.
 \end{proof}
 
 \pagebreak
-
 \begin{remark}
 \label{rem:MacNeille}
 Note that~\cref{thm:MacNeille} fails beyond directed trees.
@@ -1923,32 +1920,25 @@ The following conditions are equivalent for a directed tree~$T$ on~$V$:
 \begin{proof}
 \uline{\textsl{(i) $\Rightarrow$ (ii):}}
 Let~$C$ be an induced alternating cycle in~$\tc(T)$.
-Write~$C = (d_1, u_1, \dots, d_k, u_k)$ where~$(d_i, u_i)$ and~$(d_{i+1}, u_i)$ are in~$\tc(T)$ for all~$i \in [k]$.
-As~$C$ is induced, $d_i$ and~$d_j$ (resp.~$u_i$ and~$u_j$) are incomparable for any~$i \ne j$.
+Write~$C = (u_1, v_1, \dots, u_k, v_k)$ where~$(u_i, v_i)$ and~$(u_{i+1}, v_i)$ are in~$\tc(T)$ for all~$i \in [k]$.
+As~$C$ is induced, $u_i$ and~$u_j$ (resp.~$v_i$ and~$v_j$) are incomparable for any~$i \ne j$.
 
-Assume first that~$(d_1,u_k)$ is an edge of~$T$.
-Let~$D$ and~$U$ denote the connected components of~$T \ssm \{(d_1,u_k)\}$ containing~$d_1$ and~$u_k$ respectively.
-Let~$i \in [k]$ be maximal such that~$d_i \in D$.
-Since~$d_{i+1} \in U$ and~$(d_{i+1}, u_i) \in \tc(T)$, we have~$u_i \in U$.
-Hence, the edge~$(d_1,u_k)$ is an edge of the path from~$d_i$ to~$u_i$ in~$T$.
+Assume first that~$(u_1, v_k)$ is an edge of~$T$.
+Let~$D$ and~$U$ denote the connected components of~$T \ssm \{(u_1, v_k)\}$ containing~$u_1$ and~$v_k$ respectively.
+Let~$i \in [k]$ be maximal such that~$u_i \in D$.
+Since~$u_{i+1} \in U$ and~$(u_{i+1}, v_i) \in \tc(T)$, we have~$v_i \in U$.
+Hence, the edge~$(u_1, v_k)$ is an edge of the path from~$u_i$ to~$v_i$ in~$T$.
 We conclude that~$C$ was not induced.
 Note that the same argument shows that all edges of~$C$ are in~$\tc(T) \ssm T$.
 
-Let~$w$ denote the last vertex before~$u_k$ along the path from~$d_1$ to~$u_k$.
-If~$w$ does not belong to the path from~$d_k$ to~$u_k$, then the cycle~$C$ must pass again through~$u_k$, contradicting inducedness.
-\Antoine{I think I don't understand this.
-If $T$ is two X's of \cref{fig:ornamentationsX}, say X and X', but with 5 and 4' glued together, then taking $C=(1,5,1',5',2',5,2)$, $w=3$ does not work. I proposed another proof.}
-
-Hence, we obtain a new induced alternating cycle by replacing~$u_k$ by~$w$ in~$C$.
-By induction on the sum of the length of the paths between~$d_i$ and~$u_i$ in~$T$, we obtain that~$k = 2$ and that there is~$v \in V$ such that~$(d_1, v)$, $(d_2,v)$, $(v,u_1)$, and~$(v,w)$ are in~$\tc(T)$.
-As~$w$ is between~$d_1$ and~$u_2$, we also get~$(v,u_2) \in \tc(T)$.
-
-
-\antoine{I propose: We take $C$ to be minimal (in the sense that it is not two cycles glued together).
-	Let~$w$ denote the last vertex before~$u_k$ along the path from~$d_1$ to~$u_k$.
-	If~$w$ does not belong to the path from~$d_k$ to~$u_k$, then the cycle~$C$ must pass again through~$u_k$,
-	\red{contradicting minimality of $C$}.
-	Now, there exists $i$ such that $d_j<w<u_i\neq u_k$ where $j\in\{i,i-1\}$. We have $a=d_1$, $b=d_j$, $c=w$, $d=u_k$ and $e=u_i$.}
+Let~$w$ denote the last vertex before~$v_k$ along the path from~$u_1$ to~$v_k$.
+If~$w$ does not belong to the path from~$u_k$ to~$v_k$, then the cycle~$C$ must pass again through~$v_k$, contradicting inducedness.
+We now distinguish two cases:
+\begin{itemize}
+\item If there is~$i \in [k-1]$ such that~$(w,v_i) \in \tc(T)$, then we obtain~(ii) by considering~$a = u_1$, $b = u_k$, $c = w$, $d = v_i$ and~$e = v_k$.
+\item otherwise, we obtain a new induced alternating cycle by replacing~$v_k$ by~$w$ in~$C$. By induction on the sum of the length of the paths between~$u_i$ and~$v_i$ in~$T$, we obtain that~$k = 2$ and that there is~$w' \in V$ such that~$(u_1, w')$, $(u_2, w')$, $(w', v_1)$, and~$(w', w)$ are in~$\tc(T)$. As~$w$ is between~$u_1$ and~$v_2$, we also get~$(w', v_2) \in \tc(T)$.
+\qedhere
+\end{itemize}
 
 \medskip\noindent
 \uline{\textsl{(ii) $\Rightarrow$ (i):}} Let~$a,b,c,d,e$ as in~(ii). Then~$(a,d,b,e)$ forms an induced alternating cycle in~$\tc(T)$.
@@ -2006,7 +1996,7 @@ The proof for the acyclicity of~$\sour{O}$ is similar.
 \end{proof}
 
 \begin{proposition}
-For a starred tree~$T$, there exists a transitively biclosed and cyclic reorientation of~$\tc(T)$ and a cyclic ornamentation of~$T$.
+For a starred tree~$T$, there exists a transitively biclosed and cyclic reorientation \linebreak of~$\tc(T)$ and a cyclic ornamentation of~$T$.
 Hence, neither the acyclic reorientation poset~$\AReori(\tc(T))$, the acyclic sourcing poset~$\ASour(\PP(T))$, nor the acyclic ornamentation poset~$\AOrn(T)$ are lattices.
 \end{proposition}
 
@@ -2080,7 +2070,7 @@ If~$T$ is an unstarred tree, then the ornamentation lattice~$\Orn(T)$ is isomorp
 
 \begin{remark}
 Lattice quotients of acyclic reorientation lattices were studied in detail in~\cite{Pilaud-acyclicReorientationLattices}.
-We can reformulate \cref{prop:AReoriLatticeUT,prop:AOrnLatticeUT,prop:AReori2AOrnLatticeMapUT} using the language of~\cite{Pilaud-acyclicReorientationLattices}: if~$T$ is an unstarred tree, then
+We can reformulate \cref{prop:AReoriLatticeUT,prop:AOrnLatticeUT,prop:AReori2AOrnLatticeMapUT} in the language of~\cite{Pilaud-acyclicReorientationLattices}: for an unstarred~tree~$T$,
 \begin{enumerate}
 \item the transitive closure~$\tc(T)$ is skeletal, and so~$\AReori(\tc(T))$ is an acyclic reorientation lattice,
 \item the reorientation lattice~$\AReori(\tc(T))$ is (isomorphic to) the Tamari lattice of~$\tc(T)$ defined by the $\tc(T)$-sylvester congruence,
@@ -2444,12 +2434,7 @@ In other words, any hypergraph whose hyperedges are (the vertex sets of) some di
 
 \begin{definition} 
 \label{def:pathIntersectionClose}
-We say that an intreeval hypergraph~$\II$ of an increasing tree~$T$ is \defn{path intersection closed} if for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max(J) >_T \max(I\cap J)$, there exists~$K \in \II$ such that 
-\jose{$I \cap J \subseteq K \subseteq [\min(J) , \max(I)]_T$.\sout{$\min(J) \le_T \min(K) \le_T \min(I\cap J)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$.}}\Jose{I was getting confused with all the inequalities. Would this be easier to parse for the reader?}
-\end{definition}
-
-\begin{definition} 
-We say that an intreeval hypergraph~$\II$ of an increasing tree~$T$ is \defn{path intersection closed} if for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max(J) >_T \max(I\cap J)$, there exists~$K \in \II$ such that 
+We say that an intreeval hypergraph~$\II$ of an increasing tree~$T$ is \defn{path intersection closed} if for all~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max(J) >_T \max(I\cap J)$, there exists~$K \in \II$ such that~$I \cap J \subseteq K \subseteq [\min(J) , \max(I)]_T$. %$\min(J) \le_T \min(K) \le_T \min(I\cap J)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$.
 \end{definition}
 
 \begin{remark}
@@ -2463,7 +2448,7 @@ See \cref{exm:intreevalHypergraphs,fig:intreevalHypergraphs}.
 Let~$\II$ be an intreeval hypergraph of an increasing tree~$T$.
 Consider~$u \le_T v$, and let~$u_1, \dots, u_k$ (resp.~$v_1, \dots, v_\ell$) denote the incoming (resp.~outgoing) neighbors of~$u$ (resp.~$v$) in~$T$.
 We denote by~$X(T,u,v,\II)$ the (undirected) graph on~$u_1, \dots, u_k,\; v_1, \dots, v_\ell$ with an edge joining~$u_i$ and~$v_j$ if and only if there is~$I \in \II$ containing both~$u_i$ and~$v_j$.
-We say that~$\II$ is \defn{star sparse} if~$X(T,u,v,\II)$ is acyclic for all~$u,v$ connected by a directed path. \Antoine{Would it point out more the link with the induced cycles of last section to denote the vertices by $d_1,\cdots d_k$ and $u_1\cdots u_k$ instead of $u_1\cdots u_k$ and $v_1\cdots v_k$?}
+We say that~$\II$ is \defn{star sparse} if~$X(T,u,v,\II)$ is acyclic for all~$u,v$ connected by a directed path.
 \end{definition}
 
 \begin{example}
@@ -2501,8 +2486,6 @@ When~$T$ is an oriented path,
 \end{itemize}
 \end{remark}
 
-\pagebreak
-
 \begin{remark}
 When~$T$ is a rooted tree,
 \begin{itemize}
@@ -2531,8 +2514,7 @@ If~$\ASour(\II)$ is a lattice, then $\II$ is path intersection closed (\cref{def
 
 \begin{proof}
 The proof follows exactly the same lines as that of~\cite[Prop.~4.6]{BergeronPilaud}.
-Assume by means of contradiction that~$\ASour(\II)$ is a lattice but that there are~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max(J) >_T \max(I\cap J)$, and there is no~$K \in \II$ such that $\min(J) \le_T \min(K) \le_T \min(I\cap J)$ and ${\max(I\cap J) \le_T \max(K) \le_T \max(I)}$.
-\Antoine{Should we replace this by Jose's description?}
+Assume by means of contradiction that~$\ASour(\II)$ is a lattice but that there are~$I,J\in \II$ with~$|I\cap J|> 1$ such that $\min(I) <_T \min(I\cap J)$ and  $\max(J) >_T \max(I\cap J)$, and there is no~$K \in \II$ such that ${I \cap J \subseteq K \subseteq [\min(J) , \max(I)]_T}$.
 
 Let~$b$ (resp.~$c$) be the bottom (resp.~top) endpoint of~$I \cap J$, and~$a$ (resp.~$d$) be its neighbor in~$I \ssm J$ (resp.~$J \ssm I$).
 Note that~$a,b,c,d$ are all distinct since~$|I \cap J| > 1$.
@@ -2555,8 +2537,8 @@ and let~$S_A \eqdef \asour{\pi_A}^\II, \dots, S_F \eqdef \asour{\pi_F}^\II$ deno
 See \cref{exm:pathIntersectionClosed,fig:pathIntersectionClosedStarSparse}\,(left) for an illustration of these permutations and acyclic sourcings.
 
 We claim that~$S_E = S_F$.
-Indeed, if~$K \in \II$ is such that~$S_E(K) \ne S_F(K)$, then~$K \supseteq \{b,c\}$ but~$K \cap (X \cup \{a,d\}) = \varnothing$.
-This would imply that~$\min(J) \le_T \min(K) \le_T b$ and $c \le_T \max(K) \le_T \max(I)$, contradicting our assumption on~$I$ and~$J$.
+Indeed, if~$K \in \II$ is such that~$S_E(K) \ne S_F(K)$, then~$K \supseteq \{b,c\}$ but~${K \cap (X \cup \{a,d\}) = \varnothing}$.
+This would imply that~${I \cap J = [b,c] \subseteq K \subseteq [\min(J) , \max(I)]_T}$, contradicting our assumption on~$I$ and~$J$.
 
 Observe now that
 \[
@@ -2986,7 +2968,7 @@ This implies~$\min(I) \le S_2(J) < S_1(I) \le \max(J)$.
 Hence, $S_1(I)$ and~$S_2(J)$ are distinct and both belong to~$I \cap J$.
 Moreover, as~$S_1 \le S_2$, we have~$S_1(J) \le S_2(J) < S_1(I) \le S_2(I)$.
 Since~$S_1$ and~$S_2$ are both acyclic, we deduce that~$\min(J) \le S_1(J) < \min(I \cap J)$ while~$\max(I) \ge S_2(I) > \max(I \cap J)$.
-As~$\II$ is path intersection closed, there exists~$K \in \II$ such that~$\min(I) \le_T \min(K) \le_T \min(I\cap J)$ and $\max(I\cap J) \le_T \max(K) \le_T \max(J)$.
+As~$\II$ is path intersection closed, there exists~$K \in \II$ such that~$I \cap J \subseteq K \subseteq [\min(I) , \max(J)]_T$.
 As~$S_1(I)$ and~$S_2(J)$ both belong to~$I \cap J \subseteq K$, and~$S_1$ and~$S_2$ are both acyclic, we obtain that~$S_2(K) \le S_2(J) < S_1(I) \le S_1(K)$, which contradicts~$S_1 \le S_2$.
 \end{proof}
 
