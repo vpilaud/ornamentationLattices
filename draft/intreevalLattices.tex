@@ -1930,8 +1930,8 @@ Hence, the edge~$(u_1, v_k)$ is an edge of the path from~$u_i$ to~$v_i$ in~$T$.
 We conclude that~$C$ was not induced.
 Note that the same argument shows that all edges of~$C$ are in~$\tc(T) \ssm T$.
 
-Let~$w$ denote the last vertex before~$v_k$ along the path from~$u_1$ to~$v_k$.
-If~$w$ does not belong to the path from~$u_k$ to~$v_k$, then the cycle~$C$ must pass again through~$v_k$, contradicting inducedness.
+Let~$w$ denote the last vertex before~$v_k$ along the path from~$u_1$ to~$v_k$ \felix{ in $T$}.
+If~$w$ does not belong to the path from~$u_k$ to~$v_k$, then \felix{$w>_T v_k$ and this implies that} the cycle~$C$ must pass again through~$v_k$, contradicting inducedness.
 We now distinguish two cases:
 \begin{itemize}
 \item If there is~$i \in [k-1]$ such that~$(w,v_i) \in \tc(T)$, then we obtain~(ii) by considering~$a = u_1$, $b = u_k$, $c = w$, $d = v_i$ and~$e = v_k$.
