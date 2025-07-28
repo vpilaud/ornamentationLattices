@@ -284,6 +284,7 @@ A \defn{reorientation} of~$E$ is a directed graph~$R$ obtained from~$E$ by rever
 A reorientation~$R$ of~$E$ is \defn{acyclic} if it contains no directed cycle.
 The \defn{(acyclic) reorientation poset} of~$E$ is the set of (acyclic) reorientations of~$E$ ordered by inclusion of reversion sets, meaning~$R \le R'$ if and only if~$\rev(R) \subseteq \rev(R')$.
 While the reorientation poset~$\Reori(E)$ is clearly a boolean lattice, the acyclic reorientation poset~$\AReori(E)$ is not always a lattice.
+See~\cite{Pilaud-acyclicReorientationLattices} for a characterization of the directed graphs~$E$ for which~$\Reori(E)$ is a lattice (or even a semidistributive lattice).
 
 The \defn{graphical zonotope} of~$E$ is the Minkowski sum~$\simplex_E \eqdef \sum_{(u,v) \in E} \simplex_{uv}$, where~$\simplex_{uv}$ is the segment with endpoints~$\b{e}_u$ and~$\b{e}_v$.
 The face lattice of~$\simplex_E$ is described by ordered partitions of~$E$.
@@ -294,7 +295,6 @@ They have been largely investigated in~\cite{Pilaud-acyclicReorientationLattices
 Among all these congruences, the \defn{sylvester congruence} yields the \defn{Tamari lattice} of~$E$, which is isomorphic to the transitive closure of the graph of the \defn{associahedron} of~$E$ oriented in the direction~$\b{w}$.
 The later is obtained by deleting inequalities in the facet description of the graphical zonotope of~$E$.
 
-\pagebreak
 For instance, when~$E = K_n$ is the complete graph,
 \begin{itemize}
 \item $\simplex_E$ is the permutahedron and~$\AReori(E)$ is the weak order,
@@ -312,7 +312,7 @@ Ornamentations of directed graphs and beyond will also appear in~\cite{Sack}.
 An ornamentation~$O$ of~$D$ is \defn{acyclic} if a certain reorientation of the transitive closure~$\tc(D)$ of~$D$ constructed from~$O$ is acyclic (see precise definition later).
 The \defn{(acyclic) ornamentation poset} of~$D$ is the poset of (acyclic) ornamentations of~$D$ ordered by componentwise inclusion, meaning~$O \le O'$ if and only if~${O(v) \subseteq O'(v)}$ for all~$v \in V$.
 The ornamentation poset~$\Orn(D)$ is always a lattice, but the acyclic ornamentation poset~$\Orn(D)$ is not always a lattice.
-Interestingly, we will see that all ornamentations turn out to be acyclic when~$D$ is a rooted tree, and the ornamentation lattice is the MacNeille completion of the acyclic ornamentation lattice when~$D$ is a directed tree.
+Interestingly, we will see that all ornamentations turn out to be acyclic when~$D$ is a rooted (or even unstarred, see below) tree, and the ornamentation lattice is the MacNeille completion of the acyclic ornamentation lattice when~$D$ is a directed tree.
 
 The geometry of ornamentation lattices is not that clear.
 One of the open questions in~\cite{DefantSack} was to find polytopal realizations of ornamentation lattices.
@@ -370,7 +370,7 @@ See \cref{fig:allMaps} for an overview of these connections.
 \end{figure}
 
 \medskip
-These connections become particularly interesting when the underlying directed graph~$D$ is an increasing tree~$T$, and even more if it is rooted (or unstarred, see below).
+These connections become particularly interesting when the underlying directed graph~$D$ is an increasing tree~$T$, and even more if it is rooted (or unstarred).
 In \cref{sec:trees}, we first consider a directed tree.
 We describe the join irreducible ornamentations of~$T$ and meet irreducible ornamentations of~$T$, and prove that the ornamentation lattice~$\Orn(T)$ is semidistributive.
 Observing that all join or meet irreducible ornamentations of~$T$ (resp.~transitively biclosed reorientations of~$\tc(T)$) are acyclic, we obtain the following statement.
@@ -389,7 +389,6 @@ We then consider, in \cref{sec:unstarredTrees}, a special class of increasing tr
 A tree~$T$ is \defn{unstarred} if there are no vertices~$u,v$ of~$T$ such that~$u$ has at least two incoming edges in~$T$, $v$ has at least two outgoing edges in~$T$, and $T$ has a directed path from~$u$ to~$v$.
 For these trees, the relation between its acyclic sourcing poset and ornamentation lattice is even stronger.
 
-\pagebreak
 \begin{theorem}
 \label{thm:main2}
 For an unstarred increasing tree~$T$,
@@ -2005,14 +2004,10 @@ Consider a starred tree~$T$, and let~$a,b,c,d,e$ be vertices of~$T$ as in \cref{
 
 The reorientation~$R$ of~$\tc(T)$ defined by~$\rev(R) = \set{(w,d)}{a \le_T w <_T d} \cup \set{(w,e)}{b \le_T w <_T e}$ is transitively closed because~$d \not<_T e$ and~$e \not<_T d$, transitively coclosed because~$(u,w) \in \rev(R)$ implies~$(v,w) \in \rev(R)$ for any~$u <_T v <_T w$, and cyclic because~$a, e, b, d$ forms a directed cycle.
 
-%The ornamentation~$O = \orn{R}$ of~$T$ with~$O(d) = \set{w}{a \le_T w \le_T d}$, $O(e) = \set{w}{b \le_T w \le_T e}$,
-The ornamentation~$O = \orn{R}$ of~$T$ with~$O(d) = [a,d]_T$, $O(e) = [b,d]_T$, and~$O(w) = \{w\}$ for all~$w \in V \ssm \{d,e\}$ is cyclic.
+The ornamentation~$O = \orn{R}$ of~$T$ with~$O(d) = [a,d]_T$, $O(e) = [b,e]_T$, and~$O(w) = \{w\}$ for all~$w \in V \ssm \{d,e\}$ is cyclic.
 Indeed, consider any reorientation~$R'$ of~$\tc(T)$ such that~$O = \orn{R'}$.
-We have~$(w,d) \in \rev(R')$ for all~$w \in [a,d]_T$
-%$a \le_T w <_T d$
-(because $w \in O(d)$) and similarly~$(w,e) \in \rev(R')$ for all~$w \in [b,e]_T$. %$b \le_T w <_T e$.
-Therefore,~$(a,e) \notin \rev(R')$ (because~${a \notin O(e)}$ while~$(w,e) \in \rev(R')$ for all~$w \in [a,e]_T$ %$a <_T w <_T e$)
-and similarly~$(b,d) \notin \rev(R')$.
+We have~$(w,d) \in \rev(R')$ for all~$w \in [a,d]_T$ (because $w \in O(d)$) and similarly~$(w,e) \in \rev(R')$ for all~$w \in [b,e]_T$.
+Therefore,~$(a,e) \notin \rev(R')$ (because~${a \notin O(e)}$ while~$(w,e) \in \rev(R')$ for all~$w \in [a,e]_T$ and similarly~$(b,d) \notin \rev(R')$.
 We conclude that~$a, e, b, d$ forms a directed cycle in~$R'$ as well.
 Hence, $O$ is cyclic.
 
@@ -3000,21 +2995,20 @@ A similar formula holds for meets by symmetry.
 \label{prop:expressionJoin}
 For a path intersection closed and star sparse intreeval hypergraph~$\II$ of an increasing tree~$T$, and for any acyclic sourcings~$S_1, \dots, S_q$ of~$\II$ and any~$I \in \II$, we have
 \[
-\bigg( \bigJoin_{p \in [q]} S_p \bigg)(I) = \min \bigg( I \ssm \Big( \bigcup_{p \in [q]} \bigcup_{\substack{J \in \II : \\ S_p(J) \in I}} \set{v \in I \cap J}{v < S_p(J)} \Big) \bigg).
+\bigg( \bigJoin_{p \in [q]} S_p \bigg)(I) = \min \bigg( I \ssm \Big( \bigcup_{p \in [q]} \bigcup_{\substack{J \in \II : \\ S_p(J) \in I}} \set{v \in J}{v < S_p(J)} \Big) \bigg).
 \]
 \end{proposition}
 
 \begin{proof}
-As~$\II$ is path intersection closed and star sparse, the acyclic sourcing poset~$\ASour(\II)$ is a lattice by~\cref{prop:quasiLatticeMapIntreevalLattices}, hence the join~$\bigJoin_{p \in [q]} S_p$ exists and we just need to prove that it is given by the formula of the statement.
-Let~$S$ be the sourcing defined by the formula of the statement.
-We will first prove that $S$ is acyclic and then that it is indeed the least upper bound of $\{S_p\}_{p \in [q]}$.
+As~$\II$ is path intersection closed and star sparse, the acyclic sourcing poset~$\ASour(\II)$ is a lattice by~\cref{prop:quasiLatticeMapIntreevalLattices}, hence the join~$\bigJoin_{p \in [q]} S_p$ exists and we just need to prove that it coincides with the sourcing~$S$ defined by the right-hand-side of the formula of the statement.
+We first prove that $S$ is acyclic and then that it is indeed the least upper bound of $\{S_p\}_{p \in [q]}$.
 
 Assume by means of contradiction that~$S$ is cyclic.
 By \cref{prop:pathStarSparse}, there is~$I,J \in \II$ such that~$S(I) \in J \ssm \{S(J)\}$ and~$S(J) \in I \ssm \{S(I)\}$.
 Assume by symmetry that~$S(I) < S(J)$.
-As~$S(I) \in J$ and~$S(I) < S(J)$, applying the formula for~$S(J)$, we obtain that there exists~$p \in [q]$ and~$K \in \II$ such that~$S_p(K) \in J$ and~$S(I) \in K$ and~$S(I) < S_p(K) \le S(J)$.
+As~${S(I) \in J}$ and~$S(I) < S(J)$, applying the formula for~$S(J)$, we obtain that there exists~${p \in [q]}$ and~$K \in \II$ such that~$S_p(K) \in J$ and~$S(I) \in K$ and~$S(I) < S_p(K) \le S(J)$.
 As~$I$ is a path containing~$S(I)$ and~$S(J)$, it contains also~$S_p(K)$.
-We obtain that~$S_p(K) \in I$, $S(I) \in K$ and~$S(I) < S_p(K)$ contradicting our definition of~$S$.
+We obtain that~$S_p(K) \in I$, $S(I) \in K$ and~${S(I) < S_p(K)}$ contradicting our definition of~$S$.
 We conclude that~$S$ is acyclic.
 
 %For any~$p \in [q]$, we have~$S_p(I) \in I$ and so~$S(I) \ge S_p(I)$ for all~$I \in \II$, hence~$S \ge S_p$.
@@ -3032,13 +3026,13 @@ We conclude that~$S$ is acyclic.
 For any~$p \in [q]$, we have~$S_p(I) \in I$ and so~$S(I) \ge S_p(I)$ for all~$I \in \II$, hence~$S \ge S_p$.
 Consider an acyclic sourcing~$S'$ of~$\II$ such that~$S' \ge S_p$ for all~$p \in [q]$,
 and assume by means of contradiction that $S'(I) < S(I)$ for some $I \in \II$.
-Then, there is $p \in [q]$ and $J \in \II$ such that $S_p(J) \in I$ and $S'(I) \in \set{v \in I \cap J}{v < S_p(J)}$.
-In particular, $S_p(J)$ and $S'(I)$ are two different elements of $I \cap J$, so $|I \cap J| > 1$.
-The acyclicity of $S_p$ implies that $S_p(I) \notin J$, thus $\min(I) < \min(I \cap J)$ as $S_p(I) \leq S'(I) \in J$.
-Similarly, the acyclicity of $S'$ implies that $S'(J) \notin I$, thus $\max(I \cap J) < \max(J)$ as $S'(J) \geq S_p(J) \in I$.
+Then, there is $p \in [q]$ and $J \in \II$ such that~$S_p(J) \in I$ and $S'(I) \in \set{v \in I \cap J}{v < S_p(J)}$.
+In particular, $S_p(J)$ and $S'(I)$ are two different elements of~$I \cap J$, so $|I \cap J| > 1$.
+The acyclicity of $S_p$ implies that $S_p(I) \notin J$, thus~${\min(I) < \min(I \cap J)}$~as~${S_p(I) \leq S'(I) \in J}$.
+Similarly, the acyclicity of $S'$ implies that~${S'(J) \notin I}$, thus~${\max(I \cap J) < \max(J)}$ as $S'(J) \geq S_p(J) \in I$.
 By path intersection closedness, there is~$K \in \II$ such that $I \cap J \subseteq K \subseteq [\min(J),\max(I)]_T$.
 The acyclicity of $S_p$ now implies that $S_p(J) \leq S_p(K)$, thus $S'(I) < S_p(J) \leq S_p(K) \leq S'(K)$.
-This contradicts the acyclicity of $S'$ as $S'(I) \in I \cap J \subseteq K$.
+This contradicts the acyclicity of $S'$ as~${S'(I) \in I \cap J \subseteq K}$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
