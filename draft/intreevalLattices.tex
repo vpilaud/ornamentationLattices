@@ -2,20 +2,18 @@
 
 \usepackage{enumerate, amsmath, amsfonts, amssymb, amsthm, thmtools, wasysym, graphics, graphicx, url, hyperref, hypcap, a4wide, pdflscape, multido, xargs, colortbl, multicol, multirow, calc, shuffle, hvfloat}
 \hypersetup{colorlinks=true, citecolor=darkblue, linkcolor=darkblue, hypertexnames=false}
-%\usepackage[all]{xy}
 \usepackage{tikz}
 \usetikzlibrary{trees, decorations, decorations.markings, shapes, arrows, matrix, calc, fit, intersections, patterns, angles, cd}
 \usepackage{tikz-qtree}
 \usepackage{comment}
 \usepackage{etex}
-\usepackage{ulem}\normalem % to strike through a word
+\usepackage{ulem}\normalem
 \usepackage[noabbrev,capitalise]{cleveref}
 \setlength{\abovecaptionskip}{10pt}
 \setlength{\belowcaptionskip}{5pt}
 \usepackage[export]{adjustbox}
 \usepackage[dvipsnames]{xcolor}
 
-%\reserveinserts{50}
 \graphicspath{{figures/}}
 \makeatletter
 \def\input@path{{figures/}}
@@ -243,8 +241,6 @@ Finally, still when~$D$ is an increasing tree, we use the ornamentation lattice 
 \label{sec:introduction}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\subsection{Three perspectives on associahedra and Tamari lattices}
 
 Tamari lattices and associahedra are classical objects of algebraic and geometric combinatorics with various applications to topology, algebra, statistical physics, etc.
 We refer to~\cite{TamariFestschrift, CeballosSantosZiegler, PilaudSantosZiegler} and the references therein for an overview of the myriad of  perspectives on these objects, and we focus here on three specific aspects.
@@ -3010,18 +3006,6 @@ As~${S(I) \in J}$ and~$S(I) < S(J)$, applying the formula for~$S(J)$, we obtain 
 As~$I$ is a path containing~$S(I)$ and~$S(J)$, it contains also~$S_p(K)$.
 We obtain that~$S_p(K) \in I$, $S(I) \in K$ and~${S(I) < S_p(K)}$ contradicting our definition of~$S$.
 We conclude that~$S$ is acyclic.
-
-%For any~$p \in [q]$, we have~$S_p(I) \in I$ and so~$S(I) \ge S_p(I)$ for all~$I \in \II$, hence~$S \ge S_p$.
-%Consider now an acyclic sourcing~$S'$ of~$\II$ such that~$S' \ge S_p$ for all~$p \in [q]$.
-%Assume that there are~$I,J \in \II$ and~$p \in [q]$ such that~$S_p(J) \in I$.
-%Then~$S_p(J) \in I \cap J$.
-%If~$|I \cap J| = 1$, we obviously have~$S'(I) \notin \set{v \in J}{v < S_p(J)}$.
-%Otherwise, as~$\II$ is path intersection closed, there is~$K \in \II$ such that~$\min(J) \le_T \min(K) \le_T \min(I \cap J)$ and~$\max(I \cap J) \le_T \max(K) \le_T \max(I)$.
-%As~$S_p(J) \in I \cap J$, the acyclicity of~$S_p$ ensures that~$S_p(K) \ge S_p(J)$.
-%Since~$S' \ge S_p$, we thus obtain~$S'(K) \ge S_p(J)$.
-%By acyclicity of~$S'$, we thus have~$S'(I) \ge [\min(I \cap J), S_p(J)[$, hence~$S'(I) \notin \set{v \in J}{v < S_p(J)}$.
-%We obtain that~$S(I) \le S'(I)$, and so~$S \le S'$.
-%We conclude that~$S$ is indeed~$\bigJoin_{p \in [q]} S_p$.
 
 For any~$p \in [q]$, we have~$S_p(I) \in I$ and so~$S(I) \ge S_p(I)$ for all~$I \in \II$, hence~$S \ge S_p$.
 Consider an acyclic sourcing~$S'$ of~$\II$ such that~$S' \ge S_p$ for all~$p \in [q]$,
