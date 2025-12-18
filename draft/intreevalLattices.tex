@@ -242,12 +242,12 @@ Finally, still when~$D$ is an increasing tree, we use the ornamentation lattice 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Tamari lattices and associahedra are classical objects of algebraic and geometric combinatorics with various applications to topology, algebra, statistical physics, etc.
+Tamari lattices and associahedra are classical objects of algebraic and geometric combinatorics with various applications in topology, algebra, statistical physics, etc.
 We refer to~\cite{TamariFestschrift, CeballosSantosZiegler, PilaudSantosZiegler} and the references therein for an overview of the myriad of  perspectives on these objects, and we focus here on three specific aspects.
 First, the Hasse diagram of the Tamari lattice is isomorphic to a linear orientation of the graph of the associahedron of~\cite{ShniderSternberg, Loday}, which is a Minkowski sum of standard simplices~\cite{Postnikov}. 
 Second, the Tamari lattice (on binary trees) is a lattice quotient of the weak order (on permutations)~\cite{Tonks, Reading-latticeCongruences}, and the associahedron is obtained by deleting inequalities in the facet description of the permutahedron~\cite{ShniderSternberg, Loday}.
 Third, the Tamari lattice is realized by componentwise comparisons of the bracket vectors of binary trees~\cite{HuangTamari}.
-The objective of this paper is to study the interconnections between natural extensions of these three perspectives, already considered separately in the literature.
+The objective of this paper is to study the connections between natural extensions of these three perspectives, already considered separately in the literature.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -856,7 +856,7 @@ which are not transitively coclosed.
 \label{subsec:sourcings}
 
 We now assume that~$V$ is totally ordered, say that~$V = [n]$ with the natural order.
-We consider the following maps on hypergraphs (they are usually called orientations of hypergraphs, we have preferred the term sourcings of hypergraphs to avoid confusion with the reorientations of graphs).
+We consider the following maps on hypergraphs.
 
 \begin{definition}
 \label{def:Sour}
@@ -865,7 +865,9 @@ The \defn{sourcing lattice}~$\Sour(\HH)$ is the lattice of sourcings of~$\HH$ or
 In other words, $\Sour(\HH)$ is the Cartesian product of the subchains of~$V$ induced by the hyperedges~$\HH$.
 \end{definition}
 
-We now assume that~$D$ is an increasing graph on~$V = [n]$, meaning that~$u < v$ for any edge~$(u,v)$ of~$D$, and we consider sourcings of the path hypergraph of~$D$.
+(note that they are usually called \emph{orientations of hypergraphs}, we have preferred the term \emph{sourcings of hypergraphs} to avoid confusion with the reorientations of graphs).
+
+We now assume that~$D$ is an increasing graph on~$V = [n]$, meaning that~$u < v$ for any edge~$(u,v)$ of~$D$. In particular, $D$ is acyclic.
 
 \begin{definition}
 \label{def:pathHypergraph}
@@ -1026,7 +1028,7 @@ In contrast, we will see in \cref{sec:acyclic} that~$S \mapsto \orn{S}$ is injec
 \label{sec:acyclic}
 
 We now focus our attention on the acyclic case.
-We assume here that~$D$ is an increasing graph on~$V = [n]$, meaning that $u < v$ for any edge~$(u,v)$ of~$D$. In particular, $D$ is acyclic.
+We assume here that~$D$ is an increasing graph on~$V = [n]$.
 We then consider the acyclic reorientation poset~$\AReori(\tc(D))$ (\cref{subsec:acyclicReorientations}), the acyclic sourcing poset~$\ASour(\PP(D))$ (\cref{subsec:acyclicSourcings}), and the acyclic ornamentation poset~$\AOrn(D)$ (\cref{subsec:acyclicOrnamentations}), and define natural surjective poset morphisms:
 \[
 \begin{array}{rcccccl}
@@ -1065,7 +1067,7 @@ We then consider the acyclic reorientation poset~$\AReori(\tc(D))$ (\cref{subsec
 	\label{fig:acyclicReorientationsKT}
 \end{figure}
 
-Acyclic reorientations of directed acyclic graphs is a classical subject, see for instance~\cite{Greene,GreeneZaslavsky,Pilaud-acyclicReorientationLattices} and \cref{fig:acyclicReorientationsAY,fig:acyclicReorientationsD,fig:acyclicReorientationsKT} for illustrations.
+Acyclic reorientations of directed acyclic graphs are a classical subject, see for instance~\cite{Greene,GreeneZaslavsky,Pilaud-acyclicReorientationLattices} and \cref{fig:acyclicReorientationsAY,fig:acyclicReorientationsD,fig:acyclicReorientationsKT} for illustrations.
 
 \begin{definition}
 \label{def:AReori}
@@ -1077,7 +1079,7 @@ The \defn{acyclic reorientation poset}~$\AReori(E)$ is the subposet of the reori
 Let us recall the polytopal interpretation of the acyclic reorientation poset of~$E$.
 Denote by~$(\b{e}_i)_{i \in [n]}$ the standard basis of~$\R^n$.
 The \defn{graphical zonotope} of~$E$ is the Minkowski sum~$\simplex_E \eqdef \sum_{(u,v) \in E} \simplex_{uv}$, where~$\simplex_{uv}$ is the segment with endpoints~$\b{e}_u$ and~$\b{e}_v$.
-The face lattice of~$\simplex_E$ is described by ordered partitions of~$E$.
+The face lattice of~$\simplex_E$ is described by \emph{ordered partitions} of~$E$.
 In particular, the graph of~$\simplex_E$, oriented in the direction~$\b{\omega} \eqdef (n, n-1, \dots, 2, 1) - (1, 2, \dots, n-1, n) = (n-1, n-3, \dots, 3-n, 1-n)$, is isomorphic to the Hasse diagram of the acyclic reorientation poset~$\AReori(E)$.
 \end{remark}
 
@@ -1104,7 +1106,7 @@ We now recall the standard map from permutations to acyclic reorientations.
 
 \begin{definition}
 \label{def:Perm2AReori}
-For a permutation~$\pi$ of~$[n]$, we denote by~$\areori{\pi}$ the reorientation of~$\tc(D)$ where $(u,v) \in \tc(D)$ is reoriented in~$\areori{\pi}$ if~$\pi^{-1}(u) > \pi^{-1}(v)$.
+For a permutation~$\pi$ of~$[n]$, we denote by~$\areori{\pi}$ the reorientation of~$\tc(D)$ where $(u,v) \in \tc(D)$ is reversed in~$\areori{\pi}$ if~$\pi^{-1}(u) > \pi^{-1}(v)$.
 \end{definition}
 
 \begin{proposition}
@@ -1148,8 +1150,8 @@ Note that the graph of~$\simplex_\HH$, oriented in the direction~$\b{\omega}$, i
 \label{rem:ASourLat}
 Note that the acyclic sourcing poset of~$\HH$ is not always a lattice.
 Characterizing the hypergraphs whose acyclic sourcing poset is a lattice seems to be a difficult question in general.
-Such characterizations exist for specific families of hypergraphs, notably for graphs~\cite{Pilaud-acyclicReorientationLattices} (see \cref{prop:AReoriLat}), for interval hypergraphs~\cite{BergeronPilaud}, and (partially for) graph associahedra~\cite{BarnardMcConville}.
-We will further study this question for subhypergraphs of the path hypergraph of increasing trees in \cref{sec:intreevalHypergraphicPosets}.
+Such characterizations exist for specific families of hypergraphs, notably for graphs~\cite{Pilaud-acyclicReorientationLattices} (see \cref{prop:AReoriLat}), for interval hypergraphs~\cite{BergeronPilaud}, and (partially) for graph associahedra~\cite{BarnardMcConville}.
+We will further study this question for subhypergraphs of the path hypergraph of increasing trees in \cref{sec:intreevalHypergraphicPosets}, which generalizes \cite{BergeronPilaud}.
 \end{remark}
 
 We start with two simple observations about \cref{def:Sour2Reori} .
@@ -1553,7 +1555,7 @@ We denote by $\JI$ (resp.~$\MI$) the subposet of~$L$ induced by the set of join 
 \begin{definition}
 A \defn{join representation} of~$x \in L$ is a subset~${J \subseteq L}$ such that~$x = \bigJoin J$.
 Such a representation is \defn{irredundant} if~$x \ne \bigJoin J'$ for any strict subset~$J' \subsetneq J$.
-The irredundant join representations in~$L$ are antichains of~$L$, and are ordered by containment of the lower sets of their elements (\ie~$J \le J'$ if and only if for any~$y \in J$ there exists~$y' \in J'$ such that~$y \le y'$ in~$L$).
+The irredundant join representations in~$L$ are antichains of~$L$, and are ordered by containment of the lower sets they generate (\ie~$J \le J'$ if and only if for any~$y \in J$ there exists~$y' \in J'$ such that~$y \le y'$ in~$L$).
 The \defn{canonical join representation} of~$x$, denoted~$\CJR(x)$, is the minimal irredundant join representation of~$x$ for this order, when it exists.
 \end{definition}
 
@@ -1758,12 +1760,12 @@ We conclude that~$\reori{O}$ is transitively coclosed.
 \subsection{MacNeille completions}
 \label{subsec:MacNeilleT}
 
-We first briefly recall the definition of the MacNeille completion of a poset.
+We first briefly recall the definition of the \emph{MacNeille completion} of a poset.
 
 \begin{definition}
 \label{def:MacNeilleCompletion}
 A \defn{completion} of a finite poset~$P$ is a lattice~$L$ such that there is an order-embedding~$f : P \to L$ (meaning that $f$ is injective and~$x \le_P y$ if and only if~$f(x) \le_L f(y)$).
-The MacNeille completion~$C(P)$ of~$P$ is the smallest completion of~$P$, meaning that for any completion~$L$ of~$P$, there exists an order-embedding from~$C(P)$ to~$L$.
+The \defn{MacNeille completion}~$C(P)$ of~$P$ is the smallest completion of~$P$, meaning that for any completion~$L$ of~$P$, there exists an order-embedding from~$C(P)$ to~$L$.
 \end{definition}
 
 \begin{proposition}[{\cite[Thm.~7.42]{DaveyPriestley}}]
@@ -2411,7 +2413,7 @@ We have no explanation for this fact, nor candidates for families of directed tr
 \section{Intreeval hypergraphic lattices}
 \label{sec:intreevalHypergraphicPosets}
 
-In this section, we characterize the subhypergraphs~$\II$ of the path interval~$\PP(T)$ of an increasing tree~$T$ whose acyclic sourcing poset~$\ASour(\II)$ is a lattice.
+In this section, we characterize the subhypergraphs~$\II$ of the path interval~$\PP(T)$ of an increasing tree~$T$ whose acyclic sourcing poset~$\ASour(\II)$ is a lattice, extending results of N. Bergeron and V. Pilaud for interval hypergraphs.
 We first state the needed definitions and the characterization (\cref{subsec:characterization}), then show that these conditions are necessary (\cref{subsec:necessary}) and sufficient (\cref{subsec:sufficient}) using an important property of star sparse intreeval hypergraphs (\cref{subsec:shortCycles}).
 Finally, when~$\ASour(\II)$ is a lattice, we give an explicit formula for its meets and joins (\cref{subsec:formulaMeetJoin}).
 
@@ -2451,7 +2453,7 @@ We say that~$\II$ is \defn{star sparse} if~$X(T,u,v,\II)$ is acyclic for all~$u,
 Among the $8$ intreeval hypergraphs of \cref{fig:intreevalHypergraphs},
 \begin{itemize}
 \item the first two are both path intersection closed and star sparse,
-\item the next four are not path intersection closed but are star sparse,
+\item the next four are star sparse but not path intersection closed,
 \item the next one is path intersection closed but not star sparse,
 \item the last one is neither path intersection closed nor star sparse.
 \end{itemize}
