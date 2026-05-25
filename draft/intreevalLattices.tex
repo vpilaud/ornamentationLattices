@@ -280,7 +280,7 @@ A \defn{reorientation} of~$E$ is a directed graph~$R$ obtained from~$E$ by rever
 A reorientation~$R$ of~$E$ is \defn{acyclic} if it contains no directed cycle.
 The \defn{(acyclic) reorientation poset} of~$E$ is the set of (acyclic) reorientations of~$E$ ordered by inclusion of reversion sets, meaning~$R \le R'$ if and only if~$\rev(R) \subseteq \rev(R')$.
 While the reorientation poset~$\Reori(E)$ is clearly a boolean lattice, the acyclic reorientation poset~$\AReori(E)$ is not always a lattice.
-See~\cite{Pilaud-acyclicReorientationLattices} for a characterization of the directed graphs~$E$ for which~$\Reori(E)$ is a lattice (or even a semidistributive lattice).
+See~\cite{Pilaud-acyclicReorientationLattices} for a characterization of the directed graphs~$E$ for which~$\AReori(E)$ is a lattice (or even a semidistributive lattice).
 
 The \defn{graphical zonotope} of~$E$ is the Minkowski sum~$\simplex_E \eqdef \sum_{(u,v) \in E} \simplex_{uv}$, where~$\simplex_{uv}$ is the segment with endpoints~$\b{e}_u$ and~$\b{e}_v$.
 The face lattice of~$\simplex_E$ is described by ordered partitions of~$E$.
@@ -289,7 +289,7 @@ In particular, whenever the edges of $E$ are increasing, it turns out that the a
 When~$\AReori(E)$ is a lattice, one can consider its lattice congruences and quotients.
 They have been largely investigated in~\cite{Pilaud-acyclicReorientationLattices}.
 Among all these congruences, the \defn{sylvester congruence} yields the \defn{Tamari lattice} of~$E$, which is isomorphic to the transitive closure of the graph of the \defn{associahedron} of~$E$ oriented in the direction~$\b{w}$.
-The later is obtained by deleting inequalities in the facet description of the graphical zonotope of~$E$.
+The latter is obtained by deleting inequalities in the facet description of the graphical zonotope of~$E$.
 
 For instance, when~$E = K_n$ is the complete graph,
 \begin{itemize}
@@ -307,7 +307,7 @@ Ornamentations of rooted trees were introduced in~\cite{DefantSack} and further 
 Ornamentations of directed graphs and beyond will also appear in~\cite{Sack}.
 An ornamentation~$O$ of~$D$ is \defn{acyclic} if a certain reorientation of the transitive closure~$\tc(D)$ of~$D$ constructed from~$O$ is acyclic (see precise definition later).
 The \defn{(acyclic) ornamentation poset} of~$D$ is the poset of (acyclic) ornamentations of~$D$ ordered by componentwise inclusion, meaning~$O \le O'$ if and only if~${O(v) \subseteq O'(v)}$ for all~$v \in V$.
-The ornamentation poset~$\Orn(D)$ is always a lattice, but the acyclic ornamentation poset~$\Orn(D)$ is not always a lattice.
+The ornamentation poset~$\Orn(D)$ is always a lattice, but the acyclic ornamentation poset~$\AOrn(D)$ is not always a lattice.
 Interestingly, we will see that all ornamentations turn out to be acyclic when~$D$ is a rooted (or even unstarred, see below) tree, and the ornamentation lattice is the MacNeille completion of the acyclic ornamentation lattice when~$D$ is a directed tree.
 
 The geometry of ornamentation lattices is not that clear.
@@ -439,7 +439,7 @@ In particular, the acyclic sourcing poset~$\ASour(\II)$ of any intersection clos
 \label{sec:general}
 
 Throughout this section, we fix a directed graph~$D$ on a vertex set~$V$, and denote by~$\tc(D)$ its transitive closure and by~$\PP(D)$ its hypergraph of directed paths.
-It is a priori not required that~$D$ is acyclic, although this is the case that interest us most in this paper.
+It is a priori not required that~$D$ is acyclic, although this is the case that interests us most in this paper.
 In particular, in all our pictures, $V = [n]$ and the edges are increasing (so we can omit their orientations).
 We define the ornamentation lattice~$\Orn(D)$ (\cref{subsec:ornamentations}), the reorientation lattice~$\Reori(\tc(D))$ (\cref{subsec:reorientations}), and the sourcing lattice~$\Sour(\PP(D))$ (\cref{subsec:sourcings}), and define natural surjective poset morphisms:
 \[
@@ -683,7 +683,7 @@ We will see later in \cref{prop:Reori2OrnMaxTree} that the fibers always admit a
 
 \begin{remark}
 \label{rem:Reori2OrnSemilatticeMap}
-The surjection~$R \mapsto \orn{R}$ does not preserve neither the meet nor the join semilattice structure, even when~$D$ is a path.
+The surjection~$R \mapsto \orn{R}$ preserves neither the meet nor the join semilattice structure, even when~$D$ is a path.
 For instance,
 
 \centerline{
@@ -970,7 +970,7 @@ Assume that there is a path from~$u$ to~$v$ in~$\rev(\sour{O})$.
 Denote by~${u = w_0, w_1, \dots, w_p = v}$ the vertices along this path.
 For each $1 \le i \le p$, as~$(w_{i-1}, w_i) \in \rev(\sour{O})$, there is a path~$P_i \in \PP(D)$ from~$w_{i-1}$ to~$w_i$ with~$\sour{O}(P_i) = w_i$ by \cref{def:Sour2Reori}, hence~$w_{i-1} \in O(w_i)$ by \cref{def:Orn2Sour}.
 Since~$O$ is an ornamentation, an immediate induction shows that~$w_i \in O(v)$ for all~$0 \le i \le p$.
-We conclude that $u \in O(v)$
+We conclude that $u \in O(v)$.
 
 \medskip\noindent
 \uline{\textsl{(iii) $\Rightarrow$ (i):}}
@@ -1233,7 +1233,7 @@ Let~$\areori{S}$ be the reorientation of~$\tc(D)$ defined by~$\rev(\areori{S}) =
 \label{rem:ASour2AReori}
 Note that~$\rev(S) \subseteq \rev(\areori{S})$, but the inclusion might be strict.
 In fact, the map~$S \mapsto \areori{S}$ is not order-preserving.
-For instance, consider the directed graph~$D$, the two reorientations~$R_1$ and~$R_2$ of~$\tc(D)$, and the two sourcings~$S_1$ and~$S_2$ of~$S_1$ of~$\PP(D)$ given by
+For instance, consider the directed graph~$D$, the two reorientations~$R_1$ and~$R_2$ of~$\tc(D)$, and the two sourcings~$S_1$ and~$S_2$ of~$\PP(D)$ given by
 \begin{gather*}
 D = \! \includegraphics[scale=.8,valign=c]{graphR}
 \qquad\qquad
@@ -1242,7 +1242,7 @@ R_1 = \! \includegraphics[scale=.8,valign=c]{reorientationR1}
 R_2 = \! \includegraphics[scale=.8,valign=c]{reorientationR3}
 \\
 S_1(13) = 3, \;\; S_1(134) = 3, \;\; S_1(15) = 5, \;\; S_1(24) = 4, \;\; S_1(25) = 2, \;\; S_1(34) = 3, \\
-S_2(13) = 3, \;\; S_1(134) = 3, \;\; S_2(15) = 5, \;\; S_2(24) = 4, \;\; S_2(25) = 5, \;\; S_2(34) = 3.
+S_2(13) = 3, \;\; S_2(134) = 3, \;\; S_2(15) = 5, \;\; S_2(24) = 4, \;\; S_2(25) = 5, \;\; S_2(34) = 3.
 \end{gather*}
 Note that~$R_1$, $R_2$, $S_1$ and~$S_2$ are all acyclic, and that~$R_1 = \areori{S_1}$ and~$R_2 = \areori{S_2}$ and conversely~$S_1 = \asour{R_1}$ and~$S_2 = \asour{R_2}$.
 Moreover, one can check that~$R_1 \not< R_2$ while~$S_1 < S_2$.
@@ -1280,7 +1280,7 @@ The map~$R \mapsto \asour{R}$ is an order-preserving surjection from the acyclic
 
 \begin{remark}
 Note that we could have argued the surjectivity of the map~$R \mapsto \asour{R}$ geometrically.
-Namely, using that the hypergraphic polytope of $\PP(D)$ is a deformation of graphical zonotope of $\tc(D)$.
+Namely, using that the hypergraphic polytope of $\PP(D)$ is a deformation of the graphical zonotope of $\tc(D)$.
 We have introduced the map~$S \mapsto \areori{S}$ instead to remain at the level of posets.
 \end{remark}
 
@@ -1334,8 +1334,9 @@ Conversely, consider~$u,v \in [n]$ such that~$u \in \orn{R}(v)$.
 Let~$P$ be a path from~$u$ to~$v$ in~$\orn{R}(v)$.
 By \cref{lem:acyclicSimplifiesDef}, we have~$(w,v) \in \rev(R)$ for all~$w \in P$.
 Therefore, $v$ is the source of~$P$ in~$R$, that is, $v = \asour{R}(P)$.
-We thus obtain that~$(u,v) \in \rev(\asour{R})$.
-We conclude that~$\rev(R) \subseteq \rev(\asour{R})$, hence that~$\orn{R}(v) \subseteq \orn{\asour{R}}(v)$ by maximality of~$\orn{\asour{R}}(v)$.
+We conclude that~$u \in \orn{\asour{R}}(v)$ by maximality of~$\orn{\asour{R}}(v)$, hence that~$\orn{R}(v) \subseteq \orn{\asour{R}}(v)$.
+%We thus obtain that~$(u,v) \in \rev(\asour{R})$.
+%We conclude that~$\rev(R) \subseteq \rev(\asour{R})$, hence that~$\orn{R}(v) \subseteq \orn{\asour{R}}(v)$ by maximality of~$\orn{\asour{R}}(v)$.
 \end{proof}
 
 \begin{lemma}
@@ -1441,7 +1442,7 @@ Let $S_1$ and~$S_2$ be two acyclic sourcings of~$\PP(D)$ such that~$\aorn{S_1} \
 Suppose that~$S_1 \not\leq S_2$ and let~$P \in \PP(D)$ such that~$u \eqdef S_2(P) < S_1(P) \defeq v$.
 By acyclicity of~$S_1$ (resp.~$S_2$) we can assume that~$P$ ends at~$v$ (resp.~begins at~$u$).
 The acyclicity of~$S_1$ further implies that~$S_1(Q) = v$ for any subpath~$Q$ of~$P$ ending at~$v$.
-Hence,~$u \in P \subseteq \aorn{S_1}(P) \subseteq \aorn{S_2}(P)$.
+Hence,~$u \in P \subseteq \aorn{S_1}(v) \subseteq \aorn{S_2}(v)$.
 But then, there exists a path~$P'$ from~$u$ to~$v$ such that~$S_2(P') = v$, contradicting the acyclicity of~$S_2$.
 Thus, we necessarily have~$S_1 \leq S_2$.
 \end{proof}
@@ -1536,7 +1537,7 @@ For a directed tree~$T$, an acyclic reorientation~$R$ of~$\tc(T)$ and vertices $
 \begin{proof}
 Since~$R$ is acyclic, for any $u <_T v$, there is a directed path from~$u$ to~$v$ in~$\rev(R)$ if and only if~$(u,v) \in \rev(R)$.
 By \cref{def:Reori2Orn}, $\orn{R}(v)$ is the maximal ornament of~$T$ at~$v$ contained in the subset of vertices~$u \in V$ with a directed path to~$v$ in $\rev(R)$.
-Hence, $u \in \orn{R}(v)$ if and only if~$u' \in \rev(R)$ for all~$u'$ along the path from~$u$ to~$v$ in~$T$.
+Hence, $u \in \orn{R}(v)$ if and only if~$(u',v) \in \rev(R)$ for all~$u'$ along the path from~$u$ to~$v$ in~$T$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1795,7 +1796,7 @@ Since~$R$ is transitively biclosed, $C$ is an induced alternating cycle in~$\tc(
 Write~$C = (u_1, v_1, \dots, u_k, v_k)$ where~$(u_i, v_i)$ and~$(u_{i+1},v_i)$ are in~$\tc(T)$ for all~$i \in [k]$.
 We can moreover assume without loss of generality that for~$i \in [k]$ and any outgoing neighbor~$u'$ of~$u_i$ (resp.~incoming neighbor~$v'$ of~$v_i$) in~$R$, replacing~$u_i$ by~$u'$ (resp.~$v_i$ by~$v'$) in~$C$ does not yield an induced oriented cycle in~$R$.
 For~$i \in [k]$, consider the reorientation~$R_i$ of~$\tc(T)$ obtained by reversing the edge~$(u_i,v_i)$, meaning that~$\rev(R_i) = \rev(R) \cup \{(u_i,v_i)\}$.
-The reorientation~$R_i$ clearly covers~$R$, and we claimed that is still biclosed.
+The reorientation~$R_i$ clearly covers~$R$, and we claim that is still biclosed.
 Indeed,
 \begin{itemize}
 \item If~$R_i$ were not closed, we would have~$u' \in V$ with~$(u',u_i) \in \rev(R)$ and~$(u',v_i) \notin \rev(R)$ or~$v' \in V$ with~$(v_i, v') \in \rev(R)$ and~$(u_i,v') \notin \rev(R)$. We could then replace~$u_i$ by~$u'$ or~$v_i$ by~$v'$ in~$C$ and obtained another induced oriented cycle in~$R$.
@@ -2322,7 +2323,7 @@ In order to give a formula for~$E_n$, we introduce the following two families of
 \end{figure}
 
 \begin{definition}
-A \defn{Dyck path} of semilength~$n$ is a path with up steps~$(1,1)$ and down steps~$(1,-1)$ starting at~$(0,0)$, ending at~$(n,n)$, and never passing strictly below the horizontal axis.
+A \defn{Dyck path} of semilength~$n$ is a path with up steps~$(1,1)$ and down steps~$(1,-1)$ starting at~$(0,0)$, ending at~$(2n,0)$, and never passing strictly below the horizontal axis.
 A \defn{labeled Dyck path} is a Dyck path where each down step is labeled by an integer in~$[0,h]$ where $h$ is the height of its top endpoint.
 \end{definition}
 
@@ -2628,7 +2629,7 @@ Assume by means of contradiction that~$\ASour(\II)$ is a lattice but that there 
 Without loss of generality, we can assume that this cycle is induced.
 Note that~$u_i <_T v_j$ for all~$i,j \in [p]$ since we consider increasing trees, and that there is no~$I \in \II$ containing either two distinct~$u_i$'s or two distinct~$v_j$'s since they are incomparable in~$T$.
 
-Let~$W$ be a word formed by the other vertices~$[n] \ssm \{u_0, v_0, \dots, u_p, v_p\}$ in any order.
+Let~$W$ be a word formed by the other vertices~$[n] \ssm \{u_1, v_1, \dots, u_p, v_p\}$ in any order.
 For~$i \in [p]$, define the permutations
 \[
 \sigma^i \eqdef u_i v_i u_{i+1} v_{i+1} \dots u_{i+p-1} v_{i+p-1} W
@@ -2709,7 +2710,7 @@ In this section, we observe the following important property of the star sparse 
 \begin{proposition}
 \label{prop:pathStarSparse}
 Let~$\II$ be a star sparse (\cref{def:pathStarSparse}) intreeval hypergraph of an increasing tree~$T$.
-Then any minimal cycle in any sourcing of~$S$ has length~$2$.
+Then any minimal cycle in any sourcing of~$\II$ has length~$2$.
 \end{proposition}
 
 \begin{proof}
@@ -3031,6 +3032,7 @@ This contradicts the acyclicity of $S'$ as~${S'(I) \in I \cap J \subseteq K}$.
 This work was initiated at the Banff workshop ``Lattice Theory'' in January 2025.
 We are grateful to the organizers (Emily Barnard, Cesar Ceballos, Colin Defant, Osamu Iyama, and Nathan Williams) and to all participants for the friendly and inspiring atmosphere.
 We particularly thank Eleni Tzanaki for several conversations on related topics on hypergraphical polytopes.
+We are grateful to the anonymous referee for a careful reading of the manuscript and for valuable corrections and suggestions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
